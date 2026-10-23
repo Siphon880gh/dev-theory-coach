@@ -270,7 +270,7 @@ final class Guides
             . '<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>'
             . '<line x1="12" y1="17" x2="12.01" y2="17"/>'
             . '</svg></span>'
-            . 'Questions</h2>';
+            . '<span class="guide-footer__label">Questions</span></h2>';
         $parts[] = '<p class="guide-footer__blurb">Check yourself with a short quiz on this lesson.</p>';
         $parts[] = '<p class="guide-footer__action"><a class="guide-footer__link guide-footer__link--quiz" href="'
             . e(url('/quiz/' . rawurlencode($slug))) . '">Take the quiz</a></p>';
@@ -281,10 +281,10 @@ final class Guides
         $parts[] = '<section class="guide-footer__block guide-footer__youtube" aria-labelledby="guide-youtube-heading">';
         $parts[] = '<h2 id="guide-youtube-heading" class="guide-footer__heading">'
             . '<span class="guide-footer__icon" aria-hidden="true">'
-            . '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">'
+            . '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 3.5 24 17" fill="currentColor">'
             . '<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/>'
             . '</svg></span>'
-            . 'YouTube</h2>';
+            . '<span class="guide-footer__label">YouTube</span></h2>';
         $parts[] = '<p class="guide-footer__blurb">Short videos on this topic (opens YouTube search).</p>';
         $parts[] = '<p class="guide-footer__action"><a class="guide-footer__link guide-footer__link--youtube" href="'
             . e($youtubeUrl) . '" target="_blank" rel="noopener noreferrer">'

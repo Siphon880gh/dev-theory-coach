@@ -465,18 +465,18 @@ code {
   border-top: 1px solid var(--panel-edge);
 }
 
-/* Guide page footer: YouTube + questions (quiz) + lesson nav */
+/* Guide page footer: YouTube + questions (quiz) + lesson nav.
+   Tight inside a block, open between Questions and YouTube. */
 .guide-footer {
   margin-top: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: calc(var(--space-4) * 2);
 }
 
 .guide-footer__block + .guide-footer__block {
-  margin-top: 0.35rem;
+  margin-top: var(--space-3);
 }
-
 
 .guide-footer__block {
   padding: var(--space-3) var(--space-3) var(--space-4);
@@ -488,27 +488,45 @@ code {
 .guide-footer__heading {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: var(--space-2);
   margin: 0 0 var(--space-2);
   font-size: 0.95rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--text);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  color: var(--heading);
+}
+
+.guide-footer__label {
+  line-height: 1;
 }
 
 .guide-footer__icon {
-  display: inline-flex;
-  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1.2em;
+  height: 1.2em;
   color: var(--accent);
-  line-height: 0;
 }
 
 .guide-footer__icon svg {
   display: block;
+  width: 1.2em;
+  height: 1.2em;
 }
 
+/* Cropped to the mark so its ink height matches the question circle. */
 .guide-footer__youtube .guide-footer__icon {
-  color: #ff4d4d;
+  width: 1.55em;
+  height: 1.1em;
+  color: #e04545;
+}
+
+.guide-footer__youtube .guide-footer__icon svg {
+  width: 1.55em;
+  height: 1.1em;
 }
 
 .guide-footer__blurb {
