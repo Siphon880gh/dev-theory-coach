@@ -1,0 +1,163 @@
+{
+  "families": [
+    {
+      "slug": "arrays"
+    },
+    {
+      "slug": "strings"
+    },
+    {
+      "slug": "hash-maps"
+    },
+    {
+      "slug": "linked-lists"
+    },
+    {
+      "slug": "stacks"
+    },
+    {
+      "slug": "queues"
+    },
+    {
+      "slug": "trees"
+    },
+    {
+      "slug": "binary-search-trees"
+    },
+    {
+      "slug": "heaps"
+    },
+    {
+      "slug": "graphs"
+    },
+    {
+      "slug": "tries"
+    },
+    {
+      "slug": "union-find"
+    },
+    {
+      "slug": "complexity"
+    },
+    {
+      "slug": "recursion"
+    },
+    {
+      "slug": "binary-search"
+    },
+    {
+      "slug": "two-pointers"
+    },
+    {
+      "slug": "sliding-window"
+    },
+    {
+      "slug": "sorting"
+    },
+    {
+      "slug": "bfs-dfs"
+    },
+    {
+      "slug": "backtracking"
+    },
+    {
+      "slug": "greedy"
+    },
+    {
+      "slug": "dynamic-programming"
+    },
+    {
+      "slug": "graph-algorithms"
+    },
+    {
+      "slug": "intervals"
+    },
+    {
+      "slug": "interview-frame"
+    },
+    {
+      "slug": "estimates"
+    },
+    {
+      "slug": "requirements"
+    },
+    {
+      "slug": "api-and-boundaries"
+    },
+    {
+      "slug": "data-model"
+    },
+    {
+      "slug": "read-and-write-paths"
+    },
+    {
+      "slug": "caching"
+    },
+    {
+      "slug": "storage-and-indexes"
+    },
+    {
+      "slug": "replication-and-consistency"
+    },
+    {
+      "slug": "sharding"
+    },
+    {
+      "slug": "work-queues"
+    },
+    {
+      "slug": "rate-limiting"
+    },
+    {
+      "slug": "failure"
+    },
+    {
+      "slug": "capstone-url-shortener"
+    },
+    {
+      "slug": "capstone-feed"
+    },
+    {
+      "slug": "when-to-name-a-pattern"
+    },
+    {
+      "slug": "strategy"
+    },
+    {
+      "slug": "state"
+    },
+    {
+      "slug": "observer"
+    },
+    {
+      "slug": "factory"
+    },
+    {
+      "slug": "builder"
+    },
+    {
+      "slug": "adapter"
+    },
+    {
+      "slug": "facade"
+    },
+    {
+      "slug": "decorator"
+    },
+    {
+      "slug": "singleton"
+    },
+    {
+      "slug": "command"
+    },
+    {
+      "slug": "composite"
+    },
+    {
+      "slug": "proxy"
+    },
+    {
+      "slug": "composition"
+    }
+  ]
+}

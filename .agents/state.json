@@ -1,9 +1,11 @@
 {
   "current_epic_id": "E1",
   "current_milestone_id": "E1.M1",
-  "status": "todo",
-  "last_updated_iso": "2026-10-23T10:53:01Z",
-  "milestone_story_status": {},
+  "status": "in_progress",
+  "last_updated_iso": "2026-10-23T04:04:28-07:00",
+  "milestone_story_status": {
+    "E1.M1.S1": "done"
+  },
   "app": {
     "name": "Dev Theory Coach (THEORY_CORE)",
     "one_liner": "Teach interview concepts with guides, step-by-step choices, and quizzes so a candidate can name the right idea and reject the wrong one.",
@@ -1347,7 +1349,7 @@
       "id": "E1",
       "name": "Family catalog",
       "priority": "MVP",
-      "status": "todo"
+      "status": "in_progress"
     },
     {
       "id": "E2",
@@ -1426,5 +1428,5 @@
     "context_catalog": "context/README.md",
     "gauntlet_contract": "gauntlet/contract.md"
   },
-  "next_action": "Start E1.M1.S1: add Composer and PHPUnit, and seed content/families.json with every slug in RESOURCES.md."
+  "next_action": "Start E1.M1.S2: store track id, full label, title, summary, after, and rungs on every family."
 }

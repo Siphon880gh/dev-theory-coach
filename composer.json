@@ -1,0 +1,25 @@
+{
+  "name": "weng/dev-theory-coach",
+  "description": "Dev Theory Coach (THEORY_CORE) \u2014 PHP server-rendered interview concept trainer",
+  "type": "project",
+  "require": {
+    "php": "^8.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "TheoryCore\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TheoryCore\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "serve": "php -S localhost:8080 router.php"
+  }
+}
