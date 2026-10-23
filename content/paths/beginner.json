@@ -1,7 +1,6 @@
 {
   "id": "beginner",
   "title": "Beginner path",
-  "sample": true,
   "milestones": [
     {
       "id": "beginner:arrays",

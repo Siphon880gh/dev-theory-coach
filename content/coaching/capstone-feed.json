@@ -1,14 +1,13 @@
 {
   "meta": {
     "slug": "capstone-feed",
-    "title": "Capstone: feed",
-    "sample": true
+    "title": "Capstone: feed"
   },
   "start": "q1",
   "nodes": {
     "q1": {
       "type": "continue",
-      "prompt": "SAMPLE: Which statement best captures Capstone: feed?",
+      "prompt": "Which statement best captures Capstone: feed?",
       "choices": [
         {
           "label": "Right: Pick fanout-on-write or fanout-on-read from the follower count.",
@@ -29,14 +28,14 @@
     },
     "q2": {
       "type": "continue",
-      "prompt": "SAMPLE: When should you refuse Capstone: feed?",
+      "prompt": "When should you refuse Capstone: feed?",
       "choices": [
         {
           "label": "When a simpler tool covers the force or a prerequisite is missing",
           "to": "success"
         },
         {
-          "label": "Never refuse \u2014 always apply the named idea",
+          "label": "Never refuse — always apply the named idea",
           "to": "wrong2"
         }
       ]

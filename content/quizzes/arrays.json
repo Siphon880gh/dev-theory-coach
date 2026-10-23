@@ -1,10 +1,9 @@
 {
   "slug": "arrays",
   "title": "Arrays",
-  "sample": true,
   "items": [
     {
-      "prompt": "SAMPLE: In a contiguous buffer of n values, what is the typical cost of reading index i?",
+      "prompt": "In a contiguous buffer of n values, what is the typical cost of reading index i?",
       "choices": [
         "O(1)",
         "O(log n)",
@@ -21,7 +20,7 @@
       ]
     },
     {
-      "prompt": "SAMPLE: You insert one value in the middle of an array of n elements. What dominates the cost?",
+      "prompt": "You insert one value in the middle of an array of n elements. What dominates the cost?",
       "choices": [
         "Shifting the tail one slot",
         "Hashing the new key",
@@ -38,12 +37,12 @@
       ]
     },
     {
-      "prompt": "SAMPLE: Repeated appends into a dynamic array that doubles when full are best described as what amortized cost per append?",
+      "prompt": "Repeated appends into a dynamic array that doubles when full are best described as what amortized cost per append?",
       "choices": [
         "Amortized O(1)",
         "Strict O(n) every time",
         "O(log n) always",
-        "O(n\u00b2) always"
+        "O(n²) always"
       ],
       "answerIndex": 0,
       "whyRight": "Most appends write one slot; occasional full copies are paid across many appends.",
@@ -55,10 +54,10 @@
       ]
     },
     {
-      "prompt": "SAMPLE: Jumping to index i is the hot path. Array or linked list?",
+      "prompt": "Jumping to index i is the hot path. Array or linked list?",
       "choices": [
-        "Array \u2014 constant address math",
-        "Linked list \u2014 always faster for jumps",
+        "Array — constant address math",
+        "Linked list — always faster for jumps",
         "Either, costs are identical",
         "List, because cache lines do not matter"
       ],
@@ -72,7 +71,7 @@
       ]
     },
     {
-      "prompt": "SAMPLE: You already hold a node pointer and must remove that node from a chain. Which structure keeps the edit local?",
+      "prompt": "You already hold a node pointer and must remove that node from a chain. Which structure keeps the edit local?",
       "choices": [
         "Linked list",
         "Array that shifts the suffix",
@@ -89,7 +88,7 @@
       ]
     },
     {
-      "prompt": "SAMPLE: Which statement about arrays is safe to say in a phone screen?",
+      "prompt": "Which statement about arrays is safe to say in a phone screen?",
       "choices": [
         "Middle insert is O(n) because the tail shifts",
         "Every insert is O(1) including the middle",

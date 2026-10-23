@@ -1,7 +1,6 @@
 {
   "id": "systems",
   "title": "System design",
-  "sample": true,
   "milestones": [
     {
       "id": "systems:interview-frame",

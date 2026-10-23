@@ -1,14 +1,13 @@
 {
   "meta": {
     "slug": "api-and-boundaries",
-    "title": "API and boundaries",
-    "sample": true
+    "title": "API and boundaries"
   },
   "start": "q1",
   "nodes": {
     "q1": {
       "type": "continue",
-      "prompt": "SAMPLE: Which statement best captures API and boundaries?",
+      "prompt": "Which statement best captures API and boundaries?",
       "choices": [
         {
           "label": "Right: Name the operations and the boundary that owns each one.",
@@ -29,14 +28,14 @@
     },
     "q2": {
       "type": "continue",
-      "prompt": "SAMPLE: When should you refuse API and boundaries?",
+      "prompt": "When should you refuse API and boundaries?",
       "choices": [
         {
           "label": "When a simpler tool covers the force or a prerequisite is missing",
           "to": "success"
         },
         {
-          "label": "Never refuse \u2014 always apply the named idea",
+          "label": "Never refuse — always apply the named idea",
           "to": "wrong2"
         }
       ]

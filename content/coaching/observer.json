@@ -1,14 +1,13 @@
 {
   "meta": {
     "slug": "observer",
-    "title": "Observer",
-    "sample": true
+    "title": "Observer"
   },
   "start": "q1",
   "nodes": {
     "q1": {
       "type": "continue",
-      "prompt": "SAMPLE: Which statement best captures Observer?",
+      "prompt": "Which statement best captures Observer?",
       "choices": [
         {
           "label": "Right: Notify dependents on a change, and name the leak and the order problems.",
@@ -29,14 +28,14 @@
     },
     "q2": {
       "type": "continue",
-      "prompt": "SAMPLE: When should you refuse Observer?",
+      "prompt": "When should you refuse Observer?",
       "choices": [
         {
           "label": "When a simpler tool covers the force or a prerequisite is missing",
           "to": "success"
         },
         {
-          "label": "Never refuse \u2014 always apply the named idea",
+          "label": "Never refuse — always apply the named idea",
           "to": "wrong2"
         }
       ]

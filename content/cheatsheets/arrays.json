@@ -1,6 +1,5 @@
 {
   "slug": "arrays",
-  "sample": true,
   "lines": [
     "Index read/write: O(1)",
     "Middle insert/delete: O(n) shift",
@@ -11,7 +10,7 @@
     "Fixed vs dynamic capacity",
     "Prefer when jumps to i dominate",
     "Refuse when hot path is middle splice",
-    "SAMPLE: name the shift before coding an insert",
+    "name the shift before coding an insert",
     "Pair with two pointers on sorted buffers",
     "Do not claim every insert is O(1)"
   ],

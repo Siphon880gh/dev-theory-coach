@@ -1,14 +1,13 @@
 {
   "meta": {
     "slug": "strings",
-    "title": "Strings",
-    "sample": true
+    "title": "Strings"
   },
   "start": "q1",
   "nodes": {
     "q1": {
       "type": "continue",
-      "prompt": "SAMPLE: Which statement best captures Strings?",
+      "prompt": "Which statement best captures Strings?",
       "choices": [
         {
           "label": "Right: A string is a character array, and an edit often copies.",
@@ -29,14 +28,14 @@
     },
     "q2": {
       "type": "continue",
-      "prompt": "SAMPLE: When should you refuse Strings?",
+      "prompt": "When should you refuse Strings?",
       "choices": [
         {
           "label": "When a simpler tool covers the force or a prerequisite is missing",
           "to": "success"
         },
         {
-          "label": "Never refuse \u2014 always apply the named idea",
+          "label": "Never refuse — always apply the named idea",
           "to": "wrong2"
         }
       ]

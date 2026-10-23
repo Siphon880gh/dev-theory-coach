@@ -1,14 +1,13 @@
 {
   "meta": {
     "slug": "builder",
-    "title": "Builder",
-    "sample": true
+    "title": "Builder"
   },
   "start": "q1",
   "nodes": {
     "q1": {
       "type": "continue",
-      "prompt": "SAMPLE: Which statement best captures Builder?",
+      "prompt": "Which statement best captures Builder?",
       "choices": [
         {
           "label": "Right: Assemble one object with many optional parts, and refuse a half-built object.",
@@ -29,14 +28,14 @@
     },
     "q2": {
       "type": "continue",
-      "prompt": "SAMPLE: When should you refuse Builder?",
+      "prompt": "When should you refuse Builder?",
       "choices": [
         {
           "label": "When a simpler tool covers the force or a prerequisite is missing",
           "to": "success"
         },
         {
-          "label": "Never refuse \u2014 always apply the named idea",
+          "label": "Never refuse — always apply the named idea",
           "to": "wrong2"
         }
       ]

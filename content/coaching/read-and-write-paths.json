@@ -1,14 +1,13 @@
 {
   "meta": {
     "slug": "read-and-write-paths",
-    "title": "Read and write paths",
-    "sample": true
+    "title": "Read and write paths"
   },
   "start": "q1",
   "nodes": {
     "q1": {
       "type": "continue",
-      "prompt": "SAMPLE: Which statement best captures Read and write paths?",
+      "prompt": "Which statement best captures Read and write paths?",
       "choices": [
         {
           "label": "Right: Narrate one successful read and one successful write, including the row they touch.",
@@ -29,14 +28,14 @@
     },
     "q2": {
       "type": "continue",
-      "prompt": "SAMPLE: When should you refuse Read and write paths?",
+      "prompt": "When should you refuse Read and write paths?",
       "choices": [
         {
           "label": "When a simpler tool covers the force or a prerequisite is missing",
           "to": "success"
         },
         {
-          "label": "Never refuse \u2014 always apply the named idea",
+          "label": "Never refuse — always apply the named idea",
           "to": "wrong2"
         }
       ]

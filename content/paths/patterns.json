@@ -1,7 +1,6 @@
 {
   "id": "patterns",
   "title": "Design patterns",
-  "sample": true,
   "milestones": [
     {
       "id": "patterns:when-to-name-a-pattern",

@@ -1,18 +1,17 @@
 {
   "slug": "requirements",
   "title": "Requirements",
-  "sample": true,
-  "prompt": "SAMPLE: A teammate wants to add a dark-mode preference to the URL shortener design interview. Accept or reject for this hour?",
+  "prompt": "A teammate wants to add a dark-mode preference to the URL shortener design interview. Accept or reject for this hour?",
   "best": "reject",
   "choices": [
     {
       "id": "accept",
-      "label": "Accept \u2014 ship dark mode in the design",
+      "label": "Accept — ship dark mode in the design",
       "consequence": "You spend the hour on UI chrome that does not change storage, traffic, or failure modes."
     },
     {
       "id": "reject",
-      "label": "Reject \u2014 it does not change storage, traffic, or failure",
+      "label": "Reject — it does not change storage, traffic, or failure",
       "consequence": "You keep the hour for bounds and the first bottleneck, which the frame actually grades."
     },
     {

@@ -1,14 +1,13 @@
 {
   "meta": {
     "slug": "state",
-    "title": "State",
-    "sample": true
+    "title": "State"
   },
   "start": "q1",
   "nodes": {
     "q1": {
       "type": "continue",
-      "prompt": "SAMPLE: Which statement best captures State?",
+      "prompt": "Which statement best captures State?",
       "choices": [
         {
           "label": "Right: Let behavior follow the mode, with each transition written in one place.",
@@ -29,14 +28,14 @@
     },
     "q2": {
       "type": "continue",
-      "prompt": "SAMPLE: When should you refuse State?",
+      "prompt": "When should you refuse State?",
       "choices": [
         {
           "label": "When a simpler tool covers the force or a prerequisite is missing",
           "to": "success"
         },
         {
-          "label": "Never refuse \u2014 always apply the named idea",
+          "label": "Never refuse — always apply the named idea",
           "to": "wrong2"
         }
       ]

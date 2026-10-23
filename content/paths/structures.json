@@ -1,7 +1,6 @@
 {
   "id": "structures",
   "title": "Data structures",
-  "sample": true,
   "milestones": [
     {
       "id": "structures:arrays",

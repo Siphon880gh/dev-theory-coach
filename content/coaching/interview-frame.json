@@ -1,14 +1,13 @@
 {
   "meta": {
     "slug": "interview-frame",
-    "title": "Interview frame",
-    "sample": true
+    "title": "Interview frame"
   },
   "start": "q1",
   "nodes": {
     "q1": {
       "type": "continue",
-      "prompt": "SAMPLE: Which statement best captures Interview frame?",
+      "prompt": "Which statement best captures Interview frame?",
       "choices": [
         {
           "label": "Right: Spend the hour in a fixed order and leave time to name the bottleneck.",
@@ -29,14 +28,14 @@
     },
     "q2": {
       "type": "continue",
-      "prompt": "SAMPLE: When should you refuse Interview frame?",
+      "prompt": "When should you refuse Interview frame?",
       "choices": [
         {
           "label": "When a simpler tool covers the force or a prerequisite is missing",
           "to": "success"
         },
         {
-          "label": "Never refuse \u2014 always apply the named idea",
+          "label": "Never refuse — always apply the named idea",
           "to": "wrong2"
         }
       ]

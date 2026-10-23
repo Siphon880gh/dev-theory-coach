@@ -1,14 +1,13 @@
 {
   "meta": {
     "slug": "composite",
-    "title": "Composite",
-    "sample": true
+    "title": "Composite"
   },
   "start": "q1",
   "nodes": {
     "q1": {
       "type": "continue",
-      "prompt": "SAMPLE: Which statement best captures Composite?",
+      "prompt": "Which statement best captures Composite?",
       "choices": [
         {
           "label": "Right: Treat one item and a group through one interface.",
@@ -29,14 +28,14 @@
     },
     "q2": {
       "type": "continue",
-      "prompt": "SAMPLE: When should you refuse Composite?",
+      "prompt": "When should you refuse Composite?",
       "choices": [
         {
           "label": "When a simpler tool covers the force or a prerequisite is missing",
           "to": "success"
         },
         {
-          "label": "Never refuse \u2014 always apply the named idea",
+          "label": "Never refuse — always apply the named idea",
           "to": "wrong2"
         }
       ]

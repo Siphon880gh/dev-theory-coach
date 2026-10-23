@@ -1,10 +1,9 @@
 {
   "slug": "complexity",
   "title": "Complexity",
-  "sample": true,
   "items": [
     {
-      "prompt": "SAMPLE: Nested loop i in n, j in n, constant body. Time?",
+      "prompt": "Nested loop i in n, j in n, constant body. Time?",
       "accept": "O(n^2)",
       "thoughtChain": [
         "Count iterations of i",
@@ -14,7 +13,7 @@
       "seconds": 45
     },
     {
-      "prompt": "SAMPLE: Single pass over n with hash map of size k. Extra space?",
+      "prompt": "Single pass over n with hash map of size k. Extra space?",
       "accept": "O(k)",
       "thoughtChain": [
         "One pass",
@@ -24,7 +23,7 @@
       "seconds": 45
     },
     {
-      "prompt": "SAMPLE: Binary search on sorted n. Time?",
+      "prompt": "Binary search on sorted n. Time?",
       "accept": "O(log n)",
       "thoughtChain": [
         "Halve each step",
@@ -34,7 +33,7 @@
       "seconds": 45
     },
     {
-      "prompt": "SAMPLE: Append to dynamic array amortized?",
+      "prompt": "Append to dynamic array amortized?",
       "accept": "O(1)",
       "thoughtChain": [
         "Most appends write one",
@@ -44,7 +43,7 @@
       "seconds": 45
     },
     {
-      "prompt": "SAMPLE: Walk all edges of adjacency list V,E. Time?",
+      "prompt": "Walk all edges of adjacency list V,E. Time?",
       "accept": "O(V+E)",
       "thoughtChain": [
         "Visit each vertex",
@@ -54,7 +53,7 @@
       "seconds": 45
     },
     {
-      "prompt": "SAMPLE: Merge two sorted length-n arrays. Time?",
+      "prompt": "Merge two sorted length-n arrays. Time?",
       "accept": "O(n)",
       "thoughtChain": [
         "Two pointers",
@@ -64,7 +63,7 @@
       "seconds": 45
     },
     {
-      "prompt": "SAMPLE: Build heap from n via heapify. Time?",
+      "prompt": "Build heap from n via heapify. Time?",
       "accept": "O(n)",
       "thoughtChain": [
         "Bottom-up heapify",
@@ -74,7 +73,7 @@
       "seconds": 45
     },
     {
-      "prompt": "SAMPLE: DFS recursion depth on skewed tree n. Stack space?",
+      "prompt": "DFS recursion depth on skewed tree n. Stack space?",
       "accept": "O(n)",
       "thoughtChain": [
         "One frame per node",

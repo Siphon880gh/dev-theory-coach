@@ -1,14 +1,13 @@
 {
   "meta": {
     "slug": "capstone-url-shortener",
-    "title": "Capstone: URL shortener",
-    "sample": true
+    "title": "Capstone: URL shortener"
   },
   "start": "q1",
   "nodes": {
     "q1": {
       "type": "continue",
-      "prompt": "SAMPLE: Which statement best captures Capstone: URL shortener?",
+      "prompt": "Which statement best captures Capstone: URL shortener?",
       "choices": [
         {
           "label": "Right: Run the whole frame on one small read-heavy system without a new mechanism.",
@@ -29,14 +28,14 @@
     },
     "q2": {
       "type": "continue",
-      "prompt": "SAMPLE: When should you refuse Capstone: URL shortener?",
+      "prompt": "When should you refuse Capstone: URL shortener?",
       "choices": [
         {
           "label": "When a simpler tool covers the force or a prerequisite is missing",
           "to": "success"
         },
         {
-          "label": "Never refuse \u2014 always apply the named idea",
+          "label": "Never refuse — always apply the named idea",
           "to": "wrong2"
         }
       ]

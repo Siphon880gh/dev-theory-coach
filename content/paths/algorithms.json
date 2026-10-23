@@ -1,7 +1,6 @@
 {
   "id": "algorithms",
   "title": "Algorithms",
-  "sample": true,
   "milestones": [
     {
       "id": "algorithms:complexity",

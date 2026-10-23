@@ -75,59 +75,103 @@ final class GuidesTest extends TestCase
         foreach (ProgressSchema::BEGINNER_LEARNING_ORDER as $slug) {
             $guide = Guides::load($slug);
             $this->assertNotNull($guide, "missing guide for {$slug}");
-            $this->assertSame($slug, $guide['relatedCoachSlug']);
-            $body = (string) $guide['body'];
-            $words = preg_match_all("/\\b[\\w']+\\b/u", $body);
-            $this->assertGreaterThanOrEqual(300, $words, "{$slug} body too short");
-            $this->assertLessThanOrEqual(800, $words, "{$slug} body too long");
-
-            foreach (['rule', 'why', 'example', 'use', 'refuse'] as $needle) {
-                $this->assertTrue(
-                    stripos($body, $needle) !== false
-                    || (isset($guide['parts']) && $guide['parts'] !== []),
-                    "{$slug} should cover {$needle}",
-                );
-            }
-            // Stronger: parts object present with five keys
-            $this->assertArrayHasKey('parts', $guide);
-            foreach (['rule', 'why', 'example', 'use', 'refuse'] as $part) {
-                $this->assertArrayHasKey($part, $guide['parts'], "{$slug} missing part {$part}");
-                $this->assertNotSame('', trim((string) $guide['parts'][$part]));
-            }
-
-            $tokens = $this->tokenize($body);
-            for ($i = 0; $i <= count($tokens) - 12; $i++) {
-                $span = implode(' ', array_slice($tokens, $i, 12));
-                $this->assertArrayNotHasKey(
-                    $span,
-                    $curriculaNgrams,
-                    "{$slug} guide body pastes a 12-word span from context/curriculums/: {$span}",
-                );
-            }
+            $this->assertGuideQuality($slug, $guide, $curriculaNgrams);
         }
     }
 
-
-    public function testAllFamilyGuidesMeetFloor(): void
+    public function testAllFamilyGuidesMeetFloorAndQualityGates(): void
     {
         $ngrams = $this->twelveWordNgramsFromCurricula();
         foreach (Catalog::all() as $family) {
             $slug = $family['slug'];
             $guide = Guides::load($slug);
             $this->assertNotNull($guide, "missing guide {$slug}");
-            $this->assertSame($slug, $guide['relatedCoachSlug']);
-            $body = (string) $guide['body'];
-            $words = preg_match_all("/\\b[\\w']+\\b/u", $body);
-            $this->assertGreaterThanOrEqual(300, $words, "{$slug} short");
-            $this->assertLessThanOrEqual(800, $words, "{$slug} long");
-            foreach (['rule', 'why', 'example', 'use', 'refuse'] as $part) {
-                $this->assertArrayHasKey($part, $guide['parts'] ?? [], "{$slug} {$part}");
+            $this->assertGuideQuality($slug, $guide, $ngrams);
+        }
+    }
+
+    /**
+     * @param array<string, mixed> $guide
+     * @param array<string, true> $curriculaNgrams
+     */
+    private function assertGuideQuality(string $slug, array $guide, array $curriculaNgrams): void
+    {
+        $this->assertSame($slug, $guide['relatedCoachSlug']);
+        $this->assertArrayNotHasKey('sample', $guide, "{$slug} must not carry a sample stamp");
+        if (isset($guide['meta']) && is_array($guide['meta'])) {
+            $this->assertArrayNotHasKey('sample', $guide['meta'], "{$slug} meta.sample stamp forbidden");
+        }
+
+        $body = (string) $guide['body'];
+        $words = preg_match_all("/\\b[\\w']+\\b/u", $body);
+        $this->assertGreaterThanOrEqual(300, $words, "{$slug} body too short");
+        $this->assertLessThanOrEqual(800, $words, "{$slug} body too long");
+
+        $this->assertArrayHasKey('parts', $guide);
+        foreach (['rule', 'why', 'example', 'use', 'refuse'] as $part) {
+            $this->assertArrayHasKey($part, $guide['parts'], "{$slug} missing part {$part}");
+            $this->assertNotSame('', trim((string) $guide['parts'][$part]));
+        }
+
+        $haystacks = [$body];
+        foreach ($guide['parts'] as $partText) {
+            $haystacks[] = (string) $partText;
+        }
+        foreach ($haystacks as $text) {
+            $this->assertDoesNotMatchRegularExpression(
+                '/\\bSAMPLE\\b/i',
+                $text,
+                "{$slug} must not contain SAMPLE in learner-facing prose",
+            );
+            $this->assertDoesNotMatchRegularExpression(
+                '/recall\\s+checkpoint/i',
+                $text,
+                "{$slug} must not pad with Recall checkpoint lines",
+            );
+        }
+
+        $example = (string) $guide['parts']['example'];
+        $hasWorkedLead = (bool) preg_match('/worked\\s+example\\./i', $body);
+        $hasDigit = (bool) preg_match('/\\d/', $example);
+        $this->assertTrue(
+            $hasWorkedLead || $hasDigit,
+            "{$slug} needs a concrete worked example (Worked example. lead or digit in parts.example)",
+        );
+        $this->assertTrue(
+            $hasDigit,
+            "{$slug} parts.example must contain at least one digit (concrete values)",
+        );
+
+        $this->assertNoRepeatedPaddingParagraphs($slug, $body);
+
+        $tokens = $this->tokenize($body);
+        for ($i = 0; $i <= count($tokens) - 12; $i++) {
+            $span = implode(' ', array_slice($tokens, $i, 12));
+            $this->assertArrayNotHasKey(
+                $span,
+                $curriculaNgrams,
+                "{$slug} guide body pastes a 12-word span from context/curriculums/: {$span}",
+            );
+        }
+    }
+
+    private function assertNoRepeatedPaddingParagraphs(string $slug, string $body): void
+    {
+        $paras = preg_split('/\\n\\s*\\n/', trim($body)) ?: [];
+        $counts = [];
+        foreach ($paras as $para) {
+            $norm = trim(preg_replace('/\\s+/', ' ', $para) ?? '');
+            if ($norm === '') {
+                continue;
             }
-            $tokens = $this->tokenize($body);
-            for ($i = 0; $i <= count($tokens) - 12; $i++) {
-                $span = implode(' ', array_slice($tokens, $i, 12));
-                $this->assertArrayNotHasKey($span, $ngrams, "{$slug} paste: {$span}");
-            }
+            $counts[$norm] = ($counts[$norm] ?? 0) + 1;
+        }
+        foreach ($counts as $para => $n) {
+            $this->assertLessThan(
+                3,
+                $n,
+                "{$slug} has identical paragraph {$n} times (padding): " . substr($para, 0, 80),
+            );
         }
     }
 

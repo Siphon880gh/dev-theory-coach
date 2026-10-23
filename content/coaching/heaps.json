@@ -1,14 +1,13 @@
 {
   "meta": {
     "slug": "heaps",
-    "title": "Heaps",
-    "sample": true
+    "title": "Heaps"
   },
   "start": "q1",
   "nodes": {
     "q1": {
       "type": "continue",
-      "prompt": "SAMPLE: Which statement best captures Heaps?",
+      "prompt": "Which statement best captures Heaps?",
       "choices": [
         {
           "label": "Right: Peek the extreme in O(1) and fix the heap in O(log n), stored as an array.",
@@ -29,14 +28,14 @@
     },
     "q2": {
       "type": "continue",
-      "prompt": "SAMPLE: When should you refuse Heaps?",
+      "prompt": "When should you refuse Heaps?",
       "choices": [
         {
           "label": "When a simpler tool covers the force or a prerequisite is missing",
           "to": "success"
         },
         {
-          "label": "Never refuse \u2014 always apply the named idea",
+          "label": "Never refuse — always apply the named idea",
           "to": "wrong2"
         }
       ]
