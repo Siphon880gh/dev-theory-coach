@@ -10,7 +10,7 @@ Parent map: [`EPIC_MAP.md`](./EPIC_MAP.md) · Runtime state: [`.agents/state.jso
 
 ## Global conventions
 
-- Stack: Web (PHP 8.2 server-rendered + vanilla JS, localStorage; PHPUnit)
+- Stack: Web (PHP 7.4+ server-rendered + vanilla JS, localStorage; PHPUnit)
 - Persist in `localStorage` (`theory_core_progress_v1`)
 - Join key: `slug`. Resource type is a separate field/route
 - SAMPLE / educational data only. Every learner-facing page says SAMPLE

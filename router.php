@@ -19,7 +19,7 @@ if (preg_match('#^(?:/public)?/assets(/.*)$#', $uri, $m) === 1) {
 
     foreach ($roots as $assetRoot) {
         $file = realpath($assetRoot . $m[1]);
-        if ($file !== false && str_starts_with($file, $assetRoot . DIRECTORY_SEPARATOR) && is_file($file)) {
+        if ($file !== false && strpos($file, $assetRoot . DIRECTORY_SEPARATOR) === 0 && is_file($file)) {
             $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
             $types = [
                 'css' => 'text/css; charset=UTF-8',

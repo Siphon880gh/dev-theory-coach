@@ -86,12 +86,17 @@ final class CoachTest extends TestCase
         $this->assertTrue($state['done']);
     }
 
-    public function testCoachStringsIsSlotNot404(): void
+    public function testCoachStringsIsSlotOrAuthoredNot404(): void
     {
         $response = Coach::pageResponse('strings');
         $this->assertSame(200, $response['status']);
-        $this->assertStringContainsString('not authored yet', $response['body'] ?? '');
-        $this->assertStringContainsString('SAMPLE', $response['body'] ?? '');
+        $body = $response['body'] ?? '';
+        $this->assertStringContainsString('SAMPLE', $body);
+        // Slot when unauthored; real coach page once content/coaching/strings.json exists.
+        $this->assertTrue(
+            str_contains($body, 'not authored yet') || str_contains($body, 'data-slug="strings"'),
+            'Expected slot or authored coach page for strings'
+        );
     }
 
     public function testArraysCoachValidatesAndMatchesGuideCta(): void

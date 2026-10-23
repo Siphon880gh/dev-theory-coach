@@ -6,7 +6,7 @@ Companions: [`IMPLEMENTATION_STORIES.md`](./IMPLEMENTATION_STORIES.md) · [`.age
 | Field | Value |
 |-------|-------|
 | **Status** | E0 complete · next E1.M1 |
-| **Platform** | Web (PHP 8.2 server-rendered + vanilla JS, localStorage; PHPUnit) |
+| **Platform** | Web (PHP 7.4+ server-rendered + vanilla JS, localStorage; PHPUnit) |
 | **Primary learner** | Working software engineer preparing for interviews, in 15–25 minute sessions |
 | **Curriculum principle** | Name the concept the prompt is asking for, say the cost or the force, and reject the common wrong pick |
 | **Finalize** | Approach A — thin playable Beginner path + MVP freeze; remaining runtime queues, then content drain via `LOOPS/` |

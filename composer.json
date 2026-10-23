@@ -3,7 +3,7 @@
   "description": "Dev Theory Coach (THEORY_CORE) \u2014 PHP server-rendered interview concept trainer",
   "type": "project",
   "require": {
-    "php": "^8.2"
+    "php": "^7.4 || ^8.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^11.5"
@@ -11,7 +11,10 @@
   "autoload": {
     "psr-4": {
       "TheoryCore\\": "src/"
-    }
+    },
+    "files": [
+      "src/helpers.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {

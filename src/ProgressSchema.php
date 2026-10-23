@@ -99,7 +99,7 @@ final class ProgressSchema
         try {
             /** @var mixed $decoded */
             $decoded = json_decode($raw, true, 512, JSON_THROW_ON_ERROR);
-        } catch (\JsonException) {
+        } catch (\JsonException $e) {
             return self::fresh(true);
         }
 

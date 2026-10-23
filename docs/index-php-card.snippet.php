@@ -1,6 +1,7 @@
 <?php
 // The launcher at trainer/index.php already has this card (icon: layers).
-// href is relative to the launcher.
+// href is relative to the launcher. Valid PHP so php -l passes on 7.4.
+return [
     [
         'name' => 'Dev Theory Coach',
         'eyebrow' => 'Structures · algorithms · system design',
@@ -8,3 +9,4 @@
         'href' => 'dev-theory-coach/',
         'cta' => 'Open Dev Theory Coach',
     ],
+];

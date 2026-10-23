@@ -21,6 +21,8 @@ This is not a problem bank and it does not run code. Problem practice lives in t
 
 ## Run
 
+Requires **PHP 7.4+** (MAMP 7.4.33 works). PHPUnit 11 needs PHP 8.2+ for tests only.
+
 `index.php` is the app entry (Apache `DirectoryIndex`). `router.php` is only for PHP's built-in server.
 
 ```bash

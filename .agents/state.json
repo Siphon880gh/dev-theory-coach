@@ -53,7 +53,7 @@
     "topic": "developer interview concepts: data structures, algorithms, system design, and design patterns"
   },
   "decisions": {
-    "platform": "Web (PHP 8.2 server-rendered + vanilla JS, localStorage; PHPUnit)",
+    "platform": "Web (PHP 7.4+ server-rendered + vanilla JS, localStorage; PHPUnit)",
     "approach": "A",
     "approach_name": "thin playable Beginner path + MVP freeze; content drain via LOOPS/ after all milestone queues",
     "progress_key": "theory_core_progress_v1",
