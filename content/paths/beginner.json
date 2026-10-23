@@ -1,0 +1,102 @@
+{
+  "id": "beginner",
+  "title": "Beginner path",
+  "sample": true,
+  "milestones": [
+    {
+      "id": "beginner:arrays",
+      "slug": "arrays",
+      "contentRefs": [
+        "guide:arrays",
+        "coach:arrays",
+        "quiz:arrays"
+      ]
+    },
+    {
+      "id": "beginner:strings",
+      "slug": "strings",
+      "contentRefs": [
+        "guide:strings"
+      ]
+    },
+    {
+      "id": "beginner:hash-maps",
+      "slug": "hash-maps",
+      "contentRefs": [
+        "guide:hash-maps"
+      ]
+    },
+    {
+      "id": "beginner:linked-lists",
+      "slug": "linked-lists",
+      "contentRefs": [
+        "guide:linked-lists"
+      ]
+    },
+    {
+      "id": "beginner:stacks",
+      "slug": "stacks",
+      "contentRefs": [
+        "guide:stacks"
+      ]
+    },
+    {
+      "id": "beginner:queues",
+      "slug": "queues",
+      "contentRefs": [
+        "guide:queues"
+      ]
+    },
+    {
+      "id": "beginner:complexity",
+      "slug": "complexity",
+      "contentRefs": [
+        "guide:complexity"
+      ]
+    },
+    {
+      "id": "beginner:recursion",
+      "slug": "recursion",
+      "contentRefs": [
+        "guide:recursion"
+      ]
+    },
+    {
+      "id": "beginner:two-pointers",
+      "slug": "two-pointers",
+      "contentRefs": [
+        "guide:two-pointers"
+      ]
+    },
+    {
+      "id": "beginner:binary-search",
+      "slug": "binary-search",
+      "contentRefs": [
+        "guide:binary-search"
+      ]
+    },
+    {
+      "id": "beginner:trees",
+      "slug": "trees",
+      "contentRefs": [
+        "guide:trees"
+      ]
+    },
+    {
+      "id": "beginner:sliding-window",
+      "slug": "sliding-window",
+      "contentRefs": [
+        "guide:sliding-window"
+      ]
+    }
+  ],
+  "caseGate": {
+    "quizzes": [
+      "arrays",
+      "hash-maps",
+      "queues"
+    ],
+    "threshold": 0.8,
+    "unlocks": "graded cases on tracks C and D"
+  }
+}

@@ -248,4 +248,105 @@ final class ProgressSchema
 
         return $state;
     }
+
+    /**
+     * Case gate: quizzes arrays, hash-maps, queues each >= threshold (default 0.8).
+     *
+     * @param array<string, mixed> $state
+     * @param list<string>|null $slugs
+     */
+    public static function caseGateOpenFor(array $state, ?array $slugs = null, float $threshold = 0.8): bool
+    {
+        $state = self::normalize($state);
+        $slugs = $slugs ?? ['arrays', 'hash-maps', 'queues'];
+        foreach ($slugs as $slug) {
+            $id = $state['pathId'] . ':' . $slug;
+            $acc = $state['milestones'][$id]['quizAccuracy'] ?? null;
+            if (!is_numeric($acc) || (float) $acc < $threshold) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Beginner linear unlock: milestone index N locked until N-1 complete.
+     * Index 0 (beginner:arrays) starts unlocked.
+     *
+     * @param array<string, mixed> $state
+     */
+    public static function isBeginnerMilestoneUnlocked(array $state, string $milestoneId): bool
+    {
+        $state = self::normalize($state);
+        $ids = self::beginnerMilestoneIds();
+        $idx = array_search($milestoneId, $ids, true);
+        if ($idx === false) {
+            return false;
+        }
+        if ($idx === 0) {
+            return true;
+        }
+        $prev = $ids[$idx - 1];
+        $prevRow = $state['milestones'][$prev] ?? [];
+
+        return ($prevRow['status'] ?? '') === 'complete';
+    }
+
+    /**
+     * Apply linear lock/unlock statuses from completion flags.
+     *
+     * @param array<string, mixed> $state
+     * @return array<string, mixed>
+     */
+    public static function refreshBeginnerLocks(array $state): array
+    {
+        $state = self::normalize($state);
+        $ids = self::beginnerMilestoneIds();
+        foreach ($ids as $i => $id) {
+            $row = &$state['milestones'][$id];
+            if (($row['status'] ?? '') === 'complete') {
+                continue;
+            }
+            if ($i === 0 || (($state['milestones'][$ids[$i - 1]]['status'] ?? '') === 'complete')) {
+                $row['status'] = 'unlocked';
+            } else {
+                $row['status'] = 'locked';
+            }
+        }
+        unset($row);
+        $state['caseGateOpen'] = self::caseGateOpenFor($state);
+
+        return $state;
+    }
+
+    /**
+     * @param array<string, mixed> $state
+     * @return array<string, mixed>
+     */
+    public static function markMilestoneComplete(array $state, string $milestoneId): array
+    {
+        $state = self::normalize($state);
+        if (isset($state['milestones'][$milestoneId])) {
+            $state['milestones'][$milestoneId]['status'] = 'complete';
+        }
+        $state['recovery'] = false;
+
+        return self::refreshBeginnerLocks($state);
+    }
+
+    /**
+     * Reset: without confirm → unchanged; with confirm → fresh (recovery false).
+     *
+     * @param array<string, mixed> $state
+     * @return array<string, mixed>
+     */
+    public static function reset(array $state, bool $confirmed): array
+    {
+        if (!$confirmed) {
+            return self::normalize($state);
+        }
+
+        return self::fresh(false);
+    }
 }

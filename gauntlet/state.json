@@ -6,7 +6,10 @@
     "E4.M1": 1,
     "E5.M1": 1,
     "E5.M2": 1,
-    "E6.M1": 1
+    "E6.M1": 1,
+    "E2.M1": 1,
+    "E3.M2": 1,
+    "E7.M1": 1
   },
   "verdicts": [
     {
@@ -100,6 +103,44 @@
       },
       "commands": [
         "./vendor/bin/phpunit"
+      ]
+    },
+    {
+      "milestone_id": "E2.M1",
+      "verdict": "WIN",
+      "at": "2026-10-23T04:15:45-07:00",
+      "gates": {
+        "acceptance": "path+caseGate",
+        "tests": "phpunit"
+      },
+      "commands": [
+        "./vendor/bin/phpunit"
+      ]
+    },
+    {
+      "milestone_id": "E3.M2",
+      "verdict": "WIN",
+      "at": "2026-10-23T04:15:45-07:00",
+      "gates": {
+        "acceptance": "locks+writeback+reset",
+        "tests": "phpunit"
+      },
+      "commands": [
+        "./vendor/bin/phpunit"
+      ]
+    },
+    {
+      "milestone_id": "E7.M1",
+      "verdict": "WIN",
+      "at": "2026-10-23T04:15:45-07:00",
+      "gates": {
+        "acceptance": "dashboard",
+        "integration": "home\u2192guide\u2192coach\u2192quiz\u2192next\u2192path-complete",
+        "tests": "phpunit"
+      },
+      "commands": [
+        "./vendor/bin/phpunit",
+        "php integration walk"
       ]
     }
   ],

@@ -8,6 +8,7 @@ if (is_file($autoload)) {
 }
 
 use TheoryCore\Coach;
+use TheoryCore\Dashboard;
 use TheoryCore\Guides;
 use TheoryCore\Quiz;
 
@@ -59,20 +60,5 @@ if ($path !== '/') {
     header('Location: /', true, 302);
     exit;
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dev Theory Coach (THEORY_CORE)</title>
-</head>
-<body>
-    <main>
-        <p><strong>SAMPLE</strong> data only.</p>
-        <h1>Dev Theory Coach (THEORY_CORE)</h1>
-        <p>Developer interview concepts — guides, coach, quizzes. Runtime stub.</p>
-        <p><a href="/guides">Open Guides hub</a></p>
-    </main>
-</body>
-</html>
+
+echo Dashboard::homeHtml();

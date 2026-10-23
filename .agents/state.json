@@ -1,8 +1,8 @@
 {
-  "current_epic_id": "E2",
-  "current_milestone_id": "E2.M1",
+  "current_epic_id": "E8",
+  "current_milestone_id": "E8.M1",
   "status": "in_progress",
-  "last_updated_iso": "2026-10-23T04:14:34-07:00",
+  "last_updated_iso": "2026-10-23T04:15:45-07:00",
   "milestone_story_status": {
     "E1.M1.S1": "done",
     "E1.M1.S2": "done",
@@ -20,7 +20,14 @@
     "E5.M2.S2": "done",
     "E6.M1.S1": "done",
     "E6.M1.S2": "done",
-    "E6.M1.S3": "done"
+    "E6.M1.S3": "done",
+    "E2.M1.S1": "done",
+    "E2.M1.S2": "done",
+    "E3.M2.S1": "done",
+    "E3.M2.S2": "done",
+    "E3.M2.S3": "done",
+    "E7.M1.S1": "done",
+    "E7.M1.S2": "done"
   },
   "app": {
     "name": "Dev Theory Coach (THEORY_CORE)",
@@ -1383,6 +1390,21 @@
         "status": "done",
         "gauntlet": "WIN",
         "at": "2026-10-23T04:14:34-07:00"
+      },
+      "E2.M1": {
+        "status": "done",
+        "gauntlet": "WIN",
+        "at": "2026-10-23T04:15:45-07:00"
+      },
+      "E3.M2": {
+        "status": "done",
+        "gauntlet": "WIN",
+        "at": "2026-10-23T04:15:45-07:00"
+      },
+      "E7.M1": {
+        "status": "done",
+        "gauntlet": "WIN",
+        "at": "2026-10-23T04:15:45-07:00"
       }
     }
   },
@@ -1476,13 +1498,26 @@
     "context_catalog": "context/README.md",
     "gauntlet_contract": "gauntlet/contract.md"
   },
-  "next_action": "Start E2.M1.S1: content/paths/beginner.json with 12 milestones and contentRefs.",
+  "next_action": "Start E8.M1.S1 (post_mvp): timed drill renderer; complexity pack; arrays not-a-drill slot.",
   "milestones_done": [
     "E1.M1",
     "E3.M1",
     "E4.M1",
     "E5.M1",
     "E5.M2",
-    "E6.M1"
-  ]
+    "E6.M1",
+    "E2.M1",
+    "E3.M2",
+    "E7.M1"
+  ],
+  "mvp_freeze": {
+    "status": "green",
+    "at": "2026-10-23T04:15:45-07:00",
+    "checklist": {
+      "phpunit": true,
+      "milestones_e1_through_e7": true,
+      "integration_critic_e7": true,
+      "queues_vs_work_queues": true
+    }
+  }
 }
