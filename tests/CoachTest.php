@@ -91,7 +91,6 @@ final class CoachTest extends TestCase
         $response = Coach::pageResponse('strings');
         $this->assertSame(200, $response['status']);
         $body = $response['body'] ?? '';
-        $this->assertStringContainsString('SAMPLE', $body);
         // Slot when unauthored; real coach page once content/coaching/strings.json exists.
         $this->assertTrue(
             str_contains($body, 'not authored yet') || str_contains($body, 'data-slug="strings"'),
@@ -126,7 +125,6 @@ final class CoachTest extends TestCase
 
         $page = Coach::pageResponse('arrays');
         $this->assertSame(200, $page['status']);
-        $this->assertStringContainsString('SAMPLE', $page['body'] ?? '');
         $this->assertStringContainsString('index', strtolower($page['body'] ?? ''));
     }
 

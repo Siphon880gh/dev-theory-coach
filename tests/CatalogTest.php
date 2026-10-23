@@ -88,7 +88,6 @@ final class CatalogTest extends TestCase
             $this->assertStringContainsString($label, $html);
         }
 
-        $this->assertStringContainsString('SAMPLE', $html);
 
         // arrays must appear under the Data structures section (before Algorithms heading).
         $dsPos = strpos($html, 'Data structures');

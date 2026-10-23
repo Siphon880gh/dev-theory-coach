@@ -8,7 +8,7 @@ use RuntimeException;
 
 /**
  * Loads the family catalog from content/families.json.
- * Join key is slug. SAMPLE / educational data only.
+ * Join key is slug. Educational practice data only (no live systems).
  */
 final class Catalog
 {
@@ -102,12 +102,11 @@ final class Catalog
     }
 
     /**
-     * SAMPLE hub grouping fixture: HTML string with full track labels and family titles.
+     * Hub grouping fixture: HTML string with full track labels and family titles.
      */
     public static function hubGroupingHtml(): string
     {
-        $parts = ['<div class="guides-hub SAMPLE" data-sample="SAMPLE">'];
-        $parts[] = '<p class="sample-banner">SAMPLE</p>';
+        $parts = ['<div class="guides-hub">'];
         foreach (self::groupedByTrackLabel() as $label => $families) {
             $parts[] = '<section class="track" data-track-label="' . htmlspecialchars($label, ENT_QUOTES) . '">';
             $parts[] = '<h2>' . htmlspecialchars($label, ENT_QUOTES) . '</h2>';

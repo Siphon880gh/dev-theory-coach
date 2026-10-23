@@ -9,7 +9,7 @@ These are the milestone queues. Coupled pieces stay in this order. Do not run tw
 | 3 | E4.M1 | E1.M1 | Hub, guide page, 12 beginner guides, paste test |
 | 4 | E5.M1 | E4.M1 | Coach validator, rewind, not-authored slot |
 | 5 | E5.M2 | E5.M1 | `arrays` tree playable from the guide |
-| 6 | E6.M1 | E3.M1 | `arrays` quiz shape, SAMPLE, score writeback |
+| 6 | E6.M1 | E3.M1 | `arrays` quiz shape, score writeback |
 | 7 | E2.M1 | E4.M1, E6.M1 | Beginner path refs resolve. Case gate math |
 | 8 | E3.M2 | E2.M1, E3.M1 | Locks, writeback, reset |
 | 9 | E7.M1 | E3.M2 | Next CTA, path-complete credential. Then the integration critic |

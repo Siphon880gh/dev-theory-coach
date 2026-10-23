@@ -29,7 +29,6 @@ final class CaseTest extends TestCase
             $state['milestones']['beginner:' . $slug]['quizSubmitted'] = true;
         }
         $open = CaseStudy::pageResponse('requirements', $state);
-        $this->assertStringContainsString('SAMPLE', $open['body'] ?? '');
         $this->assertStringContainsString('data-choice-id', $open['body'] ?? '');
         $case = CaseStudy::load('requirements');
         $this->assertNotNull($case);

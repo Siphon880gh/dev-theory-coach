@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace TheoryCore;
 
 /**
- * Shared HTML5 document: charset, viewport, one stylesheet, SAMPLE badge, shell/card.
+ * Shared HTML5 document: charset, viewport, one stylesheet, shell/card.
  */
 final class Layout
 {
@@ -56,7 +56,6 @@ final class Layout
         $parts[] = '<body' . ($bodyClass !== '' ? ' class="' . e($bodyClass) . '"' : '') . '>';
         $parts[] = '<div class="' . e($shellClass) . '">';
         $parts[] = '<div class="card">';
-        $parts[] = '<p class="sample-badge"><strong>SAMPLE</strong> data only.</p>';
         if ($sampleNote !== '') {
             $parts[] = '<p class="meta-note">' . e($sampleNote) . '</p>';
         }

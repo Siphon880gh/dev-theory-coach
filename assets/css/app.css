@@ -70,24 +70,6 @@ button:focus-visible,
   padding: 1.5rem 1.5rem 1.75rem;
 }
 
-.sample-badge {
-  display: inline-block;
-  margin: 0 0 1rem;
-  padding: 0.2rem 0.55rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  background: #eef1f4;
-  border-radius: 999px;
-  line-height: 1.4;
-}
-
-.sample-badge strong {
-  font-weight: 700;
-}
-
 .meta-note {
   margin: -0.5rem 0 1rem;
   color: var(--muted);

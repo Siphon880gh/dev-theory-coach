@@ -23,7 +23,6 @@ final class GuidesTest extends TestCase
         foreach (['Data structures', 'Algorithms', 'System design', 'Design patterns'] as $label) {
             $this->assertStringContainsString($label, $html);
         }
-        $this->assertStringContainsString('SAMPLE', $html);
 
         foreach (Catalog::slugs() as $slug) {
             $this->assertSame(
@@ -51,7 +50,6 @@ final class GuidesTest extends TestCase
         $response = Guides::pageResponse('arrays');
         $this->assertSame(200, $response['status']);
         $body = $response['body'] ?? '';
-        $this->assertStringContainsString('SAMPLE', $body);
         $this->assertStringContainsString('Arrays', $body);
         $this->assertStringContainsString('/coach/arrays', $body);
         $this->assertStringContainsString('Open coach:', $body);
@@ -66,7 +64,6 @@ final class GuidesTest extends TestCase
         $response = Guides::pageResponse('not-a-slug');
         $this->assertSame(200, $response['status']);
         $this->assertArrayNotHasKey('location', $response);
-        $this->assertStringContainsString('SAMPLE', $response['body']);
         $this->assertStringContainsString('not-a-slug', $response['body']);
         $this->assertStringContainsString('href="/"', $response['body']);
     }
@@ -84,7 +81,7 @@ final class GuidesTest extends TestCase
             $this->assertGreaterThanOrEqual(300, $words, "{$slug} body too short");
             $this->assertLessThanOrEqual(800, $words, "{$slug} body too long");
 
-            foreach (['rule', 'why', 'SAMPLE', 'use', 'refuse'] as $needle) {
+            foreach (['rule', 'why', 'example', 'use', 'refuse'] as $needle) {
                 $this->assertTrue(
                     stripos($body, $needle) !== false
                     || (isset($guide['parts']) && $guide['parts'] !== []),
@@ -97,7 +94,6 @@ final class GuidesTest extends TestCase
                 $this->assertArrayHasKey($part, $guide['parts'], "{$slug} missing part {$part}");
                 $this->assertNotSame('', trim((string) $guide['parts'][$part]));
             }
-            $this->assertStringContainsString('SAMPLE', $guide['parts']['example']);
 
             $tokens = $this->tokenize($body);
             for ($i = 0; $i <= count($tokens) - 12; $i++) {

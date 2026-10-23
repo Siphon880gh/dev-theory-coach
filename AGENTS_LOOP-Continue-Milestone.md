@@ -89,10 +89,10 @@ Work queues (strict order), from `.agents/state.json` → `milestones`:
 2. **Implement the current story only**
    - Minimal changes that satisfy that story's Acceptance cell.
    - Prefer extending the catalog and the registries already named in the stories.
-   - Deterministic coaching graphs only; no runtime LLM; SAMPLE data; `localStorage` key `theory_core_progress_v1`.
+   - Deterministic coaching graphs only; no runtime LLM; educational / non-live data; `localStorage` key `theory_core_progress_v1`.
    - E1: `content/families.json` is the full 53-row catalog. Tests parse `RESOURCES.md` rather than a hand-copied second list.
    - E3: progress logic that tests can round-trip lives in `src/ProgressSchema.php`. The browser writer is `assets/js/progress.js` and must use the same key and fields.
-   - E4: beginner guide bodies are original, 300–800 words, five parts (rule, why, SAMPLE example, use, refuse).
+   - E4: beginner guide bodies are original, 300–800 words, five parts (rule, why, example, use, refuse).
    - E5: coach JSON validates before the page renders it. Missing file → slot. The `arrays` tree chooses array vs list, with rewinds.
    - E6: quizzes are untimed MCQ. Four choices, a reason on every wrong choice. No code execution.
    - E2: path files only reference slugs that exist. P0 path does not require unauthored quizzes.
@@ -105,7 +105,7 @@ Work queues (strict order), from `.agents/state.json` → `milestones`:
 
 3. **Automatic verification (required before marking progress)**
    - Run `./vendor/bin/phpunit`.
-   - Check the story Acceptance + global conventions (progress key stable; SAMPLE labels; no 404 on missing coach; Beginner unlock order unchanged; `queues` ≠ `work-queues`).
+   - Check the story Acceptance + global conventions (progress key stable; educational/non-live data; no 404 on missing coach; Beginner unlock order unchanged; `queues` ≠ `work-queues`).
 
 4. **On PASS of a story that is not the last in its milestone**
    - Update `.agents/state.json`: story progress, `next_action`, `last_updated_iso`, status fields.

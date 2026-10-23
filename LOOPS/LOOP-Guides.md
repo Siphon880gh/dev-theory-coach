@@ -1,6 +1,6 @@
 # LOOP — Guides (exhaustive)
 
-Deepen `/guides`. A guide teaches one slug: the rule, why it holds, one SAMPLE worked example, when to use it, and when to refuse it. It is not a problem statement and not a second hub.
+Deepen `/guides`. A guide teaches one slug: the rule, why it holds, one worked example, when to use it, and when to refuse it. It is not a problem statement and not a second hub.
 
 Companions: [`RESOURCES.md`](../RESOURCES.md) · [`LOOP-Graph.md`](./LOOP-Graph.md) · `content/guides/` · `content/families.json`
 
@@ -28,7 +28,7 @@ Companions: [`RESOURCES.md`](../RESOURCES.md) · [`LOOP-Graph.md`](./LOOP-Graph.
 
 ## Product intent
 
-The learner sees the track's full label, the title, and a body they can finish in one sitting. The coach CTA is always there. The page says SAMPLE. The guide never becomes a LeetCode writeup, a catalog of every variant, or a paste of `context/curriculums/`.
+The learner sees the track's full label, the title, and a body they can finish in one sitting. The coach CTA is always there. The guide never becomes a LeetCode writeup, a catalog of every variant, or a paste of `context/curriculums/`.
 
 ---
 
@@ -67,14 +67,14 @@ One guide per family, on a four-track Guides hub.
 
 # STEP-BY-STEP CADENCE
 1. **Orient** — first family below floor (track order, then catalog order).
-2. **Author** — 300–800 words: rule, why, one SAMPLE worked example, when to use, when to refuse. Match the curriculum outcome. Do not add a new slug.
+2. **Author** — 300–800 words: rule, why, one worked example, when to use, when to refuse. Match the curriculum outcome. Do not add a new slug.
 3. **Wire** — `slug`, `track`, `relatedCoachSlug` = slug.
 4. **Verify** — word count, five parts, paste test (no 12-word span from `context/`), CTA href `/coach/<slug>`.
 5. **On FAIL** — ≤10 rounds.
 
 # VERIFICATION RUBRIC
 - [ ] One unit; unique id; `slug` + track set
-- [ ] 300–800 words; rule, why, SAMPLE example, use, refuse
+- [ ] 300–800 words; rule, why, example, use, refuse
 - [ ] Original copy
 - [ ] `./vendor/bin/phpunit` exits 0
 

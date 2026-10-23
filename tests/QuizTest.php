@@ -21,7 +21,6 @@ final class QuizTest extends TestCase
         $quiz = Quiz::load('arrays');
         $this->assertNotNull($quiz);
         $html = Quiz::renderHtml($quiz);
-        $this->assertStringContainsString('SAMPLE', $html);
         $this->assertStringContainsString('Untimed', $html);
         $this->assertStringContainsString('No code runner', $html);
 

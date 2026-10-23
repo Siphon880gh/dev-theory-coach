@@ -4,7 +4,7 @@ A **resource** is a teaching unit the learner can open. Guides, step-by-step coa
 
 **Not resources:** learning paths, the dashboard, and nav. Those find or sequence resources.
 
-All data is **SAMPLE / educational**. This app is not a coding-problem bank, not a code runner, and not a substitute for a live system-design interview. `../leetcode-coach` owns problem practice.
+All data is **educational practice content** (not live systems). This app is not a coding-problem bank, not a code runner, and not a substitute for a live system-design interview. `../leetcode-coach` owns problem practice. Do not stamp SAMPLE on every page.
 
 Teachable unit is `slug` (what you are learning). **Track** is which learner conversation the unit belongs to. Cognitive ability is the **resource type** (how you practice). The same `slug` should echo across types — see [`LOOPS/LOOP-Graph.md`](./LOOPS/LOOP-Graph.md).
 
@@ -132,7 +132,7 @@ Tracks A and B declare recognize, explain, and apply. Tracks C and D add diagnos
 | **Step-by-step** | Walk a method tree: wrong → explain → rewind → success | `/coach/{slug}` (same slug as the guide) | `content/coaching/<slug>.json` |
 | **Quiz** | Answer an untimed MCQ set; each option explains itself | `/quiz/{slug}` | `content/quizzes/<slug>.json` |
 | **Drill** | Answer a timed closed-form item; then read the thought chain | `/drill/{slug}` | `content/drills/<slug>.json` |
-| **Case** | Read a SAMPLE scenario, commit a decision, see the consequence | `/case/{slug}` | `content/cases/<slug>.json` |
+| **Case** | Read a practice scenario, commit a decision, see the consequence | `/case/{slug}` | `content/cases/<slug>.json` |
 | **Cheatsheet** | Scan one screen: when to pick, when to skip | `/cheatsheet/{slug}` | `content/cheatsheets/<slug>.json` |
 
 Path milestones point at resources with `contentRefs` such as `guide:<slug>`, `coach:<slug>`, `quiz:<slug>`, `drill:<slug>`, `case:<slug>`, `cheatsheet:<slug>`.
@@ -143,23 +143,23 @@ Path milestones point at resources with `contentRefs` such as `guide:<slug>`, `c
 
 ### Guide (hub)
 
-`slug`, `track`, `title`, `summary`, `body` (300–800 words, original), `relatedCoachSlug` (= slug). Sections inside the body, in this order: the rule, why it holds, one worked example on SAMPLE data, when to use it, when to refuse it. If the coach tree is not authored yet, the CTA still opens `/coach/<slug>` with a "not authored yet" state. Never 404.
+`slug`, `track`, `title`, `summary`, `body` (300–800 words, original), `relatedCoachSlug` (= slug). Sections inside the body, in this order: the rule, why it holds, one worked example, when to use it, when to refuse it. If the coach tree is not authored yet, the CTA still opens `/coach/<slug>` with a "not authored yet" state. Never 404.
 
 ### Step-by-step (coach)
 
-Deterministic graph: `start` + ≥2 continue layers, ≥2 `wrong` nodes with `rewind_to`, ≥1 `success` with empty choices. `meta.slug` = slug. First message is a SAMPLE setup. Teach **which method to pick**, not a quiz restated as buttons. No runtime LLM.
+Deterministic graph: `start` + ≥2 continue layers, ≥2 `wrong` nodes with `rewind_to`, ≥1 `success` with empty choices. `meta.slug` = slug. First message is an educational setup. Teach **which method to pick**, not a quiz restated as buttons. No runtime LLM.
 
 ### Quiz
 
-`slug`, `items` length ≥ 6. Each item: `prompt`, exactly 4 `choices`, `answerIndex`, `whyRight`, and `whyWrong` for every other choice. Untimed. The page shows a SAMPLE label. No code is executed. A pass for the mastery flag is score ≥ 0.8.
+`slug`, `items` length ≥ 6. Each item: `prompt`, exactly 4 `choices`, `answerIndex`, `whyRight`, and `whyWrong` for every other choice. Untimed. No code is executed. A pass for the mastery flag is score ≥ 0.8.
 
 ### Drill
 
-Only the seven drill families. `items` length ≥ 8. Each item: `prompt`, `accept` (normalized strings or a single choice), `thoughtChain` of 3 steps shown after submit, `seconds` cap. Timed. The page shows a SAMPLE label. A pass is accuracy ≥ 0.8 inside the caps.
+Only the seven drill families. `items` length ≥ 8. Each item: `prompt`, `accept` (normalized strings or a single choice), `thoughtChain` of 3 steps shown after submit, `seconds` cap. Timed. A pass is accuracy ≥ 0.8 inside the caps.
 
 ### Case
 
-Tracks C and D only. `scenario` (SAMPLE), `prompt`, 3 or 4 `choices`, `best`, and a `consequence` for every choice. One case per family meets the floor. Design families (`capstone-url-shortener`, `capstone-feed`, `composition`) name at least two earlier slugs in the best consequence. The page shows a SAMPLE label. Grade is revealed after commit, not before.
+Tracks C and D only. `scenario` (educational), `prompt`, 3 or 4 `choices`, `best`, and a `consequence` for every choice. One case per family meets the floor. Design families (`capstone-url-shortener`, `capstone-feed`, `composition`) name at least two earlier slugs in the best consequence. Grade is revealed after commit, not before.
 
 ### Cheatsheet
 

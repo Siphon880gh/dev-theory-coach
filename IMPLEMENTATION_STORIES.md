@@ -13,7 +13,7 @@ Parent map: [`EPIC_MAP.md`](./EPIC_MAP.md) · Runtime state: [`.agents/state.jso
 - Stack: Web (PHP 7.4+ server-rendered + vanilla JS, localStorage; PHPUnit)
 - Persist in `localStorage` (`theory_core_progress_v1`)
 - Join key: `slug`. Resource type is a separate field/route
-- SAMPLE / educational data only. Every learner-facing page says SAMPLE
+- Educational / non-live practice data only (no need to stamp SAMPLE on every page)
 - `context/` is ideas only — rewrite copy. A test must fail if a guide body contains a 12-word sequence copied from `context/curriculums/`
 - Step coaching is deterministic; no runtime LLM
 - Do not start post-P0 until the MVP freeze checklist is met
@@ -117,7 +117,7 @@ Parent map: [`EPIC_MAP.md`](./EPIC_MAP.md) · Runtime state: [`.agents/state.jso
 |----|-------|------------|
 | E4.M1.S1 | `GET /guides` lists all 53 families grouped by track, full labels | PHPUnit renders the route (or a view function) and asserts every slug appears once under its track |
 | E4.M1.S2 | `GET /guides/{slug}` renders title, summary, body, and a coach CTA to `/coach/{slug}`. Unknown slug renders a 200 unknown page | Test for `arrays` sees the CTA. Test for `not-a-slug` is a 200 unknown page, not a 404 or redirect |
-| E4.M1.S3 | Author `content/guides/<slug>.json` for all 12 beginner slugs. Body 300–800 words, original, with rule, why, one SAMPLE worked example, when to use, when to refuse | Word-count test on all 12. Paste test: no guide body contains any contiguous 12-word span from `context/curriculums/`. `relatedCoachSlug` equals the slug |
+| E4.M1.S3 | Author `content/guides/<slug>.json` for all 12 beginner slugs. Body 300–800 words, original, with rule, why, one worked example, when to use, when to refuse | Word-count test on all 12. Paste test: no guide body contains any contiguous 12-word span from `context/curriculums/`. `relatedCoachSlug` equals the slug |
 
 ---
 
@@ -146,7 +146,7 @@ Parent map: [`EPIC_MAP.md`](./EPIC_MAP.md) · Runtime state: [`.agents/state.jso
 
 | ID | Story | Acceptance |
 |----|-------|------------|
-| E6.M1.S1 | Untimed quiz renderer. Each item has a prompt, exactly 4 choices, one `answerIndex`, `whyRight`, and `whyWrong` for every other choice. Page contains the word SAMPLE. No code runner, no timer | Renderer test fails if any item has a missing `whyWrong`. HTML fixture contains `SAMPLE` |
+| E6.M1.S1 | Untimed quiz renderer. Each item has a prompt, exactly 4 choices, one `answerIndex`, `whyRight`, and `whyWrong` for every other choice. No code runner, no timer | Renderer test fails if any item has a missing `whyWrong` |
 | E6.M1.S2 | `content/quizzes/arrays.json` has ≥ 6 items. Prompts are original. They check index cost, middle insert, append, and "array vs list" | Count test. Paste test, same 12-word rule as guides |
 | E6.M1.S3 | Finishing the quiz writes score and accuracy through `progress.js` | Fixture: 5/6 correct stores accuracy `0.833…` (or the exact fraction the schema documents) and a submitted flag |
 
@@ -187,7 +187,7 @@ Parent map: [`EPIC_MAP.md`](./EPIC_MAP.md) · Runtime state: [`.agents/state.jso
 
 | ID | Story | Acceptance |
 |----|-------|------------|
-| E8.M1.S1 | Timed drill renderer. After submit, show a 3-step thought chain. Record latency. Page says SAMPLE. Families outside `decisions.drill_families` have no drill route content; the slot says the family is not a drill | Test: `complexity` renders; `arrays` renders the not-a-drill slot, not a fake pack |
+| E8.M1.S1 | Timed drill renderer. After submit, show a 3-step thought chain. Record latency. Families outside `decisions.drill_families` have no drill route content; the slot says the family is not a drill | Test: `complexity` renders; `arrays` renders the not-a-drill slot, not a fake pack |
 | E8.M1.S2 | `content/drills/complexity.json` has ≥ 8 items with `accept`, `thoughtChain` length 3, and `seconds` | Count and shape test. Paste test |
 | E8.M1.S3 | A finished drill writes accuracy and median latency | Fixture covers 8 submits |
 | E8.M1.S4 | Update `.agents/skills/add-drill/SKILL.md` with real paths and the validate command | Skill contains no `TODO`; named path exists |
@@ -200,8 +200,8 @@ Parent map: [`EPIC_MAP.md`](./EPIC_MAP.md) · Runtime state: [`.agents/state.jso
 
 | ID | Story | Acceptance |
 |----|-------|------------|
-| E9.M1.S1 | Decide-and-reveal renderer. Choices are visible; consequences are not, until commit. Page says SAMPLE. If the case gate is closed, the page explains the gate and does not reveal the best choice | Tests for gate-closed and gate-open |
-| E9.M1.S2 | `content/cases/requirements.json`: a SAMPLE prompt, 3 or 4 choices, one `best`, a consequence on every choice. The decision is accept or reject a proposed requirement that does not change storage, traffic, or failure | Shape test. Paste test. Consequence text does not appear in the pre-commit HTML |
+| E9.M1.S1 | Decide-and-reveal renderer. Choices are visible; consequences are not, until commit. If the case gate is closed, the page explains the gate and does not reveal the best choice | Tests for gate-closed and gate-open |
+| E9.M1.S2 | `content/cases/requirements.json`: an educational prompt, 3 or 4 choices, one `best`, a consequence on every choice. The decision is accept or reject a proposed requirement that does not change storage, traffic, or failure | Shape test. Paste test. Consequence text does not appear in the pre-commit HTML |
 | E9.M1.S3 | Commit writes the grade | Fixture stores the choice id and whether it matched `best` |
 | E9.M1.S4 | Update `.agents/skills/add-case/SKILL.md` with real paths | Skill contains no `TODO`; named path exists |
 

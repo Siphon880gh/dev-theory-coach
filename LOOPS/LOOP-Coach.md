@@ -27,7 +27,7 @@ Companions: [`RESOURCES.md`](../RESOURCES.md) · [`LOOP-Graph.md`](./LOOP-Graph.
 
 ## Product intent
 
-The learner starts from a SAMPLE setup, picks a method, and on a wrong pick reads why it fails and returns to an earlier layer. Success has no further choices. The page never offers a free-text box or an LLM reply. A missing tree stays a "not authored yet" slot until this loop fills it.
+The learner starts from an educational setup, picks a method, and on a wrong pick reads why it fails and returns to an earlier layer. Success has no further choices. The page never offers a free-text box or an LLM reply. A missing tree stays a "not authored yet" slot until this loop fills it.
 
 ---
 
@@ -66,7 +66,7 @@ One choice tree per guide, same slug, wrong path rewinds.
 
 # STEP-BY-STEP CADENCE
 1. **Orient** — first guide whose coaching file is missing or invalid.
-2. **Author** — SAMPLE first message. The choice is which method, structure, or tradeoff. Two wrong branches name the mistake and rewind. One success.
+2. **Author** — Educational first message. The choice is which method, structure, or tradeoff. Two wrong branches name the mistake and rewind. One success.
 3. **Wire** — `meta.slug` equals the guide slug.
 4. **Verify** — validator accepts the file; page renders; guide CTA no longer shows the empty slot.
 5. **On FAIL** — ≤10 rounds.

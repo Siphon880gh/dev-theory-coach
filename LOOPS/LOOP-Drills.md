@@ -28,7 +28,7 @@ Companions: [`RESOURCES.md`](../RESOURCES.md) · [`LOOP-Graph.md`](./LOOP-Graph.
 
 ## Product intent
 
-The learner produces a bound, a discarded half, an index move, or an order-of-magnitude QPS before the timer ends, then reads the three-step chain. The page says SAMPLE. A non-drill family never grows a pack. The not-a-drill slot from E8 stays.
+The learner produces a bound, a discarded half, an index move, or an order-of-magnitude QPS before the timer ends, then reads the three-step chain. A non-drill family never grows a pack. The not-a-drill slot from E8 stays.
 
 Drill families: `complexity`, `binary-search`, `two-pointers`, `sliding-window`, `sorting`, `estimates`, `rate-limiting`.
 

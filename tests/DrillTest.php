@@ -20,7 +20,6 @@ final class DrillTest extends TestCase
     {
         $c = Drill::pageResponse('complexity');
         $this->assertSame(200, $c['status']);
-        $this->assertStringContainsString('SAMPLE', $c['body'] ?? '');
         $this->assertStringContainsString('Timed', $c['body'] ?? '');
 
         $a = Drill::pageResponse('arrays');

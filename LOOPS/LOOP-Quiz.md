@@ -27,7 +27,7 @@ Companions: [`RESOURCES.md`](../RESOURCES.md) · [`LOOP-Graph.md`](./LOOP-Graph.
 
 ## Product intent
 
-The learner answers from the guide they just read. Prompts use SAMPLE numbers and SAMPLE systems. The page says SAMPLE. There is no timer. Submitting writes accuracy. A score ≥ 0.8 is the apply flag for families that are not also drills. Drill families still take the timed drill for the under-time flag.
+The learner answers from the guide they just read. Prompts use educational numbers and systems (not live data). There is no timer. Submitting writes accuracy. A score ≥ 0.8 is the apply flag for families that are not also drills. Drill families still take the timed drill for the under-time flag.
 
 ---
 
@@ -68,7 +68,7 @@ Six original quiz items per family, reasons on every wrong choice.
 1. **Orient** — first family under 6 valid items.
 2. **Author** — ≥6 items. Each wrong choice is a real misconception for this slug (wrong cost, wrong structure, wrong force). No two items share a prompt stem.
 3. **Wire** — `slug` matches the family. No timer field.
-4. **Verify** — shape test, paste test, renderer shows SAMPLE.
+4. **Verify** — shape test, paste test, renderer smoke.
 5. **On FAIL** — ≤10 rounds.
 
 # VERIFICATION RUBRIC

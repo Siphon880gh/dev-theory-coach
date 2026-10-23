@@ -8,7 +8,7 @@ use InvalidArgumentException;
 use RuntimeException;
 
 /**
- * Untimed MCQ quiz loader and SAMPLE HTML renderer. No code runner, no timer.
+ * Untimed MCQ quiz loader and HTML renderer. No code runner, no timer.
  */
 final class Quiz
 {

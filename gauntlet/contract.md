@@ -26,7 +26,7 @@ Every gate is pass or fail. Do not average them.
 |------|----------|
 | Tests | `./vendor/bin/phpunit` exits 0 |
 | Join key | HTML and JSON use `slug` values from `RESOURCES.md`. `queues` and `work-queues` are both present and are not the same page |
-| SAMPLE | Every learner-facing route rendered for the milestone contains the word SAMPLE |
+| Educational data | Practice content is educational / non-live; no live APIs or credentials |
 | No paste | The milestone's paste test, when the story has one, is green |
 | Slot, not 404 | A slug with no coach file returns 200 and the text "not authored yet" |
 | Progress | `assets/js/progress.js` writes only `theory_core_progress_v1` |

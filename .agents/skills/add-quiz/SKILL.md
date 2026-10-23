@@ -6,7 +6,7 @@ description: >-
 
 # Add a quiz pack
 
-One valid unit per family. Slug = `slug` = guide slug. No runtime LLM. SAMPLE data.
+One valid unit per family. Slug = `slug` = guide slug. No runtime LLM. Educational / non-live data.
 
 ## Files
 

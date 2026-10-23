@@ -6,7 +6,7 @@ description: >-
 
 # Add a guide
 
-One valid unit per family. Slug = `slug` = guide slug. No runtime LLM. SAMPLE data.
+One valid unit per family. Slug = `slug` = guide slug. No runtime LLM. Educational / non-live data.
 
 ## Files
 
@@ -22,7 +22,7 @@ No register step if the runtime scans the directory. Otherwise list the registry
 Match an existing file such as `TODO path/<first-slug>.json`. Required parts:
 
 - `slug`, `track`, `title`, `summary`
-- `body` 300–800 words: rule, why, one SAMPLE worked example, when to use, when to refuse
+- `body` 300–800 words: rule, why, one worked example, when to use, when to refuse
 - `relatedCoachSlug` = slug
 - Original wording. No 12-word span from `context/`
 

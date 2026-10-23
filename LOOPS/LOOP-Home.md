@@ -59,7 +59,7 @@ Dashboard copy names real slugs and the credential.
 # STEP-BY-STEP CADENCE
 1. **Orient** — read the current home strings.
 2. **Author** — adjust only copy that is vague, decorative, or that names a slug which does not exist. Do not change unlock math.
-3. **Verify** — E7 render tests still pass; SAMPLE remains; no new percentage.
+3. **Verify** — E7 render tests still pass; no new percentage.
 4. **On FAIL** — ≤10 rounds.
 
 # VERIFICATION RUBRIC

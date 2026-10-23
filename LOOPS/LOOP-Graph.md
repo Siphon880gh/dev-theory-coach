@@ -197,7 +197,7 @@ Run the LOOPS/ section content loops as one graph until every section's Done(sec
 # CONTEXT
 - Picker + families: `LOOPS/LOOP-Graph.md`
 - Authoring: only the chosen `LOOPS/LOOP-*.md`
-- Shared: SAMPLE; original copy from `context/`; `slug` join key; tracks labeled in full; Guide→Coach same slug; Beginner unlocks unchanged; one unit per tick; `queues` is not `work-queues`
+- Shared: educational/non-live data; original copy from `context/`; `slug` join key; tracks labeled in full; Guide→Coach same slug; Beginner unlocks unchanged; one unit per tick; `queues` is not `work-queues`
 - Auto-verify: `./vendor/bin/phpunit`
 - Policy default: FOUNDATION_THEN_ECHO
 - If any milestone queue is unfinished: STOP and run AGENTS_LOOP-Continue-Milestone.md instead

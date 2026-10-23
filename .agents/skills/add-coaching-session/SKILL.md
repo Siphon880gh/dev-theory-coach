@@ -24,7 +24,7 @@ php -r 'require "vendor/autoload.php"; TheoryCore\CoachValidator::loadFile("cont
 - At least one `success` node with **empty** `choices`
 - Every `wrong` node has `rewind_to` pointing at an existing node and an `explanation`
 - `continue` nodes expose labeled choices with `to` targets
-- Page copy includes SAMPLE; missing files render the "not authored yet" slot (HTTP 200)
+- Missing files render the "not authored yet" slot (HTTP 200)
 
 ## Steps
 

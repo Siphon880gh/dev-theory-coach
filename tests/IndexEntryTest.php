@@ -21,7 +21,6 @@ final class IndexEntryTest extends TestCase
         $this->assertStringContainsString('declare(strict_types=1)', $raw);
         $this->assertStringContainsString('Dashboard::homeHtml()', $raw);
         $this->assertStringContainsString('Dev Theory Coach', Dashboard::homeHtml(ProgressSchema::fresh()));
-        $this->assertStringContainsString('SAMPLE', Dashboard::homeHtml(ProgressSchema::fresh()));
     }
 
     public function testNoRouterPhpAndServeUsesIndex(): void

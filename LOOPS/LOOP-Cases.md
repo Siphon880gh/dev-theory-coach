@@ -1,6 +1,6 @@
 # LOOP — Cases (exhaustive)
 
-Deepen `/case/{slug}`. A case is a SAMPLE scenario, a committed decision, and a consequence the learner sees only after they commit. Tracks A and B are recorded skips. Tracks C and D each get one case.
+Deepen `/case/{slug}`. A case is a practice scenario, a committed decision, and a consequence the learner sees only after they commit. Tracks A and B are recorded skips. Tracks C and D each get one case.
 
 Companions: [`RESOURCES.md`](../RESOURCES.md) · [`LOOP-Graph.md`](./LOOP-Graph.md) · `content/cases/`
 
@@ -28,7 +28,7 @@ Companions: [`RESOURCES.md`](../RESOURCES.md) · [`LOOP-Graph.md`](./LOOP-Graph.
 
 ## Product intent
 
-The learner commits before the grade. The page says SAMPLE. The case gate from E9 still hides the best choice when quizzes on `arrays`, `hash-maps`, and `queues` are under 0.8. Design families (`capstone-url-shortener`, `capstone-feed`, `composition`) name at least two earlier slugs in the best consequence. Other cases are diagnose: accept or reject a proposal, or pick the option that matches the force.
+The learner commits before the grade. The case gate from E9 still hides the best choice when quizzes on `arrays`, `hash-maps`, and `queues` are under 0.8. Design families (`capstone-url-shortener`, `capstone-feed`, `composition`) name at least two earlier slugs in the best consequence. Other cases are diagnose: accept or reject a proposal, or pick the option that matches the force.
 
 ---
 

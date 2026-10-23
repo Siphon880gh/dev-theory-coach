@@ -35,7 +35,7 @@ Prefer **no interval** so each wake adds the next content unit.
 
 ## Shared rules (every section)
 
-- SAMPLE / educational data only.
+- Educational / non-live practice data only (no on-screen SAMPLE stamp required).
 - Rewrite from `context/` — do not paste those files verbatim. Curricula win on order and on the outcome.
 - `slug` is the join key. Do not invent a parallel enum. Do not add a family.
 - Tracks are labeled in full on Guides.

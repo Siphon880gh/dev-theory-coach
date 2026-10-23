@@ -27,7 +27,7 @@ Companions: [`RESOURCES.md`](../RESOURCES.md) · [`LOOP-Graph.md`](./LOOP-Graph.
 
 ## Product intent
 
-The learner can scan the sheet the morning of an interview and remember when the concept applies and when it does not. The page says SAMPLE. It does not introduce a rule the guide never taught.
+The learner can scan the sheet the morning of an interview and remember when the concept applies and when it does not. It does not introduce a rule the guide never taught.
 
 ---
 

@@ -7,7 +7,7 @@ By Weng (Weng Fei Fung)
 <a target="_blank" href="https://www.linkedin.com/in/weng-fung/" rel="nofollow"><img src="https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&labelColor=blue" alt="Linked-In" data-canonical-src="https://img.shields.io/badge/LinkedIn-blue?style=flat&amp;logo=linkedin&amp;labelColor=blue" style="max-width:10ch;"></a>
 <a target="_blank" href="https://www.youtube.com/@WengTeachesCode/" rel="nofollow"><img src="https://img.shields.io/badge/Youtube-red?style=flat&logo=youtube&labelColor=red" alt="Youtube" data-canonical-src="https://img.shields.io/badge/Youtube-red?style=flat&amp;logo=youtube&amp;labelColor=red" style="max-width:10ch;"></a>
 
-Learn **developer interview concepts** — data structures, algorithms, system design, and design patterns — through guides, step-by-step choices, quizzes, timed drills, decision cases, and one-screen cheatsheets. SAMPLE data only.
+Learn **developer interview concepts** — data structures, algorithms, system design, and design patterns — through guides, step-by-step choices, quizzes, timed drills, decision cases, and one-screen cheatsheets. Educational practice data — no live systems.
 
 This is not a problem bank and it does not run code. Problem practice lives in the sibling app leetcode-coach.
 
@@ -30,7 +30,7 @@ composer serve
 # same as: php -S localhost:8080 index.php
 ```
 
-Open http://localhost:8080/ — SAMPLE stub home. Later routes (`/guides`, `/coach/{slug}`, …) land in the same `index.php` front controller.
+Open http://localhost:8080/ — home. Later routes (`/guides`, `/coach/{slug}`, …) land in the same `index.php` front controller.
 
 ## How it is built
 

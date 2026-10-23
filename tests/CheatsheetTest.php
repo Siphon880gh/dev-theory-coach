@@ -25,7 +25,6 @@ final class CheatsheetTest extends TestCase
         $this->assertNotNull($sheet);
         $this->assertLessThanOrEqual(12, count($sheet['lines']));
         $html = Cheatsheet::renderHtml($sheet);
-        $this->assertStringContainsString('SAMPLE', $html);
         $this->assertStringContainsString('Pick when:', $html);
         $this->assertStringContainsString('Skip when:', $html);
 

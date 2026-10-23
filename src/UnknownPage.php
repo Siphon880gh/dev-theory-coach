@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace TheoryCore;
 
 /**
- * 200 "unknown" pages. Never 404, never redirect home. SAMPLE data only.
+ * 200 "unknown" pages. Never 404, never redirect home.
  */
 final class UnknownPage
 {

@@ -8,7 +8,7 @@ use RuntimeException;
 
 /**
  * Guide registry and HTML renderers for /guides and /guides/{slug}.
- * SAMPLE / educational data only.
+ * Educational practice data only (no live systems).
  */
 final class Guides
 {

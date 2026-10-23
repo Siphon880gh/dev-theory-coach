@@ -87,7 +87,7 @@ The MVP credential is: 12 beginner guides read, `arrays` quiz ≥ 0.8, `arrays` 
 
 ### Constraints
 
-- SAMPLE / educational data only; no live APIs, credentials, or hardware I/O
+- Educational / non-live practice data only; no live APIs, credentials, or hardware I/O
 - Progress in `localStorage` (`theory_core_progress_v1`); no auth in MVP
 - Step coaching = deterministic graphs only — no runtime LLM
 - `context/` is a source of ideas; rewrite lessons (do not paste)
@@ -138,7 +138,7 @@ Then the rest of track A, the rest of track B, track C, and track D, in the `Aft
 - **Coaching loop:** Guide → same-slug tree → choice nodes → wrong rewind → success
 - **Quiz loop:** Untimed items → commit → explanation per option → score written back
 - **Drill loop (post-MVP):** Timed item → submit → thought chain → accuracy and latency written back
-- **Case loop (post-MVP):** SAMPLE scenario → commit → consequence and grade. Locked until the case gate passes
+- **Case loop (post-MVP):** educational scenario → commit → consequence and grade. Locked until the case gate passes
 - **Errors:** Corrupt progress → reset; locked → show the missing slug; unknown slug → home
 
 ---
@@ -232,7 +232,7 @@ Then the rest of track A, the rest of track B, track C, and track D, in the `Aft
 
 ### E9. Cases
 
-- **Goal:** Commit to a SAMPLE decision and read the consequence.
+- **Goal:** Commit to a practice decision and read the consequence.
 - **Includes:** Engine, the case gate check, one `requirements` case.
 - **Out of scope:** The other decision-family cases (content graph).
 

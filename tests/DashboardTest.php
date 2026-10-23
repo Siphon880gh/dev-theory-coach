@@ -13,7 +13,6 @@ final class DashboardTest extends TestCase
     public function testFirstRunCtaNamesArrays(): void
     {
         $html = Dashboard::homeHtml(ProgressSchema::fresh());
-        $this->assertStringContainsString('SAMPLE', $html);
         $this->assertStringContainsString('css/app.css', $html);
         $this->assertStringContainsString('rel="stylesheet"', $html);
         $this->assertStringContainsString('/guides/arrays', $html);
