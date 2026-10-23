@@ -168,6 +168,8 @@ final class Coach
         }
         $parts[] = '</div>';
         $parts[] = '</div>';
+        $parts[] = '<p class="session-end"><a class="next-cta" href="'
+            . e(url('/guides/' . rawurlencode($slug))) . '">Back to guide</a></p>';
         $parts[] = '<script type="application/json" id="coach-session-data">' . $json . '</script>';
 
         $scripts = [
@@ -194,7 +196,8 @@ final class Coach
     {
         $inner = '<h1>Coach: ' . self::h($slug) . '</h1>'
             . "\n" . '<p class="slot">not authored yet</p>'
-            . "\n" . '<p><a href="' . e(url('/guides/' . rawurlencode($slug))) . '">Back to guide</a></p>';
+            . "\n" . '<p class="session-end"><a class="next-cta" href="'
+            . e(url('/guides/' . rawurlencode($slug))) . '">Back to guide</a></p>';
 
         return Layout::document(
             'Coach slot — ' . $slug,

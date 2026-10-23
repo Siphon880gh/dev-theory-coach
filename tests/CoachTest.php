@@ -152,6 +152,9 @@ final class CoachTest extends TestCase
         $this->assertStringContainsString('js/progress.js', $body);
         $this->assertStringContainsString('data-choice-index=', $body);
         $this->assertStringContainsString('coach-live', $body);
+        $this->assertStringContainsString('Back to guide', $body);
+        $this->assertStringContainsString('class="next-cta"', $body);
+        $this->assertStringContainsString('route=%2Fguides%2Farrays', $body);
     }
 
     public function testArraysCoachIncludesDiagram(): void

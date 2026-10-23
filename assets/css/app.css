@@ -364,6 +364,10 @@ code {
   margin: 0 0 var(--space-3);
 }
 
+.session-end {
+  margin: var(--space-4) 0 0;
+}
+
 /* Case gate chip — quiet status, not hero */
 .case-gate-chip {
   display: inline-block;
@@ -471,7 +475,7 @@ code {
   margin-top: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: calc(var(--space-4) * 2);
+  gap: calc(var(--space-4) * 0.5);
 }
 
 .guide-footer__block + .guide-footer__block {

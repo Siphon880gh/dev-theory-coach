@@ -23,6 +23,9 @@ final class QuizTest extends TestCase
         $html = Quiz::renderHtml($quiz);
         $this->assertStringContainsString('Untimed', $html);
         $this->assertStringContainsString('No code runner', $html);
+        $this->assertStringContainsString('Back to guide', $html);
+        $this->assertStringContainsString('class="next-cta"', $html);
+        $this->assertStringContainsString('route=%2Fguides%2Farrays', $html);
 
         $bad = $quiz;
         $bad['items'][0]['whyWrong'][1] = '';

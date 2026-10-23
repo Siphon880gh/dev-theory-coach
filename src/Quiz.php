@@ -86,8 +86,10 @@ final class Quiz
                 'status' => 200,
                 'body' => Layout::document(
                     'Quiz slot',
-                    '<p class="slot">not authored yet</p>',
-                    ['mainClass' => 'quiz-slot']
+                    '<p class="slot">not authored yet</p>'
+                    . '<p class="session-end"><a class="next-cta" href="'
+                    . e(url('/guides/' . rawurlencode($slug))) . '">Back to guide</a></p>',
+                    ['mainClass' => 'quiz-slot', 'mainAttrs' => ['data-slug' => $slug]]
                 ),
             ];
         }
@@ -133,6 +135,8 @@ final class Quiz
         }
         $parts[] = '<p class="quiz-meta">Items: ' . count($quiz['items']) . '</p>';
         $parts[] = '<p class="quiz-score" hidden></p>';
+        $parts[] = '<p class="session-end"><a class="next-cta" href="'
+            . e(url('/guides/' . rawurlencode($slug))) . '">Back to guide</a></p>';
         $parts[] = '</div>';
         $parts[] = '<script type="application/json" id="quiz-data">' . $json . '</script>';
 
