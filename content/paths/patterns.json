@@ -1,0 +1,149 @@
+{
+  "id": "patterns",
+  "title": "Design patterns",
+  "sample": true,
+  "milestones": [
+    {
+      "id": "patterns:when-to-name-a-pattern",
+      "slug": "when-to-name-a-pattern",
+      "after": [],
+      "contentRefs": [
+        "guide:when-to-name-a-pattern"
+      ]
+    },
+    {
+      "id": "patterns:strategy",
+      "slug": "strategy",
+      "after": [
+        "when-to-name-a-pattern"
+      ],
+      "contentRefs": [
+        "guide:strategy"
+      ]
+    },
+    {
+      "id": "patterns:state",
+      "slug": "state",
+      "after": [
+        "strategy"
+      ],
+      "contentRefs": [
+        "guide:state"
+      ]
+    },
+    {
+      "id": "patterns:observer",
+      "slug": "observer",
+      "after": [
+        "when-to-name-a-pattern"
+      ],
+      "contentRefs": [
+        "guide:observer"
+      ]
+    },
+    {
+      "id": "patterns:factory",
+      "slug": "factory",
+      "after": [
+        "strategy"
+      ],
+      "contentRefs": [
+        "guide:factory"
+      ]
+    },
+    {
+      "id": "patterns:builder",
+      "slug": "builder",
+      "after": [
+        "factory"
+      ],
+      "contentRefs": [
+        "guide:builder"
+      ]
+    },
+    {
+      "id": "patterns:adapter",
+      "slug": "adapter",
+      "after": [
+        "when-to-name-a-pattern"
+      ],
+      "contentRefs": [
+        "guide:adapter"
+      ]
+    },
+    {
+      "id": "patterns:facade",
+      "slug": "facade",
+      "after": [
+        "adapter"
+      ],
+      "contentRefs": [
+        "guide:facade"
+      ]
+    },
+    {
+      "id": "patterns:decorator",
+      "slug": "decorator",
+      "after": [
+        "strategy"
+      ],
+      "contentRefs": [
+        "guide:decorator"
+      ]
+    },
+    {
+      "id": "patterns:singleton",
+      "slug": "singleton",
+      "after": [
+        "factory"
+      ],
+      "contentRefs": [
+        "guide:singleton"
+      ]
+    },
+    {
+      "id": "patterns:command",
+      "slug": "command",
+      "after": [
+        "when-to-name-a-pattern",
+        "stacks"
+      ],
+      "contentRefs": [
+        "guide:command"
+      ]
+    },
+    {
+      "id": "patterns:composite",
+      "slug": "composite",
+      "after": [
+        "decorator",
+        "trees"
+      ],
+      "contentRefs": [
+        "guide:composite"
+      ]
+    },
+    {
+      "id": "patterns:proxy",
+      "slug": "proxy",
+      "after": [
+        "decorator"
+      ],
+      "contentRefs": [
+        "guide:proxy"
+      ]
+    },
+    {
+      "id": "patterns:composition",
+      "slug": "composition",
+      "after": [
+        "strategy",
+        "decorator",
+        "singleton"
+      ],
+      "contentRefs": [
+        "guide:composition"
+      ]
+    }
+  ]
+}

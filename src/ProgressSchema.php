@@ -157,6 +157,24 @@ final class ProgressSchema
                     }
                 }
             }
+            // Preserve extra milestone ids (track-path / case families beyond beginner).
+            foreach ($data['milestones'] as $id => $src) {
+                if (!is_string($id) || isset($out['milestones'][$id]) || !is_array($src)) {
+                    continue;
+                }
+                $out['milestones'][$id] = array_merge([
+                    'status' => 'unlocked',
+                    'guideRead' => false,
+                    'coachComplete' => false,
+                    'quizSubmitted' => false,
+                    'quizScore' => null,
+                    'quizAccuracy' => null,
+                    'drillAccuracy' => null,
+                    'drillMedianLatencyMs' => null,
+                    'caseChoiceId' => null,
+                    'caseCorrect' => null,
+                ], $src);
+            }
         }
 
         return $out;
@@ -348,5 +366,55 @@ final class ProgressSchema
         }
 
         return self::fresh(false);
+    }
+
+    /**
+     * Track-path unlock: every after slug has guideRead, and quizSubmitted when quiz file exists.
+     *
+     * @param array<string, mixed> $state
+     * @param list<string> $after
+     */
+    public static function isFamilyUnlockedByPrereqs(array $state, array $after): bool
+    {
+        $state = self::normalize($state);
+        foreach ($after as $slug) {
+            $id = $state['pathId'] . ':' . $slug;
+            // Also accept milestone rows under beginner: for shared progress in P0+/post.
+            $row = $state['milestones'][$id] ?? $state['milestones']['beginner:' . $slug] ?? null;
+            if (!is_array($row) || !($row['guideRead'] ?? false)) {
+                return false;
+            }
+            $quizFile = dirname(__DIR__) . '/content/quizzes/' . $slug . '.json';
+            if (is_file($quizFile) && !($row['quizSubmitted'] ?? false)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Missing after slugs for locked-reason copy.
+     *
+     * @param array<string, mixed> $state
+     * @param list<string> $after
+     * @return list<string>
+     */
+    public static function missingPrereqSlugs(array $state, array $after): array
+    {
+        $state = self::normalize($state);
+        $missing = [];
+        foreach ($after as $slug) {
+            $id = $state['pathId'] . ':' . $slug;
+            $row = $state['milestones'][$id] ?? $state['milestones']['beginner:' . $slug] ?? null;
+            $okGuide = is_array($row) && ($row['guideRead'] ?? false);
+            $quizFile = dirname(__DIR__) . '/content/quizzes/' . $slug . '.json';
+            $okQuiz = !is_file($quizFile) || (is_array($row) && ($row['quizSubmitted'] ?? false));
+            if (!$okGuide || !$okQuiz) {
+                $missing[] = $slug;
+            }
+        }
+
+        return $missing;
     }
 }

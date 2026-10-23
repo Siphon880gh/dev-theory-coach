@@ -1,0 +1,161 @@
+{
+  "id": "systems",
+  "title": "System design",
+  "sample": true,
+  "milestones": [
+    {
+      "id": "systems:interview-frame",
+      "slug": "interview-frame",
+      "after": [],
+      "contentRefs": [
+        "guide:interview-frame"
+      ]
+    },
+    {
+      "id": "systems:estimates",
+      "slug": "estimates",
+      "after": [
+        "interview-frame"
+      ],
+      "contentRefs": [
+        "guide:estimates"
+      ]
+    },
+    {
+      "id": "systems:requirements",
+      "slug": "requirements",
+      "after": [
+        "estimates"
+      ],
+      "contentRefs": [
+        "guide:requirements"
+      ]
+    },
+    {
+      "id": "systems:api-and-boundaries",
+      "slug": "api-and-boundaries",
+      "after": [
+        "requirements"
+      ],
+      "contentRefs": [
+        "guide:api-and-boundaries"
+      ]
+    },
+    {
+      "id": "systems:data-model",
+      "slug": "data-model",
+      "after": [
+        "api-and-boundaries"
+      ],
+      "contentRefs": [
+        "guide:data-model"
+      ]
+    },
+    {
+      "id": "systems:read-and-write-paths",
+      "slug": "read-and-write-paths",
+      "after": [
+        "data-model"
+      ],
+      "contentRefs": [
+        "guide:read-and-write-paths"
+      ]
+    },
+    {
+      "id": "systems:caching",
+      "slug": "caching",
+      "after": [
+        "read-and-write-paths",
+        "hash-maps",
+        "linked-lists"
+      ],
+      "contentRefs": [
+        "guide:caching"
+      ]
+    },
+    {
+      "id": "systems:storage-and-indexes",
+      "slug": "storage-and-indexes",
+      "after": [
+        "data-model"
+      ],
+      "contentRefs": [
+        "guide:storage-and-indexes"
+      ]
+    },
+    {
+      "id": "systems:replication-and-consistency",
+      "slug": "replication-and-consistency",
+      "after": [
+        "storage-and-indexes"
+      ],
+      "contentRefs": [
+        "guide:replication-and-consistency"
+      ]
+    },
+    {
+      "id": "systems:sharding",
+      "slug": "sharding",
+      "after": [
+        "replication-and-consistency",
+        "estimates"
+      ],
+      "contentRefs": [
+        "guide:sharding"
+      ]
+    },
+    {
+      "id": "systems:work-queues",
+      "slug": "work-queues",
+      "after": [
+        "read-and-write-paths",
+        "queues"
+      ],
+      "contentRefs": [
+        "guide:work-queues"
+      ]
+    },
+    {
+      "id": "systems:rate-limiting",
+      "slug": "rate-limiting",
+      "after": [
+        "api-and-boundaries",
+        "sliding-window"
+      ],
+      "contentRefs": [
+        "guide:rate-limiting"
+      ]
+    },
+    {
+      "id": "systems:failure",
+      "slug": "failure",
+      "after": [
+        "work-queues",
+        "replication-and-consistency"
+      ],
+      "contentRefs": [
+        "guide:failure"
+      ]
+    },
+    {
+      "id": "systems:capstone-url-shortener",
+      "slug": "capstone-url-shortener",
+      "after": [
+        "failure"
+      ],
+      "contentRefs": [
+        "guide:capstone-url-shortener"
+      ]
+    },
+    {
+      "id": "systems:capstone-feed",
+      "slug": "capstone-feed",
+      "after": [
+        "capstone-url-shortener"
+      ],
+      "contentRefs": [
+        "guide:capstone-feed"
+      ]
+    }
+  ]
+}

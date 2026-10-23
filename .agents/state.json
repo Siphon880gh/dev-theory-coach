@@ -1,8 +1,8 @@
 {
-  "current_epic_id": "E9",
-  "current_milestone_id": "E9.M1",
+  "current_epic_id": "E10",
+  "current_milestone_id": "E10.M1",
   "status": "in_progress",
-  "last_updated_iso": "2026-10-23T04:16:45-07:00",
+  "last_updated_iso": "2026-10-23T04:17:29-07:00",
   "milestone_story_status": {
     "E1.M1.S1": "done",
     "E1.M1.S2": "done",
@@ -31,7 +31,15 @@
     "E8.M1.S1": "done",
     "E8.M1.S2": "done",
     "E8.M1.S3": "done",
-    "E8.M1.S4": "done"
+    "E8.M1.S4": "done",
+    "E9.M1.S1": "done",
+    "E9.M1.S2": "done",
+    "E9.M1.S3": "done",
+    "E9.M1.S4": "done",
+    "E2.M2.S1": "done",
+    "E2.M2.S2": "done",
+    "E3.M3.S1": "done",
+    "E3.M3.S2": "done"
   },
   "app": {
     "name": "Dev Theory Coach (THEORY_CORE)",
@@ -1414,6 +1422,21 @@
         "status": "done",
         "gauntlet": "WIN",
         "at": "2026-10-23T04:16:45-07:00"
+      },
+      "E9.M1": {
+        "status": "done",
+        "gauntlet": "WIN",
+        "at": "2026-10-23T04:17:29-07:00"
+      },
+      "E2.M2": {
+        "status": "done",
+        "gauntlet": "WIN",
+        "at": "2026-10-23T04:17:29-07:00"
+      },
+      "E3.M3": {
+        "status": "done",
+        "gauntlet": "WIN",
+        "at": "2026-10-23T04:17:29-07:00"
       }
     }
   },
@@ -1507,7 +1530,7 @@
     "context_catalog": "context/README.md",
     "gauntlet_contract": "gauntlet/contract.md"
   },
-  "next_action": "Start E9.M1.S1: decide-and-reveal case renderer with gate-closed/open behavior.",
+  "next_action": "Start E10.M1.S1: cheatsheet runtime \u226412 lines + arrays sheet.",
   "milestones_done": [
     "E1.M1",
     "E3.M1",
@@ -1518,7 +1541,10 @@
     "E2.M1",
     "E3.M2",
     "E7.M1",
-    "E8.M1"
+    "E8.M1",
+    "E9.M1",
+    "E2.M2",
+    "E3.M3"
   ],
   "mvp_freeze": {
     "status": "green",

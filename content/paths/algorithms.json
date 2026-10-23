@@ -1,0 +1,139 @@
+{
+  "id": "algorithms",
+  "title": "Algorithms",
+  "sample": true,
+  "milestones": [
+    {
+      "id": "algorithms:complexity",
+      "slug": "complexity",
+      "after": [
+        "arrays"
+      ],
+      "contentRefs": [
+        "guide:complexity"
+      ]
+    },
+    {
+      "id": "algorithms:recursion",
+      "slug": "recursion",
+      "after": [
+        "complexity",
+        "stacks"
+      ],
+      "contentRefs": [
+        "guide:recursion"
+      ]
+    },
+    {
+      "id": "algorithms:binary-search",
+      "slug": "binary-search",
+      "after": [
+        "complexity",
+        "arrays"
+      ],
+      "contentRefs": [
+        "guide:binary-search"
+      ]
+    },
+    {
+      "id": "algorithms:two-pointers",
+      "slug": "two-pointers",
+      "after": [
+        "arrays"
+      ],
+      "contentRefs": [
+        "guide:two-pointers"
+      ]
+    },
+    {
+      "id": "algorithms:sliding-window",
+      "slug": "sliding-window",
+      "after": [
+        "two-pointers",
+        "hash-maps"
+      ],
+      "contentRefs": [
+        "guide:sliding-window"
+      ]
+    },
+    {
+      "id": "algorithms:sorting",
+      "slug": "sorting",
+      "after": [
+        "complexity",
+        "heaps"
+      ],
+      "contentRefs": [
+        "guide:sorting"
+      ]
+    },
+    {
+      "id": "algorithms:bfs-dfs",
+      "slug": "bfs-dfs",
+      "after": [
+        "queues",
+        "stacks",
+        "graphs",
+        "trees"
+      ],
+      "contentRefs": [
+        "guide:bfs-dfs"
+      ]
+    },
+    {
+      "id": "algorithms:backtracking",
+      "slug": "backtracking",
+      "after": [
+        "recursion",
+        "bfs-dfs"
+      ],
+      "contentRefs": [
+        "guide:backtracking"
+      ]
+    },
+    {
+      "id": "algorithms:greedy",
+      "slug": "greedy",
+      "after": [
+        "sorting"
+      ],
+      "contentRefs": [
+        "guide:greedy"
+      ]
+    },
+    {
+      "id": "algorithms:dynamic-programming",
+      "slug": "dynamic-programming",
+      "after": [
+        "recursion",
+        "greedy"
+      ],
+      "contentRefs": [
+        "guide:dynamic-programming"
+      ]
+    },
+    {
+      "id": "algorithms:graph-algorithms",
+      "slug": "graph-algorithms",
+      "after": [
+        "bfs-dfs",
+        "heaps",
+        "union-find"
+      ],
+      "contentRefs": [
+        "guide:graph-algorithms"
+      ]
+    },
+    {
+      "id": "algorithms:intervals",
+      "slug": "intervals",
+      "after": [
+        "sorting",
+        "greedy"
+      ],
+      "contentRefs": [
+        "guide:intervals"
+      ]
+    }
+  ]
+}

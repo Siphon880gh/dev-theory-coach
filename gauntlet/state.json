@@ -10,7 +10,10 @@
     "E2.M1": 1,
     "E3.M2": 1,
     "E7.M1": 1,
-    "E8.M1": 1
+    "E8.M1": 1,
+    "E9.M1": 1,
+    "E2.M2": 1,
+    "E3.M3": 1
   },
   "verdicts": [
     {
@@ -151,6 +154,42 @@
       "gates": {
         "tests": "phpunit",
         "acceptance": "E8.M1.S1\u2013S4"
+      },
+      "commands": [
+        "./vendor/bin/phpunit"
+      ]
+    },
+    {
+      "milestone_id": "E9.M1",
+      "verdict": "WIN",
+      "at": "2026-10-23T04:17:29-07:00",
+      "gates": {
+        "tests": "phpunit",
+        "acceptance": "PASS"
+      },
+      "commands": [
+        "./vendor/bin/phpunit"
+      ]
+    },
+    {
+      "milestone_id": "E2.M2",
+      "verdict": "WIN",
+      "at": "2026-10-23T04:17:29-07:00",
+      "gates": {
+        "tests": "phpunit",
+        "acceptance": "PASS"
+      },
+      "commands": [
+        "./vendor/bin/phpunit"
+      ]
+    },
+    {
+      "milestone_id": "E3.M3",
+      "verdict": "WIN",
+      "at": "2026-10-23T04:17:29-07:00",
+      "gates": {
+        "tests": "phpunit",
+        "acceptance": "PASS"
       },
       "commands": [
         "./vendor/bin/phpunit"

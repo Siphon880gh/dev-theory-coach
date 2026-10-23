@@ -1,0 +1,125 @@
+{
+  "id": "structures",
+  "title": "Data structures",
+  "sample": true,
+  "milestones": [
+    {
+      "id": "structures:arrays",
+      "slug": "arrays",
+      "after": [],
+      "contentRefs": [
+        "guide:arrays"
+      ]
+    },
+    {
+      "id": "structures:strings",
+      "slug": "strings",
+      "after": [
+        "arrays"
+      ],
+      "contentRefs": [
+        "guide:strings"
+      ]
+    },
+    {
+      "id": "structures:hash-maps",
+      "slug": "hash-maps",
+      "after": [
+        "arrays"
+      ],
+      "contentRefs": [
+        "guide:hash-maps"
+      ]
+    },
+    {
+      "id": "structures:linked-lists",
+      "slug": "linked-lists",
+      "after": [
+        "arrays"
+      ],
+      "contentRefs": [
+        "guide:linked-lists"
+      ]
+    },
+    {
+      "id": "structures:stacks",
+      "slug": "stacks",
+      "after": [
+        "arrays"
+      ],
+      "contentRefs": [
+        "guide:stacks"
+      ]
+    },
+    {
+      "id": "structures:queues",
+      "slug": "queues",
+      "after": [
+        "stacks"
+      ],
+      "contentRefs": [
+        "guide:queues"
+      ]
+    },
+    {
+      "id": "structures:trees",
+      "slug": "trees",
+      "after": [
+        "queues"
+      ],
+      "contentRefs": [
+        "guide:trees"
+      ]
+    },
+    {
+      "id": "structures:binary-search-trees",
+      "slug": "binary-search-trees",
+      "after": [
+        "trees"
+      ],
+      "contentRefs": [
+        "guide:binary-search-trees"
+      ]
+    },
+    {
+      "id": "structures:heaps",
+      "slug": "heaps",
+      "after": [
+        "trees"
+      ],
+      "contentRefs": [
+        "guide:heaps"
+      ]
+    },
+    {
+      "id": "structures:graphs",
+      "slug": "graphs",
+      "after": [
+        "queues"
+      ],
+      "contentRefs": [
+        "guide:graphs"
+      ]
+    },
+    {
+      "id": "structures:tries",
+      "slug": "tries",
+      "after": [
+        "trees"
+      ],
+      "contentRefs": [
+        "guide:tries"
+      ]
+    },
+    {
+      "id": "structures:union-find",
+      "slug": "union-find",
+      "after": [
+        "graphs"
+      ],
+      "contentRefs": [
+        "guide:union-find"
+      ]
+    }
+  ]
+}
