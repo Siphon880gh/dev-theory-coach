@@ -15,9 +15,8 @@ final class DashboardTest extends TestCase
         $html = Dashboard::homeHtml(ProgressSchema::fresh());
         $this->assertStringContainsString('css/app.css', $html);
         $this->assertStringContainsString('rel="stylesheet"', $html);
-        $this->assertStringContainsString('/guides/arrays', $html);
+        $this->assertStringContainsString('route=%2Fguides%2Farrays', $html);
         $this->assertStringContainsString('arrays', $html);
-        $this->assertStringNotContainsString('%', $html);
         $this->assertStringContainsString('Case gate locked', $html);
         $this->assertStringContainsString('Dev Theory Coach', $html);
         $this->assertStringNotContainsString('THEORY_CORE', $html);
@@ -35,8 +34,8 @@ final class DashboardTest extends TestCase
     {
         $state = ProgressSchema::recordGuideRead(ProgressSchema::fresh(), 'arrays');
         $html = Dashboard::homeHtml($state);
-        $this->assertStringContainsString('/guides/strings', $html);
-        $this->assertStringNotContainsString('/guides/arrays', $html);
+        $this->assertStringContainsString('route=%2Fguides%2Fstrings', $html);
+        $this->assertStringNotContainsString('route=%2Fguides%2Farrays', $html);
     }
 
     public function testPathCompleteAndGateOpenCopy(): void

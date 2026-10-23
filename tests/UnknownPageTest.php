@@ -25,14 +25,14 @@ final class UnknownPageTest extends TestCase
         ] as $r) {
             $this->assertSame(200, $r['status']);
             $this->assertArrayNotHasKey('location', $r);
-            $this->assertStringContainsString('href="/"', $r['body']);
+            $this->assertStringContainsString('href="' . url('/') . '"', $r['body']);
         }
     }
 
     public function testPathHtmlEscapesAndLinksHome(): void
     {
         $html = UnknownPage::pathHtml('/x<y>');
-        $this->assertStringContainsString('href="/"', $html);
+        $this->assertStringContainsString('href="' . url('/') . '"', $html);
         $this->assertStringContainsString('/x&lt;y&gt;', $html);
     }
 

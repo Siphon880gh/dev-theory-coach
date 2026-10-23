@@ -51,8 +51,13 @@ final class GuidesTest extends TestCase
         $this->assertSame(200, $response['status']);
         $body = $response['body'] ?? '';
         $this->assertStringContainsString('Arrays', $body);
-        $this->assertStringContainsString('/coach/arrays', $body);
-        $this->assertStringContainsString('Open coach:', $body);
+        $this->assertStringContainsString('route=%2Fcoach%2Farrays', $body);
+        $this->assertStringContainsString('route=%2Fquiz%2Farrays', $body);
+        $this->assertStringContainsString('Take the quiz', $body);
+        $this->assertStringContainsString('Questions', $body);
+        $this->assertStringContainsString('YouTube', $body);
+        $this->assertStringContainsString('Watch on YouTube', $body);
+        $this->assertStringContainsString('class="guide-footer"', $body);
         $guide = Guides::load('arrays');
         $this->assertNotNull($guide);
         $this->assertSame('arrays', $guide['relatedCoachSlug']);
@@ -69,7 +74,7 @@ final class GuidesTest extends TestCase
         $this->assertStringContainsString('search_query=Data+structures+Arrays', $body);
         $this->assertStringContainsString('target="_blank"', $body);
         $this->assertStringContainsString('rel="noopener noreferrer"', $body);
-        $this->assertStringContainsString('Search YouTube: Data structures Arrays', $body);
+        $this->assertStringContainsString('Watch on YouTube — Data structures · Arrays', $body);
     }
 
     public function testYoutubeSearchUrlEncodesTrackAndTitle(): void
@@ -88,7 +93,7 @@ final class GuidesTest extends TestCase
         $this->assertStringContainsString('guide-lesson-nav', $body);
         $this->assertStringContainsString('aria-label="Lesson"', $body);
         $this->assertStringContainsString('Strings', $body);
-        $this->assertStringContainsString('/guides/strings', $body);
+        $this->assertStringContainsString('route=%2Fguides%2Fstrings', $body);
         $this->assertStringContainsString('is-disabled', $body); // no previous
     }
 
@@ -96,16 +101,16 @@ final class GuidesTest extends TestCase
     {
         $body = Guides::pageResponse('hash-maps')['body'] ?? '';
         $this->assertStringContainsString('Strings', $body);
-        $this->assertStringContainsString('/guides/strings', $body);
+        $this->assertStringContainsString('route=%2Fguides%2Fstrings', $body);
         $this->assertStringContainsString('Linked lists', $body);
-        $this->assertStringContainsString('/guides/linked-lists', $body);
+        $this->assertStringContainsString('route=%2Fguides%2Flinked-lists', $body);
     }
 
     public function testGuideLessonNavLastHasNoNext(): void
     {
         $body = Guides::pageResponse('composition')['body'] ?? '';
         $this->assertStringContainsString('Proxy', $body);
-        $this->assertStringContainsString('/guides/proxy', $body);
+        $this->assertStringContainsString('route=%2Fguides%2Fproxy', $body);
         // next disabled
         $this->assertMatchesRegularExpression(
             '/guide-lesson-nav__link--next is-disabled/',
@@ -168,7 +173,7 @@ final class GuidesTest extends TestCase
         $this->assertSame(200, $response['status']);
         $this->assertArrayNotHasKey('location', $response);
         $this->assertStringContainsString('not-a-slug', $response['body']);
-        $this->assertStringContainsString('href="/"', $response['body']);
+        $this->assertStringContainsString('href="' . url('/') . '"', $response['body']);
     }
 
     public function testBeginnerGuidesMeetWordCountPasteAndCoachSlugRules(): void

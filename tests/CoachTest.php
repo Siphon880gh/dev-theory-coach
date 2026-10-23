@@ -121,7 +121,7 @@ final class CoachTest extends TestCase
         $this->assertSame(1, $success);
 
         $guide = \TheoryCore\Guides::pageResponse('arrays');
-        $this->assertStringContainsString('/coach/arrays', $guide['body'] ?? '');
+        $this->assertStringContainsString('route=%2Fcoach%2Farrays', $guide['body'] ?? '');
 
         $page = Coach::pageResponse('arrays');
         $this->assertSame(200, $page['status']);

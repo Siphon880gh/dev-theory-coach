@@ -54,19 +54,29 @@ function app_base(): string
 }
 
 /**
- * App-relative path → absolute URL under the install base (pretty paths).
+ * Front-controller URL. Shared hosts often ignore .htaccess rewrites for
+ * pretty paths, so every in-app link goes through index.php?route=… (same
+ * pattern as mental-math).
+ */
+function route_base(): string
+{
+    return app_base() . '/index.php';
+}
+
+/**
+ * App-relative path → absolute URL under the install base.
  */
 function url(string $path): string
 {
     if ($path === '' || $path[0] !== '/') {
         $path = '/' . ltrim($path, '/');
     }
-    $base = app_base();
+
     if ($path === '/') {
-        return $base === '' ? '/' : $base . '/';
+        return route_base();
     }
 
-    return $base . $path;
+    return route_base() . '?route=' . rawurlencode($path);
 }
 
 /**
@@ -78,16 +88,37 @@ function asset_url(string $path): string
 }
 
 /**
- * Logical route path after stripping app_base() from REQUEST_URI.
+ * Logical route path: prefer ?route= (deploy-safe), else path after app_base().
  */
 function request_path(): string
 {
+    $route = $_GET['route'] ?? null;
+    if (is_string($route) && $route !== '') {
+        $path = $route;
+        if ($path === '' || $path[0] !== '/') {
+            $path = '/' . ltrim($path, '/');
+        }
+        if (preg_match('#^/index\.php(/.*)?$#', $path, $m) === 1) {
+            $path = $m[1] ?? '/';
+            if ($path === '') {
+                $path = '/';
+            }
+        }
+
+        return rtrim($path, '/') ?: '/';
+    }
+
     $uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
     if (!is_string($uri) || $uri === '') {
         $uri = '/';
     }
     $path = rawurldecode($uri);
     $path = rtrim($path, '/') ?: '/';
+
+    // /…/index.php or /…/index.php/guides → treat as /
+    if (preg_match('#/index\.php$#', $path) === 1) {
+        return '/';
+    }
 
     $base = app_base();
     if ($base !== '') {

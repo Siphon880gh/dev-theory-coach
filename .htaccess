@@ -2,6 +2,7 @@ DirectoryIndex index.php
 
 RewriteEngine On
 
+
 # Keep PHP sources, catalogs, Composer, and planning trees off the public web.
 RewriteRule ^(?:src|vendor|tests|context|docs|LOOPS|\.agents|\.git)(?:/|$) - [F,L]
 RewriteRule ^(?:composer\.(json|lock)|phpunit\.xml)$ - [F,L]

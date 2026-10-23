@@ -159,13 +159,7 @@ final class Guides
             $ytOverride = $guide['youtubeQuery'];
         }
         $youtubeUrl = self::youtubeSearchUrl($trackLabel, $title, $ytOverride);
-        $youtubeLabel = 'Search YouTube: ' . $trackLabel . ' ' . $title;
-
-        $parts[] = '<p class="coach-cta"><a href="' . e(url('/coach/' . rawurlencode($coachSlug))) . '">Open coach: '
-            . self::h($coachSlug) . '</a></p>';
-        $parts[] = '<p class="youtube-cta"><a href="' . e($youtubeUrl) . '" target="_blank" rel="noopener noreferrer">'
-            . self::h($youtubeLabel) . '</a></p>';
-        $parts[] = self::lessonNavHtml($slug);
+        $parts[] = self::guideFooterHtml($slug, $title, $trackLabel, $coachSlug, $youtubeUrl);
 
         $layoutOpts = [
             'mainClass' => 'guide-page',
@@ -247,6 +241,48 @@ final class Guides
     /**
      * @param list<array{id?: mixed, title?: mixed, svg?: mixed}> $diagrams
      */
+
+
+    /**
+     * Bottom of a guide: YouTube, end-of-lesson quiz (questions), quiet coach link, then prev/next.
+     */
+    private static function guideFooterHtml(
+        string $slug,
+        string $title,
+        string $trackLabel,
+        string $coachSlug,
+        string $youtubeUrl
+    ): string {
+        $topic = trim($trackLabel . ' · ' . $title);
+        if ($topic === '·' || $topic === '') {
+            $topic = $title !== '' ? $title : $slug;
+        }
+
+        $parts = [];
+        $parts[] = '<footer class="guide-footer">';
+
+        $parts[] = '<section class="guide-footer__block guide-footer__youtube" aria-labelledby="guide-youtube-heading">';
+        $parts[] = '<h2 id="guide-youtube-heading" class="guide-footer__heading">YouTube</h2>';
+        $parts[] = '<p class="guide-footer__blurb">Short videos on this topic (opens YouTube search).</p>';
+        $parts[] = '<p class="guide-footer__action"><a class="guide-footer__link guide-footer__link--youtube" href="'
+            . e($youtubeUrl) . '" target="_blank" rel="noopener noreferrer">'
+            . 'Watch on YouTube — ' . self::h($topic) . '</a></p>';
+        $parts[] = '</section>';
+
+        $parts[] = '<section class="guide-footer__block guide-footer__questions" aria-labelledby="guide-questions-heading">';
+        $parts[] = '<h2 id="guide-questions-heading" class="guide-footer__heading">Questions</h2>';
+        $parts[] = '<p class="guide-footer__blurb">Check yourself with a short quiz on this lesson.</p>';
+        $parts[] = '<p class="guide-footer__action"><a class="guide-footer__link guide-footer__link--quiz" href="'
+            . e(url('/quiz/' . rawurlencode($slug))) . '">Take the quiz</a></p>';
+        $parts[] = '<p class="guide-footer__secondary"><a class="guide-footer__link guide-footer__link--coach" href="'
+            . e(url('/coach/' . rawurlencode($coachSlug))) . '">Optional: step-by-step practice</a></p>';
+        $parts[] = '</section>';
+
+        $parts[] = self::lessonNavHtml($slug);
+        $parts[] = '</footer>';
+
+        return implode("\n", $parts);
+    }
 
     private static function lessonNavHtml(string $slug): string
     {

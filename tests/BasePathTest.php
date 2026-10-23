@@ -19,14 +19,15 @@ final class BasePathTest extends TestCase
     protected function tearDown(): void
     {
         $_SERVER = $this->serverBackup;
+        $_GET = [];
     }
 
     public function testAppBaseEmptyWhenScriptNameIsNotIndexPhp(): void
     {
         $_SERVER['SCRIPT_NAME'] = '/Users/wengffung/dev/web/weng/trainer/dev-theory-coach/vendor/phpunit/phpunit/phpunit';
         $this->assertSame('', app_base());
-        $this->assertSame('/guides', url('/guides'));
-        $this->assertSame('/', url('/'));
+        $this->assertSame('/index.php?route=%2Fguides', url('/guides'));
+        $this->assertSame('/index.php', url('/'));
         $this->assertSame('/assets/js/progress.js', asset_url('js/progress.js'));
     }
 
@@ -34,16 +35,16 @@ final class BasePathTest extends TestCase
     {
         $_SERVER['SCRIPT_NAME'] = '/index.php';
         $this->assertSame('', app_base());
-        $this->assertSame('/guides/arrays', url('/guides/arrays'));
+        $this->assertSame('/index.php?route=%2Fguides%2Farrays', url('/guides/arrays'));
     }
 
     public function testAppBaseFromSubdirectoryIndex(): void
     {
         $_SERVER['SCRIPT_NAME'] = '/weng/trainer/dev-theory-coach/index.php';
         $this->assertSame('/weng/trainer/dev-theory-coach', app_base());
-        $this->assertSame('/weng/trainer/dev-theory-coach/', url('/'));
-        $this->assertSame('/weng/trainer/dev-theory-coach/guides', url('/guides'));
-        $this->assertSame('/weng/trainer/dev-theory-coach/guides/arrays', url('/guides/arrays'));
+        $this->assertSame('/weng/trainer/dev-theory-coach/index.php', url('/'));
+        $this->assertSame('/weng/trainer/dev-theory-coach/index.php?route=%2Fguides', url('/guides'));
+        $this->assertSame('/weng/trainer/dev-theory-coach/index.php?route=%2Fguides%2Farrays', url('/guides/arrays'));
         $this->assertSame('/weng/trainer/dev-theory-coach/assets/js/progress.js', asset_url('js/progress.js'));
         $this->assertSame('/weng/trainer/dev-theory-coach/assets/js/progress.js', asset_url('/js/progress.js'));
     }
@@ -88,6 +89,24 @@ final class BasePathTest extends TestCase
     public function testUrlEnsuresLeadingSlash(): void
     {
         $_SERVER['SCRIPT_NAME'] = '/weng/trainer/dev-theory-coach/index.php';
-        $this->assertSame('/weng/trainer/dev-theory-coach/guides', url('guides'));
+        $this->assertSame('/weng/trainer/dev-theory-coach/index.php?route=%2Fguides', url('guides'));
+    }
+
+    public function testRequestPathPrefersRouteQuery(): void
+    {
+        $_SERVER['SCRIPT_NAME'] = '/trainer/dev-theory-coach/index.php';
+        $_SERVER['REQUEST_URI'] = '/trainer/dev-theory-coach/index.php?route=%2Fguides%2Farrays';
+        $_GET = ['route' => '/guides/arrays'];
+        $this->assertSame('/guides/arrays', request_path());
+
+        $_GET = ['route' => '/guides'];
+        $_SERVER['REQUEST_URI'] = '/trainer/dev-theory-coach/?route=%2Fguides';
+        $this->assertSame('/guides', request_path());
+    }
+
+    public function testRouteBaseIncludesIndexPhp(): void
+    {
+        $_SERVER['SCRIPT_NAME'] = '/trainer/dev-theory-coach/index.php';
+        $this->assertSame('/trainer/dev-theory-coach/index.php', route_base());
     }
 }
