@@ -1,0 +1,109 @@
+{
+  "slug": "arrays",
+  "title": "Arrays",
+  "sample": true,
+  "items": [
+    {
+      "prompt": "SAMPLE: In a contiguous buffer of n values, what is the typical cost of reading index i?",
+      "choices": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n log n)"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Address is base plus i times width, so the jump is constant time.",
+      "whyWrong": [
+        "",
+        "Logarithmic search assumes a sorted probe loop, not a direct index read.",
+        "Linear cost would mean walking from the start; indexing skips that walk.",
+        "n log n belongs to comparison sorts, not a single indexed read."
+      ]
+    },
+    {
+      "prompt": "SAMPLE: You insert one value in the middle of an array of n elements. What dominates the cost?",
+      "choices": [
+        "Shifting the tail one slot",
+        "Hashing the new key",
+        "Rebalancing a tree",
+        "A single pointer rewrite"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Everything after the hole must move to keep the buffer contiguous.",
+      "whyWrong": [
+        "",
+        "Hashing appears in maps, not in a plain contiguous insert.",
+        "Tree rebalancing is a different structure's story.",
+        "A pointer rewrite describes a linked-list splice, not an array middle insert."
+      ]
+    },
+    {
+      "prompt": "SAMPLE: Repeated appends into a dynamic array that doubles when full are best described as what amortized cost per append?",
+      "choices": [
+        "Amortized O(1)",
+        "Strict O(n) every time",
+        "O(log n) always",
+        "O(n\u00b2) always"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Most appends write one slot; occasional full copies are paid across many appends.",
+      "whyWrong": [
+        "",
+        "A single growth copy is O(n), but that is not the per-append amortized bound.",
+        "Logarithmic cost is not the usual dynamic-array append story.",
+        "Quadratic would require nested copying on every append, which doubling avoids."
+      ]
+    },
+    {
+      "prompt": "SAMPLE: Jumping to index i is the hot path. Array or linked list?",
+      "choices": [
+        "Array \u2014 constant address math",
+        "Linked list \u2014 always faster for jumps",
+        "Either, costs are identical",
+        "List, because cache lines do not matter"
+      ],
+      "answerIndex": 0,
+      "whyRight": "An array computes the address; a list still walks i nodes.",
+      "whyWrong": [
+        "",
+        "A list is slower for arbitrary index jumps, not faster.",
+        "The costs differ by a linear walk versus constant addressing.",
+        "Cache behavior usually favors dense arrays; it does not flip the asymptotic walk."
+      ]
+    },
+    {
+      "prompt": "SAMPLE: You already hold a node pointer and must remove that node from a chain. Which structure keeps the edit local?",
+      "choices": [
+        "Linked list",
+        "Array that shifts the suffix",
+        "Sorted set only",
+        "Hash set of values only"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Relinking neighbors is O(1) when the node is already in hand.",
+      "whyWrong": [
+        "",
+        "An array still shifts the suffix after the removed index.",
+        "A sorted set solves order queries, not this local splice question.",
+        "A hash set of values does not rewire a chain of nodes."
+      ]
+    },
+    {
+      "prompt": "SAMPLE: Which statement about arrays is safe to say in a phone screen?",
+      "choices": [
+        "Middle insert is O(n) because the tail shifts",
+        "Every insert is O(1) including the middle",
+        "Index reads are O(n) on average",
+        "Arrays cannot store integers"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Contiguity forces a shift when you open a hole in the middle.",
+      "whyWrong": [
+        "",
+        "Middle inserts are not constant time on a plain array.",
+        "Index reads are O(1), not average linear.",
+        "Arrays routinely store integers and many other element types."
+      ]
+    }
+  ]
+}

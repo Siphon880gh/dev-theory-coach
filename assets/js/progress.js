@@ -169,6 +169,20 @@
     return save(state);
   }
 
+
+  function recordQuizResult(slug, correct, total) {
+    var state = load();
+    var id = state.pathId + ':' + slug;
+    if (!state.milestones[id]) return state;
+    var accuracy = total > 0 ? correct / total : 0;
+    state.milestones[id].quizSubmitted = true;
+    state.milestones[id].quizScore = correct;
+    state.milestones[id].quizAccuracy = accuracy;
+    state.scores[id] = { correct: correct, total: total, accuracy: accuracy };
+    state.recovery = false;
+    return save(state);
+  }
+
   global.TheoryCoreProgress = {
     KEY: KEY,
     VERSION: VERSION,
@@ -184,6 +198,7 @@
     setMilestoneStatus: setMilestoneStatus,
     setScore: setScore,
     setLatency: setLatency,
-    reset: reset
+    reset: reset,
+    recordQuizResult: recordQuizResult
   };
 })(typeof window !== 'undefined' ? window : globalThis);

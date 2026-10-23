@@ -5,7 +5,8 @@
     "E3.M1": 1,
     "E4.M1": 1,
     "E5.M1": 1,
-    "E5.M2": 1
+    "E5.M2": 1,
+    "E6.M1": 1
   },
   "verdicts": [
     {
@@ -85,6 +86,20 @@
       },
       "commands": [
         "./vendor/bin/phpunit --filter CoachTest"
+      ]
+    },
+    {
+      "milestone_id": "E6.M1",
+      "verdict": "WIN",
+      "at": "2026-10-23T04:14:34-07:00",
+      "gates": {
+        "tests": "phpunit 0",
+        "SAMPLE": "quiz HTML",
+        "acceptance": "E6.M1.S1\u2013S3",
+        "progress": "recordQuizResult"
+      },
+      "commands": [
+        "./vendor/bin/phpunit"
       ]
     }
   ],

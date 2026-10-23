@@ -1,8 +1,8 @@
 {
-  "current_epic_id": "E6",
-  "current_milestone_id": "E6.M1",
+  "current_epic_id": "E2",
+  "current_milestone_id": "E2.M1",
   "status": "in_progress",
-  "last_updated_iso": "2026-10-23T04:13:46-07:00",
+  "last_updated_iso": "2026-10-23T04:14:34-07:00",
   "milestone_story_status": {
     "E1.M1.S1": "done",
     "E1.M1.S2": "done",
@@ -17,7 +17,10 @@
     "E5.M1.S2": "done",
     "E5.M1.S3": "done",
     "E5.M2.S1": "done",
-    "E5.M2.S2": "done"
+    "E5.M2.S2": "done",
+    "E6.M1.S1": "done",
+    "E6.M1.S2": "done",
+    "E6.M1.S3": "done"
   },
   "app": {
     "name": "Dev Theory Coach (THEORY_CORE)",
@@ -1375,6 +1378,11 @@
         "status": "done",
         "gauntlet": "WIN",
         "at": "2026-10-23T04:13:46-07:00"
+      },
+      "E6.M1": {
+        "status": "done",
+        "gauntlet": "WIN",
+        "at": "2026-10-23T04:14:34-07:00"
       }
     }
   },
@@ -1468,12 +1476,13 @@
     "context_catalog": "context/README.md",
     "gauntlet_contract": "gauntlet/contract.md"
   },
-  "next_action": "Start E6.M1.S1: untimed quiz renderer with 4 choices, whyWrong on every miss, SAMPLE, no timer/runner.",
+  "next_action": "Start E2.M1.S1: content/paths/beginner.json with 12 milestones and contentRefs.",
   "milestones_done": [
     "E1.M1",
     "E3.M1",
     "E4.M1",
     "E5.M1",
-    "E5.M2"
+    "E5.M2",
+    "E6.M1"
   ]
 }

@@ -182,4 +182,70 @@ final class ProgressSchema
     {
         return self::decode(self::encode($fixture));
     }
+
+    /**
+     * Record a finished quiz for beginner:<slug> (or pathId:slug).
+     *
+     * @param array<string, mixed> $state
+     * @return array<string, mixed>
+     */
+    public static function recordQuizResult(array $state, string $slug, int $correct, int $total): array
+    {
+        $state = self::normalize($state);
+        $id = $state['pathId'] . ':' . $slug;
+        if (!isset($state['milestones'][$id])) {
+            $state['milestones'][$id] = [
+                'status' => 'unlocked',
+                'guideRead' => false,
+                'coachComplete' => false,
+                'quizSubmitted' => false,
+                'quizScore' => null,
+                'quizAccuracy' => null,
+                'drillAccuracy' => null,
+                'drillMedianLatencyMs' => null,
+                'caseChoiceId' => null,
+                'caseCorrect' => null,
+            ];
+        }
+        $accuracy = $total > 0 ? ($correct / $total) : 0.0;
+        $state['milestones'][$id]['quizSubmitted'] = true;
+        $state['milestones'][$id]['quizScore'] = $correct;
+        $state['milestones'][$id]['quizAccuracy'] = $accuracy;
+        $state['scores'][$id] = ['correct' => $correct, 'total' => $total, 'accuracy' => $accuracy];
+        $state['recovery'] = false;
+
+        return $state;
+    }
+
+    /**
+     * @param array<string, mixed> $state
+     * @return array<string, mixed>
+     */
+    public static function recordCoachComplete(array $state, string $slug): array
+    {
+        $state = self::normalize($state);
+        $id = $state['pathId'] . ':' . $slug;
+        if (isset($state['milestones'][$id])) {
+            $state['milestones'][$id]['coachComplete'] = true;
+        }
+        $state['recovery'] = false;
+
+        return $state;
+    }
+
+    /**
+     * @param array<string, mixed> $state
+     * @return array<string, mixed>
+     */
+    public static function recordGuideRead(array $state, string $slug): array
+    {
+        $state = self::normalize($state);
+        $id = $state['pathId'] . ':' . $slug;
+        if (isset($state['milestones'][$id])) {
+            $state['milestones'][$id]['guideRead'] = true;
+        }
+        $state['recovery'] = false;
+
+        return $state;
+    }
 }
