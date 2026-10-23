@@ -1,7 +1,8 @@
 {
   "budget_per_milestone": 3,
   "rounds": {
-    "E1.M1": 1
+    "E1.M1": 1,
+    "E3.M1": 1
   },
   "verdicts": [
     {
@@ -20,6 +21,23 @@
       "commands": [
         "./vendor/bin/phpunit",
         "php Catalog::hubGroupingHtml / bySlug checks"
+      ]
+    },
+    {
+      "milestone_id": "E3.M1",
+      "verdict": "WIN",
+      "at": "2026-10-23T04:11:23-07:00",
+      "gates": {
+        "tests": "phpunit exit 0",
+        "progress": "assets/js/progress.js writes only theory_core_progress_v1",
+        "acceptance": "E3.M1.S1\u2013S3 PASS (round-trip, truncated recovery, beginner ids)",
+        "join_key": "N/A change",
+        "SAMPLE": "N/A (no new learner route)",
+        "slot_not_404": "N/A",
+        "no_paste": "N/A"
+      },
+      "commands": [
+        "./vendor/bin/phpunit"
       ]
     }
   ],
