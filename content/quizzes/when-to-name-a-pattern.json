@@ -1,0 +1,108 @@
+{
+    "slug": "when-to-name-a-pattern",
+    "title": "When to name a pattern",
+    "items": [
+        {
+            "prompt": "Name a pattern only after you can say?",
+            "choices": [
+                "The force / problem shape it addresses",
+                "The Wikipedia URL",
+                "The class count",
+                "The logo"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Forces first; names second.",
+            "whyWrong": [
+                "",
+                "URLs are not reasoning.",
+                "Class count is not the force.",
+                "Logos no."
+            ]
+        },
+        {
+            "prompt": "When a simple if/else is enough you should?",
+            "choices": [
+                "Decline the pattern structure",
+                "Always introduce Strategy+Factory+Observer",
+                "Ban branching",
+                "Rewrite in a new language"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Patterns are tools, not trophies.",
+            "whyWrong": [
+                "",
+                "Stacking patterns on tiny branches is noise.",
+                "Branches are fine.",
+                "Language rewrites are unrelated."
+            ]
+        },
+        {
+            "prompt": "Interview signal you understand a pattern?",
+            "choices": [
+                "You state when not to use it",
+                "You only recite the structure diagram",
+                "You claim it fixes all bugs",
+                "You avoid tradeoffs"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Boundaries show judgment.",
+            "whyWrong": [
+                "",
+                "Diagrams without judgment are shallow.",
+                "No pattern fixes all bugs.",
+                "Tradeoffs are the point."
+            ]
+        },
+        {
+            "prompt": "Pattern soup in a PR is bad because?",
+            "choices": [
+                "Indirection without a force raises reading cost",
+                "More classes always equal better design",
+                "Interviewers forbid plain code",
+                "Tests cannot run"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Complexity needs a payoff.",
+            "whyWrong": [
+                "",
+                "More classes ≠ better.",
+                "Plain code is welcome.",
+                "Tests can run either way."
+            ]
+        },
+        {
+            "prompt": "“Is this Observer or Pub/Sub?” useful answer starts with?",
+            "choices": [
+                "Same force (notify dependents); differ in coupling/broker topology",
+                "They are unrelated forever",
+                "Only the GoF book page number",
+                "Whether Java is used"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Compare forces and coupling.",
+            "whyWrong": [
+                "",
+                "They share notification forces.",
+                "Page numbers are not reasoning.",
+                "Language is orthogonal."
+            ]
+        },
+        {
+            "prompt": "First step when tempted to name a pattern mid-design?",
+            "choices": [
+                "Write the concrete force in one sentence",
+                "Create 12 interfaces",
+                "Add a DI container immediately",
+                "Rename all files"
+            ],
+            "answerIndex": 0,
+            "whyRight": "If you cannot state the force, you are decorating.",
+            "whyWrong": [
+                "",
+                "Interfaces follow need.",
+                "DI is optional tooling.",
+                "Renames are churn."
+            ]
+        }
+    ]
+}

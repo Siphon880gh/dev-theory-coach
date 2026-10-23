@@ -1,0 +1,108 @@
+{
+    "slug": "builder",
+    "title": "Builder",
+    "items": [
+        {
+            "prompt": "Builder helps when?",
+            "choices": [
+                "Many optional parts must form one valid object",
+                "You need multicast events",
+                "You need O(1) stack pop",
+                "You need HTTP/2"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Stepwise construction with a final build().",
+            "whyWrong": [
+                "",
+                "Observer territory.",
+                "Stacks unrelated.",
+                "HTTP unrelated."
+            ]
+        },
+        {
+            "prompt": "build() should?",
+            "choices": [
+                "Refuse half-built objects missing required parts",
+                "Always succeed silently with nulls",
+                "Start network calls",
+                "Sort the heap"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Validation lives at the boundary of construction.",
+            "whyWrong": [
+                "",
+                "Silent nulls create bugs later.",
+                "Network is not intrinsic.",
+                "Heaps unrelated."
+            ]
+        },
+        {
+            "prompt": "Telescoping constructors are painful because?",
+            "choices": [
+                "Combinations of optionals explode overloads",
+                "Java forbids overloads",
+                "Builders are illegal",
+                "Objects cannot have fields"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Named stepwise setters/builders clarify intent.",
+            "whyWrong": [
+                "",
+                "Overloads exist; they just get messy.",
+                "Builders are common.",
+                "Fields exist."
+            ]
+        },
+        {
+            "prompt": "Fluent builder returns?",
+            "choices": [
+                "The builder for chaining, then the product on build",
+                "Only void",
+                "A thread",
+                "A socket"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Chain configuration calls.",
+            "whyWrong": [
+                "",
+                "Void breaks chaining.",
+                "Threads unrelated.",
+                "Sockets unrelated."
+            ]
+        },
+        {
+            "prompt": "Builder vs Factory?",
+            "choices": [
+                "Builder focuses on stepwise optional assembly; Factory on choosing a concrete type",
+                "Identical",
+                "Builder picks algorithms at runtime like Strategy",
+                "Factory always has fluent setters"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Different construction problems.",
+            "whyWrong": [
+                "",
+                "They differ.",
+                "Strategy is behavior swap.",
+                "Factories need not be fluent."
+            ]
+        },
+        {
+            "prompt": "Immutable products pair well with builders because?",
+            "choices": [
+                "All fields set once at build time",
+                "Immutability forbids construction",
+                "Builders mutate forever after build",
+                "JSON is required"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Build then freeze.",
+            "whyWrong": [
+                "",
+                "Immutables are constructed somehow.",
+                "Post-build mutation breaks the model.",
+                "JSON optional."
+            ]
+        }
+    ]
+}

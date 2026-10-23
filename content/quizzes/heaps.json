@@ -1,0 +1,108 @@
+{
+    "slug": "heaps",
+    "title": "Heaps",
+    "items": [
+        {
+            "prompt": "Peeking the minimum in a binary min-heap is?",
+            "choices": [
+                "O(1)",
+                "O(log n)",
+                "O(n)",
+                "O(n log n)"
+            ],
+            "answerIndex": 0,
+            "whyRight": "The extreme sits at the root.",
+            "whyWrong": [
+                "",
+                "Log n is for sift after remove/insert.",
+                "Linear would scan the array.",
+                "n log n is building via repeated inserts without heapify care."
+            ]
+        },
+        {
+            "prompt": "Insert into a binary heap is typically?",
+            "choices": [
+                "O(log n) sift-up",
+                "O(1) always with no sift",
+                "O(n) rebuild",
+                "O(n log n)"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Place at the end, bubble toward the root.",
+            "whyWrong": [
+                "",
+                "Without sift the heap property can break.",
+                "Full rebuild is overkill for one insert.",
+                "Sorting cost is higher."
+            ]
+        },
+        {
+            "prompt": "A binary heap is stored as an array because?",
+            "choices": [
+                "Parent/child indices are simple arithmetic",
+                "Arrays forbid dynamic size",
+                "Heaps need hash keys",
+                "Pointers are required by definition"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Children of i live at 2i+1 and 2i+2 (0-based).",
+            "whyWrong": [
+                "",
+                "Dynamic arrays grow fine.",
+                "Hashing is not the heap representation.",
+                "Pointer heaps exist but interviews default to arrays."
+            ]
+        },
+        {
+            "prompt": "Heap sort’s time bound is?",
+            "choices": [
+                "O(n log n)",
+                "O(n)",
+                "O(log n)",
+                "O(n²) best case only"
+            ],
+            "answerIndex": 0,
+            "whyRight": "n extract-min operations each O(log n), after O(n) heapify.",
+            "whyWrong": [
+                "",
+                "Linear is not achievable for comparison heap sort.",
+                "Log n cannot sort n keys.",
+                "Quadratic is naive sorts, not heap sort’s bound."
+            ]
+        },
+        {
+            "prompt": "Priority queue of pending Dijkstra nodes is usually a?",
+            "choices": [
+                "Binary (or better) heap keyed by distance",
+                "FIFO queue ignoring weights",
+                "Stack of nodes",
+                "Unsorted list with no extract-min plan"
+            ],
+            "answerIndex": 0,
+            "whyRight": "You repeatedly need the closest unsettled node.",
+            "whyWrong": [
+                "",
+                "FIFO ignores weights (BFS).",
+                "Stacks are DFS.",
+                "Unsorted extract-min is linear each time."
+            ]
+        },
+        {
+            "prompt": "Building a heap with bottom-up heapify is?",
+            "choices": [
+                "O(n)",
+                "O(n log n) necessarily",
+                "O(1)",
+                "O(n²)"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Floyd’s method sums geometric sift costs to linear.",
+            "whyWrong": [
+                "",
+                "Repeated inserts are n log n; heapify is tighter.",
+                "Constant time cannot order n elements.",
+                "Quadratic would be a bug."
+            ]
+        }
+    ]
+}

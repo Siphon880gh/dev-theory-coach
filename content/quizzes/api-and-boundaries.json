@@ -1,0 +1,108 @@
+{
+    "slug": "api-and-boundaries",
+    "title": "API and boundaries",
+    "items": [
+        {
+            "prompt": "An API boundary should name?",
+            "choices": [
+                "Operations and which service owns each one",
+                "Every SQL column",
+                "Thread priorities",
+                "CSS classes"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Ownership prevents overlapping writes and unclear contracts.",
+            "whyWrong": [
+                "",
+                "Columns are inside a service.",
+                "Threads are runtime.",
+                "CSS is UI."
+            ]
+        },
+        {
+            "prompt": "Idempotent POST-like create often needs?",
+            "choices": [
+                "An idempotency key so retries do not double-create",
+                "Random new ids with no client key",
+                "Disabling retries forever",
+                "TCP only without app logic"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Clients retry; servers must recognize duplicates.",
+            "whyWrong": [
+                "",
+                "Pure random ids still double on retry.",
+                "Retries happen on networks.",
+                "Transport alone is insufficient."
+            ]
+        },
+        {
+            "prompt": "Sync RPC vs async message boundary — pick async when?",
+            "choices": [
+                "Caller should not block on slow side effects",
+                "You need the result in the same request always",
+                "Latency must be sub-ms in-process",
+                "The operation is a pure local function"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Return quickly; finish work out of band.",
+            "whyWrong": [
+                "",
+                "Same-request needs sync.",
+                "In-process calls are not network boundaries.",
+                "Local pure functions need no queue."
+            ]
+        },
+        {
+            "prompt": "Versioning a public API poorly causes?",
+            "choices": [
+                "Breaking clients on field renames/removals",
+                "Faster deploys always",
+                "Automatic schema migration of phones",
+                "Free load tests"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Contracts are promises; breaks need versions or compatibility windows.",
+            "whyWrong": [
+                "",
+                "Breaks slow client ecosystems.",
+                "Phones do not auto-migrate your API.",
+                "Load tests are separate."
+            ]
+        },
+        {
+            "prompt": "Backwards-compatible change example?",
+            "choices": [
+                "Adding an optional field",
+                "Renaming a required field in place",
+                "Removing an endpoint clients use",
+                "Changing auth to incompatible tokens silently"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Optional additions leave old clients working.",
+            "whyWrong": [
+                "",
+                "Renames break parsers.",
+                "Removals break callers.",
+                "Silent auth breaks are outages."
+            ]
+        },
+        {
+            "prompt": "Bounded context idea in an interview means?",
+            "choices": [
+                "Keep a cohesive model inside a boundary; translate at edges",
+                "One giant shared mutable DB for all teams forever as the goal",
+                "No APIs",
+                "Only frontend modules"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Clear edges beat a distributed ball of mud.",
+            "whyWrong": [
+                "",
+                "Shared writable everything couples everyone.",
+                "APIs are the edges.",
+                "Frontend alone is not the system."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+{
+    "slug": "stacks",
+    "title": "Stacks",
+    "items": [
+        {
+            "prompt": "Stack discipline is?",
+            "choices": [
+                "Last in, first out",
+                "First in, first out",
+                "Random access by key",
+                "Priority by value"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Push and pop share one end; the newest unfinished item is visible.",
+            "whyWrong": [
+                "",
+                "FIFO is a queue.",
+                "Key lookup is a map.",
+                "Priority order is a heap."
+            ]
+        },
+        {
+            "prompt": "Validating matching parentheses typically uses a stack to store what?",
+            "choices": [
+                "Unmatched opening brackets",
+                "Every character of the string",
+                "Sorted closing brackets",
+                "A queue of indices only"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Openers push; closers must match the top opener.",
+            "whyWrong": [
+                "",
+                "Storing everything wastes space without helping matching.",
+                "Sorting closers loses order information.",
+                "A queue would serve the wrong end."
+            ]
+        },
+        {
+            "prompt": "DFS of a graph/tree implemented iteratively usually models the fringe with a?",
+            "choices": [
+                "Stack",
+                "FIFO queue only",
+                "Hash set of edges",
+                "Sorted multiset of distances"
+            ],
+            "answerIndex": 0,
+            "whyRight": "LIFO expands the deepest pending node first.",
+            "whyWrong": [
+                "",
+                "A FIFO queue yields BFS.",
+                "Edge sets track membership, not expansion order.",
+                "Distance multisets are Dijkstra’s tool."
+            ]
+        },
+        {
+            "prompt": "Undo in an editor maps cleanly to a stack because?",
+            "choices": [
+                "The last edit is the first one reversed",
+                "Edits must be replayed in random order",
+                "Undo needs O(n) search by timestamp key",
+                "Stacks forbid storing commands"
+            ],
+            "answerIndex": 0,
+            "whyRight": "LIFO matches chronological undo.",
+            "whyWrong": [
+                "",
+                "Random order would not be undo.",
+                "Keyed search is a different structure.",
+                "Command objects often sit on stacks."
+            ]
+        },
+        {
+            "prompt": "Push and pop on an array-backed stack are amortized?",
+            "choices": [
+                "O(1)",
+                "O(n) every call",
+                "O(log n)",
+                "O(n²)"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Most operations touch one end; rare resizes amortize.",
+            "whyWrong": [
+                "",
+                "Strict linear every time would mean shifting the whole stack each push.",
+                "Logarithmic is tree territory.",
+                "Quadratic is not the stack story."
+            ]
+        },
+        {
+            "prompt": "Monotonic stack problems keep indices of candidates that are?",
+            "choices": [
+                "Still useful because nothing to their right has invalidated them yet",
+                "Always sorted by value ascending forever",
+                "Deleted after one comparison only",
+                "Stored in a hash map keyed by value"
+            ],
+            "answerIndex": 0,
+            "whyRight": "You pop when a new element breaks the monotonic invariant.",
+            "whyWrong": [
+                "",
+                "The structure is monotonic while useful, not a permanent global sort container.",
+                "Multiple comparisons across the scan are normal.",
+                "Maps alone do not maintain the left-to-right candidate order."
+            ]
+        }
+    ]
+}

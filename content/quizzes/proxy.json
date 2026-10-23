@@ -1,0 +1,108 @@
+{
+    "slug": "proxy",
+    "title": "Proxy",
+    "items": [
+        {
+            "prompt": "Proxy stands in to control?",
+            "choices": [
+                "Whether/when the real object is reached",
+                "The CSS cascade",
+                "DNS TTLs only",
+                "Sort order of arrays"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Access control, lazy load, remote stub, protection.",
+            "whyWrong": [
+                "",
+                "CSS unrelated.",
+                "DNS may be an analogy for caching but not the OO proxy.",
+                "Sorting unrelated."
+            ]
+        },
+        {
+            "prompt": "Virtual proxy often?",
+            "choices": [
+                "Lazy-loads an expensive object on first use",
+                "Eagerly loads everything at process start always",
+                "Deletes the real object",
+                "Sorts children"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Delay cost until needed.",
+            "whyWrong": [
+                "",
+                "Eager is the opposite.",
+                "Deletion is not the goal.",
+                "Sorting unrelated."
+            ]
+        },
+        {
+            "prompt": "Protection proxy enforces?",
+            "choices": [
+                "Authorization before forwarding",
+                "Faster CPUs",
+                "Alphabetical method names",
+                "UDP only"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Gate the real subject.",
+            "whyWrong": [
+                "",
+                "Not about CPU.",
+                "Naming unrelated.",
+                "Transport unrelated."
+            ]
+        },
+        {
+            "prompt": "Remote proxy represents?",
+            "choices": [
+                "An object in another address space",
+                "A local decorator adding compression only always",
+                "A heap node",
+                "A BST"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Stub forwards across the network.",
+            "whyWrong": [
+                "",
+                "Compression may be a decorator.",
+                "Heaps unrelated.",
+                "BSTs unrelated."
+            ]
+        },
+        {
+            "prompt": "Proxy vs Decorator again: proxy’s primary intent is?",
+            "choices": [
+                "Access/lifecycle control of the real instance",
+                "Adding optional features orthogonally as the main story",
+                "Sorting",
+                "Hashing"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Control reachability; decorator’s story is added responsibilities.",
+            "whyWrong": [
+                "",
+                "Feature stacking is decorator-first.",
+                "Sorting no.",
+                "Hashing no."
+            ]
+        },
+        {
+            "prompt": "Caching proxy should still define?",
+            "choices": [
+                "Coherence/TTL rules for stale entries",
+                "Infinite cache without policy",
+                "No keys",
+                "Only POST bodies as cache keys blindly"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Incorrect cache policy is a correctness bug.",
+            "whyWrong": [
+                "",
+                "Policy required.",
+                "Keys required.",
+                "POST caching is subtle/dangerous."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+{
+    "slug": "recursion",
+    "title": "Recursion",
+    "items": [
+        {
+            "prompt": "A complete recursive story must name?",
+            "choices": [
+                "Base case, smaller subproblem, and what the stack holds",
+                "Only the base case",
+                "Only the recursive call",
+                "A hash map of all frames"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Without those three, the algorithm is hand-wavy.",
+            "whyWrong": [
+                "",
+                "Base alone does not shrink the problem.",
+                "Calls without a base diverge.",
+                "Maps are optional memo tools, not the definition."
+            ]
+        },
+        {
+            "prompt": "Tail recursion specifically means?",
+            "choices": [
+                "The recursive call is the final action of the function",
+                "The function never returns a value",
+                "There are two recursive calls",
+                "The base case is optional"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Nothing happens after the call returns — compilers may reuse the frame.",
+            "whyWrong": [
+                "",
+                "Values can still return through the tail call.",
+                "Two calls usually break tail form.",
+                "Base cases remain required."
+            ]
+        },
+        {
+            "prompt": "Deep recursion on large n risks?",
+            "choices": [
+                "Stack overflow / depth limits",
+                "Faster CPU caches always",
+                "Guaranteed O(1) space",
+                "Automatic parallel speedup"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Each frame consumes stack until the base returns.",
+            "whyWrong": [
+                "",
+                "Deep stacks hurt caches.",
+                "Space tracks depth unless optimized.",
+                "Recursion does not auto-parallelize."
+            ]
+        },
+        {
+            "prompt": "Converting recursion to iteration often uses an explicit?",
+            "choices": [
+                "Stack (or rewriting as a loop with your own state)",
+                "Only a queue of random nodes",
+                "Union-find",
+                "A Bloom filter"
+            ],
+            "answerIndex": 0,
+            "whyRight": "You simulate the call stack or find a closed loop form.",
+            "whyWrong": [
+                "",
+                "Queues change the order (BFS).",
+                "DSU is for components.",
+                "Bloom filters are probabilistic sets."
+            ]
+        },
+        {
+            "prompt": "Memoization helps recursion when?",
+            "choices": [
+                "Overlapping subproblems repeat the same arguments",
+                "Every subproblem is unique",
+                "The graph is a pure tree with no repeats",
+                "You only need the base case"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Caching repeated argument tuples avoids exponential rework.",
+            "whyWrong": [
+                "",
+                "Unique subproblems gain little from a cache.",
+                "Trees without overlap need no memo.",
+                "Base cases alone do not motivate memo tables."
+            ]
+        },
+        {
+            "prompt": "Mutual recursion (A calls B calls A) still needs?",
+            "choices": [
+                "A reachable base that stops the cycle of calls",
+                "Infinite loops by design",
+                "No parameters",
+                "Global mutable depth only"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Some path must hit a case that does not call onward.",
+            "whyWrong": [
+                "",
+                "Infinite mutual calls are bugs.",
+                "Parameters usually carry the shrinking measure.",
+                "Globals are a poor substitute for clear base cases."
+            ]
+        }
+    ]
+}

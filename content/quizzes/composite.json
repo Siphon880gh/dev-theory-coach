@@ -1,0 +1,108 @@
+{
+    "slug": "composite",
+    "title": "Composite",
+    "items": [
+        {
+            "prompt": "Composite lets clients treat?",
+            "choices": [
+                "One item and a group via the same interface",
+                "Only leaves",
+                "Only containers",
+                "Random unrelated types"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Uniform interface over trees of parts.",
+            "whyWrong": [
+                "",
+                "Leaves and composites share the API.",
+                "Containers participate too.",
+                "Types must share the component contract."
+            ]
+        },
+        {
+            "prompt": "Classic example?",
+            "choices": [
+                "UI widget trees / file-directory trees",
+                "Dijkstra heaps",
+                "HTTP status enums",
+                "Thread priorities"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Part-whole hierarchies.",
+            "whyWrong": [
+                "",
+                "Heaps are different.",
+                "Enums unrelated.",
+                "Priorities unrelated."
+            ]
+        },
+        {
+            "prompt": "operation() on a composite usually?",
+            "choices": [
+                "Delegates to children and combines results",
+                "Ignores children",
+                "Deletes the tree",
+                "Sorts globally"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Recursive structure.",
+            "whyWrong": [
+                "",
+                "Children are the point.",
+                "Deleting is not the pattern.",
+                "Sorting optional/unrelated."
+            ]
+        },
+        {
+            "prompt": "Risk: assuming every component has children leads to?",
+            "choices": [
+                "Awkward no-ops on leaves or type checks",
+                "Perfect APIs always",
+                "Faster CPUs",
+                "Free clustering"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Design leaf vs composite methods carefully.",
+            "whyWrong": [
+                "",
+                "Leaf/composite tension is classic.",
+                "CPU unrelated.",
+                "Clustering unrelated."
+            ]
+        },
+        {
+            "prompt": "Composite vs Decorator?",
+            "choices": [
+                "Composite builds part-whole trees; Decorator wraps one peer to add behavior",
+                "Identical",
+                "Composite always adds logging",
+                "Decorator always has many children"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Tree of children vs single wrap.",
+            "whyWrong": [
+                "",
+                "Different intents.",
+                "Logging is a decorator example.",
+                "Decorators wrap one."
+            ]
+        },
+        {
+            "prompt": "Pricing a bundle of products as one Product interface is?",
+            "choices": [
+                "Composite",
+                "Singleton",
+                "Adapter only",
+                "BFS"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Bundle is a composite product.",
+            "whyWrong": [
+                "",
+                "Not uniqueness.",
+                "Adapter may help foreign pricing APIs but the structure is composite.",
+                "BFS no."
+            ]
+        }
+    ]
+}

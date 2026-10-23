@@ -1,0 +1,108 @@
+{
+    "slug": "read-and-write-paths",
+    "title": "Read and write paths",
+    "items": [
+        {
+            "prompt": "A design narrative should include?",
+            "choices": [
+                "One happy read and one happy write naming the rows touched",
+                "Only a logo diagram",
+                "Only failure cases",
+                "Only class UML"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Paths make the data model real.",
+            "whyWrong": [
+                "",
+                "Logos are not paths.",
+                "Failures come after happy paths.",
+                "UML without paths is shallow."
+            ]
+        },
+        {
+            "prompt": "Read path through a cache should say what on miss?",
+            "choices": [
+                "Who fills the cache and with what TTL/invalidation",
+                "That misses never happen",
+                "That the client retries forever silently",
+                "That DNS fills rows"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Miss handling is part of correctness.",
+            "whyWrong": [
+                "",
+                "Misses happen.",
+                "Silent infinite retries hide bugs.",
+                "DNS is naming, not row fill."
+            ]
+        },
+        {
+            "prompt": "Write path that fans out to 3 stores risks?",
+            "choices": [
+                "Partial failure / inconsistency without a transaction or outbox story",
+                "Guaranteed atomicity automatically",
+                "Lower latency always",
+                "No need for ids"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Name the failure if step 2 succeeds and step 3 fails.",
+            "whyWrong": [
+                "",
+                "Distributed writes are not auto-atomic.",
+                "Fanout often adds latency.",
+                "Ids still matter."
+            ]
+        },
+        {
+            "prompt": "CQRS-ish split (different read model) is justified when?",
+            "choices": [
+                "Read shape diverges hard from write model and scale differs",
+                "You want more buzzwords",
+                "Tables must be identical",
+                "There is one QPS total"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Separate models pay for themselves under divergent loads.",
+            "whyWrong": [
+                "",
+                "Buzzwords are not justification.",
+                "Identical tables are not CQRS.",
+                "Tiny scale may not need it."
+            ]
+        },
+        {
+            "prompt": "“Who owns the source of truth on write?” matters because?",
+            "choices": [
+                "Replicas and caches must know what to follow",
+                "Truth is optional",
+                "Clients always own durable truth",
+                "Load balancers store rows"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Ambiguous ownership causes split brains.",
+            "whyWrong": [
+                "",
+                "Truth is required.",
+                "Clients are not durable stores.",
+                "LBs route; they do not own rows."
+            ]
+        },
+        {
+            "prompt": "End-to-end write latency budget should include?",
+            "choices": [
+                "Auth, validate, durable store ack, any sync side effects",
+                "Only the JSON parse",
+                "Only TLS handshake",
+                "Only GC"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Users feel the whole critical path.",
+            "whyWrong": [
+                "",
+                "Parse is a slice.",
+                "TLS is a slice.",
+                "GC is noise unless dominant."
+            ]
+        }
+    ]
+}

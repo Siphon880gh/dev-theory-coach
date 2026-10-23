@@ -1,0 +1,108 @@
+{
+    "slug": "state",
+    "title": "State",
+    "items": [
+        {
+            "prompt": "State pattern makes behavior depend on?",
+            "choices": [
+                "The current mode, with transitions centralized",
+                "A random number only",
+                "Global UI theme",
+                "SQL isolation level only"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Each state object handles events differently.",
+            "whyWrong": [
+                "",
+                "Randomness is not the pattern.",
+                "Themes are orthogonal.",
+                "DB isolation is different."
+            ]
+        },
+        {
+            "prompt": "Prefer State when?",
+            "choices": [
+                "Many transitions + mode-specific behavior clutter conditionals",
+                "You have one boolean flag forever",
+                "You need a sort algorithm swap only",
+                "You need multicast events"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Explicit states beat tangled flags.",
+            "whyWrong": [
+                "",
+                "One flag can stay a boolean.",
+                "Algorithm swap is Strategy.",
+                "Multicast is Observer."
+            ]
+        },
+        {
+            "prompt": "Transitions should be?",
+            "choices": [
+                "Written in one place (state objects or a table)",
+                "Scattered as magic numbers in callers",
+                "Impossible",
+                "Only in DNS"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Centralizing transitions keeps the machine understandable.",
+            "whyWrong": [
+                "",
+                "Scattering causes illegal moves.",
+                "Transitions are the point.",
+                "DNS no."
+            ]
+        },
+        {
+            "prompt": "Illegal transition handling is part of?",
+            "choices": [
+                "The state machine’s contract",
+                "Ignoring all events",
+                "Deleting states at runtime randomly",
+                "CSS :hover only"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Say what happens on a bad event in this mode.",
+            "whyWrong": [
+                "",
+                "Ignoring may be a choice but must be explicit.",
+                "Random deletes are chaos.",
+                "CSS no."
+            ]
+        },
+        {
+            "prompt": "State vs Strategy?",
+            "choices": [
+                "State changes over time via transitions; Strategy is chosen policy without that machine",
+                "No difference",
+                "State cannot use objects",
+                "Strategy owns transitions"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Time-varying mode vs pluggable algorithm.",
+            "whyWrong": [
+                "",
+                "They differ.",
+                "State often uses objects.",
+                "Strategy does not define the transition graph."
+            ]
+        },
+        {
+            "prompt": "Embedding a state enum + switch is OK when?",
+            "choices": [
+                "Few states and rare growth",
+                "You expect dozens of states next week",
+                "You need hierarchical statecharts tomorrow",
+                "Distributed sagas span companies"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Small machines need not be patternized.",
+            "whyWrong": [
+                "",
+                "Growth pushes toward explicit State.",
+                "Complex charts need richer tools.",
+                "Sagas are a different problem."
+            ]
+        }
+    ]
+}

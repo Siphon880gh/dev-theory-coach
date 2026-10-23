@@ -1,0 +1,108 @@
+{
+    "slug": "storage-and-indexes",
+    "title": "Storage and indexes",
+    "items": [
+        {
+            "prompt": "Match storage engine to?",
+            "choices": [
+                "Access path (point lookup, range, append, full text)",
+                "Logo colors",
+                "Investor deck",
+                "Number of microservices alone"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Workloads pick KV vs document vs RDB vs search vs queue.",
+            "whyWrong": [
+                "",
+                "Cosmetics no.",
+                "Decks no.",
+                "Service count ≠ access path."
+            ]
+        },
+        {
+            "prompt": "B-tree index helps?",
+            "choices": [
+                "Ordered point/range lookups",
+                "Perfect for every write-heavy random key without cost",
+                "Only full table scans",
+                "DNS resolution"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Trees maintain order for comparisons and ranges.",
+            "whyWrong": [
+                "",
+                "Indexes tax writes.",
+                "Scans are what indexes avoid.",
+                "DNS unrelated."
+            ]
+        },
+        {
+            "prompt": "LSM-tree storage favors?",
+            "choices": [
+                "High write ingest with compaction tradeoffs on reads",
+                "Only pure random reads with no writes",
+                "Immutable single-row systems",
+                "CPU-less designs"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Writes append; reads may touch multiple levels.",
+            "whyWrong": [
+                "",
+                "Read-optimized B-trees differ.",
+                "Rows still update logically.",
+                "CPUs exist."
+            ]
+        },
+        {
+            "prompt": "Covering index means?",
+            "choices": [
+                "Query can be answered from the index without touching the heap/table",
+                "The index covers the server in stickers",
+                "All columns are always indexed",
+                "Indexes need no maintenance"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Include needed columns to avoid lookups.",
+            "whyWrong": [
+                "",
+                "Stickers pun.",
+                "Indexing everything hurts writes.",
+                "Maintenance is real."
+            ]
+        },
+        {
+            "prompt": "Hot partition from monotonic keys shows up as?",
+            "choices": [
+                "One shard/disk taking most writes",
+                "Perfect even load",
+                "Only read replicas burning",
+                "DNS flaps"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Time-ordered keys funnel to the newest partition.",
+            "whyWrong": [
+                "",
+                "Load is uneven.",
+                "Writes are the usual symptom.",
+                "DNS unrelated."
+            ]
+        },
+        {
+            "prompt": "Choosing Postgres vs wide-column vs object store — ask first?",
+            "choices": [
+                "What query must be fast and what consistency you need",
+                "Which blog post is newest",
+                "Which vendor gave swag",
+                "Whether JSON is trendy"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Requirements beat fashion.",
+            "whyWrong": [
+                "",
+                "Recency ≠ fit.",
+                "Swag ≠ fit.",
+                "JSON is orthogonal."
+            ]
+        }
+    ]
+}

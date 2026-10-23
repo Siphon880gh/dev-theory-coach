@@ -1,0 +1,108 @@
+{
+    "slug": "requirements",
+    "title": "Requirements",
+    "items": [
+        {
+            "prompt": "Split requirements into?",
+            "choices": [
+                "Behavior (what) vs bounds (how much / how fast / how safe)",
+                "Only database tables",
+                "Only class names",
+                "Only sprint points"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Different axes unlock different design moves.",
+            "whyWrong": [
+                "",
+                "Tables come after queries.",
+                "Classes are implementation.",
+                "Points are process."
+            ]
+        },
+        {
+            "prompt": "A feature that does not change the design should be?",
+            "choices": [
+                "Parked / dropped from the MVP sketch",
+                "Drawn as five new services",
+                "Used to avoid estimates",
+                "Hidden from the interviewer"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Protect depth for forces that bite.",
+            "whyWrong": [
+                "",
+                "Extra services add noise.",
+                "Estimates still matter.",
+                "Transparency is required."
+            ]
+        },
+        {
+            "prompt": "Latency SLOs affect?",
+            "choices": [
+                "Caching, colocating, async offload decisions",
+                "Only the logo",
+                "Only unit test count",
+                "Nothing architectural"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Tight p99 forces different topology than batch-friendly flows.",
+            "whyWrong": [
+                "",
+                "Logo unrelated.",
+                "Tests unrelated.",
+                "SLOs drive architecture."
+            ]
+        },
+        {
+            "prompt": "Durability vs availability tension is a?",
+            "choices": [
+                "Non-functional requirement tradeoff to name explicitly",
+                "Reason to skip replication talk",
+                "UI concern",
+                "Sorting problem"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Say which you optimize when they conflict.",
+            "whyWrong": [
+                "",
+                "Replication is exactly where this shows up.",
+                "UI no.",
+                "Sorting no."
+            ]
+        },
+        {
+            "prompt": "Clarify multi-tenant vs single-tenant early because?",
+            "choices": [
+                "Isolation, noisy neighbors, and key design change",
+                "It never matters",
+                "It only affects CSS",
+                "It forbids APIs"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Tenancy changes blast radius and data keys.",
+            "whyWrong": [
+                "",
+                "It matters a lot.",
+                "CSS no.",
+                "APIs still exist."
+            ]
+        },
+        {
+            "prompt": "When the prompt is ambiguous on scale, you should?",
+            "choices": [
+                "Propose assumptions and confirm",
+                "Invent infinite scale silently",
+                "Assume one user",
+                "Refuse all numbers"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Confirmed assumptions beat silent fantasy.",
+            "whyWrong": [
+                "",
+                "Silent infinity leads to over-design.",
+                "One user under-designs.",
+                "Numbers are needed."
+            ]
+        }
+    ]
+}

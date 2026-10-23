@@ -1,0 +1,108 @@
+{
+    "slug": "failure",
+    "title": "Failure",
+    "items": [
+        {
+            "prompt": "For one remote hop, name?",
+            "choices": [
+                "Timeout, retry policy, and idempotency key/strategy",
+                "Only the happy path forever",
+                "Only the programming language",
+                "Only the cloud region list"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Hops fail; policies must be explicit.",
+            "whyWrong": [
+                "",
+                "Happy-only designs lie.",
+                "Language ≠ failure policy.",
+                "Regions matter but are not the whole story."
+            ]
+        },
+        {
+            "prompt": "Retries without jitter cause?",
+            "choices": [
+                "Thundering herds aligned on the same backoff",
+                "Perfect smooth recovery",
+                "Guaranteed success",
+                "Lower load"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Synchronized retries amplify outages.",
+            "whyWrong": [
+                "",
+                "Herding is the opposite of smooth.",
+                "Success is not guaranteed.",
+                "Load spikes."
+            ]
+        },
+        {
+            "prompt": "Circuit breakers open when?",
+            "choices": [
+                "Error rate/latency crosses a threshold so callers fail fast",
+                "Forever on first error always ideally",
+                "Never",
+                "Only on successful calls"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Protect both sides from repeated doomed calls.",
+            "whyWrong": [
+                "",
+                "First-error forever is too hair-trigger usually.",
+                "Closed forever ignores failure.",
+                "Success should close/half-open probes."
+            ]
+        },
+        {
+            "prompt": "Idempotency keys help when?",
+            "choices": [
+                "Clients retry a create/payment and must not double-apply",
+                "Reads of static files",
+                "Pure GETs without side effects only as a must",
+                "CSS downloads"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Side-effecting requests need dedupe.",
+            "whyWrong": [
+                "",
+                "Static reads need little idempotency machinery.",
+                "GETs should be safe already.",
+                "CSS no."
+            ]
+        },
+        {
+            "prompt": "Partial outage strategy includes?",
+            "choices": [
+                "Degrade features, shed load, serve stale where safe",
+                "Crash every instance immediately",
+                "Hide errors with infinite spinners only",
+                "Delete backups"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Graceful degradation beats total blackout.",
+            "whyWrong": [
+                "",
+                "Mass crash worsens impact.",
+                "Spinners without policy strand users.",
+                "Backups are for recovery."
+            ]
+        },
+        {
+            "prompt": "Deadlines/timeouts should be?",
+            "choices": [
+                "Budgets that shrink down the call chain",
+                "Infinite on every hop",
+                "Shorter than TCP connect only by accident without thought",
+                "Copied as 30s everywhere blindly without reason"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Parent deadlines bound children.",
+            "whyWrong": [
+                "",
+                "Infinite hangs burn resources.",
+                "Thoughtful values beat accidents.",
+                "Blind 30s is a smell."
+            ]
+        }
+    ]
+}

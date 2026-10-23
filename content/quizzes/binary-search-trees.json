@@ -1,0 +1,108 @@
+{
+    "slug": "binary-search-trees",
+    "title": "Binary search trees",
+    "items": [
+        {
+            "prompt": "BST search/insert/delete cost is best stated as?",
+            "choices": [
+                "O(h) where h is tree height",
+                "O(1) always",
+                "O(n) always",
+                "O(log n) even when skewed"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Each step drops to one child; steps track height.",
+            "whyWrong": [
+                "",
+                "Constant time would require hashing or arrays by index.",
+                "Linear always ignores balanced cases.",
+                "Skewed trees make h = n, so log n is not guaranteed."
+            ]
+        },
+        {
+            "prompt": "Without balancing, inserting sorted keys into a BST tends to produce?",
+            "choices": [
+                "A stick of height n",
+                "A perfectly complete tree",
+                "A heap-ordered array shape",
+                "A hash table"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Each key goes right (or left), deepening one path.",
+            "whyWrong": [
+                "",
+                "Sorted inserts do not self-balance a plain BST.",
+                "Heap shape is a different structure.",
+                "Hash tables are separate."
+            ]
+        },
+        {
+            "prompt": "Inorder successor of a node with a right child is?",
+            "choices": [
+                "The leftmost node in the right subtree",
+                "The parent always",
+                "The rightmost node in the left subtree",
+                "Any child"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Next larger key sits at the minimum of the right subtree.",
+            "whyWrong": [
+                "",
+                "Parent is only sometimes the successor (no right child case).",
+                "Rightmost left subtree is the predecessor pattern.",
+                "Arbitrary children break order."
+            ]
+        },
+        {
+            "prompt": "AVL/red-black trees buy what guarantee?",
+            "choices": [
+                "Height O(log n) after inserts/deletes",
+                "O(1) successor without extra links",
+                "No rotations ever",
+                "Stable sort of input order"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Balance invariants keep height logarithmic.",
+            "whyWrong": [
+                "",
+                "Successor still walks; threaded trees are optional.",
+                "Rotations are how they rebalance.",
+                "Input order stability is not the BST balance claim."
+            ]
+        },
+        {
+            "prompt": "Why might an interview prefer a hash set over a BST for “seen so far”?",
+            "choices": [
+                "Expected O(1) vs O(log n) with no need for ordered iteration",
+                "BSTs cannot store integers",
+                "Hash sets give sorted iteration free",
+                "BSTs use less memory always"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Membership without order favors hashing.",
+            "whyWrong": [
+                "",
+                "BSTs store any ordered keys including ints.",
+                "Sorted iteration is the BST strength, not the hash set.",
+                "Memory depends on load and node overhead; not a universal win."
+            ]
+        },
+        {
+            "prompt": "Deleting a BST node with two children commonly replaces it with?",
+            "choices": [
+                "Its inorder successor or predecessor",
+                "A random leaf from another tree",
+                "The root only",
+                "Null and a full rebuild"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Successor/predecessor preserve the search invariant with one splice.",
+            "whyWrong": [
+                "",
+                "Random leaves break ordering.",
+                "Root replacement is unrelated.",
+                "Full rebuild is unnecessary."
+            ]
+        }
+    ]
+}

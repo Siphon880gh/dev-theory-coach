@@ -1,0 +1,108 @@
+{
+    "slug": "binary-search",
+    "title": "Binary search",
+    "items": [
+        {
+            "prompt": "Binary search requires the search space to be?",
+            "choices": [
+                "Ordered so a midpoint test discards half",
+                "A linked list",
+                "Hash-partitioned",
+                "A random permutation"
+            ],
+            "answerIndex": 0,
+            "whyRight": "The invariant depends on sorted order (or a monotonic predicate).",
+            "whyWrong": [
+                "",
+                "Lists make mid access O(n).",
+                "Hashing is a different lookup.",
+                "Random order breaks discard logic."
+            ]
+        },
+        {
+            "prompt": "Classic binary search time on an array is?",
+            "choices": [
+                "O(log n)",
+                "O(n)",
+                "O(1)",
+                "O(n log n)"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Each step halves the remaining range.",
+            "whyWrong": [
+                "",
+                "Linear scan is the fallback without order.",
+                "Constant time would be direct indexing of the answer.",
+                "n log n is sorting."
+            ]
+        },
+        {
+            "prompt": "The loop invariant should state?",
+            "choices": [
+                "Where the answer must still lie if it exists",
+                "That mid is always the answer",
+                "That left > right always",
+                "That the array is unsorted"
+            ],
+            "answerIndex": 0,
+            "whyRight": "You maintain a range that still contains any feasible answer.",
+            "whyWrong": [
+                "",
+                "Mid is only a probe.",
+                "left>right is the termination condition, not the ongoing invariant.",
+                "Unsorted arrays break the method."
+            ]
+        },
+        {
+            "prompt": "Binary search on answer (“minimize feasible X”) needs?",
+            "choices": [
+                "A monotonic predicate: if X works, larger/smaller also works as defined",
+                "Random sampling of X",
+                "Dijkstra on X",
+                "Four nested loops"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Monotonicity lets you discard half the candidate Xs.",
+            "whyWrong": [
+                "",
+                "Random sampling does not certify optima.",
+                "Dijkstra is pathfinding.",
+                "Nested loops are brute force."
+            ]
+        },
+        {
+            "prompt": "Off-by-one bugs in binary search usually come from?",
+            "choices": [
+                "Updating left/right without preserving the invariant",
+                "Using too much memory",
+                "Hash collisions",
+                "Floating heapify"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Mishandled mid exclusion duplicates or skips the answer.",
+            "whyWrong": [
+                "",
+                "Space is tiny.",
+                "No hashing required.",
+                "Heaps are unrelated."
+            ]
+        },
+        {
+            "prompt": "Why is binary search a poor fit on a singly linked list?",
+            "choices": [
+                "Finding the midpoint costs linear time per probe",
+                "Lists are always sorted",
+                "Binary search needs stacks",
+                "Lists forbid comparison"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Without random access, each mid walk kills the log n benefit.",
+            "whyWrong": [
+                "",
+                "Sorted lists still lack O(1) mid.",
+                "Stacks are optional.",
+                "Comparisons work fine; access does not."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+{
+    "slug": "command",
+    "title": "Command",
+    "items": [
+        {
+            "prompt": "Command represents a request as?",
+            "choices": [
+                "An object you can queue, log, or undo",
+                "A raw function pointer only with no data",
+                "A SQL transaction log exclusively",
+                "A CSS animation"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Reify the action.",
+            "whyWrong": [
+                "",
+                "Commands carry data + execute.",
+                "DB logs are related idea at infra level.",
+                "CSS no."
+            ]
+        },
+        {
+            "prompt": "Undo stacks store?",
+            "choices": [
+                "Command objects with undo/execute pairs",
+                "Random GUIDs without meaning",
+                "Only integers",
+                "DNS records"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Each entry knows how to reverse itself.",
+            "whyWrong": [
+                "",
+                "GUIDs alone lack behavior.",
+                "Ints are insufficient.",
+                "DNS no."
+            ]
+        },
+        {
+            "prompt": "Macro commands compose?",
+            "choices": [
+                "Several commands into one executable unit",
+                "Only observers",
+                "Only factories",
+                "Only heaps"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Batch actions as one command.",
+            "whyWrong": [
+                "",
+                "Observer separate.",
+                "Factory separate.",
+                "Heaps separate."
+            ]
+        },
+        {
+            "prompt": "GUI button binding often uses Command to?",
+            "choices": [
+                "Decouple invoker (button) from the action logic",
+                "Embed SQL in the widget",
+                "Force Singletons",
+                "Run Dijkstra"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Button executes a command interface.",
+            "whyWrong": [
+                "",
+                "SQL in widgets is a smell.",
+                "Singleton unrelated.",
+                "Dijkstra unrelated."
+            ]
+        },
+        {
+            "prompt": "Command vs Strategy?",
+            "choices": [
+                "Command is a reified request (often with undo/queue); Strategy is a swappable algorithm policy",
+                "Identical",
+                "Command cannot execute",
+                "Strategy stores undo"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Different intents.",
+            "whyWrong": [
+                "",
+                "They differ.",
+                "Commands execute.",
+                "Undo is Command’s story."
+            ]
+        },
+        {
+            "prompt": "Audit logging of user actions maps to?",
+            "choices": [
+                "Persisting command objects / events",
+                "Deleting history",
+                "Only metrics gauges without action names",
+                "CSS"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Commands/events are natural audit records.",
+            "whyWrong": [
+                "",
+                "History is the point.",
+                "Gauges lack semantic action payload.",
+                "CSS no."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+{
+    "slug": "capstone-url-shortener",
+    "title": "Capstone: URL shortener",
+    "items": [
+        {
+            "prompt": "URL shortener is mostly?",
+            "choices": [
+                "Read-heavy redirects with a simple write to create mappings",
+                "Write-heavy video transcode",
+                "A spanning-tree protocol",
+                "A compiler"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Many redirects per create.",
+            "whyWrong": [
+                "",
+                "Transcode is a different system.",
+                "Networking protocols ≠ this product.",
+                "Compilers unrelated."
+            ]
+        },
+        {
+            "prompt": "Core data model is?",
+            "choices": [
+                "short_code → long_url (+ metadata)",
+                "A full social graph",
+                "Blockchain of clicks mandatory",
+                "Only DNS CNAME without storage"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Point lookup by code is the hot path.",
+            "whyWrong": [
+                "",
+                "Social graph is a feed/capstone elsewhere.",
+                "Blockchain is unnecessary.",
+                "DNS alone does not store arbitrary targets."
+            ]
+        },
+        {
+            "prompt": "Code generation must avoid?",
+            "choices": [
+                "Collisions and predictable sequential enumeration if abuse matters",
+                "Using any randomness ever",
+                "Having a primary key",
+                "HTTPS"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Uniqueness + optionally hard-to-guess codes.",
+            "whyWrong": [
+                "",
+                "Randomness is common.",
+                "Keys exist.",
+                "HTTPS is orthogonal/good."
+            ]
+        },
+        {
+            "prompt": "Caching redirects is attractive because?",
+            "choices": [
+                "Popular codes repeat; immutable mappings cache well",
+                "Mappings change every millisecond always",
+                "Caches cannot store URLs",
+                "Writes must always bust the entire CDN"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Stable mappings + Zipf popularity.",
+            "whyWrong": [
+                "",
+                "Mappings are mostly stable.",
+                "URLs cache fine.",
+                "Selective invalidation suffices."
+            ]
+        },
+        {
+            "prompt": "Analytics clicks should be?",
+            "choices": [
+                "Async via queue so redirects stay fast",
+                "Synchronously written on the redirect critical path always",
+                "Ignored as impossible",
+                "Stored only in browser memory"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Do not block redirect on analytics durability.",
+            "whyWrong": [
+                "",
+                "Sync analytics add latency/failure modes.",
+                "Analytics are common requirements.",
+                "Browser memory is not your warehouse."
+            ]
+        },
+        {
+            "prompt": "Scaling writes of new links is usually easier than?",
+            "choices": [
+                "Ultra-hot read codes without cache — so put CDN/cache first",
+                "Avoiding a database entirely",
+                "Skipping uniqueness checks",
+                "Using one global lock for all reads"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Reads dominate; cache the hot path.",
+            "whyWrong": [
+                "",
+                "You still need durable storage.",
+                "Uniqueness matters.",
+                "Global locks kill scale."
+            ]
+        }
+    ]
+}

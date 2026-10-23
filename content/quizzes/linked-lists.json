@@ -1,0 +1,108 @@
+{
+    "slug": "linked-lists",
+    "title": "Linked lists",
+    "items": [
+        {
+            "prompt": "Given a pointer to a node, splicing it out of a doubly linked list is typically?",
+            "choices": [
+                "O(1)",
+                "O(n)",
+                "O(log n)",
+                "O(n log n)"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Neighbor pointers are rewritten locally.",
+            "whyWrong": [
+                "",
+                "You do not rescan from the head if you already hold the node (and its neighbors).",
+                "Trees are not involved.",
+                "Sorting cost does not apply."
+            ]
+        },
+        {
+            "prompt": "Reaching the i-th node from the head of a singly linked list costs?",
+            "choices": [
+                "O(i)",
+                "O(1)",
+                "O(log i)",
+                "O(1) amortized always"
+            ],
+            "answerIndex": 0,
+            "whyRight": "You walk i next pointers.",
+            "whyWrong": [
+                "",
+                "There is no address arithmetic like an array.",
+                "Binary lifting is not the basic list story.",
+                "Amortization does not make a single walk constant."
+            ]
+        },
+        {
+            "prompt": "Detect a cycle in a linked list with O(1) extra space. Classic tool?",
+            "choices": [
+                "Floyd’s two pointers (slow/fast)",
+                "Hash every node then sort",
+                "Convert to array then binary search",
+                "Dijkstra on an implicit graph"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Slow and fast meet iff a cycle exists.",
+            "whyWrong": [
+                "",
+                "Hashing works but uses linear space.",
+                "Arrays and binary search are a different representation.",
+                "Shortest-path algorithms are overkill."
+            ]
+        },
+        {
+            "prompt": "Why are middle inserts cheaper on a list than on an array once you hold the neighbor?",
+            "choices": [
+                "No need to shift a contiguous tail",
+                "Lists always have O(1) index access",
+                "Arrays cannot insert at all",
+                "Cache lines never matter for arrays"
+            ],
+            "answerIndex": 0,
+            "whyRight": "A list rewires pointers; an array must move every later element.",
+            "whyWrong": [
+                "",
+                "Index access on a list is still a walk.",
+                "Arrays insert; they just shift.",
+                "Cache usually favors arrays; that does not erase the shift cost."
+            ]
+        },
+        {
+            "prompt": "Reverse a singly linked list iteratively. What do you update each step?",
+            "choices": [
+                "next pointers while walking, keeping prev/curr",
+                "Only the head reference once at the end",
+                "A stack of values then rebuild as an array",
+                "Random edges until sorted"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Each node’s next flips to the previous node.",
+            "whyWrong": [
+                "",
+                "One head update cannot reverse all links.",
+                "Value stacks miss the pointer-rewriting lesson.",
+                "Random rewiring is not an algorithm."
+            ]
+        },
+        {
+            "prompt": "Interview prompt: “delete a node in O(1) given only that node” on a singly list (not tail). Trick?",
+            "choices": [
+                "Copy the next node’s value into this node, then bypass next",
+                "Walk from head every time",
+                "Allocate a new list without that value",
+                "It is impossible without the head always"
+            ],
+            "answerIndex": 0,
+            "whyRight": "You cannot easily fix the previous next without prev; copying next fakes the delete.",
+            "whyWrong": [
+                "",
+                "Walking from head is O(n) and needs the head.",
+                "Full rebuild is not O(1).",
+                "The classic trick exists for non-tail nodes."
+            ]
+        }
+    ]
+}

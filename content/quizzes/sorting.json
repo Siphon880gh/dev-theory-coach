@@ -1,0 +1,108 @@
+{
+    "slug": "sorting",
+    "title": "Sorting",
+    "items": [
+        {
+            "prompt": "Comparison-based sorting lower bound in the algebraic decision-tree model is?",
+            "choices": [
+                "Ω(n log n)",
+                "Ω(n)",
+                "Ω(log n)",
+                "Ω(n²)"
+            ],
+            "answerIndex": 0,
+            "whyRight": "There are n! permutations; each comparison has two outcomes.",
+            "whyWrong": [
+                "",
+                "Linear is achievable only with stronger assumptions (counting/radix).",
+                "Log n cannot separate n! orders.",
+                "Quadratic is an upper bound for slow sorts, not the lower bound."
+            ]
+        },
+        {
+            "prompt": "Stable sort means?",
+            "choices": [
+                "Equal keys keep their original relative order",
+                "The algorithm never uses extra memory",
+                "Runtime is always O(n)",
+                "The array is sorted descending"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Stability preserves ties.",
+            "whyWrong": [
+                "",
+                "Stability ≠ in-place.",
+                "Linear time needs special keys.",
+                "Direction is independent of stability."
+            ]
+        },
+        {
+            "prompt": "When keys are integers in a small range, a strong option is?",
+            "choices": [
+                "Counting / radix sort",
+                "Only heap sort",
+                "Only binary search",
+                "DFS"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Non-comparison sorts exploit the range.",
+            "whyWrong": [
+                "",
+                "Heap sort is fine but comparison-based.",
+                "Binary search finds, does not sort.",
+                "DFS is graph search."
+            ]
+        },
+        {
+            "prompt": "Quicksort average vs worst case?",
+            "choices": [
+                "Average O(n log n), worst O(n²) on bad pivots",
+                "Always O(n)",
+                "Worst O(log n)",
+                "Average O(n²) only"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Balanced pivots give n log n; sorted inputs with naive pivots degrade.",
+            "whyWrong": [
+                "",
+                "Linear average is false for comparison quicksort.",
+                "Worst case is quadratic, not log.",
+                "Average is n log n."
+            ]
+        },
+        {
+            "prompt": "Mergesort’s usual extra space is?",
+            "choices": [
+                "Θ(n) for merge buffers",
+                "Θ(1) always in the classic top-down form",
+                "Θ(n²)",
+                "Θ(log n) data only with no recursion stack"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Merging two runs needs a temporary buffer (plus stack frames).",
+            "whyWrong": [
+                "",
+                "Classic mergesort is not in-place.",
+                "Quadratic buffers would be waste.",
+                "Stack is log n but data buffer is linear."
+            ]
+        },
+        {
+            "prompt": "Interview: pick a sort — name which axes?",
+            "choices": [
+                "Time bound, stability need, key type/range, memory",
+                "Only the language default name",
+                "Whether the array is 1-indexed",
+                "Favorite color of the pivot"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Those constraints decide mergesort vs quicksort vs counting/radix.",
+            "whyWrong": [
+                "",
+                "Defaults hide tradeoffs.",
+                "Indexing style is irrelevant.",
+                "Pivot aesthetics are not a criterion."
+            ]
+        }
+    ]
+}

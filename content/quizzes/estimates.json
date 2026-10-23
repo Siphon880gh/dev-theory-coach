@@ -1,0 +1,108 @@
+{
+    "slug": "estimates",
+    "title": "Estimates",
+    "items": [
+        {
+            "prompt": "QPS from “100M DAU, each opens the app 10 times, 1 request per open, even day” is about?",
+            "choices": [
+                "~10k QPS order of magnitude (1e9 requests/day ÷ 86400)",
+                "1 QPS",
+                "1e12 QPS",
+                "Exactly 100M QPS"
+            ],
+            "answerIndex": 0,
+            "whyRight": "1e9/8.64e4 ≈ 1e4; interviews want the order.",
+            "whyWrong": [
+                "",
+                "Far too low.",
+                "Far too high.",
+                "DAU is not QPS."
+            ]
+        },
+        {
+            "prompt": "Storage estimate needs?",
+            "choices": [
+                "Bytes per entity × entities × retention × replication factor",
+                "Only the programming language",
+                "CPU clock",
+                "Number of engineers"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Size the row, then multiply by count and copies.",
+            "whyWrong": [
+                "",
+                "Language is irrelevant to byte math.",
+                "CPU is compute.",
+                "Headcount is not capacity."
+            ]
+        },
+        {
+            "prompt": "Good interview estimate accuracy is?",
+            "choices": [
+                "Within ~10× (order of magnitude)",
+                "Exact to the byte",
+                "Only powers of 2 forever",
+                "Avoid numbers"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Orders of magnitude steer architecture; fake precision does not.",
+            "whyWrong": [
+                "",
+                "Byte-exact is theater.",
+                "Powers of 2 help but are not mandatory cosplay.",
+                "Numbers are required."
+            ]
+        },
+        {
+            "prompt": "Read-heavy vs write-heavy changes estimates how?",
+            "choices": [
+                "Cache/CDN and replica reads vs write throughput and lock/index costs",
+                "It never matters",
+                "Only affects font size",
+                "Forces mainframes"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Traffic shape picks the bottleneck class.",
+            "whyWrong": [
+                "",
+                "It is central.",
+                "UI unrelated.",
+                "Hardware brand is premature."
+            ]
+        },
+        {
+            "prompt": "Bandwidth back-of-envelope uses?",
+            "choices": [
+                "QPS × response bytes",
+                "Only disk RPM",
+                "Only GC pauses",
+                "Number of microservices"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Bytes on the wire per second.",
+            "whyWrong": [
+                "",
+                "Disk RPM is storage.",
+                "GC is latency noise.",
+                "Service count ≠ bandwidth."
+            ]
+        },
+        {
+            "prompt": "Why say assumptions out loud while estimating?",
+            "choices": [
+                "Interviewers can correct inputs; silence hides bad premises",
+                "Talking wastes time",
+                "Assumptions are forbidden",
+                "Only write them after coding"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Shared premises keep the design aligned.",
+            "whyWrong": [
+                "",
+                "Narration is graded.",
+                "Assumptions are expected.",
+                "Design interviews estimate before code."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+{
+    "slug": "observer",
+    "title": "Observer",
+    "items": [
+        {
+            "prompt": "Observer notifies?",
+            "choices": [
+                "Dependents when a subject changes",
+                "A single mandatory callback hardwired forever without list",
+                "Only databases",
+                "Only DNS servers"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Publish change; subscribers react.",
+            "whyWrong": [
+                "",
+                "Hardwired one callback is not the flexible list form.",
+                "DB triggers are cousins, not the OO pattern definition.",
+                "DNS no."
+            ]
+        },
+        {
+            "prompt": "Classic risks to name?",
+            "choices": [
+                "Leaks (forgot unsubscribe) and surprising notification order",
+                "That observers cannot exist",
+                "That subjects cannot hold lists",
+                "That events are illegal"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Lifecycle and ordering bite in interviews.",
+            "whyWrong": [
+                "",
+                "Observers exist widely.",
+                "Lists are normal.",
+                "Events are the point."
+            ]
+        },
+        {
+            "prompt": "Push vs pull observers differ in?",
+            "choices": [
+                "Whether the subject sends data or just “changed” for observers to query",
+                "TCP vs UDP only",
+                "SQL vs NoSQL",
+                "Sync vs async CPU clocks"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Data flow shape differs.",
+            "whyWrong": [
+                "",
+                "Transport is separate.",
+                "Storage is separate.",
+                "Clocks unrelated."
+            ]
+        },
+        {
+            "prompt": "Observer vs Mediator?",
+            "choices": [
+                "Mediator centralizes interaction; Observer is subject→many dependents",
+                "Identical",
+                "Mediator forbids any communication",
+                "Observer requires a database"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Hub topology vs direct subscription.",
+            "whyWrong": [
+                "",
+                "They differ.",
+                "Mediators enable structured comms.",
+                "No DB required."
+            ]
+        },
+        {
+            "prompt": "UI toolkit listeners are usually?",
+            "choices": [
+                "Observer/event subscription",
+                "Singleton only",
+                "Factory method only",
+                "BFS"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Widgets emit; listeners subscribe.",
+            "whyWrong": [
+                "",
+                "Singleton may coexist but is not the listener idea.",
+                "Factory is construction.",
+                "BFS is graphs."
+            ]
+        },
+        {
+            "prompt": "To avoid leaks in long-lived subjects?",
+            "choices": [
+                "Weak refs or explicit unsubscribe on teardown",
+                "Never unsubscribe",
+                "Hold observers forever without thought",
+                "Use more global static lists"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Lifecycle discipline is part of the design.",
+            "whyWrong": [
+                "",
+                "Leaks follow forgotten unsubs.",
+                "Forever holds pin memory.",
+                "More globals worsen leaks."
+            ]
+        }
+    ]
+}

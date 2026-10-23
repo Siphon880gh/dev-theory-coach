@@ -1,0 +1,108 @@
+{
+    "slug": "rate-limiting",
+    "title": "Rate limiting",
+    "items": [
+        {
+            "prompt": "Rate limits protect?",
+            "choices": [
+                "A boundary (IP, user, API key, tenant) from overload/abuse",
+                "Only the CSS file",
+                "DNS root",
+                "Unit tests"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Name the key you throttle.",
+            "whyWrong": [
+                "",
+                "CSS no.",
+                "DNS no.",
+                "Tests no."
+            ]
+        },
+        {
+            "prompt": "Token bucket vs leaky bucket mainly differ in?",
+            "choices": [
+                "How they treat bursts",
+                "Whether TCP exists",
+                "Database brands",
+                "OAuth logos"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Token bucket allows controlled bursts; leaky smooths more strictly.",
+            "whyWrong": [
+                "",
+                "Transport unrelated.",
+                "DB unrelated.",
+                "OAuth unrelated."
+            ]
+        },
+        {
+            "prompt": "Where to enforce limits?",
+            "choices": [
+                "At the edge/gateway and sometimes per-service for defense in depth",
+                "Only deep inside a shard randomly",
+                "Only on the laptop of the SRE",
+                "Nowhere if you have replicas"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Cheap rejection early saves origin work.",
+            "whyWrong": [
+                "",
+                "Deep-only wastes work.",
+                "Laptops are not production enforcers.",
+                "Replicas do not replace limits."
+            ]
+        },
+        {
+            "prompt": "429 responses should include?",
+            "choices": [
+                "Retry guidance (Retry-After) when possible",
+                "A stack trace of the limiter",
+                "User passwords",
+                "Nothing"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Clients need a backoff signal.",
+            "whyWrong": [
+                "",
+                "Stack traces leak internals.",
+                "Passwords never.",
+                "Empty 429s are hostile."
+            ]
+        },
+        {
+            "prompt": "Distributed rate limiting needs?",
+            "choices": [
+                "A shared counter/store or approximated gossip with known error",
+                "Only process-local memory for global fairness",
+                "Excel",
+                "Manual toggling each second"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Many nodes must agree on approximate budget.",
+            "whyWrong": [
+                "",
+                "Local-only is unfair globally.",
+                "Excel is not a control plane.",
+                "Humans cannot click at QPS."
+            ]
+        },
+        {
+            "prompt": "Burst allowance should match?",
+            "choices": [
+                "Real client behavior you want to permit without melting origin",
+                "Zero always",
+                "Infinite always",
+                "The number of microservices"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Product intent sets burst.",
+            "whyWrong": [
+                "",
+                "Zero may be too harsh.",
+                "Infinite is no limit.",
+                "Service count ≠ burst."
+            ]
+        }
+    ]
+}

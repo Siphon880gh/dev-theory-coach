@@ -1,0 +1,108 @@
+{
+    "slug": "caching",
+    "title": "Caching",
+    "items": [
+        {
+            "prompt": "Before celebrating hit rate, decide?",
+            "choices": [
+                "Invalidation / TTL / write-through story",
+                "The cache brand only",
+                "Font for dashboards",
+                "Number of replicas of the cache UI"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Stale data policy is the hard part.",
+            "whyWrong": [
+                "",
+                "Brand is secondary.",
+                "UI unrelated.",
+                "UI replicas unrelated."
+            ]
+        },
+        {
+            "prompt": "Cache stampede on expiry is mitigated by?",
+            "choices": [
+                "Locking/singleflight, soft TTL, or probabilistic early refresh",
+                "Deleting the database",
+                "Disabling reads",
+                "Randomizing all keys every ms"
+            ],
+            "answerIndex": 0,
+            "whyRight": "One filler refreshes; others wait or serve stale briefly.",
+            "whyWrong": [
+                "",
+                "DB deletion is not mitigation.",
+                "Disabling reads is an outage.",
+                "Key churn destroys hits."
+            ]
+        },
+        {
+            "prompt": "Write-through vs write-behind?",
+            "choices": [
+                "Through updates cache+store inline; behind buffers writes asynchronously",
+                "They are identical",
+                "Behind is always safer for durability",
+                "Through never uses a store"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Durability and latency trade off.",
+            "whyWrong": [
+                "",
+                "They differ.",
+                "Behind risks loss on crash.",
+                "Through still has a store."
+            ]
+        },
+        {
+            "prompt": "What belongs in a CDN edge cache?",
+            "choices": [
+                "Public, mostly immutable or explicitly purgeable responses",
+                "Per-user private secrets by default",
+                "Database primary pages",
+                "Unscoped PII HTML without care"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Edge is shared and multi-tenant.",
+            "whyWrong": [
+                "",
+                "Private secrets need tighter caches.",
+                "Primaries are origin DBs.",
+                "PII at edge needs careful controls."
+            ]
+        },
+        {
+            "prompt": "Negative caching means?",
+            "choices": [
+                "Caching “not found” to protect the origin",
+                "Caching only errors forever without TTL",
+                "Never caching",
+                "Caching negative numbers"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Repeated misses should not hammer origin.",
+            "whyWrong": [
+                "",
+                "Need TTLs on negatives too.",
+                "Caching remains useful.",
+                "Numeric sign is a pun."
+            ]
+        },
+        {
+            "prompt": "Session cache vs durable session store?",
+            "choices": [
+                "Cache can vanish; durable store must survive node loss if sessions matter",
+                "Caches are always durable",
+                "Stores should be ephemeral always",
+                "Cookies replace servers"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Know which layer is authoritative.",
+            "whyWrong": [
+                "",
+                "Caches evaporate.",
+                "Ephemeral-only loses logins.",
+                "Cookies hold ids, not always full state."
+            ]
+        }
+    ]
+}

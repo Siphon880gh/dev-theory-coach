@@ -1,0 +1,108 @@
+{
+    "slug": "singleton",
+    "title": "Singleton",
+    "items": [
+        {
+            "prompt": "Modern advice for “one shared instance”?",
+            "choices": [
+                "Pass it in from the composition root rather than global lookup",
+                "new it in every function",
+                "Hide it in thread-locals randomly",
+                "Put it in DNS"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Explicit injection beats hidden globals.",
+            "whyWrong": [
+                "",
+                "Per-call new breaks sharing.",
+                "Random thread-locals surprise.",
+                "DNS no."
+            ]
+        },
+        {
+            "prompt": "Classic Singleton hard problems include?",
+            "choices": [
+                "Hidden dependencies, testing pain, lifecycle/order issues",
+                "That it cannot exist",
+                "That APIs forbid sharing",
+                "That it sorts badly"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Global mutable single instances couple everything.",
+            "whyWrong": [
+                "",
+                "It exists widely.",
+                "Sharing is fine with injection.",
+                "Sorting unrelated."
+            ]
+        },
+        {
+            "prompt": "When is a process-wide single OK?",
+            "choices": [
+                "True process resource (e.g., curated connection pool) owned at the edge",
+                "Any random service class",
+                "Every DTO",
+                "Every string"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Scarcity/shared native resources — still inject them.",
+            "whyWrong": [
+                "",
+                "Most domain services need not be singletons.",
+                "DTOs are many.",
+                "Strings are many."
+            ]
+        },
+        {
+            "prompt": "Double-checked locking lore exists because?",
+            "choices": [
+                "Lazy init under concurrency is easy to get wrong",
+                "Singletons cannot be lazy",
+                "Locks are illegal",
+                "CPUs ignore memory"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Publish-safety matters; prefer simpler eager/holder patterns or DI containers.",
+            "whyWrong": [
+                "",
+                "Lazy is common.",
+                "Locks exist.",
+                "Memory models matter."
+            ]
+        },
+        {
+            "prompt": "In interviews prefer saying?",
+            "choices": [
+                "“I’ll inject a shared X” over “I’ll Singleton.getInstance everywhere”",
+                "“Global static is always best”",
+                "“Never share anything”",
+                "“Singleton fixes race conditions”"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Composition-root sharing shows design maturity.",
+            "whyWrong": [
+                "",
+                "Globals are a smell.",
+                "Sharing is sometimes required.",
+                "Singleton does not fix races by itself."
+            ]
+        },
+        {
+            "prompt": "Enum singleton (Java) mainly buys?",
+            "choices": [
+                "Serialization/reflection safety for a single constant instance",
+                "Faster CPU always",
+                "Automatic clustering across machines",
+                "Free rate limiting"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Language-level single instance semantics.",
+            "whyWrong": [
+                "",
+                "Not about CPU.",
+                "Not distributed by default.",
+                "Not rate limits."
+            ]
+        }
+    ]
+}

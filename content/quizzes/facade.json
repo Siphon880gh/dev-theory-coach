@@ -1,0 +1,108 @@
+{
+    "slug": "facade",
+    "title": "Facade",
+    "items": [
+        {
+            "prompt": "Facade offers?",
+            "choices": [
+                "One simple operation in front of a subsystem sequence",
+                "A way to notify many listeners",
+                "A single global instance only",
+                "A binary heap"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Hide orchestration complexity.",
+            "whyWrong": [
+                "",
+                "Observer is notification.",
+                "Singleton is uniqueness.",
+                "Heaps unrelated."
+            ]
+        },
+        {
+            "prompt": "Prefer Facade when callers should not?",
+            "choices": [
+                "Orchestrate many subsystem types themselves",
+                "Call any API ever",
+                "Use HTTP",
+                "Write tests"
+            ],
+            "answerIndex": 0,
+            "whyRight": "One entry method sequences the steps.",
+            "whyWrong": [
+                "",
+                "APIs still exist behind the facade.",
+                "HTTP may be inside.",
+                "Tests can target facades."
+            ]
+        },
+        {
+            "prompt": "Facade vs Adapter?",
+            "choices": [
+                "Facade simplifies a subsystem; Adapter converts one interface to another",
+                "Identical",
+                "Facade always wraps one foreign method only",
+                "Adapter always orchestrates five services"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Simplify vs translate.",
+            "whyWrong": [
+                "",
+                "Different intents.",
+                "Facades can wrap many types.",
+                "Adapters can be thin."
+            ]
+        },
+        {
+            "prompt": "Risk of a fat facade?",
+            "choices": [
+                "It becomes a god object knowing everything",
+                "It is always too thin",
+                "It forbids subsystems",
+                "It sorts wrong"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Keep facades coarse but cohesive.",
+            "whyWrong": [
+                "",
+                "Thin can be fine.",
+                "Subsystems remain.",
+                "Sorting unrelated."
+            ]
+        },
+        {
+            "prompt": "Library authors use facades to?",
+            "choices": [
+                "Provide a happy-path API over advanced internals",
+                "Hide all extension points forever ideally",
+                "Replace documentation",
+                "Ban configuration"
+            ],
+            "answerIndex": 0,
+            "whyRight": "80% use case in one call; power APIs remain.",
+            "whyWrong": [
+                "",
+                "Extension points often remain.",
+                "Docs still needed.",
+                "Config often remains."
+            ]
+        },
+        {
+            "prompt": "In interviews, a facade box on a diagram means?",
+            "choices": [
+                "A boundary that hides several collaborators behind one call",
+                "That no services exist",
+                "That sharding is done",
+                "That CAP is solved"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Clarify what is hidden behind it.",
+            "whyWrong": [
+                "",
+                "Services may sit behind.",
+                "Sharding separate.",
+                "CAP separate."
+            ]
+        }
+    ]
+}

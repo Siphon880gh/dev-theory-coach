@@ -1,0 +1,108 @@
+{
+    "slug": "intervals",
+    "title": "Intervals",
+    "items": [
+        {
+            "prompt": "Merge overlapping intervals first step is usually?",
+            "choices": [
+                "Sort by start time",
+                "Sort by length only",
+                "Hash endpoints into a set and stop",
+                "DFS the intervals as a graph always"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Sorted starts let one sweep merge overlaps.",
+            "whyWrong": [
+                "",
+                "Length alone does not order overlaps.",
+                "A set loses interval pairing.",
+                "Graphs are optional for some variants, not the merge baseline."
+            ]
+        },
+        {
+            "prompt": "After sorting by start, merge when?",
+            "choices": [
+                "Next.start ≤ current.end (then extend end)",
+                "Next.start > current.end always merges",
+                "Lengths are equal",
+                "Ids match"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Overlap or touch (per problem statement) extends the active interval.",
+            "whyWrong": [
+                "",
+                "Disjoint next starts close the previous interval.",
+                "Length equality is irrelevant.",
+                "Ids are labels."
+            ]
+        },
+        {
+            "prompt": "Meeting rooms / min concurrency often uses?",
+            "choices": [
+                "Sweep line on sorted start/end events",
+                "Dijkstra",
+                "Binary search on room names",
+                "Kadane only"
+            ],
+            "answerIndex": 0,
+            "whyRight": "+1 on start, −1 on end; track peak active count.",
+            "whyWrong": [
+                "",
+                "Shortest paths unrelated.",
+                "Names are not the capacity.",
+                "Kadane is max subarray."
+            ]
+        },
+        {
+            "prompt": "Insert interval into a sorted disjoint list?",
+            "choices": [
+                "Walk, merge while overlapping the newcomer, splice the result",
+                "Resort the entire list after naive append always as the only way",
+                "Use DFS",
+                "Use a Bloom filter"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Linear scan around the overlap region is enough.",
+            "whyWrong": [
+                "",
+                "Full resort works but hides the merge structure.",
+                "DFS unrelated.",
+                "Bloom filters are sets."
+            ]
+        },
+        {
+            "prompt": "Non-overlapping removal classic greedy sorts by?",
+            "choices": [
+                "End time and keeps earliest-finishing compatible intervals",
+                "Start time only without further rule",
+                "Random order",
+                "Length descending only"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Same exchange argument as interval scheduling.",
+            "whyWrong": [
+                "",
+                "Start-only greedy fails known cases.",
+                "Random fails.",
+                "Longest-first fails."
+            ]
+        },
+        {
+            "prompt": "Why sort+sweep is O(n log n)?",
+            "choices": [
+                "Sorting dominates; the sweep is linear",
+                "Sweep is always n²",
+                "log n from DFS depth",
+                "Hashing endpoints to ∞"
+            ],
+            "answerIndex": 0,
+            "whyRight": "After O(n log n) sort, one pass merges or counts.",
+            "whyWrong": [
+                "",
+                "A correct sweep is O(n).",
+                "DFS depth is unrelated.",
+                "Hashing does not create infinity."
+            ]
+        }
+    ]
+}

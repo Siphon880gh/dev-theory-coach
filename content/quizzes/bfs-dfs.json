@@ -1,0 +1,108 @@
+{
+    "slug": "bfs-dfs",
+    "title": "BFS and DFS",
+    "items": [
+        {
+            "prompt": "Unweighted shortest path in hops uses?",
+            "choices": [
+                "BFS",
+                "DFS only",
+                "Binary search on edges",
+                "Union-find alone"
+            ],
+            "answerIndex": 0,
+            "whyRight": "FIFO expansion discovers nodes by increasing distance.",
+            "whyWrong": [
+                "",
+                "DFS can go deep down a long path first.",
+                "Binary search needs monotonic numeric answers.",
+                "DSU tracks components, not distances."
+            ]
+        },
+        {
+            "prompt": "DFS recursion depth correlates with?",
+            "choices": [
+                "Height of the deepest path explored",
+                "Breadth of the level",
+                "Heap size",
+                "Hash load factor"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Each nested call is another edge down the current path.",
+            "whyWrong": [
+                "",
+                "Breadth is BFS layers.",
+                "Heaps are unrelated.",
+                "Hashing is unrelated."
+            ]
+        },
+        {
+            "prompt": "Iterative DFS fringe is a?",
+            "choices": [
+                "Stack",
+                "Queue",
+                "Min-heap of distances",
+                "Bloom filter"
+            ],
+            "answerIndex": 0,
+            "whyRight": "LIFO expands the newest discovered node.",
+            "whyWrong": [
+                "",
+                "Queues are BFS.",
+                "Distance heaps are Dijkstra.",
+                "Bloom filters are sets."
+            ]
+        },
+        {
+            "prompt": "Marking visited in BFS/DFS prevents?",
+            "choices": [
+                "Re-expanding nodes / infinite walks on cycles",
+                "Sorting the adjacency lists",
+                "Using O(V+E) time",
+                "Having a source node"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Cycles would otherwise loop forever.",
+            "whyWrong": [
+                "",
+                "Sorting lists is optional.",
+                "O(V+E) is the target.",
+                "Sources are required either way."
+            ]
+        },
+        {
+            "prompt": "Connected components in an undirected graph can be found by?",
+            "choices": [
+                "Repeated BFS/DFS from unvisited nodes",
+                "One binary search",
+                "Kruskal without edges",
+                "Only topological sort"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Each search paints one component.",
+            "whyWrong": [
+                "",
+                "Binary search is not graph traversal.",
+                "Kruskal needs edges to merge.",
+                "Topo needs a DAG and directions."
+            ]
+        },
+        {
+            "prompt": "When DFS finishing times matter?",
+            "choices": [
+                "Topological sort / Kosaraju-style SCC passes",
+                "Computing unweighted hop distances",
+                "Always replacing BFS",
+                "Building heaps"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Finish order encodes dependency structure.",
+            "whyWrong": [
+                "",
+                "Hop distances are BFS.",
+                "DFS does not universally replace BFS.",
+                "Heaps unrelated."
+            ]
+        }
+    ]
+}

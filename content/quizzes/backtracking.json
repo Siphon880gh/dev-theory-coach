@@ -1,0 +1,108 @@
+{
+    "slug": "backtracking",
+    "title": "Backtracking",
+    "items": [
+        {
+            "prompt": "Backtracking pattern is?",
+            "choices": [
+                "Choose, explore, undo; prune when a partial solution fails",
+                "Greedy commit forever without undo",
+                "Only dynamic programming tables",
+                "BFS layers only"
+            ],
+            "answerIndex": 0,
+            "whyRight": "You retract choices that cannot extend to a solution.",
+            "whyWrong": [
+                "",
+                "Pure greedy never undoes.",
+                "DP reuses subresults differently.",
+                "BFS is search order, not the undo story."
+            ]
+        },
+        {
+            "prompt": "Pruning improves backtracking when?",
+            "choices": [
+                "You detect impossibility before expanding children",
+                "You expand every leaf always",
+                "You randomize the board after each fail",
+                "You disable the visited set"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Early rejection cuts exponential branches.",
+            "whyWrong": [
+                "",
+                "Full expansion is brute force.",
+                "Random resets lose systematic search.",
+                "Visited/partial constraints usually help."
+            ]
+        },
+        {
+            "prompt": "N-Queens / subsets / permutations templates share?",
+            "choices": [
+                "A partial assignment vector and undoing writes on return",
+                "Mandatory Dijkstra",
+                "Union-find merges",
+                "Sliding windows"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Index i decides a choice, recurse i+1, then revert.",
+            "whyWrong": [
+                "",
+                "Shortest paths are different.",
+                "DSU is components.",
+                "Windows are array contiguous problems."
+            ]
+        },
+        {
+            "prompt": "Time blow-up without pruning is often?",
+            "choices": [
+                "Exponential in the number of decisions",
+                "Always O(n)",
+                "O(log n)",
+                "Linear in leaves only without branching"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Branching factor^depth candidates.",
+            "whyWrong": [
+                "",
+                "Linear only with extreme pruning or tiny depth.",
+                "Logarithmic is search on sorted spaces.",
+                "Leaves can be exponential."
+            ]
+        },
+        {
+            "prompt": "Constraint “cannot reuse an element” is usually enforced by?",
+            "choices": [
+                "A used[] flag or advancing the start index",
+                "Deleting the input array",
+                "Sorting after every push",
+                "Hashing the depth only"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Mark or move the frontier so the same item is not chosen twice.",
+            "whyWrong": [
+                "",
+                "Destroying input is clumsy.",
+                "Resorting each push is costly noise.",
+                "Depth alone does not track membership."
+            ]
+        },
+        {
+            "prompt": "Backtracking vs BFS for combinatorial search?",
+            "choices": [
+                "DFS-style undo uses less memory than storing entire layers of partials",
+                "BFS always uses less memory",
+                "They are identical algorithms",
+                "Backtracking cannot find any solution"
+            ],
+            "answerIndex": 0,
+            "whyRight": "One path’s worth of state vs queues of many partials.",
+            "whyWrong": [
+                "",
+                "BFS layers of partial assignments can be huge.",
+                "Order and memory profiles differ.",
+                "It finds solutions when they exist."
+            ]
+        }
+    ]
+}

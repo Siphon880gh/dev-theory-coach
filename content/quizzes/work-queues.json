@@ -1,0 +1,108 @@
+{
+    "slug": "work-queues",
+    "title": "Work queues",
+    "items": [
+        {
+            "prompt": "Push work to a queue when?",
+            "choices": [
+                "The user can wait; the request path should return fast",
+                "The result must be in the same HTTP response always",
+                "The work is a pure in-memory local function of 1µs",
+                "You want to avoid ids"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Async boundary decouples latency.",
+            "whyWrong": [
+                "",
+                "Same-response needs sync.",
+                "Tiny local work needs no queue.",
+                "Ids still identify jobs."
+            ]
+        },
+        {
+            "prompt": "At-least-once delivery implies consumers must be?",
+            "choices": [
+                "Idempotent",
+                "Exactly-once without help",
+                "Single-threaded globally",
+                "Free of retries"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Duplicates will appear; handlers must tolerate them.",
+            "whyWrong": [
+                "",
+                "Exactly-once needs extra machinery.",
+                "Parallel consumers are common.",
+                "Retries are how at-least-once happens."
+            ]
+        },
+        {
+            "prompt": "Poison messages should go to?",
+            "choices": [
+                "A dead-letter queue after N fails",
+                "Infinite tight retry loops",
+                "The client browser console only",
+                "DNS"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Protect the main queue; inspect separately.",
+            "whyWrong": [
+                "",
+                "Tight loops melt workers.",
+                "Browsers are not the ops sink.",
+                "DNS no."
+            ]
+        },
+        {
+            "prompt": "Ordering in a queue is?",
+            "choices": [
+                "Per partition/key if the broker offers it — not global by default",
+                "Always global across all keys",
+                "Impossible",
+                "Only alphabetical"
+            ],
+            "answerIndex": 0,
+            "whyRight": "State the ordering key explicitly.",
+            "whyWrong": [
+                "",
+                "Global order limits scale.",
+                "Ordering can exist per key.",
+                "Alphabetical is unrelated."
+            ]
+        },
+        {
+            "prompt": "Backpressure means?",
+            "choices": [
+                "Slow consumers force producers to slow or buffer with limits",
+                "Ignoring lag",
+                "Dropping the database schema",
+                "Adding unbounded memory always"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Protect the system from overload meltdown.",
+            "whyWrong": [
+                "",
+                "Ignoring lag causes pileup.",
+                "Schema drops are not backpressure.",
+                "Unbounded buffers become outages."
+            ]
+        },
+        {
+            "prompt": "Why not do heavy image processing in the API web thread?",
+            "choices": [
+                "It blocks request capacity; queue a worker pool instead",
+                "Web threads are infinite",
+                "Queues cannot run code",
+                "Images forbid async"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Keep request threads for short RPCs.",
+            "whyWrong": [
+                "",
+                "Threads are finite.",
+                "Workers run jobs.",
+                "Images are ideal async work."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+{
+    "slug": "sharding",
+    "title": "Sharding",
+    "items": [
+        {
+            "prompt": "Shard when?",
+            "choices": [
+                "One machine cannot hold data or write QPS",
+                "You want more logos",
+                "n is 100 rows",
+                "DNS is slow"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Horizontal split is a capacity move.",
+            "whyWrong": [
+                "",
+                "Logos no.",
+                "Tiny data should not shard.",
+                "DNS unrelated."
+            ]
+        },
+        {
+            "prompt": "After you shard, always name?",
+            "choices": [
+                "The new hotspot the key space just created",
+                "That hotspots vanish forever",
+                "That joins become free",
+                "That transactions span shards for free"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Popular keys still concentrate load.",
+            "whyWrong": [
+                "",
+                "Hotspots move, not vanish.",
+                "Cross-shard joins hurt.",
+                "Distributed transactions are hard."
+            ]
+        },
+        {
+            "prompt": "Hash sharding helps?",
+            "choices": [
+                "Even spread for uniform keys",
+                "Range queries on the shard key",
+                "Time-ordered locality",
+                "Human-readable directory layout"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Hash destroys order; good for balance.",
+            "whyWrong": [
+                "",
+                "Ranges want range sharding.",
+                "Time locality wants range/time keys.",
+                "Directories are operational cosmetics."
+            ]
+        },
+        {
+            "prompt": "Range sharding helps?",
+            "choices": [
+                "Ordered scans on the shard key",
+                "Guaranteed perfect balance under monotonic inserts",
+                "Eliminating rebalancing forever",
+                "Removing the need for keys"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Contiguous keys live together.",
+            "whyWrong": [
+                "",
+                "Monotonic writes hotspot the last range.",
+                "Rebalancing still happens as data grows.",
+                "Keys remain required."
+            ]
+        },
+        {
+            "prompt": "Cross-shard transaction cost is?",
+            "choices": [
+                "High — prefer single-shard transactions in the data model",
+                "Zero",
+                "Negative",
+                "Paid only in CSS"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Design keys so hot transactions stay local.",
+            "whyWrong": [
+                "",
+                "Distributed commit is expensive.",
+                "Costs are positive.",
+                "CSS no."
+            ]
+        },
+        {
+            "prompt": "Resharding plan should include?",
+            "choices": [
+                "Dual-write/migrate/cutover or consistent hashing with virtual nodes",
+                "Deleting half the users",
+                "Turning off writes forever",
+                "Randomly renaming tables daily"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Movement without downtime needs a story.",
+            "whyWrong": [
+                "",
+                "Deleting users is not resharding.",
+                "Write bans are outages.",
+                "Random renames are chaos."
+            ]
+        }
+    ]
+}

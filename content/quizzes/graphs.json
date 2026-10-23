@@ -1,0 +1,108 @@
+{
+    "slug": "graphs",
+    "title": "Graphs",
+    "items": [
+        {
+            "prompt": "Default sparse-graph representation in interviews?",
+            "choices": [
+                "Adjacency list",
+                "Adjacency matrix always",
+                "Edge list only with no neighbor iteration",
+                "B-tree of nodes"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Lists store only real edges; neighbor scans are cheap when degree is small.",
+            "whyWrong": [
+                "",
+                "Matrices cost V² space even when sparse.",
+                "Bare edge lists make neighbor iteration awkward.",
+                "B-trees are storage engines, not the default teaching ADT."
+            ]
+        },
+        {
+            "prompt": "Adjacency matrix shines when the graph is?",
+            "choices": [
+                "Dense and you need O(1) edge existence checks",
+                "Sparse with millions of vertices",
+                "A pure tree with no cross edges",
+                "Always smaller than a list"
+            ],
+            "answerIndex": 0,
+            "whyRight": "V² cells are fine when E ≈ V² and probes are constant.",
+            "whyWrong": [
+                "",
+                "Sparse huge V wastes memory in a matrix.",
+                "Trees are sparse; lists win.",
+                "Lists are often smaller when sparse."
+            ]
+        },
+        {
+            "prompt": "Undirected edge {u,v} in an adjacency list typically appears?",
+            "choices": [
+                "In both u’s and v’s neighbor lists",
+                "Only in the lower-id vertex list",
+                "Only in a global matrix diagonal",
+                "Once in a stack"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Each endpoint must see the other for undirected traversal.",
+            "whyWrong": [
+                "",
+                "Storing once breaks traversal from the other side.",
+                "Diagonals are matrix self-loops.",
+                "Stacks are search fringes, not storage."
+            ]
+        },
+        {
+            "prompt": "A cycle in an undirected graph during DFS is detected when you see an edge to?",
+            "choices": [
+                "A visited gray/ancestor node that is not the parent",
+                "Any white unvisited node",
+                "A finished node only in directed graphs always",
+                "The heap root"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Back edge to an active ancestor means a cycle.",
+            "whyWrong": [
+                "",
+                "Unvisited nodes are just tree edges to explore.",
+                "Directed-graph rules differ; the undirected parent exception matters.",
+                "Heaps are unrelated."
+            ]
+        },
+        {
+            "prompt": "Space for adjacency lists on V vertices and E edges is?",
+            "choices": [
+                "Θ(V + E)",
+                "Θ(V²) always",
+                "Θ(E²)",
+                "Θ(1)"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Vertex array plus two ends per undirected edge (or one per directed).",
+            "whyWrong": [
+                "",
+                "V² is matrix space.",
+                "E² is wrong.",
+                "Constant space cannot store arbitrary graphs."
+            ]
+        },
+        {
+            "prompt": "When converting a problem to a graph, the first question is?",
+            "choices": [
+                "What is a node, and what is an edge?",
+                "Which sorting algorithm to run on vertices?",
+                "How to hash the adjacency matrix?",
+                "Whether stacks beat queues forever"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Representation follows the definition of states and transitions.",
+            "whyWrong": [
+                "",
+                "Sorting is secondary.",
+                "Hashing matrices is not the modeling step.",
+                "Fringe choice comes after the model exists."
+            ]
+        }
+    ]
+}

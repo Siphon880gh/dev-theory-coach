@@ -1,0 +1,108 @@
+{
+    "slug": "composition",
+    "title": "Composition",
+    "items": [
+        {
+            "prompt": "Prefer composition over inheritance when?",
+            "choices": [
+                "You assemble behaviors by holding objects; subtype relationship is weak",
+                "The relationship is a true is-a forever with shared invariants",
+                "You need CSS",
+                "You need UDP"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Has-a beats fake is-a.",
+            "whyWrong": [
+                "",
+                "True subtypes can inherit carefully.",
+                "CSS no.",
+                "UDP no."
+            ]
+        },
+        {
+            "prompt": "Inheritance tax includes?",
+            "choices": [
+                "Fragile base classes and tighter coupling",
+                "Automatic better performance always",
+                "Free distribution across regions",
+                "No need for interfaces"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Base changes ripple to children.",
+            "whyWrong": [
+                "",
+                "Perf is not automatic.",
+                "Inheritance ≠ geo distribution.",
+                "Interfaces still matter."
+            ]
+        },
+        {
+            "prompt": "Strategy + composition means?",
+            "choices": [
+                "Hold a policy object instead of overriding methods for every variant",
+                "Ban all interfaces",
+                "Use only static inheritance trees",
+                "Avoid delegation"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Delegate to the composed strategy.",
+            "whyWrong": [
+                "",
+                "Interfaces enable it.",
+                "Deep static trees are the alternative smell.",
+                "Delegation is the mechanism."
+            ]
+        },
+        {
+            "prompt": "Mixin/multiple inheritance pain is often replaced by?",
+            "choices": [
+                "Composing small focused collaborators",
+                "Larger god base classes",
+                "Copy-paste",
+                "No reuse"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Small objects plugged together.",
+            "whyWrong": [
+                "",
+                "God bases worsen fragility.",
+                "Copy-paste duplicates bugs.",
+                "Reuse remains possible."
+            ]
+        },
+        {
+            "prompt": "“Favor composition” does not mean?",
+            "choices": [
+                "Never inherit even for true subtypes",
+                "Avoid needless is-a",
+                "Prefer delegation for varying behavior",
+                "Keep hierarchies shallow when possible"
+            ],
+            "answerIndex": 0,
+            "whyRight": "True is-a remains valid; the slogan targets abuse.",
+            "whyWrong": [
+                "",
+                "Avoiding needless is-a is part of the advice, not what it does not mean.",
+                "Preferring delegation for varying behavior is part of the advice.",
+                "Keeping hierarchies shallow when possible is part of the advice."
+            ]
+        },
+        {
+            "prompt": "In a design interview, saying “compose X with Y” should include?",
+            "choices": [
+                "What interface Y exposes and why inheritance was declined",
+                "Only buzzwords",
+                "No interfaces",
+                "A ban on diagrams"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Make the seam concrete.",
+            "whyWrong": [
+                "",
+                "Buzzwords fail.",
+                "Interfaces name the seam.",
+                "Diagrams help."
+            ]
+        }
+    ]
+}

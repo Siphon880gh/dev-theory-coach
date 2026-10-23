@@ -1,0 +1,108 @@
+{
+    "slug": "data-model",
+    "title": "Data model",
+    "items": [
+        {
+            "prompt": "Choose entities and keys from?",
+            "choices": [
+                "The queries / access paths first",
+                "The trendiest database brand first",
+                "Random UUIDs with no access story",
+                "Only ORM defaults"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Keys exist to answer lookups efficiently.",
+            "whyWrong": [
+                "",
+                "Brand follows workload.",
+                "UUIDs without paths are incomplete.",
+                "ORMs hide bad models."
+            ]
+        },
+        {
+            "prompt": "Primary key choice affects?",
+            "choices": [
+                "Locality, join patterns, and hotspot risk",
+                "Only the logo on docs",
+                "Nothing at scale",
+                "Only foreign languages"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Monotonic keys can hotspot; natural keys may widen rows.",
+            "whyWrong": [
+                "",
+                "Docs cosmetics no.",
+                "Scale cares deeply.",
+                "Human language no."
+            ]
+        },
+        {
+            "prompt": "When to denormalize in an interview design?",
+            "choices": [
+                "A hot read path needs prejoined data and you accept write complexity",
+                "Always, everywhere",
+                "Never",
+                "Only in CSV exports"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Read speed vs write fanout is the trade.",
+            "whyWrong": [
+                "",
+                "Blind denorm creates inconsistency.",
+                "Normalized can be right.",
+                "Exports are not the OLTP model."
+            ]
+        },
+        {
+            "prompt": "Secondary index cost is mainly on?",
+            "choices": [
+                "Writes (maintain another structure) and storage",
+                "Reads only with zero write cost",
+                "CPU caches exclusively",
+                "DNS"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Every write updates indexes.",
+            "whyWrong": [
+                "",
+                "Reads benefit; writes pay.",
+                "Caches help but are not the index cost story.",
+                "DNS unrelated."
+            ]
+        },
+        {
+            "prompt": "Many-to-many between users and groups usually needs?",
+            "choices": [
+                "A join/membership table (or edge records)",
+                "A single integer column on users",
+                "Only a Bloom filter",
+                "A CSS class"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Edges capture the relationship cardinality.",
+            "whyWrong": [
+                "",
+                "One int cannot model many groups cleanly.",
+                "Bloom filters are probabilistic membership, not source of truth.",
+                "CSS no."
+            ]
+        },
+        {
+            "prompt": "Time-series heavy append workload suggests?",
+            "choices": [
+                "Partition/clustering by time and careful retention",
+                "Random updates in place to old months as the hot path",
+                "A single unpartitioned row per metric forever without care",
+                "Storing charts in Redis only as truth"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Access is time-scoped; design storage around that.",
+            "whyWrong": [
+                "",
+                "Mutating deep history is a different cost model.",
+                "Unbounded single rows die.",
+                "Caches are not durable truth."
+            ]
+        }
+    ]
+}

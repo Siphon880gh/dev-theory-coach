@@ -1,0 +1,108 @@
+{
+    "slug": "decorator",
+    "title": "Decorator",
+    "items": [
+        {
+            "prompt": "Decorator adds behavior by?",
+            "choices": [
+                "Wrapping, preserving the same interface",
+                "Subclassing only with no wrapping",
+                "Global monkey patches only",
+                "Changing the caller’s type"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Stack wrappers: logging, metrics, retry.",
+            "whyWrong": [
+                "",
+                "Inheritance is an alternative with different tradeoffs.",
+                "Globals are brittle.",
+                "Callers keep coding to the interface."
+            ]
+        },
+        {
+            "prompt": "Wrap order matters because?",
+            "choices": [
+                "Outer wrappers see different before/after semantics",
+                "Order never matters",
+                "Decorators cannot nest",
+                "Interfaces break"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Retry(Logging(x)) ≠ Logging(Retry(x)).",
+            "whyWrong": [
+                "",
+                "Order changes outcomes.",
+                "Nesting is the point.",
+                "Interfaces stay stable."
+            ]
+        },
+        {
+            "prompt": "Decorator vs Proxy?",
+            "choices": [
+                "Decorator adds responsibilities; Proxy controls access/lifecycle to the real object",
+                "Identical always",
+                "Decorator forbids same interface",
+                "Proxy always adds features like compression"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Intent differs even if structures look alike.",
+            "whyWrong": [
+                "",
+                "Similar shapes, different intents.",
+                "Same interface is typical.",
+                "Proxies may not add features."
+            ]
+        },
+        {
+            "prompt": "Java I/O streams are a classic?",
+            "choices": [
+                "Decorator stack",
+                "Singleton",
+                "Factory Method only",
+                "BFS"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Buffered(FileInputStream) style wrapping.",
+            "whyWrong": [
+                "",
+                "Not uniqueness.",
+                "Factories may exist too but the wrap story is decorator.",
+                "BFS no."
+            ]
+        },
+        {
+            "prompt": "Testing a decorator usually?",
+            "choices": [
+                "Wraps a fake inner component",
+                "Requires the full production graph always",
+                "Cannot use fakes",
+                "Must open real sockets"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Assert added behavior around a stub.",
+            "whyWrong": [
+                "",
+                "Fakes are ideal.",
+                "Fakes work.",
+                "Sockets optional."
+            ]
+        },
+        {
+            "prompt": "Too many decorators smell like?",
+            "choices": [
+                "Unreadable wrap stacks — consider clearer composition APIs",
+                "Perfect design always",
+                "Mandatory for two lines of logging",
+                "Forbidden in interviews"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Depth without clarity hurts.",
+            "whyWrong": [
+                "",
+                "Stacks can get noisy.",
+                "Simple logging may be one wrapper.",
+                "Interviews discuss them."
+            ]
+        }
+    ]
+}

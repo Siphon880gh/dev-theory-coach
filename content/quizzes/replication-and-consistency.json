@@ -1,0 +1,108 @@
+{
+    "slug": "replication-and-consistency",
+    "title": "Replication and consistency",
+    "items": [
+        {
+            "prompt": "Replica purpose should be stated as?",
+            "choices": [
+                "Read scale, failover, or locality — pick which",
+                "Decoration",
+                "Only compliance stickers",
+                "Replacing backups always"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Purpose drives sync vs async and failover policy.",
+            "whyWrong": [
+                "",
+                "Replicas are operational.",
+                "Stickers are not purpose.",
+                "Backups are related but distinct."
+            ]
+        },
+        {
+            "prompt": "After a write on async primary-replica, a client may read?",
+            "choices": [
+                "Stale data from a lagging replica",
+                "Always the latest everywhere instantly",
+                "Only errors",
+                "Nothing until DNS changes"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Replication lag is real.",
+            "whyWrong": [
+                "",
+                "Async is not instant everywhere.",
+                "Reads usually succeed.",
+                "DNS is unrelated to row visibility."
+            ]
+        },
+        {
+            "prompt": "Synchronous replication trades?",
+            "choices": [
+                "Stronger durability/visibility for higher write latency",
+                "Infinite speed",
+                "No failure modes",
+                "Freedom from quorum math"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Wait for replicas before ack.",
+            "whyWrong": [
+                "",
+                "Sync adds latency.",
+                "Failures still happen.",
+                "Quorums appear in many designs."
+            ]
+        },
+        {
+            "prompt": "Read-your-writes can be achieved by?",
+            "choices": [
+                "Sticky sessions to primary, version tokens, or sync barriers",
+                "Hoping randomly",
+                "Disabling all replicas",
+                "Clearing cookies every request"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Clients need a way to see their own writes.",
+            "whyWrong": [
+                "",
+                "Hope is not a strategy.",
+                "Replicas can still help with care.",
+                "Cookie clearing does not fix lag."
+            ]
+        },
+        {
+            "prompt": "Leader election matters when?",
+            "choices": [
+                "The old primary dies and writes must continue safely",
+                "You only serve static CDN files",
+                "n=1 forever",
+                "You use a pure client-side app with no server"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Someone must accept writes without split brain.",
+            "whyWrong": [
+                "",
+                "Static CDN needs no leader.",
+                "Single node skips HA election.",
+                "No server means no primary."
+            ]
+        },
+        {
+            "prompt": "“Consistent” without defining the client observation is?",
+            "choices": [
+                "Incomplete — say what a reader can see after a write",
+                "Always wrong",
+                "Always CAP theorem bingo win",
+                "Enough for production"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Consistency is about observations and history.",
+            "whyWrong": [
+                "",
+                "It can be refined, not automatically wrong.",
+                "Buzzwords without semantics fail.",
+                "Production needs the definition."
+            ]
+        }
+    ]
+}

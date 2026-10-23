@@ -1,0 +1,108 @@
+{
+    "slug": "adapter",
+    "title": "Adapter",
+    "items": [
+        {
+            "prompt": "Adapter lets a caller keep?",
+            "choices": [
+                "The interface it already has while wrapping a foreign type",
+                "A random new interface every call",
+                "No interface",
+                "Only static globals"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Translate foreign API → expected API.",
+            "whyWrong": [
+                "",
+                "Stable target interface is the point.",
+                "Interfaces are central.",
+                "Globals fight modularity."
+            ]
+        },
+        {
+            "prompt": "Use Adapter when?",
+            "choices": [
+                "You do not own the adaptee but must meet your interface",
+                "You own both sides and can change both freely always",
+                "You need LIFO",
+                "You need rate limits"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Ownership boundary forces wrapping.",
+            "whyWrong": [
+                "",
+                "If you own both, reshape instead of adapt.",
+                "Stacks unrelated.",
+                "Rate limits unrelated."
+            ]
+        },
+        {
+            "prompt": "Object adapter vs class adapter?",
+            "choices": [
+                "Object uses composition; class uses inheritance (where multiple inheritance allows)",
+                "No difference",
+                "Object adapter sorts",
+                "Class adapter is a queue"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Composition is the usual modern default.",
+            "whyWrong": [
+                "",
+                "They differ in reuse.",
+                "Sorting unrelated.",
+                "Queues unrelated."
+            ]
+        },
+        {
+            "prompt": "Anti-corruption layer is related because?",
+            "choices": [
+                "It wraps an external model so your domain stays clean",
+                "It deletes external systems",
+                "It is a sorting algorithm",
+                "It is BFS"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Protect your model from foreign shapes.",
+            "whyWrong": [
+                "",
+                "Wrapping ≠ deleting.",
+                "Not sorting.",
+                "Not BFS."
+            ]
+        },
+        {
+            "prompt": "Adapter should avoid?",
+            "choices": [
+                "Leaking adaptee types through the target interface",
+                "Implementing the target methods",
+                "Existing",
+                "Being tested"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Otherwise callers still couple to the foreign type.",
+            "whyWrong": [
+                "",
+                "Implementing the target is required.",
+                "Adapters should exist when needed.",
+                "Tests are good."
+            ]
+        },
+        {
+            "prompt": "Example: wrap a third-party metrics SDK behind your Timer port — that is?",
+            "choices": [
+                "Adapter",
+                "Observer",
+                "Singleton only",
+                "Dijkstra"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Foreign SDK → your interface.",
+            "whyWrong": [
+                "",
+                "Not notification.",
+                "Not uniqueness.",
+                "Not shortest paths."
+            ]
+        }
+    ]
+}

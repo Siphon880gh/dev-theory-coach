@@ -1,0 +1,108 @@
+{
+    "slug": "union-find",
+    "title": "Union-find",
+    "items": [
+        {
+            "prompt": "Union-find (DSU) answers which two questions fast?",
+            "choices": [
+                "Are a and b in the same set? / merge two sets",
+                "Shortest path between a and b",
+                "Median of a set",
+                "Topological order"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Find compares roots; union links components.",
+            "whyWrong": [
+                "",
+                "Distances need graph search.",
+                "Medians need order statistics.",
+                "Topo order needs a DAG DFS/Kahn."
+            ]
+        },
+        {
+            "prompt": "With path compression + union by rank, Find is?",
+            "choices": [
+                "Amortized nearly O(1) (inverse Ackermann)",
+                "O(n) each call",
+                "O(log log log n) only worst forever",
+                "O(n²)"
+            ],
+            "answerIndex": 0,
+            "whyRight": "The amortized bound is α(n), effectively constant.",
+            "whyWrong": [
+                "",
+                "Naive parent walks without compression can be linear.",
+                "The famous bound is stronger than stacked logs suggest in practice.",
+                "Quadratic would be broken."
+            ]
+        },
+        {
+            "prompt": "Kruskal’s MST uses union-find to?",
+            "choices": [
+                "Skip edges that would connect already-linked vertices (cycles)",
+                "Compute Dijkstra distances",
+                "Hash edge weights",
+                "Balance a BST of vertices"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Add edges in weight order iff they join different components.",
+            "whyWrong": [
+                "",
+                "Dijkstra is a different MST/shortest-path approach.",
+                "Hashing weights is unnecessary for the union check.",
+                "BSTs are not Kruskal’s cycle checker."
+            ]
+        },
+        {
+            "prompt": "Path compression does what on Find?",
+            "choices": [
+                "Points nodes along the path directly at the root",
+                "Deletes half the set",
+                "Sorts siblings by size",
+                "Converts the structure into a heap"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Flatter trees make later Finds cheaper.",
+            "whyWrong": [
+                "",
+                "Compression does not drop elements.",
+                "Union by rank/size handles linking policy.",
+                "Heaps are unrelated."
+            ]
+        },
+        {
+            "prompt": "Interview signal for DSU: problem talks about?",
+            "choices": [
+                "Merging groups / connected components over time",
+                "Sliding windows on arrays",
+                "Balanced parentheses",
+                "LRU eviction"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Dynamic connectivity is the DSU home turf.",
+            "whyWrong": [
+                "",
+                "Windows are two pointers / deques.",
+                "Parentheses are stacks.",
+                "LRU is list + map."
+            ]
+        },
+        {
+            "prompt": "Union by size/rank prefers linking?",
+            "choices": [
+                "The smaller (or shorter) tree under the larger root",
+                "Always left id under right id with no size check",
+                "Random roots each time for fairness",
+                "Every node under node 0"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Keeping trees shallow preserves Find speed.",
+            "whyWrong": [
+                "",
+                "Id order alone does not bound height.",
+                "Random links can unbalance.",
+                "A single global root without care recreates a stick."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+{
+    "slug": "capstone-feed",
+    "title": "Capstone: feed",
+    "items": [
+        {
+            "prompt": "Fanout-on-write means?",
+            "choices": [
+                "Push new posts into followers’ feed stores at write time",
+                "Compute the feed only when a user opens the app",
+                "Delete all followers",
+                "Use DNS for posts"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Precompute timelines; reads become cheap.",
+            "whyWrong": [
+                "",
+                "That is fanout-on-read.",
+                "Deleting followers is not fanout.",
+                "DNS no."
+            ]
+        },
+        {
+            "prompt": "Fanout-on-read means?",
+            "choices": [
+                "Assemble the feed at read time from people you follow",
+                "Write into every follower inbox at post time",
+                "Ban celebrities",
+                "Store posts only in CDN edge HTML"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Read pays the merge cost; write stays light.",
+            "whyWrong": [
+                "",
+                "Inbox push is on-write.",
+                "Celebrity handling is a hybrid concern.",
+                "CDN HTML is not the model."
+            ]
+        },
+        {
+            "prompt": "Celebrity / huge follower count problem favors?",
+            "choices": [
+                "Hybrid: fanout-on-read for huge accounts, on-write for normal",
+                "Always on-write to millions synchronously on the request",
+                "No feeds",
+                "Sorting followers alphabetically only"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Avoid write amplification explosions.",
+            "whyWrong": [
+                "",
+                "Sync fanout to millions blows write path.",
+                "Feeds are the product.",
+                "Alphabetical sort is unrelated."
+            ]
+        },
+        {
+            "prompt": "Feed ranking should be described as?",
+            "choices": [
+                "A scoring function over candidate posts with latency budget",
+                "Random perpetual shuffle only as the sophisticated answer",
+                "SQL without indexes forever",
+                "One global lock"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Candidates + score + time box.",
+            "whyWrong": [
+                "",
+                "Pure random is weak product.",
+                "Indexes matter.",
+                "Locks kill QPS."
+            ]
+        },
+        {
+            "prompt": "Home timeline storage often denormalizes because?",
+            "choices": [
+                "Read QPS is enormous vs post QPS",
+                "Writes never happen",
+                "Users read once a year",
+                "Networks do not exist"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Pay write amplification for fast reads.",
+            "whyWrong": [
+                "",
+                "Posts happen.",
+                "Feeds are frequent.",
+                "Networks exist."
+            ]
+        },
+        {
+            "prompt": "When combining feed with notifications, keep?",
+            "choices": [
+                "Separate failure domains so chatty notify does not block timeline reads",
+                "One shared infinite transaction across all products",
+                "No ids",
+                "Only email"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Isolation of failure and scale.",
+            "whyWrong": [
+                "",
+                "Giant transactions couple outages.",
+                "Ids remain.",
+                "Email is one channel."
+            ]
+        }
+    ]
+}

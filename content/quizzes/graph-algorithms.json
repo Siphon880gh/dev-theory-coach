@@ -1,0 +1,108 @@
+{
+    "slug": "graph-algorithms",
+    "title": "Graph algorithms",
+    "items": [
+        {
+            "prompt": "Unweighted shortest path → pick?",
+            "choices": [
+                "BFS",
+                "Dijkstra",
+                "Bellman-Ford first",
+                "Floyd-Warshall only"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Hops are uniform; BFS layers are distances.",
+            "whyWrong": [
+                "",
+                "Dijkstra is for non-negative weights.",
+                "Bellman-Ford handles negatives at higher cost.",
+                "APSP dense method is overkill."
+            ]
+        },
+        {
+            "prompt": "Non-negative edge weights → pick?",
+            "choices": [
+                "Dijkstra",
+                "BFS ignoring weights",
+                "Bellman-Ford only",
+                "DFS finishing times"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Greedy closest unsettled node works with ≥0 weights.",
+            "whyWrong": [
+                "",
+                "Ignoring weights is wrong.",
+                "Bellman-Ford works but is slower.",
+                "Finishing times are topo/SCC."
+            ]
+        },
+        {
+            "prompt": "Negative edges, no negative cycle assumed → pick?",
+            "choices": [
+                "Bellman-Ford",
+                "Plain Dijkstra as-is",
+                "BFS",
+                "Binary heap of components"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Relax all edges |V|−1 times.",
+            "whyWrong": [
+                "",
+                "Classic Dijkstra assumes non-negative weights.",
+                "BFS ignores weights.",
+                "Heaps alone are not the algorithm."
+            ]
+        },
+        {
+            "prompt": "All-pairs dense graph often uses?",
+            "choices": [
+                "Floyd-Warshall O(V³)",
+                "Only Kruskal",
+                "Only leaf DFS",
+                "Counting sort on nodes"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Triple loop over intermediates.",
+            "whyWrong": [
+                "",
+                "Kruskal is MST.",
+                "DFS is traversal.",
+                "Sorting nodes does not give distances."
+            ]
+        },
+        {
+            "prompt": "MST classic algorithms?",
+            "choices": [
+                "Kruskal (sort edges + DSU) or Prim (grow cut with a heap)",
+                "Dijkstra for negative cycles",
+                "BFS layers as weights",
+                "Quicksort on adjacency matrices only"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Both produce a minimum spanning tree on undirected weighted graphs.",
+            "whyWrong": [
+                "",
+                "Dijkstra is shortest paths; negatives break it.",
+                "BFS is unweighted distances.",
+                "Sorting a matrix is not MST."
+            ]
+        },
+        {
+            "prompt": "Topo sort exists only if the digraph is?",
+            "choices": [
+                "A DAG (no directed cycles)",
+                "Strongly connected",
+                "A tree undirected",
+                "Complete"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Cycles block a linear precedence order.",
+            "whyWrong": [
+                "",
+                "SCCs can contain cycles.",
+                "Undirected trees are a different setting.",
+                "Completeness unrelated."
+            ]
+        }
+    ]
+}

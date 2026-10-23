@@ -1,0 +1,108 @@
+{
+    "slug": "factory",
+    "title": "Factory",
+    "items": [
+        {
+            "prompt": "Factory hides?",
+            "choices": [
+                "Which concrete type is constructed",
+                "HTTP status codes",
+                "Thread priorities",
+                "CSS selectors"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Callers ask for a product; factory picks the class.",
+            "whyWrong": [
+                "",
+                "HTTP unrelated.",
+                "Threads unrelated.",
+                "CSS unrelated."
+            ]
+        },
+        {
+            "prompt": "Use a factory when?",
+            "choices": [
+                "Concrete choice depends on config/environment and should be localized",
+                "There is one class forever with new Foo() fine",
+                "You need multicast events",
+                "You need LIFO storage"
+            ],
+            "answerIndex": 0,
+            "whyRight": "One place to update when variants grow.",
+            "whyWrong": [
+                "",
+                "Simple new is fine for stable singles.",
+                "Events are Observer.",
+                "LIFO is Stack."
+            ]
+        },
+        {
+            "prompt": "Simple Factory vs Factory Method?",
+            "choices": [
+                "Method defers to subclasses to decide the product",
+                "They ban construction",
+                "They are CSS patterns",
+                "They sort arrays"
+            ],
+            "answerIndex": 0,
+            "whyRight": "GoF Factory Method uses inheritance to vary creation.",
+            "whyWrong": [
+                "",
+                "Construction is the point.",
+                "CSS no.",
+                "Sorting no."
+            ]
+        },
+        {
+            "prompt": "Abstract Factory provides?",
+            "choices": [
+                "Families of related products without specifying concretes",
+                "One function that always returns int",
+                "Only singletons",
+                "Only observers"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Consistent product families (e.g., UI kits).",
+            "whyWrong": [
+                "",
+                "Not limited to ints.",
+                "Singleton separate.",
+                "Observer separate."
+            ]
+        },
+        {
+            "prompt": "Testing benefit of factories?",
+            "choices": [
+                "Seam to inject fakes",
+                "Factories forbid tests",
+                "Must always hit real payment SDKs",
+                "No seams exist"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Swap product families in tests.",
+            "whyWrong": [
+                "",
+                "Factories help tests.",
+                "Avoid mandatory real SDKs.",
+                "Seams are intentional."
+            ]
+        },
+        {
+            "prompt": "Smell: god factory means?",
+            "choices": [
+                "One class switches on everything in the universe",
+                "Healthy cohesion",
+                "Required by Java",
+                "Same as Strategy"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Split by family/bounded context.",
+            "whyWrong": [
+                "",
+                "God objects are unhealthy.",
+                "Language does not require it.",
+                "Strategy varies behavior, not always creation families."
+            ]
+        }
+    ]
+}

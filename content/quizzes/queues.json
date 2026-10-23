@@ -1,0 +1,108 @@
+{
+    "slug": "queues",
+    "title": "Queues",
+    "items": [
+        {
+            "prompt": "Queue discipline is?",
+            "choices": [
+                "First in, first out",
+                "Last in, first out",
+                "Highest priority first",
+                "Key → value"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Enqueue back, dequeue front.",
+            "whyWrong": [
+                "",
+                "LIFO is a stack.",
+                "Priority order is a heap/priority queue.",
+                "Key maps are dictionaries."
+            ]
+        },
+        {
+            "prompt": "BFS level-order traversal uses a queue because?",
+            "choices": [
+                "Nodes discovered earlier must expand before later ones",
+                "LIFO discovers closest nodes first",
+                "Queues sort by distance automatically",
+                "BFS forbids revisiting with a set"
+            ],
+            "answerIndex": 0,
+            "whyRight": "FIFO expands in discovery order, which equals hop distance on unweighted graphs.",
+            "whyWrong": [
+                "",
+                "LIFO is DFS, not closest-first.",
+                "The queue does not sort; the visit order creates distances.",
+                "A visited set is separate from the fringe structure."
+            ]
+        },
+        {
+            "prompt": "A deque differs from a plain queue by allowing?",
+            "choices": [
+                "Push/pop at both ends",
+                "O(1) middle index always",
+                "Automatic priority reordering",
+                "Only stack operations"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Double-ended queues support both ends without becoming a free middle splice API.",
+            "whyWrong": [
+                "",
+                "Middle indexing is still not the deque contract.",
+                "Priority is a different ADT.",
+                "Stack-only would drop the front end."
+            ]
+        },
+        {
+            "prompt": "Implement a queue with two stacks. Amortized dequeue is O(1) because?",
+            "choices": [
+                "Each element moves at most twice between stacks",
+                "Every dequeue sorts both stacks",
+                "You scan the longer stack each time",
+                "Hashing replaces the stacks"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Pouring from in-stack to out-stack happens rarely per element.",
+            "whyWrong": [
+                "",
+                "Sorting is unnecessary.",
+                "Scanning would be linear each call.",
+                "Hashing is unrelated."
+            ]
+        },
+        {
+            "prompt": "Sliding-window maximum with a deque stores indices that are?",
+            "choices": [
+                "Candidates still inside the window, in decreasing value order",
+                "All indices ever seen",
+                "Sorted by index only with no value rule",
+                "Random samples of the window"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Front is the max; back pops smaller useless candidates.",
+            "whyWrong": [
+                "",
+                "Keeping everything wastes space and breaks O(n).",
+                "Index order alone does not yield the max.",
+                "Sampling is approximate, not the classic algorithm."
+            ]
+        },
+        {
+            "prompt": "When is a queue the wrong first tool?",
+            "choices": [
+                "You need the most recently deferred item first (undo)",
+                "You need fair processing of arrival order",
+                "You are expanding BFS layers",
+                "You buffer tasks for a worker pool"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Most-recent-first is stack territory.",
+            "whyWrong": [
+                "",
+                "Arrival order is exactly FIFO.",
+                "BFS wants a queue.",
+                "Worker buffers are often queues."
+            ]
+        }
+    ]
+}

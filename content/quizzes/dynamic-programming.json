@@ -1,0 +1,108 @@
+{
+    "slug": "dynamic-programming",
+    "title": "Dynamic programming",
+    "items": [
+        {
+            "prompt": "Before coding DP, write?",
+            "choices": [
+                "The state sentence and the recurrence",
+                "Only a nested loop sketch",
+                "Only the answer print",
+                "A random hash"
+            ],
+            "answerIndex": 0,
+            "whyRight": "State + transition is the algorithm; loops are packaging.",
+            "whyWrong": [
+                "",
+                "Loops without a state story are cargo cult.",
+                "Printing is last.",
+                "Hashing may memoize but is not the definition."
+            ]
+        },
+        {
+            "prompt": "DP applies when you have?",
+            "choices": [
+                "Optimal substructure and overlapping subproblems",
+                "Only overlapping with no optimal structure",
+                "Only a greedy exchange proof",
+                "A single binary search"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Reuse + compose optima.",
+            "whyWrong": [
+                "",
+                "Overlap alone may just need memoized search without optimal combine.",
+                "Greedy is a different proof.",
+                "Binary search is another paradigm."
+            ]
+        },
+        {
+            "prompt": "0/1 knapsack classic state is?",
+            "choices": [
+                "dp[i][w] = best value using first i items with capacity w",
+                "dp = number of DFS paths",
+                "dp[i] = i-th Fibonacci only",
+                "dp = sorted array"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Indexed by item prefix and remaining capacity.",
+            "whyWrong": [
+                "",
+                "Path counts are a different DP.",
+                "Fibonacci is one recurrence instance.",
+                "Sorting is not the knapsack table."
+            ]
+        },
+        {
+            "prompt": "Top-down vs bottom-up DP differ mainly in?",
+            "choices": [
+                "Call-stack memo vs iterative table fill order",
+                "Asymptotic time always",
+                "Correctness impossibility of one",
+                "Need for recursion in hardware"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Same recurrence; evaluation strategy differs.",
+            "whyWrong": [
+                "",
+                "Times match for the same states.",
+                "Both can be correct.",
+                "Hardware runs both."
+            ]
+        },
+        {
+            "prompt": "Space-optimizing a 1D recurrence often keeps?",
+            "choices": [
+                "Only the previous layer / rolling variables",
+                "The entire n×n table mandatory",
+                "No arrays at all always",
+                "Two copies of the input"
+            ],
+            "answerIndex": 0,
+            "whyRight": "If dp[i] depends on a bounded window of prior answers, roll them.",
+            "whyWrong": [
+                "",
+                "Full tables are fine but not always required.",
+                "Some state is required.",
+                "Input copies are unrelated."
+            ]
+        },
+        {
+            "prompt": "LIS via DP+patience or DP+binary search reaches?",
+            "choices": [
+                "O(n log n)",
+                "O(n) comparison lower bound always",
+                "O(n²) only possible",
+                "O(1)"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Patience sorting / tails array gives n log n.",
+            "whyWrong": [
+                "",
+                "Linear comparison LIS is not the general bound.",
+                "Quadratic is the naive DP.",
+                "Constant time impossible."
+            ]
+        }
+    ]
+}

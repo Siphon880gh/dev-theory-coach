@@ -1,0 +1,108 @@
+{
+    "slug": "sliding-window",
+    "title": "Sliding window",
+    "items": [
+        {
+            "prompt": "Sliding window maintains what kind of region?",
+            "choices": [
+                "A contiguous segment whose summary updates in amortized O(1) per move",
+                "Any subsequence",
+                "A hierarchical tree of windows",
+                "Disconnected index pairs"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Left and right bound a contiguous slice.",
+            "whyWrong": [
+                "",
+                "Subsequences skip elements.",
+                "Trees are different structures.",
+                "Disconnected pairs are not a window."
+            ]
+        },
+        {
+            "prompt": "Goal for a well-built window scan over n elements?",
+            "choices": [
+                "O(n) total because each index enters/leaves at most once",
+                "O(n²) nested restarts",
+                "O(log n) only",
+                "O(1) without reading input"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Right advances n times; left only moves forward.",
+            "whyWrong": [
+                "",
+                "Restarting from scratch each i is quadratic.",
+                "Log time cannot read all elements.",
+                "You must read the array."
+            ]
+        },
+        {
+            "prompt": "Variable window “longest substring with ≤ k distinct” tracks?",
+            "choices": [
+                "Counts in the current window; shrink left when distinct exceeds k",
+                "A global sort of the string",
+                "Dijkstra distances",
+                "Union of all prefixes"
+            ],
+            "answerIndex": 0,
+            "whyRight": "A frequency map plus two pointers enforces the constraint.",
+            "whyWrong": [
+                "",
+                "Sorting destroys index locality for substrings.",
+                "Dijkstra is paths.",
+                "All prefixes is not a window."
+            ]
+        },
+        {
+            "prompt": "Fixed window of size k sum updates by?",
+            "choices": [
+                "Adding A[r] and subtracting A[r−k]",
+                "Resumming k elements from scratch always",
+                "Hashing the window",
+                "Building a segment tree mandatory"
+            ],
+            "answerIndex": 0,
+            "whyRight": "One enter, one leave keeps the sum fresh.",
+            "whyWrong": [
+                "",
+                "Resumming is O(nk).",
+                "Hashing is optional for other predicates.",
+                "Segment trees are heavier than needed."
+            ]
+        },
+        {
+            "prompt": "When is sliding window the wrong first tool?",
+            "choices": [
+                "The needed subset is not contiguous",
+                "You need a contiguous max average",
+                "Minimum window covering a charset",
+                "Longest unique-character substring"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Non-contiguous subsets need other ideas (DP, hashing pairs, etc.).",
+            "whyWrong": [
+                "",
+                "Contiguous averages are window-friendly.",
+                "Covering windows are classic.",
+                "Unique substrings are classic."
+            ]
+        },
+        {
+            "prompt": "A deque appears in window-maximum because it stores?",
+            "choices": [
+                "Indices of candidates still inside the window in useful order",
+                "All prefix sums",
+                "DFS timestamps",
+                "Random samples"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Front is the max; back drops dominated values.",
+            "whyWrong": [
+                "",
+                "Prefix sums solve range sums differently.",
+                "DFS is graph traversal.",
+                "Sampling is approximate."
+            ]
+        }
+    ]
+}

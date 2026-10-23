@@ -1,0 +1,108 @@
+{
+    "slug": "greedy",
+    "title": "Greedy",
+    "items": [
+        {
+            "prompt": "Greedy is safe when you can argue?",
+            "choices": [
+                "An exchange/optimal-substructure argument: a local choice never needs revisiting",
+                "That DFS found a path",
+                "That n is small",
+                "That hashing is O(1)"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Without an exchange argument, greedy is a heuristic.",
+            "whyWrong": [
+                "",
+                "Reachability ≠ optimality via greedy.",
+                "Small n invites DP/brute.",
+                "Hashing unrelated to correctness."
+            ]
+        },
+        {
+            "prompt": "Interval scheduling classic greedy picks?",
+            "choices": [
+                "The compatible interval with earliest finish time",
+                "The longest interval first always",
+                "Random intervals",
+                "Latest start always"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Earliest finish leaves the most room for the rest; exchange proves it.",
+            "whyWrong": [
+                "",
+                "Longest first fails common counterexamples.",
+                "Random is not an algorithm.",
+                "Latest start is wrong."
+            ]
+        },
+        {
+            "prompt": "Huffman coding builds trees by repeatedly?",
+            "choices": [
+                "Merging the two least frequent nodes",
+                "Merging the two most frequent",
+                "Sorting once and stopping",
+                "Using BFS layers"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Greedy lightest-first yields optimal prefix codes.",
+            "whyWrong": [
+                "",
+                "Heaviest-first is wrong.",
+                "One sort is insufficient alone.",
+                "BFS is not the merge rule."
+            ]
+        },
+        {
+            "prompt": "Coin change with canonical denominations can be greedy; arbitrary sets may need?",
+            "choices": [
+                "DP",
+                "Only a stack",
+                "Binary search on coins",
+                "Union-find"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Non-canonical systems break greedy optimality.",
+            "whyWrong": [
+                "",
+                "Stacks do not optimize counts.",
+                "Binary search does not choose multisets well.",
+                "DSU unrelated."
+            ]
+        },
+        {
+            "prompt": "Dijkstra is greedy because it?",
+            "choices": [
+                "Finalizes the closest unsettled node and never reopens it (non-negative weights)",
+                "Randomly relaxes edges",
+                "Allows negative cycles safely",
+                "Ignores distances"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Non-negative weights make the first settlement permanent.",
+            "whyWrong": [
+                "",
+                "Random relaxation is not Dijkstra.",
+                "Negatives need Bellman-Ford.",
+                "Distances are the keys."
+            ]
+        },
+        {
+            "prompt": "Red flag that greedy may be wrong?",
+            "choices": [
+                "A small counterexample where a local max blocks a better global set",
+                "The problem mentions sorting",
+                "n ≤ 20",
+                "You have a heap available"
+            ],
+            "answerIndex": 0,
+            "whyRight": "One counterexample kills the claim.",
+            "whyWrong": [
+                "",
+                "Sorting often pairs with greedy correctly.",
+                "Small n suggests brute/DP feasibility.",
+                "Heaps implement greedy priority, not correctness."
+            ]
+        }
+    ]
+}

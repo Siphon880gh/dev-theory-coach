@@ -1,0 +1,108 @@
+{
+    "slug": "tries",
+    "title": "Tries",
+    "items": [
+        {
+            "prompt": "Prefix search in a trie over a dictionary costs roughly?",
+            "choices": [
+                "O(length of the prefix)",
+                "O(dictionary size)",
+                "O(log dictionary size) only",
+                "O(1) with no node walks"
+            ],
+            "answerIndex": 0,
+            "whyRight": "You walk one edge per character of the query prefix.",
+            "whyWrong": [
+                "",
+                "You do not scan every word if the trie shares prefixes.",
+                "Binary search on sorted words is a different structure.",
+                "Some walk is required along the prefix."
+            ]
+        },
+        {
+            "prompt": "Tries beat a flat hash set of words when the query is?",
+            "choices": [
+                "“All words with this prefix” / autocomplete",
+                "Exact full-string membership only",
+                "Numeric range on integers",
+                "Shortest path in a city map"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Shared prefix paths make completions local to a subtree.",
+            "whyWrong": [
+                "",
+                "Exact membership is where hashing shines.",
+                "Integer ranges want trees/fenwick, not tries.",
+                "Maps are graphs."
+            ]
+        },
+        {
+            "prompt": "Each edge in a character trie usually represents?",
+            "choices": [
+                "One character (or compressed chunk) of the key",
+                "An entire document",
+                "A graph hop between users",
+                "A CPU cache line guarantee"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Keys spell paths from the root.",
+            "whyWrong": [
+                "",
+                "Documents are values, not edges.",
+                "User graphs are unrelated.",
+                "Cache behavior is incidental."
+            ]
+        },
+        {
+            "prompt": "Space concern for naive tries?",
+            "choices": [
+                "Many sparsely filled child arrays / maps per node",
+                "Tries always use less RAM than hash sets",
+                "They store each word twice mandatorily",
+                "They cannot share prefixes"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Alphabet-sized child tables waste space when sparse; maps or compression help.",
+            "whyWrong": [
+                "",
+                "Tries can use more memory than a compact hash set of full strings.",
+                "Double storage is not required.",
+                "Prefix sharing is the point of tries."
+            ]
+        },
+        {
+            "prompt": "End-of-word markers matter because?",
+            "choices": [
+                "A prefix path may exist without that string being a dictionary word",
+                "Every node is automatically a word",
+                "Markers replace the need for edges",
+                "Markers sort the trie"
+            ],
+            "answerIndex": 0,
+            "whyRight": "“app” may be a prefix of “apple” without “app” itself being stored as a word.",
+            "whyWrong": [
+                "",
+                "Not every internal node is a word.",
+                "Edges still carry characters.",
+                "Markers are flags, not a sort key."
+            ]
+        },
+        {
+            "prompt": "Compressed (radix) tries mainly improve?",
+            "choices": [
+                "Space and cache behavior by merging unary paths",
+                "Asymptotic prefix time to O(1)",
+                "Correctness of BFS",
+                "Hash collision resistance"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Edge labels hold substrings so skinny chains collapse.",
+            "whyWrong": [
+                "",
+                "You still pay for the query length in comparisons.",
+                "BFS is unrelated.",
+                "Hashing is a different tool."
+            ]
+        }
+    ]
+}

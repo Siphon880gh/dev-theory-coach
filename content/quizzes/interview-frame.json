@@ -1,0 +1,108 @@
+{
+    "slug": "interview-frame",
+    "title": "Interview frame",
+    "items": [
+        {
+            "prompt": "A solid system-design hour sequence starts with?",
+            "choices": [
+                "Clarify requirements and constraints before sketching boxes",
+                "Drawing every microservice first",
+                "Picking a database brand immediately",
+                "Jumping to sharding"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Scope and force ranking prevent ornamental architecture.",
+            "whyWrong": [
+                "",
+                "Boxes without requirements are decoration.",
+                "Storage follows access paths.",
+                "Sharding is a late scaling move."
+            ]
+        },
+        {
+            "prompt": "Why reserve minutes at the end to name the bottleneck?",
+            "choices": [
+                "Interviewers grade whether you know what breaks first under load",
+                "Silence looks confident",
+                "Bottlenecks only appear in code reviews",
+                "You should never mention failure"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Calling the first fracture shows judgment.",
+            "whyWrong": [
+                "",
+                "Silence hides thinking.",
+                "Design interviews expect risk talk.",
+                "Failure modes are in scope."
+            ]
+        },
+        {
+            "prompt": "Depth vs breadth tradeoff mid-interview?",
+            "choices": [
+                "Deepen the riskiest cut; keep other boxes shallow on purpose",
+                "Deepen every box equally forever",
+                "Only talk APIs",
+                "Avoid numbers"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Time-box forces prioritization of the hard edge.",
+            "whyWrong": [
+                "",
+                "Equal depth blows the clock.",
+                "APIs matter but are not the only cut.",
+                "Estimates belong in the frame."
+            ]
+        },
+        {
+            "prompt": "Clarifying questions should split?",
+            "choices": [
+                "Functional behavior vs non-functional bounds (QPS, latency, durability)",
+                "Only UI colors",
+                "Only hiring team size",
+                "Only cloud vendor"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Behavior vs bounds drives different design moves.",
+            "whyWrong": [
+                "",
+                "UI polish is rarely the system cut.",
+                "Team size is secondary.",
+                "Vendor is an implementation detail later."
+            ]
+        },
+        {
+            "prompt": "Red flag in a design narrative?",
+            "choices": [
+                "Naming five new mechanisms before one end-to-end path works",
+                "Asking about read/write ratio",
+                "Estimating QPS roughly",
+                "Drawing a simple 3-tier first"
+            ],
+            "answerIndex": 0,
+            "whyRight": "Novelty without a working path is theater.",
+            "whyWrong": [
+                "",
+                "Ratios are healthy clarifies.",
+                "Rough orders of magnitude are expected.",
+                "Simple sketches are good starts."
+            ]
+        },
+        {
+            "prompt": "When the prompt is huge, you should?",
+            "choices": [
+                "Negotiate a thinner MVP that still exercises the core force",
+                "Implement every optional feature in the diagram",
+                "Refuse to design",
+                "Only discuss HR processes"
+            ],
+            "answerIndex": 0,
+            "whyRight": "A crisp MVP shows product sense and saves depth for the hard part.",
+            "whyWrong": [
+                "",
+                "Optionals dilute the hour.",
+                "Refusal fails the interview.",
+                "HR is out of scope."
+            ]
+        }
+    ]
+}
