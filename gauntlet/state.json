@@ -1,6 +1,27 @@
 {
   "budget_per_milestone": 3,
-  "rounds": {},
-  "verdicts": [],
+  "rounds": {
+    "E1.M1": 1
+  },
+  "verdicts": [
+    {
+      "milestone_id": "E1.M1",
+      "verdict": "WIN",
+      "at": "2026-10-23T04:10:32-07:00",
+      "gates": {
+        "tests": "phpunit exit 0 (5 tests)",
+        "join_key": "queues and work-queues both present and distinct",
+        "SAMPLE": "hubGroupingHtml contains SAMPLE",
+        "no_paste": "N/A",
+        "slot_not_404": "N/A (no coach route yet)",
+        "progress": "N/A (no progress.js yet)",
+        "acceptance": "E1.M1.S1\u2013S3 PASS"
+      },
+      "commands": [
+        "./vendor/bin/phpunit",
+        "php Catalog::hubGroupingHtml / bySlug checks"
+      ]
+    }
+  ],
   "open_gaps": []
 }

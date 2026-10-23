@@ -1,10 +1,12 @@
 {
-  "current_epic_id": "E1",
-  "current_milestone_id": "E1.M1",
+  "current_epic_id": "E3",
+  "current_milestone_id": "E3.M1",
   "status": "in_progress",
-  "last_updated_iso": "2026-10-23T04:04:28-07:00",
+  "last_updated_iso": "2026-10-23T04:10:32-07:00",
   "milestone_story_status": {
-    "E1.M1.S1": "done"
+    "E1.M1.S1": "done",
+    "E1.M1.S2": "done",
+    "E1.M1.S3": "done"
   },
   "app": {
     "name": "Dev Theory Coach (THEORY_CORE)",
@@ -1336,6 +1338,13 @@
       "E11": [
         "E11.M1"
       ]
+    },
+    "completed": {
+      "E1.M1": {
+        "status": "done",
+        "gauntlet": "WIN",
+        "at": "2026-10-23T04:10:32-07:00"
+      }
     }
   },
   "identified_epics": [
@@ -1428,5 +1437,8 @@
     "context_catalog": "context/README.md",
     "gauntlet_contract": "gauntlet/contract.md"
   },
-  "next_action": "Start E1.M1.S2: store track id, full label, title, summary, after, and rungs on every family."
+  "next_action": "Start E3.M1.S1: progress.js get/set under theory_core_progress_v1 + ProgressSchema.php round-trip.",
+  "milestones_done": [
+    "E1.M1"
+  ]
 }
