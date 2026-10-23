@@ -154,7 +154,7 @@ final class CoachTest extends TestCase
         $this->assertStringContainsString('coach-live', $body);
         $this->assertStringContainsString('Back to guide', $body);
         $this->assertStringContainsString('class="next-cta"', $body);
-        $this->assertStringContainsString('route=%2Fguides%2Farrays', $body);
+        $this->assertStringContainsString('route=%2Fguides%2Farrays#guide-end', $body);
     }
 
     public function testArraysCoachIncludesDiagram(): void

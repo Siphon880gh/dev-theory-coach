@@ -96,6 +96,7 @@ final class GuidesTest extends TestCase
     public function testGuideLessonNavShowsNextTitleOnArrays(): void
     {
         $body = Guides::pageResponse('arrays')['body'] ?? '';
+        $this->assertStringContainsString('id="guide-end"', $body);
         $this->assertStringContainsString('guide-lesson-nav', $body);
         $this->assertStringContainsString('aria-label="Lesson"', $body);
         $this->assertStringContainsString('Strings', $body);

@@ -301,7 +301,7 @@ final class Guides
     {
         $nav = Catalog::neighbors($slug);
         $parts = [];
-        $parts[] = '<nav class="guide-lesson-nav" aria-label="Lesson">';
+        $parts[] = '<nav class="guide-lesson-nav" id="guide-end" aria-label="Lesson">';
         $parts[] = '<div class="guide-lesson-nav__row">';
         if ($nav['prev'] !== null) {
             $parts[] = '<a class="guide-lesson-nav__link guide-lesson-nav__link--prev" href="'

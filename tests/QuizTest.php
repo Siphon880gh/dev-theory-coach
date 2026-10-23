@@ -25,7 +25,7 @@ final class QuizTest extends TestCase
         $this->assertStringContainsString('No code runner', $html);
         $this->assertStringContainsString('Back to guide', $html);
         $this->assertStringContainsString('class="next-cta"', $html);
-        $this->assertStringContainsString('route=%2Fguides%2Farrays', $html);
+        $this->assertStringContainsString('route=%2Fguides%2Farrays#guide-end', $html);
 
         $bad = $quiz;
         $bad['items'][0]['whyWrong'][1] = '';

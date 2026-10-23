@@ -585,7 +585,7 @@ code {
 }
 
 .guide-footer .guide-lesson-nav {
-  margin-top: 0;
+  margin-top: var(--space-3);
   padding-top: var(--space-3);
   border-top: 1px solid var(--panel-edge);
 }

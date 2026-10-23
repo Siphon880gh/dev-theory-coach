@@ -144,7 +144,7 @@ final class Coach
             JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_UNESCAPED_UNICODE
         );
         $parts = [];
-        $parts[] = '<p><a href="' . e(url('/guides/' . rawurlencode($slug))) . '">Back to guide</a></p>';
+        $parts[] = '<p><a href="' . e(url('/guides/' . rawurlencode($slug))) . '#guide-end' . '">Back to guide</a></p>';
         $parts[] = '<h1>Coach: ' . self::h($title) . '</h1>';
         $parts[] = '<div class="coach-live" data-slug="' . self::h($slug) . '">';
         $parts[] = '<div class="coach-feedback" hidden></div>';
@@ -169,7 +169,7 @@ final class Coach
         $parts[] = '</div>';
         $parts[] = '</div>';
         $parts[] = '<p class="session-end"><a class="next-cta" href="'
-            . e(url('/guides/' . rawurlencode($slug))) . '">Back to guide</a></p>';
+            . e(url('/guides/' . rawurlencode($slug))) . '#guide-end' . '">Back to guide</a></p>';
         $parts[] = '<script type="application/json" id="coach-session-data">' . $json . '</script>';
 
         $scripts = [
@@ -197,7 +197,7 @@ final class Coach
         $inner = '<h1>Coach: ' . self::h($slug) . '</h1>'
             . "\n" . '<p class="slot">not authored yet</p>'
             . "\n" . '<p class="session-end"><a class="next-cta" href="'
-            . e(url('/guides/' . rawurlencode($slug))) . '">Back to guide</a></p>';
+            . e(url('/guides/' . rawurlencode($slug))) . '#guide-end' . '">Back to guide</a></p>';
 
         return Layout::document(
             'Coach slot — ' . $slug,
