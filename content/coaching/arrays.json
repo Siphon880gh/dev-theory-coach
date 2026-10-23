@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "slug": "arrays",
+    "title": "Arrays",
+    "sample": true
+  },
+  "start": "q1",
+  "nodes": {
+    "q1": {
+      "type": "continue",
+      "prompt": "SAMPLE: You need the value at index i in a collection of n elements. Which shape makes that jump cheap?",
+      "choices": [
+        {
+          "label": "Array \u2014 address is base + i * width",
+          "to": "q2"
+        },
+        {
+          "label": "Linked list \u2014 walk from the head each time",
+          "to": "wrong_list_for_index"
+        }
+      ]
+    },
+    "wrong_list_for_index": {
+      "type": "wrong",
+      "prompt": "A list still pays O(i) to reach index i.",
+      "explanation": "Index access on a linked list walks i nodes. An array computes the address in O(1).",
+      "rewind_to": "q1",
+      "choices": []
+    },
+    "q2": {
+      "type": "continue",
+      "prompt": "SAMPLE: You already hold a pointer to a node and must splice it out of a chain. Which shape keeps that edit local?",
+      "choices": [
+        {
+          "label": "Linked list \u2014 relink neighbors in O(1)",
+          "to": "success"
+        },
+        {
+          "label": "Array \u2014 shift the tail after the hole",
+          "to": "wrong_array_for_splice"
+        }
+      ]
+    },
+    "wrong_array_for_splice": {
+      "type": "wrong",
+      "prompt": "An array still shifts the tail.",
+      "explanation": "Splicing in the middle of an array moves every later element. A linked list rewires pointers when you already hold the node.",
+      "rewind_to": "q2",
+      "choices": []
+    },
+    "success": {
+      "type": "success",
+      "prompt": "You matched array to index jumps and list to local splices.",
+      "choices": []
+    }
+  }
+}

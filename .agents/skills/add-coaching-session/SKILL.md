@@ -1,36 +1,34 @@
----
-name: add-coaching-session
-description: >-
-  Add one Dev Theory Coach coaching session for a `slug`. Use when pairing `/coach/{slug}` with its guide.
----
+# Skill: add-coaching-session
 
-# Add a coaching session
+Add a deterministic step-by-step coach tree for one family slug.
 
-One valid unit per family. Slug = `slug` = guide slug. No runtime LLM. SAMPLE data.
+## Paths
 
-## Files
+- Session JSON: `content/coaching/<slug>.json`
+- Validator: `src/CoachValidator.php`
+- Runtime / nav / HTML: `src/Coach.php`
+- Route: `GET /coach/{slug}` via `index.php`
+- Example: `content/coaching/arrays.json`
 
-The milestone loop replaces these TODOs when the runtime for this type ships. Do not invent a second path.
+## Validate command
 
-- New: `TODO path/<slug>.json` (source of truth; auto-loaded)
-- Validate: `TODO command`
+```bash
+./vendor/bin/phpunit --filter CoachTest
+php -r 'require "vendor/autoload.php"; TheoryCore\CoachValidator::loadFile("content/coaching/<slug>.json"); echo "ok\n";'
+```
 
-No register step if the runtime scans the directory. Otherwise list the registry file here.
+## Schema checklist
 
-## Shape
+- `meta.slug` equals the filename slug and the guide `relatedCoachSlug`
+- `start` names an existing node
+- At least one `success` node with **empty** `choices`
+- Every `wrong` node has `rewind_to` pointing at an existing node and an `explanation`
+- `continue` nodes expose labeled choices with `to` targets
+- Page copy includes SAMPLE; missing files render the "not authored yet" slot (HTTP 200)
 
-Match an existing file such as `TODO path/<first-slug>.json`. Required parts:
+## Steps
 
-- `start` + two more continue layers
-- ≥2 `wrong` nodes with `rewind_to` pointing at a real node
-- ≥1 `success` with empty choices
-- `meta.slug` = slug = guide slug
-- First message is a SAMPLE setup
-- Teach which method to pick, not a quiz restated as buttons
-- No runtime LLM
-
-## Verify
-
-1. Validator passes
-2. `./vendor/bin/phpunit`
-3. The unit is reachable from its guide / hub (not "not authored yet")
+1. Copy `content/coaching/arrays.json` as a structural template.
+2. Rewrite prompts for the new slug; keep wrong → rewind → success playable.
+3. Run the validate command above.
+4. Confirm `/guides/{slug}` CTA still points at `/coach/{slug}`.

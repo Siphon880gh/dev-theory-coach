@@ -3,7 +3,9 @@
   "rounds": {
     "E1.M1": 1,
     "E3.M1": 1,
-    "E4.M1": 1
+    "E4.M1": 1,
+    "E5.M1": 1,
+    "E5.M2": 1
   },
   "verdicts": [
     {
@@ -56,6 +58,33 @@
       },
       "commands": [
         "./vendor/bin/phpunit"
+      ]
+    },
+    {
+      "milestone_id": "E5.M1",
+      "verdict": "WIN",
+      "at": "2026-10-23T04:13:46-07:00",
+      "gates": {
+        "tests": "phpunit exit 0",
+        "slot_not_404": "/coach/strings returns 200 with not authored yet",
+        "SAMPLE": "coach pages include SAMPLE",
+        "acceptance": "E5.M1.S1\u2013S3 PASS"
+      },
+      "commands": [
+        "./vendor/bin/phpunit"
+      ]
+    },
+    {
+      "milestone_id": "E5.M2",
+      "verdict": "WIN",
+      "at": "2026-10-23T04:13:46-07:00",
+      "gates": {
+        "tests": "phpunit exit 0",
+        "acceptance": "arrays coach validates; skill paths real; guide CTA matches",
+        "join_key": "meta.slug arrays"
+      },
+      "commands": [
+        "./vendor/bin/phpunit --filter CoachTest"
       ]
     }
   ],

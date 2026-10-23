@@ -7,6 +7,7 @@ if (is_file($autoload)) {
     require $autoload;
 }
 
+use TheoryCore\Coach;
 use TheoryCore\Guides;
 
 $uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
@@ -22,6 +23,17 @@ if ($path === '/guides') {
 
 if (preg_match('#^/guides/([a-z0-9-]+)$#', $path, $m) === 1) {
     $response = Guides::pageResponse($m[1]);
+    if (($response['status'] ?? 200) === 302) {
+        header('Location: ' . ($response['location'] ?? '/'), true, 302);
+        exit;
+    }
+    http_response_code((int) ($response['status'] ?? 200));
+    echo $response['body'] ?? '';
+    exit;
+}
+
+if (preg_match('#^/coach/([a-z0-9-]+)$#', $path, $m) === 1) {
+    $response = Coach::pageResponse($m[1]);
     if (($response['status'] ?? 200) === 302) {
         header('Location: ' . ($response['location'] ?? '/'), true, 302);
         exit;
