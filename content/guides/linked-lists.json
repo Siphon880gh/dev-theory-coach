@@ -1,0 +1,15 @@
+{
+  "slug": "linked-lists",
+  "title": "Linked lists",
+  "summary": "Splice a known node in O(1); reaching index i is O(n).",
+  "relatedCoachSlug": "linked-lists",
+  "parts": {
+    "rule": "Given a node pointer, splice or detach in constant time. Reaching the i-th node from the head still walks i steps.",
+    "why": "The list shines when local rewiring is the hot operation. It loses when the algorithm keeps asking for index i. Interviews use this contrast to see whether you pick the shape from the access pattern instead of from familiarity.",
+    "example": "SAMPLE: you already hold the node before a target. Relinking its next pointer removes the target without shifting a tail of values. Separately, finding the middle of an unknown-length list needs a two-pointer walk; there is no O(1) index into the middle.",
+    "use": "Choose a linked list for queues built from pointers, for free-list style reuse, or when merges and splits of subsequences dominate. Use it teaching pointer rewiring before you jump to more complex graphs.",
+    "refuse": "Refuse a linked list when the brief needs binary search or frequent jump-to-index. Refuse it when cache locality matters and a compact array scan would win. Refuse storing huge payloads only in nodes if an array of indices would keep data denser."
+  },
+  "body": "Rule. Given a node pointer, splice or detach in constant time. Reaching the i-th node from the head still walks i steps.\n\nWhy it matters. The list shines when local rewiring is the hot operation. It loses when the algorithm keeps asking for index i. Interviews use this contrast to see whether you pick the shape from the access pattern instead of from familiarity.\n\nSAMPLE example. SAMPLE: you already hold the node before a target. Relinking its next pointer removes the target without shifting a tail of values. Separately, finding the middle of an unknown-length list needs a two-pointer walk; there is no O(1) index into the middle.\n\nWhen to use. Choose a linked list for queues built from pointers, for free-list style reuse, or when merges and splits of subsequences dominate. Use it teaching pointer rewiring before you jump to more complex graphs.\n\nWhen to refuse. Refuse a linked list when the brief needs binary search or frequent jump-to-index. Refuse it when cache locality matters and a compact array scan would win. Refuse storing huge payloads only in nodes if an array of indices would keep data denser.\n\nRecall checkpoint 1: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 2: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 3: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 4: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.",
+  "sample": true
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "binary-search",
+  "title": "Binary search",
+  "summary": "Halve a sorted range in O(log n) without breaking the loop invariant.",
+  "relatedCoachSlug": "binary-search",
+  "parts": {
+    "rule": "Halve a sorted search space while preserving a clear invariant about where the answer can still live. Stop when the space collapses to the answer or to empty.",
+    "why": "Logarithmic search is a default expectation once the input is ordered. Broken mid updates and off-by-one exits are common failure modes; the invariant language catches them early.",
+    "example": "SAMPLE: find the first index where a sorted SAMPLE array becomes greater than or equal to a target. While the window is non-empty, probe the midpoint. If the midpoint is still too small, raise the low bound. Otherwise shrink the high bound. The invariant keeps the answer inside the window.",
+    "use": "Use binary search on sorted arrays, on monotonic predicates over a numeric range, and on \"first true\" boundaries. State the invariant before coding the loop.",
+    "refuse": "Refuse binary search on unsorted input. Refuse a loop that does not shrink the window on every iteration. Refuse returning mid without checking the predicate the prompt actually asked for."
+  },
+  "body": "Rule. Halve a sorted search space while preserving a clear invariant about where the answer can still live. Stop when the space collapses to the answer or to empty.\n\nWhy it matters. Logarithmic search is a default expectation once the input is ordered. Broken mid updates and off-by-one exits are common failure modes; the invariant language catches them early.\n\nSAMPLE example. SAMPLE: find the first index where a sorted SAMPLE array becomes greater than or equal to a target. While the window is non-empty, probe the midpoint. If the midpoint is still too small, raise the low bound. Otherwise shrink the high bound. The invariant keeps the answer inside the window.\n\nWhen to use. Use binary search on sorted arrays, on monotonic predicates over a numeric range, and on \"first true\" boundaries. State the invariant before coding the loop.\n\nWhen to refuse. Refuse binary search on unsorted input. Refuse a loop that does not shrink the window on every iteration. Refuse returning mid without checking the predicate the prompt actually asked for.\n\nRecall checkpoint 1: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 2: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 3: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 4: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 5: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.",
+  "sample": true
+}

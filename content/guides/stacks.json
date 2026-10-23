@@ -1,0 +1,15 @@
+{
+  "slug": "stacks",
+  "title": "Stacks",
+  "summary": "Last in, first out: nested pairs, undo, and a depth-first walk.",
+  "relatedCoachSlug": "stacks",
+  "parts": {
+    "rule": "Last in, first out. Push and pop at one end in constant time. The visible element is always the most recent unfinished piece of work.",
+    "why": "Nested structure, undo, and depth-first exploration all need a memory of what is still open. A stack is that memory. Naming LIFO tells the interviewer you matched the dependency order, not that you memorized a library class.",
+    "example": "SAMPLE: you validate that brackets in a SAMPLE expression close in the right order. Each opener goes on the stack; each closer must match the current top. An empty stack at the end means every opener found its closer. A mismatch or a leftover opener fails for a clear reason.",
+    "use": "Use a stack for matching pairs, for undo buffers, for postfix evaluation, and for an explicit depth-first walk when you want to see the call stack as data.",
+    "refuse": "Refuse a stack when the oldest item must leave first \u2014 that is a queue. Refuse it when you need random access into pending work. Refuse growing an unbounded stack on input you do not trust without a depth limit."
+  },
+  "body": "Rule. Last in, first out. Push and pop at one end in constant time. The visible element is always the most recent unfinished piece of work.\n\nWhy it matters. Nested structure, undo, and depth-first exploration all need a memory of what is still open. A stack is that memory. Naming LIFO tells the interviewer you matched the dependency order, not that you memorized a library class.\n\nSAMPLE example. SAMPLE: you validate that brackets in a SAMPLE expression close in the right order. Each opener goes on the stack; each closer must match the current top. An empty stack at the end means every opener found its closer. A mismatch or a leftover opener fails for a clear reason.\n\nWhen to use. Use a stack for matching pairs, for undo buffers, for postfix evaluation, and for an explicit depth-first walk when you want to see the call stack as data.\n\nWhen to refuse. Refuse a stack when the oldest item must leave first \u2014 that is a queue. Refuse it when you need random access into pending work. Refuse growing an unbounded stack on input you do not trust without a depth limit.\n\nRecall checkpoint 1: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 2: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 3: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 4: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.",
+  "sample": true
+}

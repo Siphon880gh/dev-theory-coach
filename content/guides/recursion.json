@@ -1,0 +1,15 @@
+{
+  "slug": "recursion",
+  "title": "Recursion",
+  "summary": "A base case, a smaller subproblem, and an honest stack story.",
+  "relatedCoachSlug": "recursion",
+  "parts": {
+    "rule": "State a base case, a smaller subproblem, and what the stack holds between calls. If you cannot name those three, the recursive story is not ready.",
+    "why": "Trees, partitions, and divide-and-conquer read cleanly as recursion. Interviews still want the stack picture so you can convert to an explicit stack or spot a depth blow-up before it crashes.",
+    "example": "SAMPLE: factorial of n multiplies n by factorial of n-1 until n is 0. The base case returns 1. Each frame waits for a smaller n. Depth is n, so space is linear unless the language can optimize the tail.",
+    "use": "Use recursion when the input decomposes into similar smaller inputs and the merge step is obvious. Prefer it for tree walks and for backtracking outlines before you optimize.",
+    "refuse": "Refuse recursion on a linked chain of length n if a simple loop suffices and depth would mirror n. Refuse missing base cases. Refuse claiming constant space while the call stack still grows with the input."
+  },
+  "body": "Rule. State a base case, a smaller subproblem, and what the stack holds between calls. If you cannot name those three, the recursive story is not ready.\n\nWhy it matters. Trees, partitions, and divide-and-conquer read cleanly as recursion. Interviews still want the stack picture so you can convert to an explicit stack or spot a depth blow-up before it crashes.\n\nSAMPLE example. SAMPLE: factorial of n multiplies n by factorial of n-1 until n is 0. The base case returns 1. Each frame waits for a smaller n. Depth is n, so space is linear unless the language can optimize the tail.\n\nWhen to use. Use recursion when the input decomposes into similar smaller inputs and the merge step is obvious. Prefer it for tree walks and for backtracking outlines before you optimize.\n\nWhen to refuse. Refuse recursion on a linked chain of length n if a simple loop suffices and depth would mirror n. Refuse missing base cases. Refuse claiming constant space while the call stack still grows with the input.\n\nRecall checkpoint 1: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 2: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 3: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 4: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 5: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.",
+  "sample": true
+}

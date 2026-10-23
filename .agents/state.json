@@ -1,15 +1,18 @@
 {
-  "current_epic_id": "E4",
-  "current_milestone_id": "E4.M1",
+  "current_epic_id": "E5",
+  "current_milestone_id": "E5.M1",
   "status": "in_progress",
-  "last_updated_iso": "2026-10-23T04:11:23-07:00",
+  "last_updated_iso": "2026-10-23T04:12:56-07:00",
   "milestone_story_status": {
     "E1.M1.S1": "done",
     "E1.M1.S2": "done",
     "E1.M1.S3": "done",
     "E3.M1.S1": "done",
     "E3.M1.S2": "done",
-    "E3.M1.S3": "done"
+    "E3.M1.S3": "done",
+    "E4.M1.S1": "done",
+    "E4.M1.S2": "done",
+    "E4.M1.S3": "done"
   },
   "app": {
     "name": "Dev Theory Coach (THEORY_CORE)",
@@ -1352,6 +1355,11 @@
         "status": "done",
         "gauntlet": "WIN",
         "at": "2026-10-23T04:11:23-07:00"
+      },
+      "E4.M1": {
+        "status": "done",
+        "gauntlet": "WIN",
+        "at": "2026-10-23T04:12:56-07:00"
       }
     }
   },
@@ -1445,9 +1453,10 @@
     "context_catalog": "context/README.md",
     "gauntlet_contract": "gauntlet/contract.md"
   },
-  "next_action": "Start E4.M1.S1: GET /guides hub listing all 53 families grouped by track with full labels.",
+  "next_action": "Start E5.M1.S1: coaching session schema + CoachValidator (success required, rewind targets exist, success has no choices).",
   "milestones_done": [
     "E1.M1",
-    "E3.M1"
+    "E3.M1",
+    "E4.M1"
   ]
 }

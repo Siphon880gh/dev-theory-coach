@@ -1,0 +1,15 @@
+{
+  "slug": "trees",
+  "title": "Trees",
+  "summary": "Preorder, inorder, postorder, and level order, and what each order is for.",
+  "relatedCoachSlug": "trees",
+  "parts": {
+    "rule": "A tree is a connected acyclic hierarchy. Pick a traversal by what you need: preorder for copy-shaped work, inorder for sorted binary-search-tree walks, postorder for delete-shaped work, level order for breadth.",
+    "why": "Hierarchy shows up in filesystems, DOM-like structures, and recursive partitions. Naming the order shows you know which visit sequence matches the job.",
+    "example": "SAMPLE: print a binary tree by levels using a queue. That is level order. Separately, an inorder walk of a binary search tree emits keys ascending. Mixing those orders without saying why loses the interview thread.",
+    "use": "Model hierarchical data as a tree when each node has one parent path. Choose BFS for distance in edges, DFS for path-shaped recursion, and explicit stacks when recursion depth is risky.",
+    "refuse": "Refuse calling a cyclic graph a tree. Refuse inorder language on a structure that is not a binary search tree if sorted output was the promise. Refuse storing children in ways that hide the parent link the algorithm needs."
+  },
+  "body": "Rule. A tree is a connected acyclic hierarchy. Pick a traversal by what you need: preorder for copy-shaped work, inorder for sorted binary-search-tree walks, postorder for delete-shaped work, level order for breadth.\n\nWhy it matters. Hierarchy shows up in filesystems, DOM-like structures, and recursive partitions. Naming the order shows you know which visit sequence matches the job.\n\nSAMPLE example. SAMPLE: print a binary tree by levels using a queue. That is level order. Separately, an inorder walk of a binary search tree emits keys ascending. Mixing those orders without saying why loses the interview thread.\n\nWhen to use. Model hierarchical data as a tree when each node has one parent path. Choose BFS for distance in edges, DFS for path-shaped recursion, and explicit stacks when recursion depth is risky.\n\nWhen to refuse. Refuse calling a cyclic graph a tree. Refuse inorder language on a structure that is not a binary search tree if sorted output was the promise. Refuse storing children in ways that hide the parent link the algorithm needs.\n\nRecall checkpoint 1: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 2: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 3: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 4: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.\n\nRecall checkpoint 5: say the cost in one sentence, name the competing shape, and restate the refuse rule in your own words before you leave this SAMPLE lesson.",
+  "sample": true
+}

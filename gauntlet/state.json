@@ -2,7 +2,8 @@
   "budget_per_milestone": 3,
   "rounds": {
     "E1.M1": 1,
-    "E3.M1": 1
+    "E3.M1": 1,
+    "E4.M1": 1
   },
   "verdicts": [
     {
@@ -35,6 +36,23 @@
         "SAMPLE": "N/A (no new learner route)",
         "slot_not_404": "N/A",
         "no_paste": "N/A"
+      },
+      "commands": [
+        "./vendor/bin/phpunit"
+      ]
+    },
+    {
+      "milestone_id": "E4.M1",
+      "verdict": "WIN",
+      "at": "2026-10-23T04:12:56-07:00",
+      "gates": {
+        "tests": "phpunit exit 0",
+        "SAMPLE": "/guides and guide pages include SAMPLE",
+        "join_key": "hub lists all RESOURCES slugs",
+        "no_paste": "12 beginner guides pass 12-word curricula paste test",
+        "acceptance": "E4.M1.S1\u2013S3 PASS",
+        "slot_not_404": "N/A (coach next)",
+        "progress": "unchanged"
       },
       "commands": [
         "./vendor/bin/phpunit"
