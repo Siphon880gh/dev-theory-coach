@@ -1,0 +1,19 @@
+{
+    "slug": "complexity",
+    "lines": [
+        "Big-O = dominant growth",
+        "Amortized ≠ single-call worst",
+        "Name n before declaring unusable",
+        "Aux space vs input space",
+        "Master: 2T(n/2)+n → n log n",
+        "Constants matter in practice",
+        "Ω / Θ when asked",
+        "Refuse wall-clock as big-O",
+        "Prefer clear loop accounting",
+        "Nested loops multiply",
+        "Recursion depth is space",
+        "Log factors from halving"
+    ],
+    "pickWhen": "You must bound time/space or choose among asymptotics.",
+    "skipWhen": "The question is only about correctness with tiny fixed n."
+}

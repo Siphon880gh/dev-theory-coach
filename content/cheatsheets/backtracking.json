@@ -1,0 +1,19 @@
+{
+    "slug": "backtracking",
+    "lines": [
+        "Choose → explore → undo",
+        "Prune impossible partials",
+        "Templates: N-Queens, subsets, perms",
+        "used[] or start index blocks reuse",
+        "Exponential without pruning",
+        "DFS memory vs BFS partial layers",
+        "Refuse pure greedy without proof",
+        "Prefer explicit undo on return",
+        "Constraint checks before recurse",
+        "State vector of decisions",
+        "Bound depth by n",
+        "Do not forget to revert writes"
+    ],
+    "pickWhen": "You build candidates by decisions that may need retracting.",
+    "skipWhen": "A greedy proof or DP recurrence already settles it."
+}

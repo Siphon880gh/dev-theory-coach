@@ -1,0 +1,19 @@
+{
+    "slug": "replication-and-consistency",
+    "lines": [
+        "Say replica purpose",
+        "Async → stale reads possible",
+        "Sync trades latency",
+        "Read-your-writes tactics",
+        "Leader election on failover",
+        "Define client observations",
+        "Refuse “consistent” without meaning",
+        "Prefer sync vs async explicit",
+        "Quorum when needed",
+        "Lag is a metric",
+        "Do not treat replica as backup only",
+        "Failover runbook matters"
+    ],
+    "pickWhen": "Copies of data exist and clients can see different answers.",
+    "skipWhen": "Single-node storage with no replicas."
+}

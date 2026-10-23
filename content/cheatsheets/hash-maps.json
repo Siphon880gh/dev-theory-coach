@@ -1,0 +1,19 @@
+{
+    "slug": "hash-maps",
+    "lines": [
+        "Average lookup/insert O(1)",
+        "Worst chain O(n) under total collision",
+        "Load factor triggers rehash",
+        "Mutable keys break findability",
+        "Two-sum stores value→index",
+        "Hash set for expected O(1) membership",
+        "Equals and hashCode must agree",
+        "Treeified buckets restore log n in some runtimes",
+        "Refuse sorted-order iteration needs",
+        "Prefer when no order required",
+        "Space tracks distinct keys",
+        "Do not claim O(1) worst without care"
+    ],
+    "pickWhen": "You need expected constant membership or key→value without ordered scan.",
+    "skipWhen": "You must iterate keys in sorted order or guarantee log n worst case."
+}

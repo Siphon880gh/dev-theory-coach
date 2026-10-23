@@ -1,0 +1,19 @@
+{
+    "slug": "tries",
+    "lines": [
+        "Prefix cost O(length)",
+        "Autocomplete = subtree",
+        "Edge = character/chunk",
+        "End marker ≠ every node a word",
+        "Sparse child tables waste space",
+        "Radix compresses unary paths",
+        "Beats hash set for prefix queries",
+        "Refuse O(dict size) prefix scan story",
+        "Prefer shared-prefix dictionaries",
+        "Memory can exceed compact hash set",
+        "Case/normalize explicitly",
+        "Do not use for integer ranges"
+    ],
+    "pickWhen": "Queries are prefixes or completions over a word set.",
+    "skipWhen": "Only exact full-string membership is needed — hashing is enough."
+}

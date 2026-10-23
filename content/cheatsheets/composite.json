@@ -1,0 +1,19 @@
+{
+    "slug": "composite",
+    "lines": [
+        "Same iface for leaf and group",
+        "UI/file trees classic",
+        "operation() delegates to children",
+        "Leaf/composite API tension",
+        "Vs Decorator: many children vs one wrap",
+        "Bundle pricing example",
+        "Refuse type-switches everywhere",
+        "Prefer recursive structure",
+        "Uniform client code",
+        "Do not assume children on leaves",
+        "Keep component contract small",
+        "Document cardinality"
+    ],
+    "pickWhen": "Part-whole trees should look the same to callers.",
+    "skipWhen": "A flat list without nesting suffices."
+}

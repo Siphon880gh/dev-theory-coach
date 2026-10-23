@@ -1,0 +1,19 @@
+{
+    "slug": "sharding",
+    "lines": [
+        "Shard for capacity/QPS",
+        "Name the new hotspot",
+        "Hash = even, kills range",
+        "Range = ordered scans",
+        "Keep txns single-shard",
+        "Reshard/cutover plan",
+        "Refuse “hotspots gone” claim",
+        "Prefer key design first",
+        "Celebrity keys need care",
+        "Cross-shard joins hurt",
+        "Do not shard 100 rows",
+        "Virtual nodes help rebalance"
+    ],
+    "pickWhen": "One machine cannot hold data or write load.",
+    "skipWhen": "Vertical scale still fits comfortably."
+}

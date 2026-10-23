@@ -1,0 +1,19 @@
+{
+    "slug": "binary-search-trees",
+    "lines": [
+        "Search/insert/delete O(h)",
+        "Unbalanced sorted inserts → stick",
+        "Inorder = sorted keys",
+        "Successor: min of right subtree",
+        "AVL/RB keep h = O(log n)",
+        "Hash set if no order needed",
+        "Delete two-child via successor",
+        "Refuse O(log n) claim when skewed",
+        "Prefer ordered membership + traverse",
+        "Parent pointers help delete",
+        "Compare keys at each step",
+        "Do not store duplicates carelessly"
+    ],
+    "pickWhen": "You need ordered keys with dynamic insert/delete.",
+    "skipWhen": "Only unordered membership matters — prefer hashing."
+}

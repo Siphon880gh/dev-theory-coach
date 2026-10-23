@@ -1,0 +1,19 @@
+{
+    "slug": "recursion",
+    "lines": [
+        "Base + smaller subproblem + stack story",
+        "Tail call = nothing after recurse",
+        "Deep n → stack overflow risk",
+        "Memo when overlaps repeat",
+        "Convert via explicit stack",
+        "Mutual recursion still needs a base",
+        "Refuse recursion without measure",
+        "Prefer clear decreasing argument",
+        "Tree recursion vs linear",
+        "Return values compose upward",
+        "Globals are a poor depth story",
+        "Do not omit the base case"
+    ],
+    "pickWhen": "The solution is naturally defined on smaller instances of itself.",
+    "skipWhen": "A tight loop with clear state is simpler and safer."
+}

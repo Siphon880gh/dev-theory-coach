@@ -1,0 +1,19 @@
+{
+    "slug": "sorting",
+    "lines": [
+        "Comparison lower bound ~ n log n",
+        "Stable = ties keep order",
+        "Counting/radix when range allows",
+        "Quick avg n log n / worst n²",
+        "Merge always n log n + O(n) space",
+        "Heap n log n in-place-ish",
+        "Pick by time/stability/keys/memory",
+        "Refuse claiming O(n) comparison sort",
+        "Prefer library sort unless teaching",
+        "Key type drives non-comparison",
+        "Partially sorted inputs matter",
+        "Do not ignore stability needs"
+    ],
+    "pickWhen": "Order is required before a linear scan or for output.",
+    "skipWhen": "Hashing or counting already answers without full order."
+}

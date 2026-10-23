@@ -1,0 +1,19 @@
+{
+    "slug": "queues",
+    "lines": [
+        "FIFO enqueue back / dequeue front",
+        "BFS fringe = queue",
+        "Deque: both ends",
+        "Two-stack queue amortized O(1)",
+        "Sliding-window max deque of indices",
+        "Refuse LIFO undo",
+        "Prefer fair scheduling / layers",
+        "Circular buffer implementation",
+        "Level-order tree traversal",
+        "Do not sort by priority here",
+        "Backpressure when consumers lag",
+        "Keep ordering story explicit"
+    ],
+    "pickWhen": "Earlier discoveries must expand before later ones, or tasks need fair order.",
+    "skipWhen": "You need most-recent-first undo or priority by value."
+}

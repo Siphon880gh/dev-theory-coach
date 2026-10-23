@@ -1,0 +1,19 @@
+{
+    "slug": "decorator",
+    "lines": [
+        "Wrap same interface",
+        "Order changes semantics",
+        "Vs Proxy: add features vs control access",
+        "Java I/O streams classic",
+        "Test around a fake inner",
+        "Avoid unreadable wrap stacks",
+        "Refuse editing vendor class",
+        "Prefer stacking cross-cuts",
+        "Logging/metrics/retry wraps",
+        "Do not break the interface",
+        "Document wrap order",
+        "Keep each decorator focused"
+    ],
+    "pickWhen": "You add behavior without changing the core type’s interface.",
+    "skipWhen": "You need to gate access/lifecycle rather than add features."
+}

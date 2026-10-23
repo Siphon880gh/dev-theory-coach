@@ -1,0 +1,19 @@
+{
+    "slug": "observer",
+    "lines": [
+        "Notify dependents on change",
+        "Unsubscribe to avoid leaks",
+        "Order of notify can surprise",
+        "Push vs pull data",
+        "Vs Mediator: hub topology",
+        "UI listeners are observers",
+        "Refuse forgotten teardown",
+        "Prefer weak refs when apt",
+        "Subject holds list",
+        "Do not notify while inconsistent",
+        "Document reentrancy",
+        "Keep observer work light"
+    ],
+    "pickWhen": "Many dependents must react to one subject’s changes.",
+    "skipWhen": "A single direct call is enough."
+}

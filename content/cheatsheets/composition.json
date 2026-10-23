@@ -1,0 +1,19 @@
+{
+    "slug": "composition",
+    "lines": [
+        "Has-a over fake is-a",
+        "Fragile base class tax",
+        "Strategy via held policy",
+        "Replace mixin pain with collaborators",
+        "True subtypes may still inherit",
+        "Favor composition ≠ ban inheritance",
+        "Refuse Bird/Penguin fly() lies",
+        "Prefer assemble behaviors",
+        "Shallow hierarchies",
+        "Do not deep inherit for reuse only",
+        "Interfaces name seams",
+        "Document why inherit declined"
+    ],
+    "pickWhen": "Behavior is assembled from parts rather than a deep is-a chain.",
+    "skipWhen": "A genuine subtype relationship with shared invariants exists."
+}

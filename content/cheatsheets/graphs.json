@@ -1,0 +1,19 @@
+{
+    "slug": "graphs",
+    "lines": [
+        "Adj list default for sparse",
+        "Matrix when dense + O(1) edge check",
+        "Space list Θ(V+E)",
+        "Undirected edge in both lists",
+        "Cycle: back edge to active ancestor",
+        "Define node and edge first",
+        "Visited set stops infinite walks",
+        "Refuse matrix on huge sparse V",
+        "BFS/DFS are traversals",
+        "Directed vs undirected changes cycle rules",
+        "Weighted edges live on list pairs",
+        "Do not skip the modeling step"
+    ],
+    "pickWhen": "States and transitions form vertices and edges.",
+    "skipWhen": "A flat array/map with no relationships suffices."
+}

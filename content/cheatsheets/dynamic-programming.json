@@ -1,0 +1,19 @@
+{
+    "slug": "dynamic-programming",
+    "lines": [
+        "Write state sentence + recurrence first",
+        "Need optimal substructure + overlaps",
+        "0/1 knapsack dp[i][w]",
+        "Top-down memo vs bottom-up fill",
+        "Roll arrays when window small",
+        "LIS can reach n log n",
+        "Refuse coding loops without state",
+        "Prefer clear base cases",
+        "Time = #states × work",
+        "Space optimize carefully",
+        "Rebuild solution via parents",
+        "Do not confuse with greedy"
+    ],
+    "pickWhen": "Subproblems overlap and optima compose.",
+    "skipWhen": "Subproblems are unique or a greedy proof holds."
+}

@@ -1,0 +1,19 @@
+{
+    "slug": "graph-algorithms",
+    "lines": [
+        "Unweighted shortest → BFS",
+        "≥0 weights → Dijkstra",
+        "Negatives → Bellman-Ford",
+        "APSP dense → Floyd O(V³)",
+        "MST: Kruskal (DSU) / Prim",
+        "Topo only on DAGs",
+        "Refuse Dijkstra with negatives",
+        "Prefer stating weight assumptions",
+        "Relax edges correctly",
+        "Priority queue Dijkstra",
+        "Detect neg cycle via extra pass",
+        "Do not mix algorithms casually"
+    ],
+    "pickWhen": "You need distances, MST, or topo under clear weight rules.",
+    "skipWhen": "Only unweighted reachability — plain BFS/DFS."
+}

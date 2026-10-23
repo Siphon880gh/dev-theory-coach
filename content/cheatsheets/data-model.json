@@ -1,0 +1,19 @@
+{
+    "slug": "data-model",
+    "lines": [
+        "Keys from queries first",
+        "PK affects locality/hotspots",
+        "Denorm for hot reads",
+        "Indexes tax writes",
+        "Join table for M:N",
+        "Time-series → time partitions",
+        "Refuse brand-first modeling",
+        "Prefer access-path stories",
+        "Wide rows vs normalized",
+        "Retention/TTL on events",
+        "Do not skip cardinality",
+        "Migrations are part of design"
+    ],
+    "pickWhen": "You choose entities and keys for real queries.",
+    "skipWhen": "No durable state exists."
+}

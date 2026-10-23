@@ -1,0 +1,19 @@
+{
+    "slug": "capstone-feed",
+    "lines": [
+        "Fanout-on-write = push inboxes",
+        "Fanout-on-read = assemble at read",
+        "Hybrid for celebrities",
+        "Ranking = score + budget",
+        "Denorm for read QPS",
+        "Queues help async fanout",
+        "Refuse sync fanout to millions",
+        "Prefer hot-key awareness",
+        "Cache timeline segments",
+        "Notify ≠ timeline domain",
+        "Do not one-tx all products",
+        "Measure fanout cost"
+    ],
+    "pickWhen": "You design a social home timeline under follower skew.",
+    "skipWhen": "There is no fanout or ranking problem."
+}

@@ -1,0 +1,19 @@
+{
+    "slug": "sliding-window",
+    "lines": [
+        "Contiguous segment only",
+        "Aim O(n): each index ≤1 enter/leave",
+        "Fixed k: add/sub edges",
+        "Variable: shrink when invalid",
+        "Freq map for distinct/charset",
+        "Deque for window max",
+        "Refuse non-contiguous subsets",
+        "Prefer running summary",
+        "Left monotone forward",
+        "Resumming k each i → O(nk)",
+        "Anagram window pattern",
+        "Do not restart full scans"
+    ],
+    "pickWhen": "The answer is about a contiguous subarray/substring summary.",
+    "skipWhen": "The subset can skip elements freely."
+}

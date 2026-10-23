@@ -1,0 +1,19 @@
+{
+    "slug": "heaps",
+    "lines": [
+        "Peek extreme O(1)",
+        "Insert/delete O(log n)",
+        "Array: children 2i+1, 2i+2",
+        "Heapify build O(n)",
+        "Heapsort O(n log n)",
+        "Dijkstra fringe = heap",
+        "Not sorted fully — only heap order",
+        "Refuse arbitrary index search O(1)",
+        "Prefer repeated extract-min",
+        "Priority queue ADT",
+        "Decrease-key needs care",
+        "Do not expect inorder listing"
+    ],
+    "pickWhen": "You repeatedly need the current min/max under inserts.",
+    "skipWhen": "You need fast arbitrary key lookup or full sorted iteration."
+}

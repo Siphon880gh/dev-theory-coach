@@ -1,0 +1,19 @@
+{
+    "slug": "storage-and-indexes",
+    "lines": [
+        "Match engine to access path",
+        "B-tree: point/range",
+        "LSM: write ingest + compaction",
+        "Covering index avoids heap",
+        "Monotonic keys hotspot",
+        "Postgres vs wide-column vs object",
+        "Refuse trendy DB without path",
+        "Prefer stating write tax",
+        "Secondary indexes cost space",
+        "Partition strategy explicit",
+        "Do not index everything",
+        "Vacuum/compaction is ops"
+    ],
+    "pickWhen": "You pick storage and indexes for a known access path.",
+    "skipWhen": "Data is ephemeral and never queried."
+}

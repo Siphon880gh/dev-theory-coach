@@ -1,0 +1,19 @@
+{
+    "slug": "command",
+    "lines": [
+        "Request as object",
+        "Queue / log / undo",
+        "Undo stack of commands",
+        "Macro = composite command",
+        "GUI button → command",
+        "Vs Strategy: reified request",
+        "Refuse snapshots every keystroke unbounded",
+        "Prefer execute+undo pairs",
+        "Audit trail natural fit",
+        "Do not lose parameters",
+        "Keep commands serializable if queued",
+        "Document side effects"
+    ],
+    "pickWhen": "You must store, queue, or reverse user actions.",
+    "skipWhen": "A direct method call with no history needed."
+}

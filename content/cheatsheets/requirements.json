@@ -1,0 +1,19 @@
+{
+    "slug": "requirements",
+    "lines": [
+        "Split behavior vs bounds",
+        "Drop features that do not change design",
+        "Latency SLO shapes topology",
+        "Durability vs availability tradeoff",
+        "Tenancy changes isolation",
+        "Confirm ambiguous scale",
+        "Refuse silent infinite scale",
+        "Prefer crisp MVP",
+        "Multi-region is a force",
+        "Consistency words need definitions",
+        "Write assumptions down",
+        "Do not gold-plate chrome"
+    ],
+    "pickWhen": "You must decide what is in scope before designing.",
+    "skipWhen": "Requirements are already fixed and tiny."
+}

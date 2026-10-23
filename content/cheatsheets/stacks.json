@@ -1,0 +1,19 @@
+{
+    "slug": "stacks",
+    "lines": [
+        "LIFO: push/pop one end",
+        "Parentheses: store unmatched openers",
+        "Iterative DFS fringe = stack",
+        "Undo = reverse last action",
+        "Array-backed amortized O(1)",
+        "Monotonic stack keeps useful candidates",
+        "Call stack depth = recursion depth",
+        "Refuse FIFO fairness needs",
+        "Prefer nested unfinished work",
+        "Next-greater-element pattern",
+        "Do not use for level-order BFS",
+        "Keep top as most recent unfinished"
+    ],
+    "pickWhen": "The next piece of work is the most recently deferred one.",
+    "skipWhen": "You need arrival-order processing or hop-distance layers."
+}

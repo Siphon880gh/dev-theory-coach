@@ -1,0 +1,19 @@
+{
+    "slug": "proxy",
+    "lines": [
+        "Controls reachability",
+        "Virtual = lazy real object",
+        "Protection = authz gate",
+        "Remote = cross-process stub",
+        "Vs Decorator: intent differs",
+        "Caching proxy needs TTL rules",
+        "Refuse eager decode of everything",
+        "Prefer stand-in with same iface",
+        "Lifecycle belongs here",
+        "Do not confuse with Adapter",
+        "Document failure forwarding",
+        "Keep proxy honest"
+    ],
+    "pickWhen": "A stand-in must decide whether the real object is used.",
+    "skipWhen": "You only add features and always call through."
+}

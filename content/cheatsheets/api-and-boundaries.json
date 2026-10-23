@@ -1,0 +1,19 @@
+{
+    "slug": "api-and-boundaries",
+    "lines": [
+        "Name operations + owners",
+        "Idempotency keys on creates",
+        "Async when caller can wait",
+        "Version public contracts",
+        "Optional fields = compatible",
+        "Bounded contexts at edges",
+        "Refuse overlapping write owners",
+        "Prefer clear sync vs async",
+        "Retries need dedupe",
+        "Backwards-compat checklist",
+        "Do not leak internals",
+        "Authz at the boundary"
+    ],
+    "pickWhen": "You define service contracts and ownership.",
+    "skipWhen": "A single in-process function with no clients."
+}

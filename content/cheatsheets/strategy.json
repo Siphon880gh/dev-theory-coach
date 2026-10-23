@@ -1,0 +1,19 @@
+{
+    "slug": "strategy",
+    "lines": [
+        "Swap algorithm behind interface",
+        "Composition over growing switch",
+        "Caller depends on abstraction",
+        "Vs Template Method: composition",
+        "Tests inject fakes",
+        "Avoid one-line strategy explosion",
+        "Refuse strategy for two stable branches",
+        "Prefer open for extension",
+        "Policy objects cohesive",
+        "Config picks concrete",
+        "Do not edit callers per variant",
+        "Document the contract"
+    ],
+    "pickWhen": "Interchangeable policies will keep arriving.",
+    "skipWhen": "A tiny stable branch is clearer."
+}

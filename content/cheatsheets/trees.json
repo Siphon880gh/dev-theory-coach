@@ -1,0 +1,19 @@
+{
+    "slug": "trees",
+    "lines": [
+        "Connected acyclic hierarchy",
+        "Preorder: root-first copy/serialize",
+        "Inorder: BST sorted walk",
+        "Postorder: children then combine",
+        "Level-order: queue BFS",
+        "Height skewed = Θ(n)",
+        "Balanced height ~ log n",
+        "Refuse calling every DAG a tree",
+        "Pick traversal from the need",
+        "Store parent links only if required",
+        "Leaf vs internal matters for some algos",
+        "Do not confuse with heaps"
+    ],
+    "pickWhen": "Hierarchy and traversal order are the problem.",
+    "skipWhen": "You need arbitrary cycles or key→value without hierarchy."
+}

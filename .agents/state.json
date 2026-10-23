@@ -1,8 +1,8 @@
 {
   "current_epic_id": "CONTENT",
   "current_milestone_id": null,
-  "status": "milestones_complete",
-  "last_updated_iso": "2026-10-23T04:18:12-07:00",
+  "status": "content_graph_complete",
+  "last_updated_iso": "2026-10-23T05:18:38-07:00",
   "milestone_story_status": {
     "E1.M1.S1": "done",
     "E1.M1.S2": "done",
@@ -1545,7 +1545,7 @@
     "context_catalog": "context/README.md",
     "gauntlet_contract": "gauntlet/contract.md"
   },
-  "next_action": "Start LOOPS/LOOP-Graph.md FOUNDATION_THEN_ECHO (milestones Done(global)).",
+  "next_action": "Done(graph). Pause routine dev-theory-build-to-done; optional polish/UI remaining.",
   "milestones_done": [
     "E1.M1",
     "E3.M1",
@@ -1577,5 +1577,22 @@
     "status": "green",
     "at": "2026-10-23T04:18:12-07:00",
     "integration_critic": "WIN"
+  },
+  "content_graph": {
+    "policy": "FOUNDATION_THEN_ECHO",
+    "stage": "done",
+    "floors": {
+      "guides": 53,
+      "coaches": 53,
+      "quizzes": 53,
+      "drills": 7,
+      "drill_skips": 46,
+      "cases": 29,
+      "case_skips": 24,
+      "cheatsheets": 53,
+      "home_copy_pass": true
+    },
+    "done_graph": true,
+    "completed_at_iso": "2026-10-23T05:18:38-07:00"
   }
 }

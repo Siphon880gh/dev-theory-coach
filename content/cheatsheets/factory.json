@@ -1,0 +1,19 @@
+{
+    "slug": "factory",
+    "lines": [
+        "Hide concrete construction",
+        "Localize env-based choice",
+        "Factory Method via subclass",
+        "Abstract Factory = families",
+        "Seam for test fakes",
+        "Avoid god factory",
+        "Refuse scattered new Foo()",
+        "Prefer composition root",
+        "Return interfaces",
+        "Do not switch on everything",
+        "Keep creation separate from use",
+        "Document variants"
+    ],
+    "pickWhen": "Concrete types vary by config and should not leak.",
+    "skipWhen": "One stable class with a plain constructor."
+}

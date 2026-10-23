@@ -1,0 +1,19 @@
+{
+    "slug": "read-and-write-paths",
+    "lines": [
+        "Narrate one happy read",
+        "Narrate one happy write",
+        "Cache miss filler + TTL",
+        "Fanout writes need failure story",
+        "CQRS when shapes diverge",
+        "Source of truth owner",
+        "Latency budget end-to-end",
+        "Refuse diagram-only designs",
+        "Prefer row-level naming",
+        "Partial failure explicit",
+        "Do not hide who writes",
+        "Auth on both paths"
+    ],
+    "pickWhen": "You must make a box diagram operationally real.",
+    "skipWhen": "There is no persistence or request flow."
+}

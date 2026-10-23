@@ -1,0 +1,19 @@
+{
+    "slug": "builder",
+    "lines": [
+        "Many optional parts",
+        "build() validates required",
+        "Beats telescoping constructors",
+        "Fluent returns builder",
+        "Vs Factory: stepwise assembly",
+        "Immutable products fit",
+        "Refuse silent null builds",
+        "Prefer named steps",
+        "Copy-on-build optional",
+        "Do not mutate after build",
+        "Keep required vs optional clear",
+        "Document defaults"
+    ],
+    "pickWhen": "Construction has many options that must form one valid object.",
+    "skipWhen": "Two fields and a simple constructor suffice."
+}

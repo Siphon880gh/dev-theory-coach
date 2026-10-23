@@ -1,0 +1,19 @@
+{
+    "slug": "adapter",
+    "lines": [
+        "Keep caller’s interface",
+        "Wrap types you do not own",
+        "Object adapter = composition",
+        "Anti-corruption layer cousin",
+        "Do not leak adaptee types",
+        "Example: vendor metrics SDK",
+        "Refuse rewriting callers to vendor",
+        "Prefer thin translation",
+        "Test via fakes of target iface",
+        "Class adapter rarer today",
+        "Do not add unrelated features",
+        "Document mapping"
+    ],
+    "pickWhen": "A foreign API must meet an interface you already have.",
+    "skipWhen": "You own both sides and can reshape directly."
+}

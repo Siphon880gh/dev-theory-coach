@@ -1,0 +1,19 @@
+{
+    "slug": "estimates",
+    "lines": [
+        "QPS ≈ actions/day ÷ 86400",
+        "Storage = bytes × rows × copies",
+        "Order-of-magnitude (~10×)",
+        "Say assumptions out loud",
+        "Read vs write shape matters",
+        "Bandwidth = QPS × bytes",
+        "Refuse MAU as QPS",
+        "Prefer back-of-envelope",
+        "Retention multiplies storage",
+        "RPO/RTO separate from QPS",
+        "Shard count from size targets",
+        "Do not fake six decimals"
+    ],
+    "pickWhen": "You must turn users/actions into QPS and bytes.",
+    "skipWhen": "No scale numbers will affect the design choice."
+}

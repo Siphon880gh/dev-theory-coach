@@ -1,0 +1,19 @@
+{
+    "slug": "rate-limiting",
+    "lines": [
+        "Protect a named key",
+        "Token vs leaky = bursts",
+        "Enforce at edge first",
+        "429 + Retry-After",
+        "Distributed shared counters",
+        "Burst matches product intent",
+        "Refuse infinite partner burst",
+        "Prefer gateway then service",
+        "Window boundary spikes",
+        "Fairness across tenants",
+        "Do not limit only deep inside",
+        "Log/metric rejections"
+    ],
+    "pickWhen": "A boundary must shed overload or abuse.",
+    "skipWhen": "Traffic is trusted, tiny, and fully provisioned."
+}

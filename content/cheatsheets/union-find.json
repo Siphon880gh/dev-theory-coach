@@ -1,0 +1,19 @@
+{
+    "slug": "union-find",
+    "lines": [
+        "Same-set? + merge sets",
+        "Path compression flattens",
+        "Union by rank/size",
+        "Amortized ~O(1) Find",
+        "Kruskal uses DSU to skip cycles",
+        "Dynamic connectivity signal",
+        "Refuse shortest-path use",
+        "Prefer merging components over time",
+        "Parent array representation",
+        "Do not confuse with heaps",
+        "Almost constant α(n)",
+        "Initialize each node alone"
+    ],
+    "pickWhen": "You merge groups and query connectivity over time.",
+    "skipWhen": "You need distances, order statistics, or topo order."
+}

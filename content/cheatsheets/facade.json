@@ -1,0 +1,19 @@
+{
+    "slug": "facade",
+    "lines": [
+        "One operation over a sequence",
+        "Hide subsystem orchestration",
+        "Vs Adapter: simplify ≠ translate",
+        "Avoid god facade",
+        "Happy-path library API",
+        "Refuse duplicating sequences",
+        "Prefer coarse cohesive entry",
+        "Power APIs can remain",
+        "Diagram as a boundary box",
+        "Do not swallow all errors silently",
+        "Keep facade thin on policy",
+        "Document side effects"
+    ],
+    "pickWhen": "Callers should not wire a multi-step subsystem ballet.",
+    "skipWhen": "There is only one object and one method."
+}

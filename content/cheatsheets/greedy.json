@@ -1,0 +1,19 @@
+{
+    "slug": "greedy",
+    "lines": [
+        "Need exchange / optimality argument",
+        "Interval scheduling: earliest finish",
+        "Huffman: merge two lightest",
+        "Coin change: canonical vs DP",
+        "Dijkstra: settle closest (≥0)",
+        "Counterexample kills greedy",
+        "Refuse greedy on vibes alone",
+        "Prefer sort then commit",
+        "Local choice never revised",
+        "Activity selection classic",
+        "Matroid intuition when advanced",
+        "Do not skip the proof sketch"
+    ],
+    "pickWhen": "A local choice can be proven never to block an optimum.",
+    "skipWhen": "A small counterexample exists — switch to DP/search."
+}

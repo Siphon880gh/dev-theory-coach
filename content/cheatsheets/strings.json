@@ -1,0 +1,19 @@
+{
+    "slug": "strings",
+    "lines": [
+        "Index char O(1) in contiguous buffer",
+        "Concat often allocates O(n+m)",
+        "Naive s=s+ch loop can be quadratic",
+        "Anagrams → count map O(n)",
+        "Reverse in-place with two pointers",
+        "Clarify code-point vs code-unit length",
+        "Immutability drives copy cost",
+        "Prefer builders/buffers for heavy build",
+        "Refuse treating every edit as O(1)",
+        "Pair with hash maps for frequency",
+        "Unicode needs an explicit unit",
+        "Do not sort when a count suffices"
+    ],
+    "pickWhen": "The problem is about character sequences, edits, or frequency of symbols.",
+    "skipWhen": "You need a general binary tree or graph walk, not a character buffer."
+}

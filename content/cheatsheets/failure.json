@@ -1,0 +1,19 @@
+{
+    "slug": "failure",
+    "lines": [
+        "Timeout + retry + idempotency",
+        "Jitter avoids herds",
+        "Circuit breaker fail-fast",
+        "Degrade features under load",
+        "Deadlines shrink down-chain",
+        "Partial outage playbook",
+        "Refuse infinite retries",
+        "Prefer budgets over hope",
+        "Health checks vs deep deps",
+        "Bulkheads isolate",
+        "Do not hide errors forever",
+        "Page on symptoms"
+    ],
+    "pickWhen": "A remote hop can fail or run slow.",
+    "skipWhen": "Pure local CPU with no I/O."
+}

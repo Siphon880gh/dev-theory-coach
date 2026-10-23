@@ -1,0 +1,19 @@
+{
+    "slug": "two-pointers",
+    "lines": [
+        "Each move discards a region",
+        "Sorted pair-sum O(n)",
+        "Slow/fast write uniques",
+        "Inward ends for water/container",
+        "Cycle detect O(1) space",
+        "Prefer after sort or natural order",
+        "Refuse reopening discarded range",
+        "Hashing if unsorted + space OK",
+        "Partition around pivot",
+        "Merge sorted streams",
+        "Total advances O(n)",
+        "Do not nest resets carelessly"
+    ],
+    "pickWhen": "Two indices can advance so the scan stays linear.",
+    "skipWhen": "Needed subsets are non-contiguous without another structure."
+}

@@ -1,0 +1,19 @@
+{
+    "slug": "work-queues",
+    "lines": [
+        "Offload when user can wait",
+        "Consumers must be idempotent",
+        "DLQ after N fails",
+        "Ordering per key/partition",
+        "Backpressure required",
+        "Keep web path short",
+        "Refuse heavy CPU on request thread",
+        "Prefer at-least-once + dedupe",
+        "Visibility timeout matters",
+        "Poison message isolation",
+        "Do not assume global order",
+        "Metrics: lag/age"
+    ],
+    "pickWhen": "Work is slow and the client does not need it inline.",
+    "skipWhen": "The result must return in the same request."
+}

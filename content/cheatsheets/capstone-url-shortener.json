@@ -1,0 +1,19 @@
+{
+    "slug": "capstone-url-shortener",
+    "lines": [
+        "Read-heavy redirects",
+        "short_code → long_url",
+        "Unique + maybe unguessable codes",
+        "Cache hot redirects",
+        "Async click analytics",
+        "Reuse data-model + caching",
+        "Refuse novel consensus first",
+        "Prefer simple 3-tier path",
+        "CDN for popular codes",
+        "Write path lighter than reads",
+        "Do not block redirect on analytics",
+        "HTTPS + validation"
+    ],
+    "pickWhen": "You practice a small read-heavy end-to-end design.",
+    "skipWhen": "You are inventing mechanisms the frame does not need."
+}

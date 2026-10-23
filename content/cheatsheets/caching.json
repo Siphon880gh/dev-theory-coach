@@ -1,0 +1,19 @@
+{
+    "slug": "caching",
+    "lines": [
+        "Invalidation before hit-rate",
+        "Stampede: singleflight/soft TTL",
+        "Write-through vs write-behind",
+        "CDN: public/purgeable",
+        "Negative cache misses",
+        "Session: cache≠durable truth",
+        "Refuse cache without policy",
+        "Prefer Zipf hot keys",
+        "TTL units explicit",
+        "Key design matters",
+        "Do not cache secrets at edge",
+        "Measure hit rate after coherence"
+    ],
+    "pickWhen": "A hot read path repeats identical lookups.",
+    "skipWhen": "Every read is unique or must be strongly fresh always without a plan."
+}

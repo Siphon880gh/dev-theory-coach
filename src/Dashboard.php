@@ -70,6 +70,7 @@ final class Dashboard
             $parts[] = '<p class="next-action"><a class="next-cta" href="' . e(url('/guides/' . rawurlencode($next))) . '">'
                 . 'Next: study ' . e($next) . '</a></p>';
             $parts[] = '<p class="home-context">Beginner path — open the guide, then coach and quiz on that family.</p>';
+        $parts[] = '<p class="home-tracks">Tracks: Data structures · Algorithms · System design · Design patterns</p>';
         }
         $parts[] = '<p class="case-gate-chip" data-open="' . ($gateOpen ? '1' : '0') . '">'
             . ($gateOpen ? 'Case gate open' : 'Case gate locked') . '</p>';

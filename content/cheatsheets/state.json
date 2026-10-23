@@ -1,0 +1,19 @@
+{
+    "slug": "state",
+    "lines": [
+        "Behavior follows mode",
+        "Centralize transitions",
+        "Illegal moves are explicit",
+        "Vs Strategy: time-varying mode",
+        "Enum+switch OK when small",
+        "Refuse flag soup",
+        "Prefer state objects/table",
+        "Events trigger transitions",
+        "Document the diagram",
+        "Test illegal paths",
+        "Do not scatter magic numbers",
+        "Keep machine readable"
+    ],
+    "pickWhen": "Modes and legal transitions dominate the logic.",
+    "skipWhen": "There is one boolean that will never grow."
+}

@@ -15,11 +15,12 @@ final class CheatsheetTest extends TestCase
         Catalog::reset();
     }
 
-    public function testStringsSlotAndArraysShape(): void
+    public function testStringsAndArraysSheetsRender(): void
     {
-        $slot = Cheatsheet::pageResponse('strings');
-        $this->assertSame(200, $slot['status']);
-        $this->assertStringContainsString('not authored yet', $slot['body'] ?? '');
+        $strings = Cheatsheet::pageResponse('strings');
+        $this->assertSame(200, $strings['status']);
+        $this->assertStringNotContainsString('not authored yet', $strings['body'] ?? '');
+        $this->assertStringContainsString('Pick when:', $strings['body'] ?? '');
 
         $sheet = Cheatsheet::load('arrays');
         $this->assertNotNull($sheet);
@@ -31,5 +32,15 @@ final class CheatsheetTest extends TestCase
         $skill = file_get_contents(dirname(__DIR__) . '/.agents/skills/add-cheatsheet/SKILL.md');
         $this->assertNotFalse($skill);
         $this->assertStringNotContainsString('TODO', $skill);
+    }
+
+    public function testEveryFamilyHasCheatsheet(): void
+    {
+        foreach (Catalog::slugs() as $slug) {
+            $sheet = Cheatsheet::load($slug);
+            $this->assertNotNull($sheet, $slug);
+            Cheatsheet::assertValid($sheet);
+            $this->assertSame($slug, $sheet['slug']);
+        }
     }
 }

@@ -1,0 +1,19 @@
+{
+    "slug": "when-to-name-a-pattern",
+    "lines": [
+        "Force first, name second",
+        "Decline when a branch suffices",
+        "Know when not to use it",
+        "Pattern soup raises cost",
+        "Compare related patterns by force",
+        "One-sentence force test",
+        "Refuse trophy architecture",
+        "Prefer concrete seams",
+        "Tradeoffs are the grade",
+        "Interfaces follow need",
+        "Do not rename ifs for prestige",
+        "Keep reading cost in mind"
+    ],
+    "pickWhen": "You are tempted to drop a GoF name into a design.",
+    "skipWhen": "No recurring force has appeared yet."
+}

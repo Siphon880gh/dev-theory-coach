@@ -1,0 +1,19 @@
+{
+    "slug": "singleton",
+    "lines": [
+        "Prefer inject from composition root",
+        "Hidden getInstance hurts tests",
+        "OK for true process resources",
+        "Lifecycle/order issues",
+        "Lazy init concurrency hazards",
+        "Enum singleton (Java) lore",
+        "Refuse globals in 80 call sites",
+        "Prefer explicit shared pool",
+        "Not a race-condition fix",
+        "Do not Singleton every service",
+        "Document ownership",
+        "Avoid random thread-locals"
+    ],
+    "pickWhen": "One shared resource must exist — still inject it.",
+    "skipWhen": "Many instances are natural and healthier."
+}

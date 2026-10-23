@@ -1,0 +1,19 @@
+{
+    "slug": "binary-search",
+    "lines": [
+        "Needs monotonic / sorted space",
+        "Time O(log n) with random access",
+        "State the invariant on the range",
+        "Search on answer needs monotonic predicate",
+        "Off-by-one from bad left/right updates",
+        "Linked list mid is O(n)",
+        "Iterative aux O(1)",
+        "Refuse on unsorted without sort cost",
+        "Prefer halved discard each step",
+        "Lower/upper bound variants",
+        "Rotated array still log with care",
+        "Do not drop the invariant"
+    ],
+    "pickWhen": "A midpoint test can discard half of a monotonic space.",
+    "skipWhen": "There is no order or monotonic predicate to exploit."
+}

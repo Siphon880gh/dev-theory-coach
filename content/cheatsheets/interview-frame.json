@@ -1,0 +1,19 @@
+{
+    "slug": "interview-frame",
+    "lines": [
+        "Clarify before boxes",
+        "Bounds vs behavior",
+        "Deepen riskiest cut",
+        "Reserve bottleneck minutes",
+        "MVP thins optional chrome",
+        "Refuse 12 services first",
+        "Prefer one end-to-end path",
+        "Estimates steer risks",
+        "Name what breaks first",
+        "Time-box breadth",
+        "Negotiate scope aloud",
+        "Do not skip clarify"
+    ],
+    "pickWhen": "You are running or practicing a timed design interview.",
+    "skipWhen": "The task is a single algorithm with fixed input sizes."
+}

@@ -1,0 +1,19 @@
+{
+    "slug": "linked-lists",
+    "lines": [
+        "Splice known node O(1)",
+        "Index i from head O(i)",
+        "Floyd cycle: slow/fast O(1) space",
+        "Reverse by rewiring next",
+        "Middle insert beats array once you hold neighbor",
+        "Dummy head simplifies edge deletes",
+        "Two pointers for nth-from-end",
+        "Refuse random jumps by index",
+        "Prefer local pointer edits",
+        "Doubly linked: prev helps delete",
+        "Sentinel nodes cut special cases",
+        "Do not claim O(1) index access"
+    ],
+    "pickWhen": "You already hold a node and must splice without shifting a tail.",
+    "skipWhen": "The hot path is jumping to arbitrary indices."
+}

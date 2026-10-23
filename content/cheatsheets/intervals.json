@@ -1,0 +1,19 @@
+{
+    "slug": "intervals",
+    "lines": [
+        "Sort by start (or end) first",
+        "Merge when next.start ≤ cur.end",
+        "Sweep +1/−1 for concurrency",
+        "Insert into disjoint list by walk+merge",
+        "Non-overlap greedy: earliest end",
+        "Time O(n log n) from sort",
+        "Refuse unsorted merge claims",
+        "Prefer one sweep after order",
+        "Touching intervals: clarify merge",
+        "Meeting rooms = max active",
+        "Do not nest O(n²) without need",
+        "Keep end updates on merge"
+    ],
+    "pickWhen": "The input is ranges and overlaps/scheduling matter.",
+    "skipWhen": "Points without duration — different structures."
+}

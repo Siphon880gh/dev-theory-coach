@@ -1,0 +1,19 @@
+{
+    "slug": "bfs-dfs",
+    "lines": [
+        "BFS: unweighted hop distance",
+        "DFS: stack / recursion depth",
+        "Visited prevents cycles",
+        "Components via repeated search",
+        "Finishing times → topo / SCC",
+        "Iterative DFS uses explicit stack",
+        "Refuse DFS for hop shortest path",
+        "Prefer BFS layers for levels",
+        "Adj list scan O(V+E)",
+        "Gray/white/black timing variants",
+        "Tree vs back edges",
+        "Do not mix fringe structures"
+    ],
+    "pickWhen": "You must walk reachable structure with a clear fringe policy.",
+    "skipWhen": "Weighted shortest paths need Dijkstra/Bellman-Ford instead."
+}
