@@ -28,9 +28,11 @@ Match an existing file such as `content/guides/arrays.json` or `content/guides/b
 - Original wording. No 12-word span from `context/`
 - No `SAMPLE` / `SAMPLE example` / `SAMPLE lesson` / `Recall checkpoint` in body or parts
 - No identical paragraph repeated ≥3 times; no `sample: true` / `meta.sample` stamp
+- `diagrams`: ≥1 `{id,title,svg}` (dark-canvas SVG); body has `[[diagram:id]]` after the worked example
+- Plain language — no "the prompt" jargon; refuse rules about operations and costs
 
 ## Verify
 
 1. `./vendor/bin/phpunit`
-2. GuidesTest: no SAMPLE/checkpoint; concrete example (digit in `parts.example`); 300–800 without filler; no `sample` stamp
+2. GuidesTest: no SAMPLE/checkpoint; concrete example (digit in `parts.example`); ≥1 diagram + markers; no "the prompt"; 300–800 without filler; no `sample` stamp
 3. The unit is reachable from `/guides/<slug>` with coach CTA `/coach/<slug>`

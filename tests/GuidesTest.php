@@ -56,7 +56,43 @@ final class GuidesTest extends TestCase
         $guide = Guides::load('arrays');
         $this->assertNotNull($guide);
         $this->assertSame('arrays', $guide['relatedCoachSlug']);
-        $this->assertStringContainsString(substr($guide['body'], 0, 40), $body);
+        $this->assertStringContainsString('Rule.', $body);
+        $this->assertStringContainsString('class="guide-diagram"', $body);
+        $this->assertStringContainsString('data-diagram-id="insert-shift"', $body);
+        $this->assertStringContainsString('<svg', $body);
+        $this->assertStringNotContainsString('[[diagram:', $body);
+        $this->assertDoesNotMatchRegularExpression('/\bthe prompt\b/i', $body);
+        $this->assertStringContainsString('vague', $body);
+        $this->assertStringContainsString('list', $body);
+        $this->assertStringContainsString('linked list when you still need index access', $body);
+    }
+
+    public function testFormatBodyRendersDiagramFigureForArrays(): void
+    {
+        $guide = Guides::load('arrays');
+        $this->assertNotNull($guide);
+        /** @var list<array{id?: mixed, title?: mixed, svg?: mixed}> $diagrams */
+        $diagrams = $guide['diagrams'] ?? [];
+        $html = Guides::formatBody((string) $guide['body'], $diagrams);
+        $this->assertStringContainsString('figure class="guide-diagram"', $html);
+        $this->assertStringContainsString('insert-shift', $html);
+        $this->assertStringContainsString('<svg', $html);
+        $this->assertStringNotContainsString('[[diagram:', $html);
+    }
+
+    public function testSanitizeSvgStripsScriptAndEvents(): void
+    {
+        $dirty = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">'
+            . '<script>alert(1)</script>'
+            . '<rect x="0" y="0" width="10" height="10" onclick="evil()" fill="#fff"/>'
+            . '<foreignObject></foreignObject>'
+            . '</svg>';
+        $safe = Guides::sanitizeSvg($dirty);
+        $this->assertStringContainsString('<svg', $safe);
+        $this->assertStringContainsString('<rect', $safe);
+        $this->assertStringNotContainsString('script', strtolower($safe));
+        $this->assertStringNotContainsString('onclick', strtolower($safe));
+        $this->assertStringNotContainsString('foreignobject', strtolower($safe));
     }
 
     public function testUnknownGuideSlugRendersUnknownPageNot404OrRedirect(): void
@@ -113,6 +149,30 @@ final class GuidesTest extends TestCase
             $this->assertNotSame('', trim((string) $guide['parts'][$part]));
         }
 
+        $this->assertArrayHasKey('diagrams', $guide, "{$slug} missing diagrams");
+        $this->assertIsArray($guide['diagrams']);
+        $this->assertGreaterThanOrEqual(1, count($guide['diagrams']), "{$slug} needs ≥1 diagram");
+        $seenIds = [];
+        foreach ($guide['diagrams'] as $di => $diagram) {
+            $this->assertIsArray($diagram, "{$slug} diagram {$di}");
+            $this->assertNotSame('', trim((string) ($diagram['id'] ?? '')));
+            $this->assertNotSame('', trim((string) ($diagram['title'] ?? '')));
+            $svg = (string) ($diagram['svg'] ?? '');
+            $this->assertStringContainsString('<svg', $svg, "{$slug} diagram missing svg");
+            $this->assertMatchesRegularExpression(
+                '/\\d/',
+                $svg . (string) ($diagram['title'] ?? ''),
+                "{$slug} diagram should carry a digit/label",
+            );
+            $seenIds[] = (string) $diagram['id'];
+            $this->assertStringContainsString(
+                '[[diagram:' . $diagram['id'] . ']]',
+                $body,
+                "{$slug} body missing marker for {$diagram['id']}",
+            );
+        }
+        $this->assertSame(count($seenIds), count(array_unique($seenIds)), "{$slug} duplicate diagram ids");
+
         $haystacks = [$body];
         foreach ($guide['parts'] as $partText) {
             $haystacks[] = (string) $partText;
@@ -127,6 +187,11 @@ final class GuidesTest extends TestCase
                 '/recall\\s+checkpoint/i',
                 $text,
                 "{$slug} must not pad with Recall checkpoint lines",
+            );
+            $this->assertDoesNotMatchRegularExpression(
+                '/\\bthe prompt\\b/i',
+                $text,
+                "{$slug} must not use interview jargon 'the prompt'",
             );
         }
 

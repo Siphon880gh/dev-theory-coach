@@ -32,6 +32,8 @@ The learner sees the track's full label, the title, and a body they can finish i
 
 Never put SAMPLE / "SAMPLE example" / "SAMPLE lesson" / "Recall checkpoint" in the body or parts. Never pad with identical repeated paragraphs or slogan loops to hit 300 words. If short, expand the **worked example** with real steps and concrete values. Prefer ~400–600 teaching words inside the 300–800 band. No `sample: true` stamps.
 
+Each guide needs `diagrams`: 1–3 `{id,title,svg}` (dark-canvas inline SVG). Body references them with `[[diagram:id]]` after the worked example. Teach operations and costs in plain language — never interview jargon like "the prompt". Prefer SVG; Mermaid/image types are allowed later when SVG is awkward.
+
 ---
 
 ## Coverage queue (strict order)
@@ -78,6 +80,7 @@ One guide per family, on a four-track Guides hub.
 - [ ] One unit; unique id; `slug` + track set
 - [ ] 300–800 words; rule, why, example, use, refuse
 - [ ] Worked example has concrete values (digit or named structure in `parts.example`)
+- [ ] ≥1 diagram with SVG; body has matching `[[diagram:id]]` markers; no "the prompt" jargon
 - [ ] No SAMPLE / SAMPLE example / SAMPLE lesson / Recall checkpoint in body or parts
 - [ ] No identical paragraph appearing ≥3 times; no `sample: true`
 - [ ] Original copy

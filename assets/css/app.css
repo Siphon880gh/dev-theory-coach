@@ -436,6 +436,39 @@ code {
   margin-bottom: var(--space-3);
 }
 
+.guide-diagram {
+  margin: var(--space-3) 0 var(--space-4);
+  padding: var(--space-3);
+  background: var(--panel-alt);
+  border: 1px solid var(--panel-edge);
+  border-radius: var(--radius);
+  overflow-x: auto;
+}
+
+.guide-diagram svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.guide-diagram figcaption {
+  margin-top: var(--space-2);
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.youtube-cta {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.youtube-cta a {
+  color: var(--accent);
+}
+
+
 .coach-cta,
 .quiz-meta {
   margin-top: var(--space-4);
