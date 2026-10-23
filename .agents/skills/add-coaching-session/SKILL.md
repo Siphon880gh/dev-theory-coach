@@ -1,17 +1,16 @@
 ---
-name: add-<!-- agent: type, e.g. coaching-session -->
+name: add-coaching-session
 description: >-
-  Add one Dev Theory Coach <!-- agent: unit kind --> for a `slug`.
-  Use when authoring or pairing <!-- agent: route --> with a guide / family.
+  Add one Dev Theory Coach coaching session for a `slug`. Use when pairing `/coach/{slug}` with its guide.
 ---
 
-# Add a <!-- agent: unit kind -->
+# Add a coaching session
 
 One valid unit per family. Slug = `slug` = guide slug. No runtime LLM. SAMPLE data.
 
 ## Files
 
-<!-- agent: fill when the runtime lands (milestone loop updates this skill as part of the story that ships the runtime). -->
+The milestone loop replaces these TODOs when the runtime for this type ships. Do not invent a second path.
 
 - New: `TODO path/<slug>.json` (source of truth; auto-loaded)
 - Validate: `TODO command`
@@ -22,7 +21,13 @@ No register step if the runtime scans the directory. Otherwise list the registry
 
 Match an existing file such as `TODO path/<first-slug>.json`. Required parts:
 
-<!-- agent: per type. Coach minimum: `start` + two more continue layers, ≥2 `wrong` nodes with `rewind_to`, ≥1 `success` with empty choices; `meta.slug` = slug; first message is a SAMPLE setup; teach which method to pick. -->
+- `start` + two more continue layers
+- ≥2 `wrong` nodes with `rewind_to` pointing at a real node
+- ≥1 `success` with empty choices
+- `meta.slug` = slug = guide slug
+- First message is a SAMPLE setup
+- Teach which method to pick, not a quiz restated as buttons
+- No runtime LLM
 
 ## Verify
 

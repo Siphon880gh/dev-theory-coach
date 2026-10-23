@@ -2,41 +2,135 @@
   "current_epic_id": "E1",
   "current_milestone_id": "E1.M1",
   "status": "todo",
-  "last_updated_iso": "2026-10-23T10:49:14Z",
+  "last_updated_iso": "2026-10-23T10:53:01Z",
   "milestone_story_status": {},
   "app": {
     "name": "Dev Theory Coach (THEORY_CORE)",
-    "one_liner": "AGENT: fill from EPIC_MAP",
+    "one_liner": "Teach interview concepts with guides, step-by-step choices, and quizzes so a candidate can name the right idea and reject the wrong one.",
     "platform": "web",
     "topic": "developer interview concepts: data structures, algorithms, system design, and design patterns"
   },
   "decisions": {
     "platform": "Web (PHP 8.2 server-rendered + vanilla JS, localStorage; PHPUnit)",
     "approach": "A",
-    "approach_name": "thin playable Beginner path + MVP freeze; content drain via LOOPS/",
+    "approach_name": "thin playable Beginner path + MVP freeze; content drain via LOOPS/ after all milestone queues",
     "progress_key": "theory_core_progress_v1",
     "join_key": "slug",
     "tracks": {
-      "A": "AGENT: full label",
-      "B": "AGENT: full label"
+      "A": "Data structures",
+      "B": "Algorithms",
+      "C": "System design",
+      "D": "Design patterns"
     },
     "guides_hub": true,
     "coach_slug": "same as guide / slug",
     "no_runtime_llm": true,
-    "learner_persona_primary": "AGENT",
-    "curriculum_principle": "AGENT",
-    "resource_types": ["guide", "coach"],
+    "learner_persona_primary": "Working software engineer preparing for interviews, 15\u201325 minute sessions between other work.",
+    "curriculum_principle": "Name the concept the prompt is asking for, say the cost or the force, and reject the common wrong pick. Structures before the algorithms that use them. Cases after the case gate.",
+    "resource_types": [
+      "guide",
+      "coach",
+      "quiz",
+      "drill",
+      "case",
+      "cheatsheet"
+    ],
+    "rejected_resource_types": {
+      "game": "Curricula name a different mechanic on almost every lesson. A game-per-lesson gallery would stay thin. Coach trees and quizzes carry the choice.",
+      "lab": "No hands-on build procedure. This is not a deploy or a wiring bench.",
+      "simulation": "Estimates and rate limits are closed-form drills and cases. A general systems simulator is out of scope."
+    },
+    "slug_collision": "data-structures queues stays queues; system-design job queue is work-queues. See context/notes/work-queues-slug.md.",
+    "sibling_boundary": "leetcode-coach owns problem statements and mini games. This app owns concepts across the four curricula.",
+    "forge": {
+      "method": "Method 1 (context, outcome, grade alternatives). Reverse interview skipped: the four curricula already fix persona, slugs, order, and outcomes.",
+      "chosen": "Guide + coach + quiz on every family; drills on seven closed-form families; cases on tracks C and D; cheatsheets last.",
+      "rejected": [
+        "A second LeetCode problem trainer.",
+        "A system-design-only simulator.",
+        "A mini game for every lesson."
+      ]
+    },
+    "gauntlet": {
+      "contract": "gauntlet/contract.md",
+      "bar": "Local siblings ../mental-math (guides hub, coach rewind, progress reset) and ../leetcode-coach (guide to coach on the same slug, missing tree is a slot).",
+      "critic_rounds_per_milestone": 3,
+      "when": "After the last story of a milestone passes phpunit, before that milestone is marked done. Integration critic after E7.M1 and after E11.M1."
+    },
     "mvp_freeze_after": [
-      "E1.M1", "E3.M1", "E4.M1", "E5.M1", "E5.M2", "E6.M1", "E2.M1", "E3.M2", "E7.M1"
+      "E1.M1",
+      "E3.M1",
+      "E4.M1",
+      "E5.M1",
+      "E5.M2",
+      "E6.M1",
+      "E2.M1",
+      "E3.M2",
+      "E7.M1"
     ],
     "content_floors": {
       "guides_per_family": 1,
-      "coach_per_guide": 1
+      "coach_per_guide": 1,
+      "quiz_items_per_family": 6,
+      "drills_per_drill_family": 8,
+      "cases_per_decision_family": 1,
+      "cheatsheets_per_family": 1
     },
+    "drill_families": [
+      "complexity",
+      "binary-search",
+      "two-pointers",
+      "sliding-window",
+      "sorting",
+      "estimates",
+      "rate-limiting"
+    ],
+    "decision_families": [
+      "interview-frame",
+      "estimates",
+      "requirements",
+      "api-and-boundaries",
+      "data-model",
+      "read-and-write-paths",
+      "caching",
+      "storage-and-indexes",
+      "replication-and-consistency",
+      "sharding",
+      "work-queues",
+      "rate-limiting",
+      "failure",
+      "capstone-url-shortener",
+      "capstone-feed",
+      "when-to-name-a-pattern",
+      "strategy",
+      "state",
+      "observer",
+      "factory",
+      "builder",
+      "adapter",
+      "facade",
+      "decorator",
+      "singleton",
+      "command",
+      "composite",
+      "proxy",
+      "composition"
+    ],
+    "design_families": [
+      "capstone-url-shortener",
+      "capstone-feed",
+      "composition"
+    ],
     "gate": {
-      "milestone": "AGENT: e.g. E6.M0",
-      "metric": "AGENT: accuracy / latency / cases passed",
-      "threshold": "AGENT"
+      "milestone": "E2.M1",
+      "metric": "quiz_accuracy",
+      "slugs": [
+        "arrays",
+        "hash-maps",
+        "queues"
+      ],
+      "threshold": 0.8,
+      "unlocks": "graded cases on tracks C and D"
     },
     "execution_rules": [
       "One milestone in_progress at a time",
@@ -45,49 +139,1292 @@
       "Rewrite context/; do not paste verbatim",
       "SAMPLE data only",
       "Deny post-P0 until MVP freeze checklist green",
-      "After Done(global) milestones, drain content with LOOPS/LOOP-Graph.md"
+      "Drain post_mvp_order, later_order, and advanced_order before the content graph",
+      "After the last story of a milestone passes phpunit, a fresh gauntlet critic must return WIN before the milestone is marked done",
+      "After Done(global) milestones, drain content with LOOPS/LOOP-Graph.md",
+      "Do not mix a milestone loop and the content graph in one session"
     ]
   },
   "curriculum": {
-    "beginner_learning_order": [],
-    "families": []
+    "beginner_learning_order": [
+      "arrays",
+      "strings",
+      "hash-maps",
+      "linked-lists",
+      "stacks",
+      "queues",
+      "complexity",
+      "recursion",
+      "two-pointers",
+      "binary-search",
+      "trees",
+      "sliding-window"
+    ],
+    "families": [
+      {
+        "slug": "arrays",
+        "track": "A",
+        "track_id": "structures",
+        "title": "Arrays",
+        "summary": "Index access is O(1); a middle insert shifts the tail.",
+        "after": [],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": true,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "strings",
+        "track": "A",
+        "track_id": "structures",
+        "title": "Strings",
+        "summary": "A string is a character array, and an edit often copies.",
+        "after": [
+          "arrays"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": true,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "hash-maps",
+        "track": "A",
+        "track_id": "structures",
+        "title": "Hash maps",
+        "summary": "Key lookup is O(1) on average and O(n) when every key collides.",
+        "after": [
+          "arrays"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": true,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "linked-lists",
+        "track": "A",
+        "track_id": "structures",
+        "title": "Linked lists",
+        "summary": "Splice a known node in O(1); reaching index i is O(n).",
+        "after": [
+          "arrays"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": true,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "stacks",
+        "track": "A",
+        "track_id": "structures",
+        "title": "Stacks",
+        "summary": "Last in, first out: nested pairs, undo, and a depth-first walk.",
+        "after": [
+          "arrays"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": true,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "queues",
+        "track": "A",
+        "track_id": "structures",
+        "title": "Queues",
+        "summary": "First in, first out, and a deque when both ends move.",
+        "after": [
+          "stacks"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": true,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "trees",
+        "track": "A",
+        "track_id": "structures",
+        "title": "Trees",
+        "summary": "Preorder, inorder, postorder, and level order, and what each order is for.",
+        "after": [
+          "queues"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": true,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "binary-search-trees",
+        "track": "A",
+        "track_id": "structures",
+        "title": "Binary search trees",
+        "summary": "Search, insert, and delete in O(h); without balance, h can be n.",
+        "after": [
+          "trees"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "heaps",
+        "track": "A",
+        "track_id": "structures",
+        "title": "Heaps",
+        "summary": "Peek the extreme in O(1) and fix the heap in O(log n), stored as an array.",
+        "after": [
+          "trees"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "graphs",
+        "track": "A",
+        "track_id": "structures",
+        "title": "Graphs",
+        "summary": "An adjacency list is the default; a matrix only when the graph is tiny and dense.",
+        "after": [
+          "queues"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "tries",
+        "track": "A",
+        "track_id": "structures",
+        "title": "Tries",
+        "summary": "Prefix queries cost O(length), not O(dictionary size).",
+        "after": [
+          "trees"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "union-find",
+        "track": "A",
+        "track_id": "structures",
+        "title": "Union-find",
+        "summary": "Merge two sets and test membership in nearly constant time.",
+        "after": [
+          "graphs"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "complexity",
+        "track": "B",
+        "track_id": "algorithms",
+        "title": "Complexity",
+        "summary": "Bound time and space, and say when the question wants amortized cost.",
+        "after": [
+          "arrays"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": true,
+        "drill": true,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "recursion",
+        "track": "B",
+        "track_id": "algorithms",
+        "title": "Recursion",
+        "summary": "A base case, a smaller subproblem, and an honest stack story.",
+        "after": [
+          "complexity",
+          "stacks"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": true,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "binary-search",
+        "track": "B",
+        "track_id": "algorithms",
+        "title": "Binary search",
+        "summary": "Halve a sorted range in O(log n) without breaking the loop invariant.",
+        "after": [
+          "complexity",
+          "arrays"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": true,
+        "drill": true,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "two-pointers",
+        "track": "B",
+        "track_id": "algorithms",
+        "title": "Two pointers",
+        "summary": "Move two indices in one pass when each move throws away a region.",
+        "after": [
+          "arrays"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": true,
+        "drill": true,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "sliding-window",
+        "track": "B",
+        "track_id": "algorithms",
+        "title": "Sliding window",
+        "summary": "Keep a contiguous summary current so the whole scan is O(n).",
+        "after": [
+          "two-pointers",
+          "hash-maps"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": true,
+        "drill": true,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "sorting",
+        "track": "B",
+        "track_id": "algorithms",
+        "title": "Sorting",
+        "summary": "Pick a sort from the comparison bound, stability, and the key range.",
+        "after": [
+          "complexity",
+          "heaps"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": false,
+        "drill": true,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "bfs-dfs",
+        "track": "B",
+        "track_id": "algorithms",
+        "title": "BFS and DFS",
+        "summary": "Walk each reachable node once; BFS when hop count is the distance.",
+        "after": [
+          "queues",
+          "stacks",
+          "graphs",
+          "trees"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "backtracking",
+        "track": "B",
+        "track_id": "algorithms",
+        "title": "Backtracking",
+        "summary": "Choose, explore, and undo, and prune a partial choice that already fails.",
+        "after": [
+          "recursion",
+          "bfs-dfs"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "greedy",
+        "track": "B",
+        "track_id": "algorithms",
+        "title": "Greedy",
+        "summary": "Commit to the local choice only when an exchange argument says you never revise it.",
+        "after": [
+          "sorting"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "dynamic-programming",
+        "track": "B",
+        "track_id": "algorithms",
+        "title": "Dynamic programming",
+        "summary": "Write the state sentence and the recurrence before any loop.",
+        "after": [
+          "recursion",
+          "greedy"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "graph-algorithms",
+        "track": "B",
+        "track_id": "algorithms",
+        "title": "Graph algorithms",
+        "summary": "Pick BFS, Dijkstra, or Bellman-Ford from the weight constraint.",
+        "after": [
+          "bfs-dfs",
+          "heaps",
+          "union-find"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "intervals",
+        "track": "B",
+        "track_id": "algorithms",
+        "title": "Intervals",
+        "summary": "Sort and sweep so merge, overlap, and scheduling are one pass.",
+        "after": [
+          "sorting",
+          "greedy"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": false,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "interview-frame",
+        "track": "C",
+        "track_id": "systems",
+        "title": "Interview frame",
+        "summary": "Spend the hour in a fixed order and leave time to name the bottleneck.",
+        "after": [],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "estimates",
+        "track": "C",
+        "track_id": "systems",
+        "title": "Estimates",
+        "summary": "Turn users and actions into QPS and bytes, within an order of magnitude.",
+        "after": [
+          "interview-frame"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": true,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "requirements",
+        "track": "C",
+        "track_id": "systems",
+        "title": "Requirements",
+        "summary": "Split behavior from bounds, and drop a feature that does not change the design.",
+        "after": [
+          "estimates"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "api-and-boundaries",
+        "track": "C",
+        "track_id": "systems",
+        "title": "API and boundaries",
+        "summary": "Name the operations and the boundary that owns each one.",
+        "after": [
+          "requirements"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "data-model",
+        "track": "C",
+        "track_id": "systems",
+        "title": "Data model",
+        "summary": "Choose entities and keys from the query before naming a database product.",
+        "after": [
+          "api-and-boundaries"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "read-and-write-paths",
+        "track": "C",
+        "track_id": "systems",
+        "title": "Read and write paths",
+        "summary": "Narrate one successful read and one successful write, including the row they touch.",
+        "after": [
+          "data-model"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "caching",
+        "track": "C",
+        "track_id": "systems",
+        "title": "Caching",
+        "summary": "Cache a hot read, and choose the invalidation story before the hit rate.",
+        "after": [
+          "read-and-write-paths",
+          "hash-maps",
+          "linked-lists"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "storage-and-indexes",
+        "track": "C",
+        "track_id": "systems",
+        "title": "Storage and indexes",
+        "summary": "Match the store to the access path, and say what an index costs on the write.",
+        "after": [
+          "data-model"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "replication-and-consistency",
+        "track": "C",
+        "track_id": "systems",
+        "title": "Replication and consistency",
+        "summary": "Say what a replica is for, and what a client observes after a write.",
+        "after": [
+          "storage-and-indexes"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "sharding",
+        "track": "C",
+        "track_id": "systems",
+        "title": "Sharding",
+        "summary": "Split data off one machine, and name the hot spot the split just created.",
+        "after": [
+          "replication-and-consistency",
+          "estimates"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "work-queues",
+        "track": "C",
+        "track_id": "systems",
+        "title": "Work queues",
+        "summary": "Move work off the request when the user does not need the result immediately.",
+        "after": [
+          "read-and-write-paths",
+          "queues"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "rate-limiting",
+        "track": "C",
+        "track_id": "systems",
+        "title": "Rate limiting",
+        "summary": "Protect a boundary, and pick the limiter from the burst you allow.",
+        "after": [
+          "api-and-boundaries",
+          "sliding-window"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": true,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "failure",
+        "track": "C",
+        "track_id": "systems",
+        "title": "Failure",
+        "summary": "Name the timeout, the retry, and the idempotency key for one hop that will fail.",
+        "after": [
+          "work-queues",
+          "replication-and-consistency"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "capstone-url-shortener",
+        "track": "C",
+        "track_id": "systems",
+        "title": "Capstone: URL shortener",
+        "summary": "Run the whole frame on one small read-heavy system without a new mechanism.",
+        "after": [
+          "failure"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose",
+          "design"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": true,
+        "safety_critical": false
+      },
+      {
+        "slug": "capstone-feed",
+        "track": "C",
+        "track_id": "systems",
+        "title": "Capstone: feed",
+        "summary": "Pick fanout-on-write or fanout-on-read from the follower count.",
+        "after": [
+          "capstone-url-shortener"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose",
+          "design"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": true,
+        "safety_critical": false
+      },
+      {
+        "slug": "when-to-name-a-pattern",
+        "track": "D",
+        "track_id": "patterns",
+        "title": "When to name a pattern",
+        "summary": "Say the force first, then the name, and decline the structure when a branch is enough.",
+        "after": [],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "strategy",
+        "track": "D",
+        "track_id": "patterns",
+        "title": "Strategy",
+        "summary": "Swap a whole algorithm behind one interface without editing the caller.",
+        "after": [
+          "when-to-name-a-pattern"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "state",
+        "track": "D",
+        "track_id": "patterns",
+        "title": "State",
+        "summary": "Let behavior follow the mode, with each transition written in one place.",
+        "after": [
+          "strategy"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "observer",
+        "track": "D",
+        "track_id": "patterns",
+        "title": "Observer",
+        "summary": "Notify dependents on a change, and name the leak and the order problems.",
+        "after": [
+          "when-to-name-a-pattern"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "factory",
+        "track": "D",
+        "track_id": "patterns",
+        "title": "Factory",
+        "summary": "Hide which concrete type gets constructed, in one place the caller can find.",
+        "after": [
+          "strategy"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "builder",
+        "track": "D",
+        "track_id": "patterns",
+        "title": "Builder",
+        "summary": "Assemble one object with many optional parts, and refuse a half-built object.",
+        "after": [
+          "factory"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "adapter",
+        "track": "D",
+        "track_id": "patterns",
+        "title": "Adapter",
+        "summary": "Wrap a type you do not own so the caller keeps the interface it already has.",
+        "after": [
+          "when-to-name-a-pattern"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "facade",
+        "track": "D",
+        "track_id": "patterns",
+        "title": "Facade",
+        "summary": "Offer one operation in front of a sequence the caller should not orchestrate.",
+        "after": [
+          "adapter"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "decorator",
+        "track": "D",
+        "track_id": "patterns",
+        "title": "Decorator",
+        "summary": "Add behavior by wrapping, and say how wrap order changes the result.",
+        "after": [
+          "strategy"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "singleton",
+        "track": "D",
+        "track_id": "patterns",
+        "title": "Singleton",
+        "summary": "One shared instance, passed in from the edge, rather than looked up globally.",
+        "after": [
+          "factory"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "command",
+        "track": "D",
+        "track_id": "patterns",
+        "title": "Command",
+        "summary": "Represent a request as an object so you can queue it, log it, or undo it.",
+        "after": [
+          "when-to-name-a-pattern",
+          "stacks"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "composite",
+        "track": "D",
+        "track_id": "patterns",
+        "title": "Composite",
+        "summary": "Treat one item and a group through one interface.",
+        "after": [
+          "decorator",
+          "trees"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "proxy",
+        "track": "D",
+        "track_id": "patterns",
+        "title": "Proxy",
+        "summary": "A stand-in controls whether the real object is reached at all.",
+        "after": [
+          "decorator"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": false,
+        "safety_critical": false
+      },
+      {
+        "slug": "composition",
+        "track": "D",
+        "track_id": "patterns",
+        "title": "Composition",
+        "summary": "Assemble behavior by holding objects; inherit only for a true subtype.",
+        "after": [
+          "strategy",
+          "decorator",
+          "singleton"
+        ],
+        "rungs": [
+          "recognize",
+          "explain",
+          "apply",
+          "diagnose",
+          "design"
+        ],
+        "beginner": false,
+        "drill": false,
+        "case": true,
+        "design": true,
+        "safety_critical": false
+      }
+    ]
   },
   "milestones": {
     "implementation_order": [
-      "E1.M1", "E3.M1", "E4.M1", "E5.M1", "E5.M2", "E6.M1", "E2.M1", "E3.M2", "E7.M1"
+      "E1.M1",
+      "E3.M1",
+      "E4.M1",
+      "E5.M1",
+      "E5.M2",
+      "E6.M1",
+      "E2.M1",
+      "E3.M2",
+      "E7.M1"
     ],
-    "post_mvp_order": [],
-    "later_order": [],
-    "advanced_order": [],
-    "rationale": "AGENT",
+    "post_mvp_order": [
+      "E8.M1",
+      "E9.M1",
+      "E2.M2",
+      "E3.M3"
+    ],
+    "later_order": [
+      "E10.M1"
+    ],
+    "advanced_order": [
+      "E11.M1"
+    ],
+    "rationale": "P0 is a playable phone-screen path: catalog, progress, beginner guides, one coach tree, quiz engine, path, dashboard. Post-MVP adds drill and case runtimes and prerequisite paths. Later adds cheatsheets. Advanced adds the locked-reason line. Content volume is the graph, after those queues.",
     "by_epic": {
-      "E1": ["E1.M1"],
-      "E2": ["E2.M1"],
-      "E3": ["E3.M1", "E3.M2"],
-      "E4": ["E4.M1"],
-      "E5": ["E5.M1", "E5.M2"],
-      "E6": ["E6.M1"],
-      "E7": ["E7.M1"]
+      "E1": [
+        "E1.M1"
+      ],
+      "E2": [
+        "E2.M1",
+        "E2.M2"
+      ],
+      "E3": [
+        "E3.M1",
+        "E3.M2",
+        "E3.M3"
+      ],
+      "E4": [
+        "E4.M1"
+      ],
+      "E5": [
+        "E5.M1",
+        "E5.M2"
+      ],
+      "E6": [
+        "E6.M1"
+      ],
+      "E7": [
+        "E7.M1"
+      ],
+      "E8": [
+        "E8.M1"
+      ],
+      "E9": [
+        "E9.M1"
+      ],
+      "E10": [
+        "E10.M1"
+      ],
+      "E11": [
+        "E11.M1"
+      ]
     }
   },
   "identified_epics": [
-    { "id": "E0", "name": "Planning & Decisions", "priority": "Mandatory", "status": "complete" },
-    { "id": "E1", "name": "Family catalog", "priority": "MVP", "status": "todo" },
-    { "id": "E2", "name": "Learning path planner", "priority": "MVP", "status": "todo" },
-    { "id": "E3", "name": "Progress & unlocks", "priority": "MVP", "status": "todo" },
-    { "id": "E4", "name": "Guides", "priority": "MVP", "status": "todo" },
-    { "id": "E5", "name": "Step-by-step coaching", "priority": "MVP thin + later library", "status": "todo" },
-    { "id": "E6", "name": "AGENT: first practice type", "priority": "MVP", "status": "todo" },
-    { "id": "E7", "name": "Dashboard", "priority": "MVP", "status": "todo" }
+    {
+      "id": "E0",
+      "name": "Planning & Decisions",
+      "priority": "Mandatory",
+      "status": "complete"
+    },
+    {
+      "id": "E1",
+      "name": "Family catalog",
+      "priority": "MVP",
+      "status": "todo"
+    },
+    {
+      "id": "E2",
+      "name": "Learning path planner",
+      "priority": "MVP thin + post-MVP paths",
+      "status": "todo"
+    },
+    {
+      "id": "E3",
+      "name": "Progress & unlocks",
+      "priority": "MVP + post-MVP prerequisites",
+      "status": "todo"
+    },
+    {
+      "id": "E4",
+      "name": "Guides",
+      "priority": "MVP",
+      "status": "todo"
+    },
+    {
+      "id": "E5",
+      "name": "Step-by-step coaching",
+      "priority": "MVP thin + later library via the graph",
+      "status": "todo"
+    },
+    {
+      "id": "E6",
+      "name": "Quizzes",
+      "priority": "MVP",
+      "status": "todo"
+    },
+    {
+      "id": "E7",
+      "name": "Dashboard",
+      "priority": "MVP",
+      "status": "todo"
+    },
+    {
+      "id": "E8",
+      "name": "Drills",
+      "priority": "Post-MVP",
+      "status": "todo"
+    },
+    {
+      "id": "E9",
+      "name": "Cases",
+      "priority": "Post-MVP",
+      "status": "todo"
+    },
+    {
+      "id": "E10",
+      "name": "Cheatsheets",
+      "priority": "Later",
+      "status": "todo"
+    },
+    {
+      "id": "E11",
+      "name": "Locked reason",
+      "priority": "Advanced",
+      "status": "todo"
+    }
   ],
-  "completed": ["E0.discovery", "E0.epic_map", "E0.loops", "E0.graph", "E0.context"],
+  "completed": [
+    "E0.discovery",
+    "E0.epic_map",
+    "E0.loops",
+    "E0.graph",
+    "E0.context"
+  ],
   "docs": {
     "epic_map": "EPIC_MAP.md",
     "implementation_stories": "IMPLEMENTATION_STORIES.md",
     "resources": "RESOURCES.md",
     "milestone_loop": "AGENTS_LOOP-Continue-Milestone.md",
     "content_graph": "LOOPS/LOOP-Graph.md",
-    "context_catalog": "context/README.md"
+    "context_catalog": "context/README.md",
+    "gauntlet_contract": "gauntlet/contract.md"
   },
-  "next_action": "Start E1.M1.S1: define the family catalog and seed Beginner families from RESOURCES.md"
+  "next_action": "Start E1.M1.S1: add Composer and PHPUnit, and seed content/families.json with every slug in RESOURCES.md."
 }

@@ -23,7 +23,15 @@ clone_repo() {
   fi
 }
 
-# AGENT: one line per source. Keep the folder name in sync with context/README.md.
-# clone_repo https://github.com/<owner>/<repo>.git <folder-name>
+# Local siblings (do not clone; they already sit next to this app):
+#   ../leetcode-coach   PHP guides, coach trees, mini games — problem practice, not this syllabus
+#   ../mental-math      PHP guides hub, drills, coach rewind — runtime patterns
+#   ../stocks-trainer   React cases and path UI — case-player patterns only
+
+clone_repo https://github.com/trekhleb/javascript-algorithms.git javascript-algorithms
+clone_repo https://github.com/yangshun/tech-interview-handbook.git tech-interview-handbook
+clone_repo https://github.com/jwasham/coding-interview-university.git coding-interview-university
+clone_repo https://github.com/donnemartin/system-design-primer.git system-design-primer
+clone_repo https://github.com/iluwatar/java-design-patterns.git java-design-patterns
 
 echo "Done. Catalog: $ROOT/README.md"
