@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "singleton",
-    "title": "Singleton"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Singleton?",
-      "choices": [
-        {
-          "label": "Right: One shared instance, passed in from the edge, rather than looked up globally.",
-          "to": "q2"
+    "meta": {
+        "slug": "singleton",
+        "title": "Singleton"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "One process should share a database pool capped at 20 connections. How should application code obtain it?",
+            "choices": [
+                {
+                    "label": "Create one pool in main and inject it into repositories",
+                    "to": "q2"
+                },
+                {
+                    "label": "Call Database.getInstance() from every method that needs data",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "one"
         },
-        {
-          "label": "Wrong: treat singleton as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Singleton is about this force: One shared instance, passed in from the edge, rather than looked up globally.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Singleton?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "One lifetime does not require hidden global access.",
+            "explanation": "The composition root can own one instance while dependencies remain explicit and replaceable in tests.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "The service runs as 8 separate processes. How many process-scoped pools exist?",
+            "choices": [
+                {
+                    "label": "8 pools—one per process—unless another external system coordinates them",
+                    "to": "q3"
+                },
+                {
+                    "label": "Exactly 1 pool across the cluster because the class is a singleton",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Always name the singleton scope.",
+            "explanation": "A language-level singleton usually guarantees one instance only inside one process. It does not create cluster-wide uniqueness.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "ShoppingCart contains mutable state for one user request. Should it be a singleton?",
+            "choices": [
+                {
+                    "label": "No. Give each cart its proper request or user lifetime",
+                    "to": "success"
+                },
+                {
+                    "label": "Yes. Static access is convenient for all mutable domain state",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Request state must not be global.",
+            "explanation": "A shared cart would mix users, break concurrency, and make tests order-dependent. Singleton is not a default lifecycle for domain objects.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You shared an expensive process resource while keeping scope and dependencies explicit.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Singleton when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Singleton and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "capstone-feed",
-    "title": "Capstone: feed"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Capstone: feed?",
-      "choices": [
-        {
-          "label": "Right: Pick fanout-on-write or fanout-on-read from the follower count.",
-          "to": "q2"
+    "meta": {
+        "slug": "capstone-feed",
+        "title": "Capstone: feed"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "A normal author has 200 followers and the system receives 1,000 posts/s. What does fanout-on-write imply?",
+            "choices": [
+                {
+                    "label": "About 200,000 timeline inserts/s, performed asynchronously by workers",
+                    "to": "q2"
+                },
+                {
+                    "label": "One timeline insert/s, completed inside every post request",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "fanout"
         },
-        {
-          "label": "Wrong: treat capstone-feed as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Capstone: feed is about this force: Pick fanout-on-write or fanout-on-read from the follower count.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Capstone: feed?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "Fanout multiplies posts by followers.",
+            "explanation": "At the average, 1,000 × 200 produces 200,000 timeline writes each second. A queue keeps that amplification off the request path.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "A fanout worker inserts 120 follower rows, crashes before acknowledgement, and receives the job again. What keeps timelines correct?",
+            "choices": [
+                {
+                    "label": "Upsert with a unique (user_id, post_id) key",
+                    "to": "q3"
+                },
+                {
+                    "label": "Append blindly because queue jobs never repeat",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "At-least-once fanout can replay completed inserts.",
+            "explanation": "The queue cannot know which rows were written before the crash. A stable uniqueness key makes the repeated job idempotent.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "A celebrity has 10,000,000 followers. Which hybrid avoids the worst write spike?",
+            "choices": [
+                {
+                    "label": "Skip full push for that author and merge recent celebrity posts during feed reads",
+                    "to": "success"
+                },
+                {
+                    "label": "Synchronously write 10,000,000 timeline rows before returning 201",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Celebrity fanout needs a separate path.",
+            "explanation": "Pulling a small number of celebrity timelines during reads caps write amplification while normal authors still benefit from precomputed feeds.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You quantified normal fanout, made retries idempotent, and handled celebrity skew with a hybrid.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Capstone: feed when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Capstone: feed and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "storage-and-indexes",
-    "title": "Storage and indexes"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Storage and indexes?",
-      "choices": [
-        {
-          "label": "Right: Match the store to the access path, and say what an index costs on the write.",
-          "to": "q2"
+    "meta": {
+        "slug": "storage-and-indexes",
+        "title": "Storage and indexes"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "The owner dashboard runs WHERE owner_id = 42 ORDER BY created_at DESC LIMIT 20. Which index best matches that path?",
+            "choices": [
+                {
+                    "label": "(owner_id, created_at DESC)",
+                    "to": "q2"
+                },
+                {
+                    "label": "(created_at) alone",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "index"
         },
-        {
-          "label": "Wrong: treat storage-and-indexes as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Storage and indexes is about this force: Match the store to the access path, and say what an index costs on the write.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Storage and indexes?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "Filter first, then preserve the required order.",
+            "explanation": "The composite index seeks to one owner and reads that owner’s newest rows in order. created_at alone mixes every owner.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "code is already the primary key used by redirects. Should you add another identical secondary index on code?",
+            "choices": [
+                {
+                    "label": "No. It duplicates write and storage cost without a new access path",
+                    "to": "q3"
+                },
+                {
+                    "label": "Yes. Every frequently read column needs two indexes",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "An index must serve a distinct query need.",
+            "explanation": "The primary-key structure already supports lookup by code. A redundant secondary index adds maintenance on every write.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "Each link has a 5 MB preview image, but normal queries need only metadata. Where should the bytes live?",
+            "choices": [
+                {
+                    "label": "Object storage, with an object key and metadata in the transactional row",
+                    "to": "success"
+                },
+                {
+                    "label": "Inline in every hot OLTP row and index",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Keep large opaque payloads off the hot row path.",
+            "explanation": "Object storage fits large blobs. The database can retain ownership and metadata without making ordinary pages and indexes carry megabytes.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You chose indexes from exact queries and kept their write and storage costs visible.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Storage and indexes when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Storage and indexes and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

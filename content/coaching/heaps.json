@@ -1,56 +1,57 @@
 {
-  "meta": {
-    "slug": "heaps",
-    "title": "Heaps"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Heaps?",
-      "choices": [
-        {
-          "label": "Right: Peek the extreme in O(1) and fix the heap in O(log n), stored as an array.",
-          "to": "q2"
+    "meta": {
+        "slug": "heaps",
+        "title": "Heaps"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You repeatedly need the smallest pending item. Which structure makes extract-min cheap?",
+            "choices": [
+                {
+                    "label": "Min-heap — parent ≤ children, peek and pop in log n",
+                    "to": "q2"
+                },
+                {
+                    "label": "Sorted linked list — scan to insert each new item",
+                    "to": "wrong_list"
+                }
+            ],
+            "diagramId": "heap-array"
         },
-        {
-          "label": "Wrong: treat heaps as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Heaps is about this force: Peek the extreme in O(1) and fix the heap in O(log n), stored as an array.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Heaps?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_list": {
+            "type": "wrong",
+            "prompt": "Keeping a sorted list makes inserts expensive.",
+            "explanation": "A binary heap gives O(log n) insert and extract-min with O(1) peek. A sorted list pays O(n) to place each new element.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which requirement makes a basic heap the wrong tool?",
+            "choices": [
+                {
+                    "label": "When you need arbitrary decrease-key without an index handle, or a library sort is enough",
+                    "to": "success"
+                },
+                {
+                    "label": "Never — heaps replace every sort and priority queue",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Heaps are not universal.",
+            "explanation": "Avoid a heap when you need arbitrary decrease-key without an index handle. Avoid heapsorting if a library sort is enough and you do not need online extract-min.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You matched heaps to online extract-min and avoided them when handles or a plain sort fit better.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Heaps when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Heaps and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

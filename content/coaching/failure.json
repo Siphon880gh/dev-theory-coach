@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "failure",
-    "title": "Failure"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Failure?",
-      "choices": [
-        {
-          "label": "Right: Name the timeout, the retry, and the idempotency key for one hop that will fail.",
-          "to": "q2"
+    "meta": {
+        "slug": "failure",
+        "title": "Failure"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Checkout times out after Billing may already have committed a 6000-cent charge. What makes a retry safe?",
+            "choices": [
+                {
+                    "label": "Reuse one durable idempotency key tied to the original charge result",
+                    "to": "q2"
+                },
+                {
+                    "label": "Generate a new charge request id on every attempt",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "blast"
         },
-        {
-          "label": "Wrong: treat failure as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Failure is about this force: Name the timeout, the retry, and the idempotency key for one hop that will fail.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Failure?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "A timeout leaves the remote outcome ambiguous.",
+            "explanation": "Billing may have charged before the response was lost. The same idempotency key lets a retry return the stored result instead of creating another charge.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "There are 3 attempts of at most 200 ms with 50 ms and 100 ms waits between them. What is the approximate worst-case retry budget?",
+            "choices": [
+                {
+                    "label": "750 ms before response overhead",
+                    "to": "q3"
+                },
+                {
+                    "label": "350 ms because only backoff counts",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Every attempt consumes the deadline.",
+            "explanation": "The bound is 200 + 50 + 200 + 100 + 200 = 750 ms. It must fit inside the end-to-end request budget.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "Billing returns 400 because the card details are invalid. Should the transient-failure retry loop run?",
+            "choices": [
+                {
+                    "label": "No. Return the validation failure; retry only transient conditions",
+                    "to": "success"
+                },
+                {
+                    "label": "Yes. Retry every non-200 response until the attempt limit",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Permanent errors do not improve with retry.",
+            "explanation": "A 400 response is a caller error, not a transient outage. Retrying wastes capacity and delays the same inevitable result.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You bounded the deadline, retried only transient failures, and made an ambiguous write idempotent.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Failure when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Failure and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

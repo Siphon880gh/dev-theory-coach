@@ -1,57 +1,58 @@
 {
-  "meta": {
-    "slug": "strings",
-    "title": "Strings"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Strings?",
-      "choices": [
-        {
-          "label": "Right: A string is a character array, and an edit often copies.",
-          "to": "q2"
+    "meta": {
+        "slug": "strings",
+        "title": "Strings"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You build a long string by appending characters one by one in a loop. Which approach stays cheap?",
+            "choices": [
+                {
+                    "label": "Grow a mutable buffer (or list of chunks), then join once",
+                    "to": "q2"
+                },
+                {
+                    "label": "Repeated string + in an immutable language",
+                    "to": "wrong_concat"
+                }
+            ],
+            "diagramId": "copy-on-edit"
         },
-        {
-          "label": "Wrong: treat strings as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ],
-      "diagramId": "char-array"
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Strings is about this force: A string is a character array, and an edit often copies.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Strings?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_concat": {
+            "type": "wrong",
+            "prompt": "Each + can copy the whole prefix.",
+            "explanation": "In languages that copy on concatenation, repeated + inside a loop is O(n²). Collect chunks and join once, or use a mutable buffer.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which claim hides the cost of immutable strings?",
+            "choices": [
+                {
+                    "label": "When the runtime copies on each edit and n is large",
+                    "to": "success"
+                },
+                {
+                    "label": "Never — character writes are always O(1)",
+                    "to": "wrong_refuse"
+                }
+            ],
+            "diagramId": "char-array"
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Edit cost depends on mutability.",
+            "explanation": "Avoid repeated concatenation in a hot loop when the language copies on each +. Avoid treating a string edit as O(1) without stating whether the runtime mutates in place.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You chose buffers over repeated + and avoided free-edit claims when copies dominate.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Strings when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Strings and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

@@ -32,3 +32,22 @@ php -r 'require "vendor/autoload.php"; TheoryCore\CoachValidator::loadFile("cont
 2. Rewrite prompts for the new slug; keep wrong → rewind → success playable.
 3. Run the validate command above.
 4. Confirm `/guides/{slug}` CTA still points at `/coach/{slug}`.
+
+## Quality bar (do not ship Stage-0 templates)
+
+Copy `arrays.json` **only** for structure. Rewrite every prompt and explanation for the new slug.
+
+Ban learner-facing strings:
+- `That skips the force.`
+- `when the force is absent` / `covers the force or a prerequisite`
+- `prerequisite slug`
+- `Refuse <Title> when the force is absent or a prerequisite slug is still missing.`
+- `When should you refuse <topic>?`
+
+Require:
+- Method / structure / tradeoff choice (not a restated quiz, not "name the force")
+- Concrete wrong explanations from the guide `parts.refuse` / `parts.rule` / `parts.use`
+- Test a topic-specific precondition, tradeoff, or failure in a concrete scenario
+- Phrase boundaries directly (for example, "Which input breaks this invariant?") instead of generic "refuse" wording
+- Plain learner language (avoid "prompt" jargon in coach copy)
+- Original copy per slug; `diagramId` only if present on that guide

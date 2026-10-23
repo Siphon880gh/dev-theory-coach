@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "work-queues",
-    "title": "Work queues"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Work queues?",
-      "choices": [
-        {
-          "label": "Right: Move work off the request when the user does not need the result immediately.",
-          "to": "q2"
+    "meta": {
+        "slug": "work-queues",
+        "title": "Work queues"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Photo upload must persist immediately, but thumbnail generation may finish later. What is a durable acknowledgement path?",
+            "choices": [
+                {
+                    "label": "Commit photo=PROCESSING and an outbox job together, then return 202",
+                    "to": "q2"
+                },
+                {
+                    "label": "Return success, then make an in-memory fire-and-forget call",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "queue-workers"
         },
-        {
-          "label": "Wrong: treat work-queues as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Work queues is about this force: Move work off the request when the user does not need the result immediately.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Work queues?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "The background intent must survive a crash.",
+            "explanation": "An outbox row committed with the photo closes the gap between durable application state and later queue publication.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "A worker writes thumbnails/42, then crashes before acknowledging job 781. What should redelivery do?",
+            "choices": [
+                {
+                    "label": "Write the same deterministic key and update by photo_id, making the retry idempotent",
+                    "to": "q3"
+                },
+                {
+                    "label": "Create a new random object on every delivery and attach all duplicates",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "At-least-once delivery repeats completed side effects.",
+            "explanation": "The queue cannot know that work finished before the crash. Stable keys and idempotent updates let the same job run again safely.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "After 5 processing failures, and for password verification, which choices fit?",
+            "choices": [
+                {
+                    "label": "Dead-letter the thumbnail with FAILED status; keep password verification synchronous",
+                    "to": "success"
+                },
+                {
+                    "label": "Retry the thumbnail forever and queue the password answer after login returns",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Retries need an end, and some answers cannot be deferred.",
+            "explanation": "Poison jobs require a terminal path users or operators can see. Login cannot complete honestly until password verification is known.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You designed a durable handoff, an idempotent consumer, and an honest terminal state.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Work queues when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Work queues and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

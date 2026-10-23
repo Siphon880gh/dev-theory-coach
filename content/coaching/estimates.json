@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "estimates",
-    "title": "Estimates"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Estimates?",
-      "choices": [
-        {
-          "label": "Right: Turn users and actions into QPS and bytes, within an order of magnitude.",
-          "to": "q2"
+    "meta": {
+        "slug": "estimates",
+        "title": "Estimates"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Ten million daily users load a feed 8 times each day. About how many feed loads per second is that on average?",
+            "choices": [
+                {
+                    "label": "About 925 per second, because 80 million ÷ 86,400 ≈ 925",
+                    "to": "q2"
+                },
+                {
+                    "label": "About 80 million per second",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "back-of-envelope"
         },
-        {
-          "label": "Wrong: treat estimates as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Estimates is about this force: Turn users and actions into QPS and bytes, within an order of magnitude.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Estimates?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "Convert the daily total into consistent time units.",
+            "explanation": "Daily events must be divided by seconds per day before comparing them with per-second capacity.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "One percent of those 10 million users uploads one photo per day. What is the average upload rate?",
+            "choices": [
+                {
+                    "label": "100,000 per day, or about 1.2 uploads per second",
+                    "to": "q3"
+                },
+                {
+                    "label": "100,000 uploads per second",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Write traffic can be far smaller than read traffic.",
+            "explanation": "100,000 divided by 86,400 is a little over one per second. Keep the daily and per-second units visible.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "Each original photo is 3 MB. Roughly how much new object storage does 100,000 uploads add per day?",
+            "choices": [
+                {
+                    "label": "About 300 GB per day before replication",
+                    "to": "success"
+                },
+                {
+                    "label": "About 300 MB per day",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Payload size can dominate capacity.",
+            "explanation": "100,000 × 3 MB is 300,000 MB, or roughly 300 GB. That result points to object-storage growth even though write QPS is modest.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You kept units visible and used separate read, write, and storage estimates to shape the design.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Estimates when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Estimates and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

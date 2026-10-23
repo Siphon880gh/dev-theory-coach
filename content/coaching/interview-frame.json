@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "interview-frame",
-    "title": "Interview frame"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Interview frame?",
-      "choices": [
-        {
-          "label": "Right: Spend the hour in a fixed order and leave time to name the bottleneck.",
-          "to": "q2"
+    "meta": {
+        "slug": "interview-frame",
+        "title": "Interview frame"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You have 45 minutes for an open-ended system design. What should happen before selecting storage products?",
+            "choices": [
+                {
+                    "label": "Confirm scope and quality targets, estimate scale, then define API and data",
+                    "to": "q2"
+                },
+                {
+                    "label": "Choose sharding and queues first, then infer requirements from the diagram",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "flow"
         },
-        {
-          "label": "Wrong: treat interview-frame as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Interview frame is about this force: Spend the hour in a fixed order and leave time to name the bottleneck.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Interview frame?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "The design sequence starts with the problem.",
+            "explanation": "Scope, scale, API, and access paths give later components a reason to exist. Starting with mechanisms makes tradeoffs impossible to defend.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "At minute 25 the baseline read and write paths are clear. What is the best use of the next block?",
+            "choices": [
+                {
+                    "label": "Deepen one justified bottleneck or failure, such as cache invalidation",
+                    "to": "q3"
+                },
+                {
+                    "label": "Add every optional feature so the diagram contains more boxes",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Depth should follow the baseline.",
+            "explanation": "A focused deep dive demonstrates reasoning about one hard constraint. Broadly listing features leaves no time to test consistency or failure.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "A component on the board has no matching requirement, estimate, request path, or failure role. What should you do?",
+            "choices": [
+                {
+                    "label": "Remove it or ask which missing constraint would justify it",
+                    "to": "success"
+                },
+                {
+                    "label": "Keep it because common architecture diagrams usually include it",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Every component needs a job.",
+            "explanation": "The frame makes decisions traceable. A box with no connection to the stated system adds complexity without solving a known problem.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You paced the answer from requirements to a justified deep dive and kept every component accountable.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Interview frame when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Interview frame and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

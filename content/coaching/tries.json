@@ -1,56 +1,57 @@
 {
-  "meta": {
-    "slug": "tries",
-    "title": "Tries"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Tries?",
-      "choices": [
-        {
-          "label": "Right: Prefix queries cost O(length), not O(dictionary size).",
-          "to": "q2"
+    "meta": {
+        "slug": "tries",
+        "title": "Tries"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You need all keys sharing a prefix of length L. Which structure pays O(L), not O(number of keys)?",
+            "choices": [
+                {
+                    "label": "Trie — walk one edge per character from the root",
+                    "to": "q2"
+                },
+                {
+                    "label": "Hash set — scan every key and compare prefixes",
+                    "to": "wrong_hash"
+                }
+            ],
+            "diagramId": "prefix"
         },
-        {
-          "label": "Wrong: treat tries as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Tries is about this force: Prefix queries cost O(length), not O(dictionary size).",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Tries?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_hash": {
+            "type": "wrong",
+            "prompt": "A hash set only helps exact lookup.",
+            "explanation": "Prefix search on a hash set scans keys. A trie shares paths so insert and prefix walk cost O(L) for string length L.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which workload is too simple to justify a trie?",
+            "choices": [
+                {
+                    "label": "When you only need exact lookup — a hash set is simpler",
+                    "to": "success"
+                },
+                {
+                    "label": "Never — tries beat hashes for every string store",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Exact lookup does not need a trie.",
+            "explanation": "Avoid a trie when you only need exact lookup — a hash set is simpler. Avoid a 26-slot array design for huge Unicode alphabets without compression. Avoid building a trie when n and L make memory the bottleneck.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You matched tries to prefix walks and avoided them for plain exact lookup.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Tries when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Tries and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

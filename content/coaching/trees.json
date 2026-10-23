@@ -1,57 +1,57 @@
 {
-  "meta": {
-    "slug": "trees",
-    "title": "Trees"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Trees?",
-      "choices": [
-        {
-          "label": "Right: Preorder, inorder, postorder, and level order, and what each order is for.",
-          "to": "q2"
+    "meta": {
+        "slug": "trees",
+        "title": "Trees"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You must visit every node so children come after the parent for serialization. Which order?",
+            "choices": [
+                {
+                    "label": "Preorder — visit node, then left, then right",
+                    "to": "q2"
+                },
+                {
+                    "label": "Inorder — left, node, right (BST sorted order)",
+                    "to": "wrong_inorder"
+                }
+            ],
+            "diagramId": "orders"
         },
-        {
-          "label": "Wrong: treat trees as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ],
-      "diagramId": "orders"
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Trees is about this force: Preorder, inorder, postorder, and level order, and what each order is for.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Trees?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_inorder": {
+            "type": "wrong",
+            "prompt": "Inorder is for sorted BST walks, not prefix shape.",
+            "explanation": "Preorder emits the root before children, which reconstructs tree shape. Inorder on a BST yields sorted values but loses structure without more data.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which traversal choice fails the stated goal?",
+            "choices": [
+                {
+                    "label": "Avoid inorder on a non-binary tree with no left/right order, and do not claim level order from a plain stack DFS",
+                    "to": "success"
+                },
+                {
+                    "label": "Any traversal works for every ask",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Traversal must match the ask.",
+            "explanation": "Avoid inorder on a general non-binary tree without defining left/right order. Avoid ignoring O(n) stack space on a skewed tree. Avoid claiming level order from a plain stack DFS — that needs a queue.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You matched preorder to shape and avoided mismatched traversals.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Trees when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Trees and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

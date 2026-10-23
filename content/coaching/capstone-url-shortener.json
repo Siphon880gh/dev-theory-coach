@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "capstone-url-shortener",
-    "title": "Capstone: URL shortener"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Capstone: URL shortener?",
-      "choices": [
-        {
-          "label": "Right: Run the whole frame on one small read-heavy system without a new mechanism.",
-          "to": "q2"
+    "meta": {
+        "slug": "capstone-url-shortener",
+        "title": "Capstone: URL shortener"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You begin a URL-shortener design. Which opening produces a defensible baseline?",
+            "choices": [
+                {
+                    "label": "Scope create, redirect, and disable; set latency and availability targets; then estimate traffic",
+                    "to": "q2"
+                },
+                {
+                    "label": "Start with Kafka, global sharding, and machine-learned codes before requirements",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "shorten"
         },
-        {
-          "label": "Wrong: treat capstone-url-shortener as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Capstone: URL shortener is about this force: Run the whole frame on one small read-heavy system without a new mechanism.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Capstone: URL shortener?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "Mechanisms need a requirement or number.",
+            "explanation": "A baseline follows from product scope and scale. Starting with advanced components makes it impossible to explain which problem each one solves.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Redirect traffic is 1,000 reads/s and cache hit rate is 95%. About how many reads/s reach the database?",
+            "choices": [
+                {
+                    "label": "50 reads/s",
+                    "to": "q3"
+                },
+                {
+                    "label": "950 reads/s",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Use the miss rate for origin load.",
+            "explanation": "Five percent of 1,000 requests miss the cache: 0.05 × 1,000 = 50 database reads per second.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "An owner disables code a1b2c3d, but its cache entry has a 24-hour TTL. What must the write path address?",
+            "choices": [
+                {
+                    "label": "Commit disabled_at and evict link:a1b2c3d, while acknowledging the failure race",
+                    "to": "success"
+                },
+                {
+                    "label": "Do nothing; a long TTL guarantees immediate consistency",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "The cache can outlive the authoritative change.",
+            "explanation": "TTL alone can serve the disabled destination for hours. Explicit invalidation narrows staleness, and the design should state what happens if commit succeeds but eviction fails.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You connected scope, capacity math, access paths, and cache correctness into one URL-shortener design.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Capstone: URL shortener when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Capstone: URL shortener and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

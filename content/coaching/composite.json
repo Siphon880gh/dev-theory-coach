@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "composite",
-    "title": "Composite"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Composite?",
-      "choices": [
-        {
-          "label": "Right: Treat one item and a group through one interface.",
-          "to": "q2"
+    "meta": {
+        "slug": "composite",
+        "title": "Composite"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "A storage browser must call sizeBytes() and render() on both files and arbitrarily nested folders. Which pattern matches that recursive shape?",
+            "choices": [
+                {
+                    "label": "Composite: File and Folder share Entry; Folder combines child results",
+                    "to": "q2"
+                },
+                {
+                    "label": "Give files and folders unrelated APIs and branch in every caller",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "tree"
         },
-        {
-          "label": "Wrong: treat composite as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Composite is about this force: Treat one item and a group through one interface.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Composite?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "The client should not repeat the tree recursion.",
+            "explanation": "Composite puts the shared operation on leaves and containers. A folder delegates recursively, so clients can treat any Entry uniformly.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "A root contains a 2 MB file and a folder with 3 MB and 5 MB files. What does root.sizeBytes() return, and what is the traversal cost?",
+            "choices": [
+                {
+                    "label": "10 MB, with O(n) work across the entries visited",
+                    "to": "q3"
+                },
+                {
+                    "label": "5 MB in O(1), because every component has the same interface",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Uniform syntax does not make traversal free.",
+            "explanation": "The folder sums 3 + 5 MB, then the root adds 2 MB. Composite hides the branching from the caller, not the O(n) walk through descendants.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "The UI calls sizeBytes() 60 times per second on a million-entry tree. What is the right response?",
+            "choices": [
+                {
+                    "label": "Cache aggregate sizes with invalidation, or compute outside the render loop",
+                    "to": "success"
+                },
+                {
+                    "label": "Keep the repeated full-tree walk because sizeBytes() looks like a getter",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "A simple method name can hide expensive work.",
+            "explanation": "Composite operations may traverse the whole subtree. A hot path needs cached aggregates or a different update strategy with an explicit invalidation cost.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You used one component contract while keeping the recursive time cost visible.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Composite when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Composite and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

@@ -1,56 +1,57 @@
 {
-  "meta": {
-    "slug": "binary-search-trees",
-    "title": "Binary search trees"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Binary search trees?",
-      "choices": [
-        {
-          "label": "Right: Search, insert, and delete in O(h); without balance, h can be n.",
-          "to": "q2"
+    "meta": {
+        "slug": "binary-search-trees",
+        "title": "Binary search trees"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You need ordered keys with average log n search and inorder walk. Which structure?",
+            "choices": [
+                {
+                    "label": "BST — left < node < right",
+                    "to": "q2"
+                },
+                {
+                    "label": "Hash map — unordered buckets",
+                    "to": "wrong_hash"
+                }
+            ],
+            "diagramId": "bst"
         },
-        {
-          "label": "Wrong: treat binary-search-trees as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Binary search trees is about this force: Search, insert, and delete in O(h); without balance, h can be n.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Binary search trees?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_hash": {
+            "type": "wrong",
+            "prompt": "Hash maps do not give sorted order.",
+            "explanation": "A BST keeps ordering so inorder is sorted and range queries work. A hash map averages O(1) but has no key order.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Sorted inserts make the raw tree a chain. What should you reconsider?",
+            "choices": [
+                {
+                    "label": "When inputs can be sorted and you promise log n with no balance story, or a hash map suffices and order is unused",
+                    "to": "success"
+                },
+                {
+                    "label": "Raw BSTs always guarantee log n",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Unbalanced BSTs degrade.",
+            "explanation": "Avoid promising O(log n) without a balance story when inputs can be sorted. Avoid a raw BST when a hash map suffices and order is never used. Avoid deleting a two-child node by only nulling it out.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You matched BSTs to ordered keys and avoided unbalanced or unnecessary ones.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Binary search trees when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Binary search trees and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

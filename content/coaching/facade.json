@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "facade",
-    "title": "Facade"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Facade?",
-      "choices": [
-        {
-          "label": "Right: Offer one operation in front of a sequence the caller should not orchestrate.",
-          "to": "q2"
+    "meta": {
+        "slug": "facade",
+        "title": "Facade"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Four controllers repeat reserve inventory, authorize payment, save order, and publish an event. What should expose the common “place order” intention?",
+            "choices": [
+                {
+                    "label": "A narrow CheckoutFacade that owns the normal orchestration order",
+                    "to": "q2"
+                },
+                {
+                    "label": "Let every controller coordinate the four collaborators independently",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "facade"
         },
-        {
-          "label": "Wrong: treat facade as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Facade is about this force: Offer one operation in front of a sequence the caller should not orchestrate.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Facade?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "Repeated orchestration needs one home.",
+            "explanation": "A facade gives callers one intention-revealing operation and keeps the subsystem sequence consistent without moving each collaborator’s own business rules.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Inventory is reserved, but payment authorization fails. What must the facade workflow define?",
+            "choices": [
+                {
+                    "label": "Release the reservation and return PaymentDeclined without creating the order",
+                    "to": "q3"
+                },
+                {
+                    "label": "Ignore the partial work because a facade makes the sequence atomic",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "A facade does not erase partial failure.",
+            "explanation": "The facade coordinates a workflow; it does not automatically provide a transaction across collaborators. Compensation and the success boundary remain explicit.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "Another class exposes Orders.insert() unchanged through placeOrder() and does nothing else. Is that a useful facade?",
+            "choices": [
+                {
+                    "label": "No. It only renames one call and adds indirection",
+                    "to": "success"
+                },
+                {
+                    "label": "Yes. Any forwarding method is a facade",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "A facade needs meaningful simplification.",
+            "explanation": "Facade earns its role by hiding a subsystem workflow or safe defaults. A one-to-one rename with no boundary value is ceremony.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You centralized a real workflow, handled partial failure, and avoided a rename-only facade.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Facade when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Facade and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

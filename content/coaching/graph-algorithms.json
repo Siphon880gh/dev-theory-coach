@@ -1,56 +1,57 @@
 {
-  "meta": {
-    "slug": "graph-algorithms",
-    "title": "Graph algorithms"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Graph algorithms?",
-      "choices": [
-        {
-          "label": "Right: Pick BFS, Dijkstra, or Bellman-Ford from the weight constraint.",
-          "to": "q2"
+    "meta": {
+        "slug": "graph-algorithms",
+        "title": "Graph algorithms"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Edges have non-negative weights; you need single-source shortest paths. Which engine?",
+            "choices": [
+                {
+                    "label": "Dijkstra — grow the settled set by closest unsettled node",
+                    "to": "q2"
+                },
+                {
+                    "label": "BFS on a plain queue ignoring weights",
+                    "to": "wrong_bfs"
+                }
+            ],
+            "diagramId": "shortest"
         },
-        {
-          "label": "Wrong: treat graph-algorithms as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Graph algorithms is about this force: Pick BFS, Dijkstra, or Bellman-Ford from the weight constraint.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Graph algorithms?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_bfs": {
+            "type": "wrong",
+            "prompt": "BFS only fits unit weights.",
+            "explanation": "Non-negative weighted shortest paths need Dijkstra (or similar). Plain BFS treats every edge as weight 1.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which input invalidates the proposed shortest-path algorithm?",
+            "choices": [
+                {
+                    "label": "Do not run Dijkstra with negative edges; do not apply undirected MST algorithms to directed graphs",
+                    "to": "success"
+                },
+                {
+                    "label": "Dijkstra works for every weight sign",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Weight signs and direction matter.",
+            "explanation": "Do not run Dijkstra when negative edges exist. Do not apply undirected MST algorithms to directed graphs. Do not pick dense all-pairs Floyd for a single-source sparse query without need.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You matched Dijkstra to non-negative weights and avoided negative-edge misuse.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Graph algorithms when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Graph algorithms and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

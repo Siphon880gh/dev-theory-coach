@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "when-to-name-a-pattern",
-    "title": "When to name a pattern"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures When to name a pattern?",
-      "choices": [
-        {
-          "label": "Right: Say the force first, then the name, and decline the structure when a branch is enough.",
-          "to": "q2"
+    "meta": {
+        "slug": "when-to-name-a-pattern",
+        "title": "When to name a pattern"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You recognize a familiar design pattern during an interview. What should your answer establish before relying on the name?",
+            "choices": [
+                {
+                    "label": "The changing requirement, the pattern mechanics, and the added cost",
+                    "to": "q2"
+                },
+                {
+                    "label": "Only the pattern name; the structure and tradeoff are implied",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "force"
         },
-        {
-          "label": "Wrong: treat when-to-name-a-pattern as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "When to name a pattern is about this force: Say the force first, then the name, and decline the structure when a branch is enough.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse When to name a pattern?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "A name is shorthand, not an explanation.",
+            "explanation": "The listener needs to know what is changing, how responsibilities are arranged, and why the new indirection is worthwhile.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "A page uses one isCompact flag to choose 8 px or 16 px spacing. What design fits?",
+            "choices": [
+                {
+                    "label": "A conditional or small spacing function",
+                    "to": "q3"
+                },
+                {
+                    "label": "A Strategy hierarchy with CompactSpacing and SpaciousSpacing factories",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "The simple design already handles the requirement.",
+            "explanation": "One stable branch does not create enough independent variation to justify several types and selection machinery.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "A text editor must store and undo the last 50 actions. Which pattern now has a concrete reason to exist?",
+            "choices": [
+                {
+                    "label": "Command, because each edit needs stored execution or reversal data",
+                    "to": "success"
+                },
+                {
+                    "label": "Adapter, because every object wrapper solves undo",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Match the structure to the required capability.",
+            "explanation": "Undo requires actions to exist as values with enough state to reverse them. That is the specific problem Command addresses.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You explained the problem and tradeoff before using a pattern name, and kept the simpler case simple.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse When to name a pattern when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named When to name a pattern and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

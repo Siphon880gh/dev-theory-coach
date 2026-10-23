@@ -1,56 +1,57 @@
 {
-  "meta": {
-    "slug": "union-find",
-    "title": "Union-find"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Union-find?",
-      "choices": [
-        {
-          "label": "Right: Merge two sets and test membership in nearly constant time.",
-          "to": "q2"
+    "meta": {
+        "slug": "union-find",
+        "title": "Union-find"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You must answer \"are these two nodes already connected?\" while merging components. Which structure?",
+            "choices": [
+                {
+                    "label": "Union-find — Find representative, Union merges sets",
+                    "to": "q2"
+                },
+                {
+                    "label": "BFS from scratch on every query",
+                    "to": "wrong_bfs"
+                }
+            ],
+            "diagramId": "sets"
         },
-        {
-          "label": "Wrong: treat union-find as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Union-find is about this force: Merge two sets and test membership in nearly constant time.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Union-find?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_bfs": {
+            "type": "wrong",
+            "prompt": "Repeated BFS rewalks the graph.",
+            "explanation": "Union-find answers same-component in nearly O(1) with path compression and union by rank. Fresh BFS per query is far slower for many merges.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which query is outside union-find’s capability?",
+            "choices": [
+                {
+                    "label": "When you must split a set again, or you need paths/distances between nodes",
+                    "to": "success"
+                },
+                {
+                    "label": "Union-find replaces Dijkstra and all graph queries",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Union-find only tracks components.",
+            "explanation": "Avoid union-find when you must split a set again — it does not support divide. Avoid it when you need the actual path or distances; it only answers same-component.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You used union-find for connectivity merges and avoided it for splits or distances.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Union-find when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Union-find and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

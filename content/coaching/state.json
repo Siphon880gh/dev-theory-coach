@@ -1,56 +1,79 @@
 {
-  "meta": {
-    "slug": "state",
-    "title": "State"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures State?",
-      "choices": [
-        {
-          "label": "Right: Let behavior follow the mode, with each transition written in one place.",
-          "to": "q2"
+    "meta": {
+        "slug": "state",
+        "title": "State"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Order behavior differs across Pending, Paid, Shipped, and Canceled, and transition rules are spreading through several services. What structure fits?",
+            "choices": [
+                {
+                    "label": "State-specific handlers behind one Order state contract",
+                    "to": "q2"
+                },
+                {
+                    "label": "A shipping Strategy selected once by the caller",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "states"
         },
-        {
-          "label": "Wrong: treat state as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "State is about this force: Let behavior follow the mode, with each transition written in one place.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse State?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "This variation follows an internal lifecycle.",
+            "explanation": "State changes as events occur and governs which transitions are valid. Strategy selects an algorithm; it does not model an order moving through modes.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Order 1001 is Pending and receives ship(\"TRACK-9\"). What should happen?",
+            "choices": [
+                {
+                    "label": "Return InvalidTransition, keep Pending, and perform no carrier side effect",
+                    "to": "q3"
+                },
+                {
+                    "label": "Call the carrier first, then notice that the order was never paid",
+                    "to": "wrong2"
+                }
+            ],
+            "diagramId": "transitions-png"
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Validate the transition before its side effect.",
+            "explanation": "Pending cannot ship. A rejected event must leave state and external systems unchanged, rather than recording a false transition after partial work.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "A component has only enabled and disabled modes with one five-line conditional. What is the clearer first design?",
+            "choices": [
+                {
+                    "label": "Keep the boolean or one explicit switch until behavior actually grows",
+                    "to": "success"
+                },
+                {
+                    "label": "Create a state class for each value immediately",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "A small state table can stay explicit.",
+            "explanation": "State objects add useful separation for substantial mode-specific behavior. Two tiny branches do not justify extra types and delegation.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You modeled a real lifecycle, protected invalid transitions, and kept a small flag simple.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse State when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named State and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

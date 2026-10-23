@@ -59,7 +59,7 @@
       html += node.diagramHtml;
     }
     if (node.type === 'success') {
-      html += '<p class="success">Success. You named the right idea.</p>';
+      html += '<p class="success">Scenario complete.</p>';
     } else {
       html += '<ol class="choices">';
       (node.choices || []).forEach(function (choice, i) {

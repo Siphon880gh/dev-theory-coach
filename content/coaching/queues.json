@@ -1,57 +1,58 @@
 {
-  "meta": {
-    "slug": "queues",
-    "title": "Queues"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Queues?",
-      "choices": [
-        {
-          "label": "Right: First in, first out, and a deque when both ends move.",
-          "to": "q2"
+    "meta": {
+        "slug": "queues",
+        "title": "Queues"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Jobs must finish in the order they arrived. Which structure matches that order?",
+            "choices": [
+                {
+                    "label": "Queue — first in, first out",
+                    "to": "q2"
+                },
+                {
+                    "label": "Stack — newest unfinished item first",
+                    "to": "wrong_lifo"
+                }
+            ],
+            "diagramId": "fifo"
         },
-        {
-          "label": "Wrong: treat queues as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ],
-      "diagramId": "fifo"
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Queues is about this force: First in, first out, and a deque when both ends move.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Queues?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_lifo": {
+            "type": "wrong",
+            "prompt": "A stack reverses arrival order.",
+            "explanation": "FIFO needs a queue. A stack (LIFO) serves the newest item first, which breaks arrival order for BFS and fair job processing.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which workload does not fit FIFO?",
+            "choices": [
+                {
+                    "label": "When the newest item must be handled first, or front removal is an O(n) shift at scale",
+                    "to": "success"
+                },
+                {
+                    "label": "Never — always reach for a queue when order matters",
+                    "to": "wrong_refuse"
+                }
+            ],
+            "diagramId": "fifo"
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Blind FIFO is not always right.",
+            "explanation": "Avoid a queue when the newest item must be handled first (use a stack). Avoid implementing front removal as an O(n) shift when constant-time dequeue is required. Avoid BFS with a stack — that is DFS.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You matched FIFO to queues and recognized when LIFO or a deque fits better.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Queues when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Queues and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

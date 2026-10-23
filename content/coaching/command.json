@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "command",
-    "title": "Command"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Command?",
-      "choices": [
-        {
-          "label": "Right: Represent a request as an object so you can queue it, log it, or undo it.",
-          "to": "q2"
+    "meta": {
+        "slug": "command",
+        "title": "Command"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "A text editor must store actions for undo, redo, keyboard shortcuts, and macros. Which representation fits?",
+            "choices": [
+                {
+                    "label": "Command objects that carry action data and execute against the document",
+                    "to": "q2"
+                },
+                {
+                    "label": "Direct UI callbacks with no stored action value",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "command"
         },
-        {
-          "label": "Wrong: treat command as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Command is about this force: Represent a request as an object so you can queue it, log it, or undo it.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Command?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "A direct call leaves no action to manage later.",
+            "explanation": "Undo, redo, queuing, and macros need the request to exist as data. Command makes the action and its arguments a first-class value.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "DeleteRange(1, 2) removes “at” from “cat”. What must the command retain to support undo?",
+            "choices": [
+                {
+                    "label": "The start position and removed text so undo can restore “at”",
+                    "to": "q3"
+                },
+                {
+                    "label": "Only the method name delete; the old data is unnecessary",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Undo needs the prior state.",
+            "explanation": "A reversible command must capture enough information to restore what changed. The operation name alone cannot reconstruct the deleted characters.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "A queued ChargeCard command may be delivered twice after a worker crash. What completes the design?",
+            "choices": [
+                {
+                    "label": "A stable command id checked durably so redelivery does not charge twice",
+                    "to": "success"
+                },
+                {
+                    "label": "Assume the queue delivers exactly once and omit deduplication",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Remote execution needs idempotency.",
+            "explanation": "At-least-once delivery can repeat a command after an ambiguous failure. Persisting the command id with the charge makes the repeated execution safe.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You represented actions as data, captured undo state, and made a retried command idempotent.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Command when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Command and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

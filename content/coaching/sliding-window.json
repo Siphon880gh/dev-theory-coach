@@ -1,57 +1,57 @@
 {
-  "meta": {
-    "slug": "sliding-window",
-    "title": "Sliding window"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Sliding window?",
-      "choices": [
-        {
-          "label": "Right: Keep a contiguous summary current so the whole scan is O(n).",
-          "to": "q2"
+    "meta": {
+        "slug": "sliding-window",
+        "title": "Sliding window"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You need the longest contiguous subarray with at most k distinct values. Which method?",
+            "choices": [
+                {
+                    "label": "Sliding window — grow right, shrink left when the constraint breaks",
+                    "to": "q2"
+                },
+                {
+                    "label": "Pick any subset of indices, contiguous or not",
+                    "to": "wrong_subset"
+                }
+            ],
+            "diagramId": "window"
         },
-        {
-          "label": "Wrong: treat sliding-window as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ],
-      "diagramId": "window"
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Sliding window is about this force: Keep a contiguous summary current so the whole scan is O(n).",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Sliding window?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_subset": {
+            "type": "wrong",
+            "prompt": "A window only covers contiguous spans.",
+            "explanation": "Sliding window maintains a contiguous [left, right]. Non-contiguous subsets need a different tool.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which input shape breaks the sliding-window invariant?",
+            "choices": [
+                {
+                    "label": "When the needed subset is not contiguous, or each shrink rescans the whole window",
+                    "to": "success"
+                },
+                {
+                    "label": "Any subarray or subsequence problem is a window",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Contiguity and amortized shrinks matter.",
+            "explanation": "Avoid a window when the needed subset is not contiguous. Avoid claiming linear time if each shrink rescans the whole window from scratch. Avoid a fixed-size template for a variable-constraint problem.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You matched windows to contiguous constraints and avoided non-contiguous asks.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Sliding window when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Sliding window and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

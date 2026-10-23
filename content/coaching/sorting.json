@@ -1,56 +1,57 @@
 {
-  "meta": {
-    "slug": "sorting",
-    "title": "Sorting"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Sorting?",
-      "choices": [
-        {
-          "label": "Right: Pick a sort from the comparison bound, stability, and the key range.",
-          "to": "q2"
+    "meta": {
+        "slug": "sorting",
+        "title": "Sorting"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You need a stable O(n log n) sort in the worst case. Which algorithm family?",
+            "choices": [
+                {
+                    "label": "Mergesort — guaranteed n log n and preserves equal-key order",
+                    "to": "q2"
+                },
+                {
+                    "label": "Quicksort with no pivot strategy discussion",
+                    "to": "wrong_quick"
+                }
+            ],
+            "diagramId": "partition"
         },
-        {
-          "label": "Wrong: treat sorting as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Sorting is about this force: Pick a sort from the comparison bound, stability, and the key range.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Sorting?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_quick": {
+            "type": "wrong",
+            "prompt": "Naive quicksort can hit n².",
+            "explanation": "Mergesort keeps O(n log n) worst case and is stable. Quicksort needs a pivot story if worst-case behavior is under discussion.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which requirement rules out the proposed sort?",
+            "choices": [
+                {
+                    "label": "Do not ship quicksort without a pivot strategy if worst case matters; do not use plain counting sort on arbitrary strings",
+                    "to": "success"
+                },
+                {
+                    "label": "Any comparison sort is fine for every constraint",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Match algorithm to guarantees.",
+            "explanation": "Do not ship quicksort without a pivot strategy if worst-case behavior is under discussion. Do not apply plain counting sort to arbitrary strings without a radix plan.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You picked mergesort for stable worst-case bounds and avoided weak pivot stories.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Sorting when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Sorting and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

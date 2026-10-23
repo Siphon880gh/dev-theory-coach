@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "decorator",
-    "title": "Decorator"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Decorator?",
-      "choices": [
-        {
-          "label": "Right: Add behavior by wrapping, and say how wrap order changes the result.",
-          "to": "q2"
+    "meta": {
+        "slug": "decorator",
+        "title": "Decorator"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "HttpClient needs optional retry and metrics behavior while callers keep calling send(). Which pattern composes those add-ons?",
+            "choices": [
+                {
+                    "label": "Decorators that implement HttpClient, wrap another HttpClient, and forward",
+                    "to": "q2"
+                },
+                {
+                    "label": "An adapter that translates HttpClient into a different interface",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "wrap"
         },
-        {
-          "label": "Wrong: treat decorator as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Decorator is about this force: Add behavior by wrapping, and say how wrap order changes the result.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Decorator?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "The interface is already correct.",
+            "explanation": "Decorator preserves the component interface and surrounds a call with behavior. Adapter is for an interface mismatch, which this scenario does not have.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Metrics(Retry(Network)) sees two timeouts and a third successful attempt. What does the outer Metrics decorator record?",
+            "choices": [
+                {
+                    "label": "One logical request containing all three attempts and their total latency",
+                    "to": "q3"
+                },
+                {
+                    "label": "Exactly three separate metrics because wrapper order never matters",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Decorator order changes observation.",
+            "explanation": "The outer Metrics layer invokes Retry once, so it measures the whole logical call. Retry(Metrics(Network)) would let Metrics observe each transport attempt instead.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "Only one mutually exclusive shipping formula should be selected for Checkout. Is a stack of decorators the clearest model?",
+            "choices": [
+                {
+                    "label": "No. Select one Strategy; decorators are for behavior layered around a call",
+                    "to": "success"
+                },
+                {
+                    "label": "Yes. Every kind of behavioral variation is a decorator stack",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Selection and wrapping are different problems.",
+            "explanation": "Strategy chooses one interchangeable algorithm. Decorator adds responsibilities around the same operation and may compose several layers.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You preserved the interface, reasoned about wrapper order, and separated Decorator from Strategy.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Decorator when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Decorator and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

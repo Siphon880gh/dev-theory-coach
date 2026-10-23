@@ -1,57 +1,78 @@
 {
-  "meta": {
-    "slug": "caching",
-    "title": "Caching"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Caching?",
-      "choices": [
-        {
-          "label": "Right: Cache a hot read, and choose the invalidation story before the hit rate.",
-          "to": "q2"
+    "meta": {
+        "slug": "caching",
+        "title": "Caching"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Redirect traffic is 20,000 reads/s and cache hit rate is 95%. About how much read traffic reaches the database?",
+            "choices": [
+                {
+                    "label": "About 1,000 reads/s",
+                    "to": "q2"
+                },
+                {
+                    "label": "About 19,000 reads/s",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "cache-aside"
         },
-        {
-          "label": "Wrong: treat caching as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ],
-      "diagramId": "cache-aside"
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Caching is about this force: Cache a hot read, and choose the invalidation story before the hit rate.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Caching?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "Origin load follows the miss rate.",
+            "explanation": "Five percent of 20,000 is 1,000. Translate hit rate into the load the source of truth must still handle.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "The database disables a link, then the process crashes before deleting its 24-hour cache entry. What is the risk and mitigation?",
+            "choices": [
+                {
+                    "label": "Stale redirects; use durable invalidation retry and a TTL consistent with the risk",
+                    "to": "q3"
+                },
+                {
+                    "label": "No risk, because committing the database automatically updates cache-aside data",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Cache-aside creates a write-to-invalidation gap.",
+            "explanation": "The cache is another copy and does not change with the database by itself. A durable event or outbox can retry deletion after a crash.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "A viral key expires while 5,000 requests arrive. What reduces the refill stampede?",
+            "choices": [
+                {
+                    "label": "Coalesce misses so one caller refills while the others wait",
+                    "to": "success"
+                },
+                {
+                    "label": "Let all 5,000 callers query the database simultaneously",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Simultaneous expiry can overwhelm the origin.",
+            "explanation": "Request coalescing or a short refill lock prevents one expired key from multiplying into thousands of identical origin reads.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You tied cache performance to origin load and handled invalidation, failure, and stampede behavior.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Caching when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Caching and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

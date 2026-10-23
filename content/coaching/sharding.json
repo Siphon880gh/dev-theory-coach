@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "sharding",
-    "title": "Sharding"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Sharding?",
-      "choices": [
-        {
-          "label": "Right: Split data off one machine, and name the hot spot the split just created.",
-          "to": "q2"
+    "meta": {
+        "slug": "sharding",
+        "title": "Sharding"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Redirect is the dominant URL-shortener query and always knows code. Which shard key keeps that read on one shard?",
+            "choices": [
+                {
+                    "label": "A hash of code, routed to the shard that owns its logical bucket",
+                    "to": "q2"
+                },
+                {
+                    "label": "A random value generated independently for every read",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "shards"
         },
-        {
-          "label": "Wrong: treat sharding as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Sharding is about this force: Split data off one machine, and name the hot spot the split just created.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Sharding?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "Routing must be reproducible from the access key.",
+            "explanation": "The same code must always resolve to the shard that stores its row. A random read key cannot route without a full directory or scatter-gather.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Why map 256 logical buckets onto 8 physical primaries instead of storing at hash(code) % 8 forever?",
+            "choices": [
+                {
+                    "label": "Adding a ninth primary can move selected buckets instead of remapping most rows",
+                    "to": "q3"
+                },
+                {
+                    "label": "Logical buckets guarantee that no key can ever become hot",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Logical partitions make rebalancing smaller.",
+            "explanation": "Changing a direct modulo from 8 to 9 changes the destination for most hashes. A bucket map lets operators move controlled ranges; it does not eliminate skew.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "One viral code receives 50,000 reads/s. Will changing the shard hash spread that single row across all primaries?",
+            "choices": [
+                {
+                    "label": "No. Cache and replicate the hot value; one key still routes together",
+                    "to": "success"
+                },
+                {
+                    "label": "Yes. Any hash automatically divides one key over every shard",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Sharding does not split one hot key.",
+            "explanation": "A deterministic shard key keeps all access to the same row together. Hot-record reads need caching or replicas, not a different modulo.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You chose a routable shard key, planned rebalancing, and handled a hot record separately.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Sharding when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Sharding and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

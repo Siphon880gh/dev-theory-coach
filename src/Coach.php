@@ -156,7 +156,7 @@ final class Coach
             $parts[] = $startFig;
         }
         if (($node['type'] ?? '') === 'success') {
-            $parts[] = '<p class="success">Success. You named the right idea.</p>';
+            $parts[] = '<p class="success">Scenario complete.</p>';
         } else {
             $parts[] = '<ol class="choices">';
             foreach ($node['choices'] as $i => $choice) {

@@ -1,57 +1,57 @@
 {
-  "meta": {
-    "slug": "stacks",
-    "title": "Stacks"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Stacks?",
-      "choices": [
-        {
-          "label": "Right: Last in, first out: nested pairs, undo, and a depth-first walk.",
-          "to": "q2"
+    "meta": {
+        "slug": "stacks",
+        "title": "Stacks"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You are matching brackets in an expression. Which structure tracks the most recent unmatched opener?",
+            "choices": [
+                {
+                    "label": "Stack — last unmatched opener is on top",
+                    "to": "q2"
+                },
+                {
+                    "label": "Queue — process openers in arrival order",
+                    "to": "wrong_fifo"
+                }
+            ],
+            "diagramId": "lifo"
         },
-        {
-          "label": "Wrong: treat stacks as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ],
-      "diagramId": "lifo"
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Stacks is about this force: Last in, first out: nested pairs, undo, and a depth-first walk.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Stacks?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_fifo": {
+            "type": "wrong",
+            "prompt": "A queue would close the oldest opener first.",
+            "explanation": "Bracket matching needs LIFO: the latest opener must close first. A queue serves FIFO and mismatches nested pairs.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which ordering requirement calls for another structure?",
+            "choices": [
+                {
+                    "label": "When order must be first-in, first-out — that is a queue",
+                    "to": "success"
+                },
+                {
+                    "label": "Use a stack even when arrival order must be preserved",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "FIFO is not a stack job.",
+            "explanation": "Avoid a stack when the order must be first-in, first-out — use a queue. Avoid recursion-plus-stack double bookkeeping when one stack is enough. Avoid popping without an empty check.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You matched LIFO to stacks and avoided them when FIFO is required.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Stacks when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Stacks and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

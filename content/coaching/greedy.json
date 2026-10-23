@@ -7,50 +7,50 @@
   "nodes": {
     "q1": {
       "type": "continue",
-      "prompt": "Which statement best captures Greedy?",
+      "prompt": "You pick the locally best choice at each step. When is that safe?",
       "choices": [
         {
-          "label": "Right: Commit to the local choice only when an exchange argument says you never revise it.",
+          "label": "When a short proof (exchange or structure) shows local picks stay optimal",
           "to": "q2"
         },
         {
-          "label": "Wrong: treat greedy as unrelated trivia with no cost story",
-          "to": "wrong1"
+          "label": "Whenever the problem feels like \"take the biggest first\"",
+          "to": "wrong_feel"
         }
       ],
       "diagramId": "local-pick"
     },
-    "wrong1": {
+    "wrong_feel": {
       "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Greedy is about this force: Commit to the local choice only when an exchange argument says you never revise it.",
+      "prompt": "Feeling greedy is not a proof.",
+      "explanation": "Greedy is correct only with an exchange argument or known structure (intervals by end time, Huffman, etc.). Counterexamples kill unproven greedy.",
       "rewind_to": "q1",
       "choices": []
     },
     "q2": {
       "type": "continue",
-      "prompt": "When should you refuse Greedy?",
+      "prompt": "When should you reject greedy?",
       "choices": [
         {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
+          "label": "When a tiny counterexample exists, or for general coin change / knapsack without structure",
           "to": "success"
         },
         {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+          "label": "Greedy always works if you sort first",
+          "to": "wrong_refuse"
         }
       ]
     },
-    "wrong2": {
+    "wrong_refuse": {
       "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Greedy when the force is absent or a prerequisite slug is still missing.",
+      "prompt": "Counterexamples and wrong sort keys matter.",
+      "explanation": "Reject greedy when a tiny counterexample exists and optimality is required. Reject it for general coin change or knapsack without structure. Reject sorting by the wrong key (start vs finish).",
       "rewind_to": "q2",
       "choices": []
     },
     "success": {
       "type": "success",
-      "prompt": "You named Greedy and knew when to refuse it.",
+      "prompt": "You required a greedy proof and rejected it when counterexamples or wrong keys appear.",
       "choices": []
     }
   }

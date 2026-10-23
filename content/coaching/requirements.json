@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "requirements",
-    "title": "Requirements"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Requirements?",
-      "choices": [
-        {
-          "label": "Right: Split behavior from bounds, and drop a feature that does not change the design.",
-          "to": "q2"
+    "meta": {
+        "slug": "requirements",
+        "title": "Requirements"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "For file sync, which item is functional rather than a quality constraint?",
+            "choices": [
+                {
+                    "label": "Create a revocable share link",
+                    "to": "q2"
+                },
+                {
+                    "label": "Folder listing must be below 200 ms at p95",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "split"
         },
-        {
-          "label": "Wrong: treat requirements as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Requirements is about this force: Split behavior from bounds, and drop a feature that does not change the design.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Requirements?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "Operations and quality targets answer different questions.",
+            "explanation": "Creating a link describes what the system does. The latency target describes how well an operation must perform.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which statement is concrete enough to influence the upload design?",
+            "choices": [
+                {
+                    "label": "Files may be as large as 5 GB and a successful upload survives one storage-node failure",
+                    "to": "q3"
+                },
+                {
+                    "label": "Uploads should be fast, large, and highly durable",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Numbers and failure scope make constraints testable.",
+            "explanation": "A maximum size and named failure can guide multipart upload and durability choices. Adjectives alone cannot be evaluated.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "Full-text search is optional and does not affect the requested core workflow. What should happen now?",
+            "choices": [
+                {
+                    "label": "Confirm it is parked and reopen scope only if the interviewer asks for it",
+                    "to": "success"
+                },
+                {
+                    "label": "Build a search-indexing pipeline before the required upload path",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Optional scope should not consume the baseline.",
+            "explanation": "A visible park list protects time while preserving the option to extend the design if the requirement changes.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You separated operations from measurable qualities and controlled optional scope.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Requirements when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Requirements and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

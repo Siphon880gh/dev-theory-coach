@@ -1,57 +1,57 @@
 {
-  "meta": {
-    "slug": "recursion",
-    "title": "Recursion"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Recursion?",
-      "choices": [
-        {
-          "label": "Right: A base case, a smaller subproblem, and an honest stack story.",
-          "to": "q2"
+    "meta": {
+        "slug": "recursion",
+        "title": "Recursion"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "A recursive solution must terminate. What must every recursive function include?",
+            "choices": [
+                {
+                    "label": "A base case that returns without calling itself, plus a strictly smaller subproblem",
+                    "to": "q2"
+                },
+                {
+                    "label": "Only a recursive call — the runtime will stop somehow",
+                    "to": "wrong_nobase"
+                }
+            ],
+            "diagramId": "call-stack"
         },
-        {
-          "label": "Wrong: treat recursion as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ],
-      "diagramId": "call-stack"
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Recursion is about this force: A base case, a smaller subproblem, and an honest stack story.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Recursion?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_nobase": {
+            "type": "wrong",
+            "prompt": "Without a base case the stack grows forever.",
+            "explanation": "Recursion needs a base case, a move to a smaller subproblem, and an account of stack space. Omitting the base case never terminates.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which recursive implementation needs a different plan?",
+            "choices": [
+                {
+                    "label": "Without a base case, when the step does not shrink, or when O(depth) stack on skewed input is ignored",
+                    "to": "success"
+                },
+                {
+                    "label": "Recursion is always safer than an explicit loop",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Stack depth and shrinkage matter.",
+            "explanation": "Avoid recursion without a base case. Avoid a recursive step that does not shrink the problem. Avoid ignoring O(depth) stack space on skewed inputs.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You required base cases and avoided non-shrinking or stack-blind recursion.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Recursion when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Recursion and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

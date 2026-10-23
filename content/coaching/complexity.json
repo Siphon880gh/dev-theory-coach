@@ -1,57 +1,57 @@
 {
-  "meta": {
-    "slug": "complexity",
-    "title": "Complexity"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Complexity?",
-      "choices": [
-        {
-          "label": "Right: Bound time and space, and say when the question wants amortized cost.",
-          "to": "q2"
+    "meta": {
+        "slug": "complexity",
+        "title": "Complexity"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Two nested loops each run n times over the input. How do you name the growth?",
+            "choices": [
+                {
+                    "label": "O(n²) — keep the leading term, drop fixed multipliers",
+                    "to": "q2"
+                },
+                {
+                    "label": "Basically linear — nested loops are still \"about n\"",
+                    "to": "wrong_linear"
+                }
+            ],
+            "diagramId": "growth"
         },
-        {
-          "label": "Wrong: treat complexity as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ],
-      "diagramId": "growth"
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Complexity is about this force: Bound time and space, and say when the question wants amortized cost.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Complexity?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_linear": {
+            "type": "wrong",
+            "prompt": "Nested full passes are quadratic.",
+            "explanation": "Estimate growth by the leading term: two nested n-loops are O(n²). Calling that \"basically linear\" misleads capacity planning.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which complexity statement is misleading?",
+            "choices": [
+                {
+                    "label": "Do not drop the leading term to sound friendlier; do not quote amortized O(1) when worst case was asked",
+                    "to": "success"
+                },
+                {
+                    "label": "Friendly wording beats precise leading terms",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Precision beats marketing.",
+            "explanation": "Do not drop the leading term to make the answer sound friendlier. Do not call a true double-n loop \"basically linear.\" Do not quote amortized constant time when the question asked worst case.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You kept leading terms and avoided friendly but wrong growth claims.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Complexity when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Complexity and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

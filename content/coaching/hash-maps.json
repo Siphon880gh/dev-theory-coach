@@ -1,57 +1,58 @@
 {
-  "meta": {
-    "slug": "hash-maps",
-    "title": "Hash maps"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Hash maps?",
-      "choices": [
-        {
-          "label": "Right: Key lookup is O(1) on average and O(n) when every key collides.",
-          "to": "q2"
+    "meta": {
+        "slug": "hash-maps",
+        "title": "Hash maps"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You need average O(1) lookup by arbitrary key. Which structure fits?",
+            "choices": [
+                {
+                    "label": "Hash map — hash the key into a bucket",
+                    "to": "q2"
+                },
+                {
+                    "label": "Sorted array — binary search every get",
+                    "to": "wrong_sorted"
+                }
+            ],
+            "diagramId": "buckets"
         },
-        {
-          "label": "Wrong: treat hash-maps as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ],
-      "diagramId": "buckets"
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Hash maps is about this force: Key lookup is O(1) on average and O(n) when every key collides.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Hash maps?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_sorted": {
+            "type": "wrong",
+            "prompt": "Binary search is O(log n) and needs sorted keys.",
+            "explanation": "A hash map averages O(1) get/put by hashing into buckets. A sorted array pays log n per lookup and re-sorts on inserts.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which access pattern points to a simpler structure than a hash map?",
+            "choices": [
+                {
+                    "label": "When keys are dense small integers and an array index is enough",
+                    "to": "success"
+                },
+                {
+                    "label": "Never — always hash, even for 0..n indices",
+                    "to": "wrong_refuse"
+                }
+            ],
+            "diagramId": "collision-chain"
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Dense ints do not need hashing.",
+            "explanation": "Avoid a hash map when keys are dense small integers and an array index is enough. Avoid claiming worst-case O(1) without a perfect hash or tree map. Avoid hashing a mutable object that can change after insert.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You matched hash maps to key lookups and avoided them when a plain array index suffices.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Hash maps when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Hash maps and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

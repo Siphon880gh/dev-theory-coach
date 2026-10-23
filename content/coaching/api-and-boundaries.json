@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "api-and-boundaries",
-    "title": "API and boundaries"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures API and boundaries?",
-      "choices": [
-        {
-          "label": "Right: Name the operations and the boundary that owns each one.",
-          "to": "q2"
+    "meta": {
+        "slug": "api-and-boundaries",
+        "title": "API and boundaries"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Trip owns trip state, Location owns driver coordinates, and Billing owns charges. Who may transition trip 781 from REQUESTED to ACCEPTED?",
+            "choices": [
+                {
+                    "label": "Trip, after reading any location information it needs",
+                    "to": "q2"
+                },
+                {
+                    "label": "Trip and Location may both update the status independently",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "boundary"
         },
-        {
-          "label": "Wrong: treat api-and-boundaries as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "API and boundaries is about this force: Name the operations and the boundary that owns each one.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse API and boundaries?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "One mutable fact needs one authoritative owner.",
+            "explanation": "Location can provide data without becoming a second writer of trip state. Single ownership prevents conflicting transitions.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Two drivers attempt to accept version 3 of the same trip. What should the API boundary provide?",
+            "choices": [
+                {
+                    "label": "A conditional version-3 transition so one succeeds and the other receives Conflict",
+                    "to": "q3"
+                },
+                {
+                    "label": "Two unconditional writes, with whichever arrives last silently winning",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "The contract must address concurrent writes.",
+            "explanation": "Expected-version or equivalent conditional update preserves one accepted driver and gives the loser a defined result.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "Does naming Trip, Location, and Billing boundaries require three network services on day one?",
+            "choices": [
+                {
+                    "label": "No. They can be modules in one deployable application with clear write ownership",
+                    "to": "success"
+                },
+                {
+                    "label": "Yes. Every conceptual boundary must add a network hop",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Ownership and deployment are separate decisions.",
+            "explanation": "A module boundary can protect responsibilities without distributed-system cost. Split deployment only when scale or team constraints justify it.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You defined the client contract, protected concurrent state changes, and separated ownership from deployment.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse API and boundaries when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named API and boundaries and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

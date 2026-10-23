@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "read-and-write-paths",
-    "title": "Read and write paths"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Read and write paths?",
-      "choices": [
-        {
-          "label": "Right: Narrate one successful read and one successful write, including the row they touch.",
-          "to": "q2"
+    "meta": {
+        "slug": "read-and-write-paths",
+        "title": "Read and write paths"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "POST /v1/links creates code a1b2c3d. When may the service return 201 if the product promises durable creation?",
+            "choices": [
+                {
+                    "label": "After the links row commits on authoritative storage",
+                    "to": "q2"
+                },
+                {
+                    "label": "Immediately after generating the code, before any durable write",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "paths"
         },
-        {
-          "label": "Wrong: treat read-and-write-paths as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Read and write paths is about this force: Narrate one successful read and one successful write, including the row they touch.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Read and write paths?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "The acknowledgement boundary defines success.",
+            "explanation": "Returning before commit can give the user a code that disappears after a crash. Durable success requires the authoritative write to complete first.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "GET /a1b2c3d misses cache key link:a1b2c3d. What is the next concrete path?",
+            "choices": [
+                {
+                    "label": "Primary-key lookup by code, verify enabled, fill that cache key, return 302",
+                    "to": "q3"
+                },
+                {
+                    "label": "Broadcast the read to every table and service because the cache missed",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "A cache miss should reveal the real access path.",
+            "explanation": "The database remains the source of truth. The primary key and exact cache key make the miss path and later invalidation understandable.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "DELETE disables the link. Which read-path dependency must the write update?",
+            "choices": [
+                {
+                    "label": "Evict link:a1b2c3d after the authoritative change commits",
+                    "to": "success"
+                },
+                {
+                    "label": "Leave the cached destination indefinitely because writes and reads are unrelated",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Read and write paths meet at invalidation.",
+            "explanation": "The read path can keep serving the old value unless the write path updates or invalidates the cache entry it relies on.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You named the durable success point, the cache-miss path, and the write-to-read invalidation link.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Read and write paths when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Read and write paths and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

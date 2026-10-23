@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "builder",
-    "title": "Builder"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Builder?",
-      "choices": [
-        {
-          "label": "Right: Assemble one object with many optional parts, and refuse a half-built object.",
-          "to": "q2"
+    "meta": {
+        "slug": "builder",
+        "title": "Builder"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Request needs method and URL plus optional headers, body, timeout, and retries. Call sites are full of ambiguous positional arguments. What improves construction?",
+            "choices": [
+                {
+                    "label": "A builder with named steps and build() returning an immutable Request",
+                    "to": "q2"
+                },
+                {
+                    "label": "More constructor overloads with additional boolean and null arguments",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "steps"
         },
-        {
-          "label": "Wrong: treat builder as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Builder is about this force: Assemble one object with many optional parts, and refuse a half-built object.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Builder?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "More overloads preserve the ambiguity.",
+            "explanation": "A builder makes optional choices readable at the call site and centralizes validation. More positional forms make it harder to see which value controls which behavior.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "When RequestBuilder.build() runs, what should it do with timeout=0 and its mutable header map?",
+            "choices": [
+                {
+                    "label": "Reject the invalid timeout and copy headers into the finished Request",
+                    "to": "q3"
+                },
+                {
+                    "label": "Return a half-valid Request that callers can repair later",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "build() must establish the product invariant.",
+            "explanation": "The finished object should be usable immediately. Validation and defensive copying prevent invalid fields and later builder mutations from leaking into the Request.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "Point has exactly two required coordinates, x and y, with no optional rules. Which construction is clearer?",
+            "choices": [
+                {
+                    "label": "Use Point(x, y); a builder adds no useful information",
+                    "to": "success"
+                },
+                {
+                    "label": "Create PointBuilder with setX(), setY(), validate(), and build()",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Simple construction does not need a pattern.",
+            "explanation": "Two named, required values are already clear. Builder earns its extra type when options, ordering, or cross-field validation make direct construction hard to read.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You used Builder for genuinely complex construction and kept a simple constructor for a simple value.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Builder when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Builder and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

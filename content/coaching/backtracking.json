@@ -1,56 +1,57 @@
 {
-  "meta": {
-    "slug": "backtracking",
-    "title": "Backtracking"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Backtracking?",
-      "choices": [
-        {
-          "label": "Right: Choose, explore, and undo, and prune a partial choice that already fails.",
-          "to": "q2"
+    "meta": {
+        "slug": "backtracking",
+        "title": "Backtracking"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You build permutations one slot at a time and undo when a partial path fails. Which method?",
+            "choices": [
+                {
+                    "label": "Backtracking — choose, recurse, undo",
+                    "to": "q2"
+                },
+                {
+                    "label": "Greedy one-pass pick without undo",
+                    "to": "wrong_greedy"
+                }
+            ],
+            "diagramId": "tree-choices"
         },
-        {
-          "label": "Wrong: treat backtracking as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Backtracking is about this force: Choose, explore, and undo, and prune a partial choice that already fails.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Backtracking?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_greedy": {
+            "type": "wrong",
+            "prompt": "Greedy cannot explore alternate branches.",
+            "explanation": "Backtracking constructs answers decision by decision and undoes dead ends. A single greedy pass misses other valid permutations.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which condition points away from backtracking?",
+            "choices": [
+                {
+                    "label": "On large n without pruning, or when a greedy proof or DP recurrence already solves it",
+                    "to": "success"
+                },
+                {
+                    "label": "Backtracking always beats DP and greedy",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Exponential trees need a reason.",
+            "explanation": "Do not backtrack on large n without pruning — the tree is exponential. Do not choose it when a greedy proof or a DP recurrence already solves the optimization.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You used choose-recurse-undo and avoided unpruned or already-solved cases.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Backtracking when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Backtracking and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

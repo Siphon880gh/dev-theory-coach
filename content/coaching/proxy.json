@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "proxy",
-    "title": "Proxy"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Proxy?",
-      "choices": [
-        {
-          "label": "Right: A stand-in controls whether the real object is reached at all.",
-          "to": "q2"
+    "meta": {
+        "slug": "proxy",
+        "title": "Proxy"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "A gallery lists 100 photos of 20 MB each but should decode an image only when display() is called. What fits behind the Photo interface?",
+            "choices": [
+                {
+                    "label": "A virtual proxy that stores metadata and lazily creates HighResPhoto",
+                    "to": "q2"
+                },
+                {
+                    "label": "An adapter, even though the Photo interface already matches",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "proxy"
         },
-        {
-          "label": "Wrong: treat proxy as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Proxy is about this force: A stand-in controls whether the real object is reached at all.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Proxy?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "This is delayed access, not interface translation.",
+            "explanation": "A virtual proxy controls when the real subject is created while preserving its interface. Adapter would solve a mismatch between interfaces.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Two threads call display() on the same unloaded proxy. What must the proxy prevent?",
+            "choices": [
+                {
+                    "label": "Two concurrent decodes; initialize the real subject safely once",
+                    "to": "q3"
+                },
+                {
+                    "label": "Nothing. Lazy initialization is automatically thread-safe",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Lazy creation can race.",
+            "explanation": "Without synchronization or another safe initialization mechanism, both callers can create the expensive subject and corrupt assumptions about one cached instance.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "ShippingPortProxy sends quote() over HTTP and may take 2 seconds or time out. Can the contract pretend this is a free local getter?",
+            "choices": [
+                {
+                    "label": "No. Expose or map timeout and availability semantics honestly",
+                    "to": "success"
+                },
+                {
+                    "label": "Yes. Sharing an interface removes network latency and failure",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "A remote proxy cannot erase distribution.",
+            "explanation": "The proxy can hide serialization mechanics, but callers still need a contract for latency, cancellation, and remote errors.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You controlled access through a proxy without hiding its concurrency or remote-failure costs.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Proxy when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Proxy and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

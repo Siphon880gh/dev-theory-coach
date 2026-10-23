@@ -31,6 +31,28 @@ The learner starts from an educational setup, picks a method, and on a wrong pic
 
 ---
 
+
+## Quality bar (arrays-grade)
+
+`content/coaching/arrays.json` is the quality bar: a **method / structure / tradeoff** choice tree with concrete wrong explanations, not a restated quiz.
+
+**Ban Stage-0 templates.** Never ship learner-facing coach copy that says:
+- `That skips the force.`
+- `when the force is absent`
+- `prerequisite slug`
+- `covers the force or a prerequisite`
+- `Refuse <Title> when the force is absent or a prerequisite slug is still missing.`
+- `When should you refuse <topic>?`
+
+**Require instead:**
+- ≥2 `continue` layers, ≥2 `wrong` with `rewind_to`, ≥1 `success` with empty choices
+- Wrong prompts + explanations name **topic-specific** mistakes drawn from that guide's `parts.rule`, `parts.refuse`, `parts.use`, and worked example
+- Boundary layers test a concrete precondition, tradeoff, or failure from the guide
+- Ask the boundary as a scenario (for example, "Which input breaks this invariant?") rather than generic "refuse" wording
+- Prefer plain learner language; avoid interview jargon like "prompt" in learner-facing coach copy
+- Original copy per slug — no identical trees pasted across families
+- Keep `diagramId` only when that id exists on the guide's `diagrams` list
+
 ## Coverage queue (strict order)
 
 Floor: **1 coach per guide**, same slug.
@@ -75,6 +97,8 @@ One choice tree per guide, same slug, wrong path rewinds.
 - [ ] One tree; `meta.slug` matches the guide
 - [ ] ≥2 `wrong` nodes with `rewind_to`; ≥1 `success` with empty choices; no dangling rewind
 - [ ] Teaches a method choice, not a restated quiz
+- [ ] No Stage-0 "force" / "prerequisite slug" template junk; boundary cases are topic-specific
+- [ ] Wrong explanations are concrete (arrays-quality), not title+template
 - [ ] Original copy
 - [ ] `./vendor/bin/phpunit` exits 0
 

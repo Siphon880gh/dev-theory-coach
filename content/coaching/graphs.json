@@ -1,56 +1,57 @@
 {
-  "meta": {
-    "slug": "graphs",
-    "title": "Graphs"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Graphs?",
-      "choices": [
-        {
-          "label": "Right: An adjacency list is the default; a matrix only when the graph is tiny and dense.",
-          "to": "q2"
+    "meta": {
+        "slug": "graphs",
+        "title": "Graphs"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You have millions of nodes and few edges. Which representation saves space?",
+            "choices": [
+                {
+                    "label": "Adjacency lists — store only existing edges",
+                    "to": "q2"
+                },
+                {
+                    "label": "Adjacency matrix — n×n bits for every pair",
+                    "to": "wrong_matrix"
+                }
+            ],
+            "diagramId": "adj-list"
         },
-        {
-          "label": "Wrong: treat graphs as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Graphs is about this force: An adjacency list is the default; a matrix only when the graph is tiny and dense.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Graphs?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_matrix": {
+            "type": "wrong",
+            "prompt": "A dense matrix wastes space on sparse graphs.",
+            "explanation": "Sparse graphs belong in adjacency lists (space ~ nodes + edges). An n×n matrix is fine for dense graphs, not millions of mostly-disconnected nodes.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which assumption must be checked before choosing a representation?",
+            "choices": [
+                {
+                    "label": "Avoid a matrix for millions of sparse nodes, and preserve direction when the relation is directed",
+                    "to": "success"
+                },
+                {
+                    "label": "Matrix and undirected always work",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Match representation to density and direction.",
+            "explanation": "Avoid a matrix for millions of sparse nodes. Avoid assuming undirected when the problem is a follow or depends-on relation. Avoid storing only edges and dropping orphan nodes if isolates matter.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You matched sparse graphs to lists and avoided wrong density or direction assumptions.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Graphs when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Graphs and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

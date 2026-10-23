@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "data-model",
-    "title": "Data model"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Data model?",
-      "choices": [
-        {
-          "label": "Right: Choose entities and keys from the query before naming a database product.",
-          "to": "q2"
+    "meta": {
+        "slug": "data-model",
+        "title": "Data model"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "A shortener redirects by code and lists each owner’s newest links. Which keys support both paths?",
+            "choices": [
+                {
+                    "label": "Primary key code plus an index on (owner_id, created_at DESC)",
+                    "to": "q2"
+                },
+                {
+                    "label": "No keys; scan all Link rows for every request",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "entities"
         },
-        {
-          "label": "Wrong: treat data-model as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Data model is about this force: Choose entities and keys from the query before naming a database product.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Data model?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "Each hot query needs a direct access path.",
+            "explanation": "The primary key serves one-code redirect. The composite index groups one owner’s rows in the order required by the dashboard.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "A 7-character base62 space is large. Can random code generation omit a uniqueness constraint?",
+            "choices": [
+                {
+                    "label": "No. Enforce uniqueness and retry the rare collision",
+                    "to": "q3"
+                },
+                {
+                    "label": "Yes. A large keyspace makes collision mathematically impossible",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Rare is not impossible.",
+            "explanation": "The keyspace lowers collision probability but does not eliminate it. The authoritative store must still reject duplicate primary keys.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "Each link has a 5 MB preview image, while redirect reads need only the destination URL. How should the model store it?",
+            "choices": [
+                {
+                    "label": "Keep the image in object storage and an object key in Link metadata",
+                    "to": "success"
+                },
+                {
+                    "label": "Inline the image into every hot Link row and secondary index",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Model large blobs for their own access path.",
+            "explanation": "Object storage keeps large opaque bytes away from ordinary transactional pages while the Link row retains ownership and lookup metadata.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You derived keys and storage layout from the actual reads and writes.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Data model when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Data model and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

@@ -1,57 +1,57 @@
 {
-  "meta": {
-    "slug": "two-pointers",
-    "title": "Two pointers"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Two pointers?",
-      "choices": [
-        {
-          "label": "Right: Move two indices in one pass when each move throws away a region.",
-          "to": "q2"
+    "meta": {
+        "slug": "two-pointers",
+        "title": "Two pointers"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "On a sorted array you need two numbers that sum to a target. Which method?",
+            "choices": [
+                {
+                    "label": "Two pointers at the ends — move the end that shrinks the gap",
+                    "to": "q2"
+                },
+                {
+                    "label": "Nested loop over every pair",
+                    "to": "wrong_nested"
+                }
+            ],
+            "diagramId": "ends"
         },
-        {
-          "label": "Wrong: treat two-pointers as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ],
-      "diagramId": "ends"
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Two pointers is about this force: Move two indices in one pass when each move throws away a region.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Two pointers?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_nested": {
+            "type": "wrong",
+            "prompt": "Nested pairs are O(n²).",
+            "explanation": "On a sorted array, opposite-end pointers move in O(n). Nested pairs work but waste the sorted order.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which missing property breaks the two-pointer argument?",
+            "choices": [
+                {
+                    "label": "As a substitute for a hash map on unsorted two-sum when you cannot sort",
+                    "to": "success"
+                },
+                {
+                    "label": "Two pointers always replace hashing",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Unsorted two-sum needs a map if you cannot sort.",
+            "explanation": "Avoid two pointers as a substitute for a hash map on unsorted two-sum when you are not allowed to sort. Avoid moving both pointers every iteration without an invariant.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You used end pointers on sorted sums and avoided them when hashing fits better.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Two pointers when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Two pointers and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

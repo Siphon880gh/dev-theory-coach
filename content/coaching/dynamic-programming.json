@@ -7,49 +7,50 @@
   "nodes": {
     "q1": {
       "type": "continue",
-      "prompt": "Which statement best captures Dynamic programming?",
+      "prompt": "Optimal substructure meets overlapping subproblems. What do you define first?",
       "choices": [
         {
-          "label": "Right: Write the state sentence and the recurrence before any loop.",
+          "label": "A state that captures what still matters, plus how states combine",
           "to": "q2"
         },
         {
-          "label": "Wrong: treat dynamic-programming as unrelated trivia with no cost story",
-          "to": "wrong1"
+          "label": "A single greedy local pick with no table",
+          "to": "wrong_greedy"
         }
-      ]
+      ],
+      "diagramId": "table"
     },
-    "wrong1": {
+    "wrong_greedy": {
       "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Dynamic programming is about this force: Write the state sentence and the recurrence before any loop.",
+      "prompt": "Overlapping subproblems need memoization or a table.",
+      "explanation": "DP names a state and reuses solutions to overlapping subproblems. Greedy only works with an exchange or matroid-style proof.",
       "rewind_to": "q1",
       "choices": []
     },
     "q2": {
       "type": "continue",
-      "prompt": "When should you refuse Dynamic programming?",
+      "prompt": "When should you skip DP?",
       "choices": [
         {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
+          "label": "When subproblems do not overlap, or a proven greedy structure is simpler",
           "to": "success"
         },
         {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+          "label": "Always table everything that looks recursive",
+          "to": "wrong_refuse"
         }
       ]
     },
-    "wrong2": {
+    "wrong_refuse": {
       "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Dynamic programming when the force is absent or a prerequisite slug is still missing.",
+      "prompt": "DP needs overlap and a clear state.",
+      "explanation": "Skip DP when subproblems do not overlap \u2014 plain recursion or a DAG walk may be enough. Skip a table that you cannot define in words. Skip DP when a proven greedy structure is simpler.",
       "rewind_to": "q2",
       "choices": []
     },
     "success": {
       "type": "success",
-      "prompt": "You named Dynamic programming and knew when to refuse it.",
+      "prompt": "You defined DP state first and skipped DP when overlap or greedy proofs say otherwise.",
       "choices": []
     }
   }

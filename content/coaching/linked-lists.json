@@ -1,58 +1,58 @@
 {
-  "meta": {
-    "slug": "linked-lists",
-    "title": "Linked lists"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Linked lists?",
-      "choices": [
-        {
-          "label": "Right: Splice a known node in O(1); reaching index i is O(n).",
-          "to": "q2"
+    "meta": {
+        "slug": "linked-lists",
+        "title": "Linked lists"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You already hold a pointer to a node and must splice it out. Which shape keeps that edit local?",
+            "choices": [
+                {
+                    "label": "Linked list — relink neighbors in O(1)",
+                    "to": "q2"
+                },
+                {
+                    "label": "Array — shift the tail after the hole",
+                    "to": "wrong_array"
+                }
+            ],
+            "diagramId": "splice"
         },
-        {
-          "label": "Wrong: treat linked-lists as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ],
-      "diagramId": "nodes"
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Linked lists is about this force: Splice a known node in O(1); reaching index i is O(n).",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Linked lists?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_array": {
+            "type": "wrong",
+            "prompt": "An array turns the local edit into a tail shift.",
+            "explanation": "Removing index i from an array moves the n-i-1 later values. With the relevant list nodes already in hand, the edit changes neighboring links instead.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which workload makes a linked list the wrong default?",
+            "choices": [
+                {
+                    "label": "When the hot path is random index access",
+                    "to": "success"
+                },
+                {
+                    "label": "Never — lists beat arrays for every access pattern",
+                    "to": "wrong_refuse"
+                }
+            ],
+            "diagramId": "nodes"
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Index jumps are expensive on lists.",
+            "explanation": "Avoid a linked list when the hot path is random index access. Avoid claiming O(1) access to the k-th element. Avoid mutating next without keeping a reference to the remainder.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You matched lists to local splices and avoided them when index jumps dominate.",
+            "choices": []
         }
-      ],
-      "diagramId": "splice"
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Linked lists when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Linked lists and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "replication-and-consistency",
-    "title": "Replication and consistency"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Replication and consistency?",
-      "choices": [
-        {
-          "label": "Right: Say what a replica is for, and what a client observes after a write.",
-          "to": "q2"
+    "meta": {
+        "slug": "replication-and-consistency",
+        "title": "Replication and consistency"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "User 42 writes comment 91 to the primary, then immediately reads from an async replica lagging 200 ms. What can happen?",
+            "choices": [
+                {
+                    "label": "The read can miss comment 91 even though the write returned success",
+                    "to": "q2"
+                },
+                {
+                    "label": "The replica must contain the comment because all replicas are instantly current",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "replica"
         },
-        {
-          "label": "Wrong: treat replication-and-consistency as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Replication and consistency is about this force: Say what a replica is for, and what a client observes after a write.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Replication and consistency?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "Asynchronous replicas can serve stale data.",
+            "explanation": "The primary can acknowledge before a replica replays the commit. Replication lag changes what an immediate read may observe.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "How can the product provide read-your-writes for that user without routing every reader to the primary forever?",
+            "choices": [
+                {
+                    "label": "Temporarily pin the user or require a replica caught up to the write position",
+                    "to": "q3"
+                },
+                {
+                    "label": "Pick any replica randomly and assume the lag is harmless",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Read-your-writes needs routing information.",
+            "explanation": "A session can carry the commit position or use temporary primary affinity. Other users whose reads tolerate lag may still use replicas normally.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "The primary fails before its last async commits reach a replica. What must failover acknowledge?",
+            "choices": [
+                {
+                    "label": "Possible loss of acknowledged writes, plus fencing the old primary before promotion",
+                    "to": "success"
+                },
+                {
+                    "label": "Zero loss is guaranteed and the old primary may keep accepting writes",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Async failover has an RPO and split-brain risk.",
+            "explanation": "An async replica may not have the newest commits. Fencing prevents two writers when the old primary returns.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You connected replica lag to user-visible consistency and made failover guarantees honest.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Replication and consistency when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Replication and consistency and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

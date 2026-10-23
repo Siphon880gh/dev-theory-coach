@@ -1,56 +1,57 @@
 {
-  "meta": {
-    "slug": "intervals",
-    "title": "Intervals"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Intervals?",
-      "choices": [
-        {
-          "label": "Right: Sort and sweep so merge, overlap, and scheduling are one pass.",
-          "to": "q2"
+    "meta": {
+        "slug": "intervals",
+        "title": "Intervals"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You must merge overlapping meeting ranges. How do you start?",
+            "choices": [
+                {
+                    "label": "Sort by start, then merge when the next start ≤ current end",
+                    "to": "q2"
+                },
+                {
+                    "label": "Sort by end and greedily keep maximum non-overlapping count",
+                    "to": "wrong_finish"
+                }
+            ],
+            "diagramId": "overlap"
         },
-        {
-          "label": "Wrong: treat intervals as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Intervals is about this force: Sort and sweep so merge, overlap, and scheduling are one pass.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Intervals?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_finish": {
+            "type": "wrong",
+            "prompt": "Finish-time greedy answers a different ask.",
+            "explanation": "Merging overlaps sorts by start and extends the current end. Sorting by end is for selecting a maximum non-overlapping subset.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which interval mistake changes the algorithm you need?",
+            "choices": [
+                {
+                    "label": "Do not process intervals unsorted; do not merge when the ask is max non-overlapping count",
+                    "to": "success"
+                },
+                {
+                    "label": "One sort order solves every interval problem",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Sort key follows the ask.",
+            "explanation": "Do not process intervals unsorted. Do not merge when the ask is maximum non-overlapping count (that wants finish-time greedy). Do not assume closed versus half-open endpoints without checking.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You sorted by start to merge and avoided the wrong interval recipe.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Intervals when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Intervals and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

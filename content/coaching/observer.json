@@ -1,57 +1,79 @@
 {
-  "meta": {
-    "slug": "observer",
-    "title": "Observer"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Observer?",
-      "choices": [
-        {
-          "label": "Right: Notify dependents on a change, and name the leak and the order problems.",
-          "to": "q2"
+    "meta": {
+        "slug": "observer",
+        "title": "Observer"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Preview, word count, and save indicator must react when a Document changes, and panels can be added independently. Which relationship fits?",
+            "choices": [
+                {
+                    "label": "Observers subscribe to DocumentChanged through a listener contract",
+                    "to": "q2"
+                },
+                {
+                    "label": "Document imports and calls every concrete panel class",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "notify"
         },
-        {
-          "label": "Wrong: treat observer as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ],
-      "diagramId": "notify"
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Observer is about this force: Notify dependents on a change, and name the leak and the order problems.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Observer?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "The changing listener set should not be hard-wired.",
+            "explanation": "Observer lets the subject publish one event to registered listeners without gaining a dependency on each concrete panel.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "The WordCount panel closes while Document remains open. What lifecycle behavior is required?",
+            "choices": [
+                {
+                    "label": "Unsubscribe the panel so Document does not retain and notify it",
+                    "to": "q3"
+                },
+                {
+                    "label": "Leave every listener registered for the lifetime of the process",
+                    "to": "wrong2"
+                }
+            ],
+            "diagramId": "observer-flow"
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Subscriptions have ownership and lifetime.",
+            "explanation": "A long-lived subject can retain short-lived listeners and leak them. The subscription API needs a clear unsubscribe or weak-reference policy.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "Saving the document must succeed before the UI reports success. Should durable save be a best-effort observer callback?",
+            "choices": [
+                {
+                    "label": "No. Make required save explicit; reserve observers for reactions with defined failure semantics",
+                    "to": "success"
+                },
+                {
+                    "label": "Yes. Ignore listener failures and report success anyway",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Required work should not hide in best-effort notification.",
+            "explanation": "Observer makes control flow indirect. A critical operation that determines success should be called explicitly or use a durable protocol with an honest pending state.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You decoupled changing listeners while keeping subscription lifetime and critical work explicit.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Observer when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Observer and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

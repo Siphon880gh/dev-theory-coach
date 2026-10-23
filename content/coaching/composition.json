@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "composition",
-    "title": "Composition"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Composition?",
-      "choices": [
-        {
-          "label": "Right: Assemble behavior by holding objects; inherit only for a true subtype.",
-          "to": "q2"
+    "meta": {
+        "slug": "composition",
+        "title": "Composition"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Caching must work around SqlUserRepo today and HttpUserRepo later. How should CachedUserRepo reuse repository behavior?",
+            "choices": [
+                {
+                    "label": "Hold an inner UserRepo and Cache, then delegate on a miss",
+                    "to": "q2"
+                },
+                {
+                    "label": "Extend SqlUserRepo so caching is permanently tied to SQL",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "compose"
         },
-        {
-          "label": "Wrong: treat composition as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Composition is about this force: Assemble behavior by holding objects; inherit only for a true subtype.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Composition?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "The varying collaborator should be composed.",
+            "explanation": "Composition lets the cache wrapper work with any UserRepo and makes both dependencies replaceable in tests. Inheritance would couple the feature to one concrete repository.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "A mutable Rectangle caller sets width=4 and height=2 and expects area 8. Square overrides both setters to keep sides equal. Is Square safely substitutable?",
+            "choices": [
+                {
+                    "label": "No. Its overrides break the Rectangle contract; use a separate Shape abstraction",
+                    "to": "q3"
+                },
+                {
+                    "label": "Yes. Reusing Rectangle code is enough to prove an is-a relationship",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Reuse does not prove substitutability.",
+            "explanation": "A subtype must preserve the expectations of parent callers. Forcing equal sides changes the setter postconditions, so the inheritance relationship is invalid.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "When is inheritance still reasonable?",
+            "choices": [
+                {
+                    "label": "For a shallow, stable subtype that honors the full parent contract",
+                    "to": "success"
+                },
+                {
+                    "label": "Whenever a subclass wants access to two helper methods",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Inheritance models a contract, not a shortcut to helpers.",
+            "explanation": "Helper reuse is better extracted into a collaborator. Inheritance fits when every child can stand in for the parent without disabling or surprising inherited behavior.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You chose composition for reuse and required real substitutability before using inheritance.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Composition when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Composition and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

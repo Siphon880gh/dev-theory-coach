@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "adapter",
-    "title": "Adapter"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Adapter?",
-      "choices": [
-        {
-          "label": "Right: Wrap a type you do not own so the caller keeps the interface it already has.",
-          "to": "q2"
+    "meta": {
+        "slug": "adapter",
+        "title": "Adapter"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Your code calls EnergySensor.readCelsius(), but a vendor SDK exposes fetchTemperature() with Fahrenheit values and vendor error codes. What belongs at this boundary?",
+            "choices": [
+                {
+                    "label": "An adapter that implements EnergySensor and translates the vendor response",
+                    "to": "q2"
+                },
+                {
+                    "label": "A decorator that keeps the vendor interface unchanged",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "adapt"
         },
-        {
-          "label": "Wrong: treat adapter as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Adapter is about this force: Wrap a type you do not own so the caller keeps the interface it already has.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Adapter?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "This is an interface mismatch.",
+            "explanation": "A decorator keeps the same interface while adding behavior. Here the caller and vendor speak different interfaces, so an adapter should translate method names, units, and errors.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "The SDK returns 98.6°F with status ok. Where should the conversion to 37.0°C and E_CONN-to-SensorUnavailable mapping happen?",
+            "choices": [
+                {
+                    "label": "Inside the adapter, once, before the result reaches application code",
+                    "to": "q3"
+                },
+                {
+                    "label": "In every service that happens to read a temperature",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Keep vendor vocabulary at the edge.",
+            "explanation": "Repeating conversion and error mapping in callers spreads vendor details. The adapter owns representation changes so the application receives one stable contract.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "The application considers 37°C unsafe for a particular machine. Should that threshold live in the adapter?",
+            "choices": [
+                {
+                    "label": "No. Return Celsius from the adapter; apply the safety rule in the domain layer",
+                    "to": "success"
+                },
+                {
+                    "label": "Yes. Put vendor mapping and machine safety policy in the same adapter",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Translation is not business policy.",
+            "explanation": "The adapter changes vocabulary and representation. A machine-specific safety threshold is a domain decision and should remain visible outside the vendor boundary.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You kept the foreign API at the boundary, translated it once, and left business policy in the domain.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Adapter when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Adapter and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

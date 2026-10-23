@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "rate-limiting",
-    "title": "Rate limiting"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Rate limiting?",
-      "choices": [
-        {
-          "label": "Right: Protect a boundary, and pick the limiter from the burst you allow.",
-          "to": "q2"
+    "meta": {
+        "slug": "rate-limiting",
+        "title": "Rate limiting"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "A token bucket allows 100 requests per hour with capacity 20. What refill schedule matches the sustained rate?",
+            "choices": [
+                {
+                    "label": "One token every 36 seconds, with up to 20 requests in an immediate burst",
+                    "to": "q2"
+                },
+                {
+                    "label": "Twenty tokens every second, because capacity is the hourly rate",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "token-bucket"
         },
-        {
-          "label": "Wrong: treat rate-limiting as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Rate limiting is about this force: Protect a boundary, and pick the limiter from the burst you allow.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Rate limiting?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "Burst capacity and refill rate are separate.",
+            "explanation": "An hour has 3,600 seconds, so 100 tokens per hour is one every 36 seconds. Capacity 20 controls the maximum saved burst.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "A tenant owns 50 API keys. How do you stop those keys from bypassing the tenant quota while preserving per-key fairness?",
+            "choices": [
+                {
+                    "label": "Apply both per-key and per-tenant buckets",
+                    "to": "q3"
+                },
+                {
+                    "label": "Use one global counter shared by every customer",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Choose keys that match the fairness contract.",
+            "explanation": "Layered buckets limit each key and the tenant total. A global counter lets one customer consume capacity intended for everyone else.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "The shared limiter store is unavailable. Is “always fail open” a complete policy?",
+            "choices": [
+                {
+                    "label": "No. Choose by risk, such as a local cap for reads and fail-closed for login abuse",
+                    "to": "success"
+                },
+                {
+                    "label": "Yes. Limiter outages should make every protected operation unlimited",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Limiter failure needs an explicit degraded mode.",
+            "explanation": "Availability and abuse risk differ by endpoint. A public cached read and a password attempt should not inherit one universal outage behavior.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You separated burst from sustained rate, keyed limits fairly, and defined limiter-outage behavior.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Rate limiting when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Rate limiting and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

@@ -1,56 +1,78 @@
 {
-  "meta": {
-    "slug": "factory",
-    "title": "Factory"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Factory?",
-      "choices": [
-        {
-          "label": "Right: Hide which concrete type gets constructed, in one place the caller can find.",
-          "to": "q2"
+    "meta": {
+        "slug": "factory",
+        "title": "Factory"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "An import service selects CSV, JSON, or XML parsers at runtime, all behind DocumentParser. Where should selection and setup live?",
+            "choices": [
+                {
+                    "label": "ParserFactory.create(format), returning a ready DocumentParser",
+                    "to": "q2"
+                },
+                {
+                    "label": "A format switch copied into every import workflow",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "create"
         },
-        {
-          "label": "Wrong: treat factory as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ]
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Factory is about this force: Hide which concrete type gets constructed, in one place the caller can find.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Factory?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "Creation knowledge should not spread through callers.",
+            "explanation": "A factory centralizes which product to create and how to configure it while callers depend on the parser contract.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "create(\"xml\") must disable entity expansion, while parse() understands XML tokens. Which responsibility belongs to the factory?",
+            "choices": [
+                {
+                    "label": "Construct XmlParser with the safe configuration; leave parsing behavior to XmlParser",
+                    "to": "q3"
+                },
+                {
+                    "label": "Put all XML parsing rules inside ParserFactory",
+                    "to": "wrong2"
+                }
+            ]
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "The factory creates; the product behaves.",
+            "explanation": "Selection and wiring belong in the factory. Moving product algorithms into it produces a large creation class with unrelated behavior.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "The application has only CsvParser(), with a trivial constructor and no planned alternative. What is clearest?",
+            "choices": [
+                {
+                    "label": "Construct CsvParser directly until a real creation problem appears",
+                    "to": "success"
+                },
+                {
+                    "label": "Add an abstract factory hierarchy immediately",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "One trivial product does not need a factory.",
+            "explanation": "The extra indirection is justified by real selection or setup. A factory that hides nothing makes navigation and debugging harder.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You centralized product selection without moving product behavior into the factory.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Factory when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Factory and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

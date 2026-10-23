@@ -1,57 +1,57 @@
 {
-  "meta": {
-    "slug": "binary-search",
-    "title": "Binary search"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Binary search?",
-      "choices": [
-        {
-          "label": "Right: Halve a sorted range in O(log n) without breaking the loop invariant.",
-          "to": "q2"
+    "meta": {
+        "slug": "binary-search",
+        "title": "Binary search"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "You search a sorted array for a target. Which move keeps a clear invariant?",
+            "choices": [
+                {
+                    "label": "Halve the range: discard the half that cannot hold the answer",
+                    "to": "q2"
+                },
+                {
+                    "label": "Scan from index 0 until you hit the target",
+                    "to": "wrong_scan"
+                }
+            ],
+            "diagramId": "halve"
         },
-        {
-          "label": "Wrong: treat binary-search as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ],
-      "diagramId": "halve"
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Binary search is about this force: Halve a sorted range in O(log n) without breaking the loop invariant.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Binary search?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong_scan": {
+            "type": "wrong",
+            "prompt": "Linear scan ignores the sorted order.",
+            "explanation": "Binary search halves a sorted space each step. Scanning from the left is correct but O(n) and wastes the sort.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "Which missing precondition makes binary search unsafe?",
+            "choices": [
+                {
+                    "label": "On unsorted input, or when a loop can leave low and high unchanged",
+                    "to": "success"
+                },
+                {
+                    "label": "Anytime values look roughly ordered",
+                    "to": "wrong_refuse"
+                }
+            ]
+        },
+        "wrong_refuse": {
+            "type": "wrong",
+            "prompt": "Sorted invariant is mandatory.",
+            "explanation": "Avoid binary search on unsorted input. Avoid a loop that can leave low and high unchanged for a full iteration. Avoid returning mid just because values matched once without checking the full invariant.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You halved a sorted range and avoided binary search without a real invariant.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Binary search when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Binary search and knew when to refuse it.",
-      "choices": []
     }
-  }
 }

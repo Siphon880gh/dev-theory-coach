@@ -1,57 +1,79 @@
 {
-  "meta": {
-    "slug": "strategy",
-    "title": "Strategy"
-  },
-  "start": "q1",
-  "nodes": {
-    "q1": {
-      "type": "continue",
-      "prompt": "Which statement best captures Strategy?",
-      "choices": [
-        {
-          "label": "Right: Swap a whole algorithm behind one interface without editing the caller.",
-          "to": "q2"
+    "meta": {
+        "slug": "strategy",
+        "title": "Strategy"
+    },
+    "start": "q1",
+    "nodes": {
+        "q1": {
+            "type": "continue",
+            "prompt": "Checkout has a fixed workflow but merchants choose one of several shipping-cost formulas. Which pattern isolates that variation?",
+            "choices": [
+                {
+                    "label": "Inject a ShippingStrategy with one quote() contract",
+                    "to": "q2"
+                },
+                {
+                    "label": "Use State so Checkout changes lifecycle mode on every quote",
+                    "to": "wrong1"
+                }
+            ],
+            "diagramId": "swap"
         },
-        {
-          "label": "Wrong: treat strategy as unrelated trivia with no cost story",
-          "to": "wrong1"
-        }
-      ],
-      "diagramId": "swap"
-    },
-    "wrong1": {
-      "type": "wrong",
-      "prompt": "That skips the force.",
-      "explanation": "Strategy is about this force: Swap a whole algorithm behind one interface without editing the caller.",
-      "rewind_to": "q1",
-      "choices": []
-    },
-    "q2": {
-      "type": "continue",
-      "prompt": "When should you refuse Strategy?",
-      "choices": [
-        {
-          "label": "When a simpler tool covers the force or a prerequisite is missing",
-          "to": "success"
+        "wrong1": {
+            "type": "wrong",
+            "prompt": "The caller selects an algorithm.",
+            "explanation": "Strategy fits interchangeable calculations inside a stable workflow. State is for behavior that changes as the object moves through its own lifecycle.",
+            "rewind_to": "q1",
+            "choices": []
         },
-        {
-          "label": "Never refuse — always apply the named idea",
-          "to": "wrong2"
+        "q2": {
+            "type": "continue",
+            "prompt": "For an 8 kg parcel traveling 30 km, FlatRate returns 500 cents, WeightBased is 200 + 75×kg, and Courier is 300 + 20×km. What quotes result?",
+            "choices": [
+                {
+                    "label": "500, 800, and 900 cents",
+                    "to": "q3"
+                },
+                {
+                    "label": "500, 600, and 800 cents",
+                    "to": "wrong2"
+                }
+            ],
+            "diagramId": "strategy-flow"
+        },
+        "wrong2": {
+            "type": "wrong",
+            "prompt": "Run the strategy contract with concrete inputs.",
+            "explanation": "WeightBased is 200 + 75×8 = 800. Courier is 300 + 20×30 = 900. Shared inputs and outputs make the algorithms substitutable.",
+            "rewind_to": "q2",
+            "choices": []
+        },
+        "q3": {
+            "type": "continue",
+            "prompt": "The only variation is freeShipping ? 0 : 500 and no other policy is expected. What is clearer?",
+            "choices": [
+                {
+                    "label": "A named function or local conditional",
+                    "to": "success"
+                },
+                {
+                    "label": "Two strategy classes plus a factory and registry",
+                    "to": "wrong3"
+                }
+            ]
+        },
+        "wrong3": {
+            "type": "wrong",
+            "prompt": "Not every branch needs an abstraction.",
+            "explanation": "Strategy earns its indirection when algorithms vary independently. One stable boolean rule is easier to read where it is used.",
+            "rewind_to": "q3",
+            "choices": []
+        },
+        "success": {
+            "type": "success",
+            "prompt": "You selected interchangeable algorithms through one contract and avoided abstraction without a real variation point.",
+            "choices": []
         }
-      ]
-    },
-    "wrong2": {
-      "type": "wrong",
-      "prompt": "Blind application is not mastery.",
-      "explanation": "Refuse Strategy when the force is absent or a prerequisite slug is still missing.",
-      "rewind_to": "q2",
-      "choices": []
-    },
-    "success": {
-      "type": "success",
-      "prompt": "You named Strategy and knew when to refuse it.",
-      "choices": []
     }
-  }
 }
