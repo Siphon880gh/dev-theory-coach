@@ -270,6 +270,19 @@ final class GuidesTest extends TestCase
                 $text,
                 "{$slug} must not use interview jargon 'the prompt'",
             );
+            foreach ([
+                'Walk one concrete path with numbers before generalizing.',
+                'Keep the tone focused and honest.',
+                'Name the force before the mechanism.',
+                'Hold the method and the cost in mind before naming a tool.',
+                'Trace the same numbers once more and confirm the cost matches the rule before you leave the example.',
+            ] as $filler) {
+                $this->assertStringNotContainsString(
+                    $filler,
+                    $text,
+                    "{$slug} contains generated filler: {$filler}",
+                );
+            }
         }
 
         $example = (string) $guide['parts']['example'];
@@ -285,6 +298,7 @@ final class GuidesTest extends TestCase
         );
 
         $this->assertNoRepeatedPaddingParagraphs($slug, $body);
+        $this->assertNoRepeatedProseSentences($slug, $body);
 
         $tokens = $this->tokenize($body);
         for ($i = 0; $i <= count($tokens) - 12; $i++) {
@@ -313,6 +327,27 @@ final class GuidesTest extends TestCase
                 3,
                 $n,
                 "{$slug} has identical paragraph {$n} times (padding): " . substr($para, 0, 80),
+            );
+        }
+    }
+
+    private function assertNoRepeatedProseSentences(string $slug, string $body): void
+    {
+        preg_match_all('/[^.!?]+[.!?]+/u', $body, $matches);
+        $counts = [];
+        foreach ($matches[0] ?? [] as $sentence) {
+            $normalized = trim(preg_replace('/\\s+/', ' ', $sentence) ?? '');
+            if (mb_strlen($normalized) < 25) {
+                continue;
+            }
+            $key = mb_strtolower($normalized);
+            $counts[$key] = ($counts[$key] ?? 0) + 1;
+        }
+        foreach ($counts as $sentence => $count) {
+            $this->assertSame(
+                1,
+                $count,
+                "{$slug} repeats a prose sentence {$count} times: " . substr($sentence, 0, 100),
             );
         }
     }

@@ -15,7 +15,7 @@ This is not a problem bank and it does not run code. Problem practice lives in t
 
 ## Start here
 
-1. **Which track?** — Data structures (which shape), Algorithms (which procedure), System design (how to spend the hour), Design patterns (which name the force earns).
+1. **Which track?** — Data structures (which shape), Algorithms (which procedure), System design (how to structure the hour), Design patterns (which structure fits, and when simpler code is enough).
 2. **Beginner path** — 12 units in prerequisite order, from `arrays` through `sliding-window`. Graded system-design and pattern cases stay locked until the quizzes on `arrays`, `hash-maps`, and `queues` are each at least 80%.
 3. **Then deepen** — every guide has a step-by-step coach on the same slug. Quizzes check the idea. Drills time the closed-form ones. Cases ask you to commit, then show the consequence.
 
