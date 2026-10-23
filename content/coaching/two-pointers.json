@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "slug": "two-pointers",
+    "title": "Two pointers",
+    "sample": true
+  },
+  "start": "q1",
+  "nodes": {
+    "q1": {
+      "type": "continue",
+      "prompt": "SAMPLE: Which statement best captures Two pointers?",
+      "choices": [
+        {
+          "label": "Right: Move two indices in one pass when each move throws away a region.",
+          "to": "q2"
+        },
+        {
+          "label": "Wrong: treat two-pointers as unrelated trivia with no cost story",
+          "to": "wrong1"
+        }
+      ]
+    },
+    "wrong1": {
+      "type": "wrong",
+      "prompt": "That skips the force.",
+      "explanation": "Two pointers is about this force: Move two indices in one pass when each move throws away a region.",
+      "rewind_to": "q1",
+      "choices": []
+    },
+    "q2": {
+      "type": "continue",
+      "prompt": "SAMPLE: When should you refuse Two pointers?",
+      "choices": [
+        {
+          "label": "When a simpler tool covers the force or a prerequisite is missing",
+          "to": "success"
+        },
+        {
+          "label": "Never refuse \u2014 always apply the named idea",
+          "to": "wrong2"
+        }
+      ]
+    },
+    "wrong2": {
+      "type": "wrong",
+      "prompt": "Blind application is not mastery.",
+      "explanation": "Refuse Two pointers when the force is absent or a prerequisite slug is still missing.",
+      "rewind_to": "q2",
+      "choices": []
+    },
+    "success": {
+      "type": "success",
+      "prompt": "You named Two pointers and knew when to refuse it.",
+      "choices": []
+    }
+  }
+}

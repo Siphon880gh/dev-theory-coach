@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "slug": "capstone-feed",
+    "title": "Capstone: feed",
+    "sample": true
+  },
+  "start": "q1",
+  "nodes": {
+    "q1": {
+      "type": "continue",
+      "prompt": "SAMPLE: Which statement best captures Capstone: feed?",
+      "choices": [
+        {
+          "label": "Right: Pick fanout-on-write or fanout-on-read from the follower count.",
+          "to": "q2"
+        },
+        {
+          "label": "Wrong: treat capstone-feed as unrelated trivia with no cost story",
+          "to": "wrong1"
+        }
+      ]
+    },
+    "wrong1": {
+      "type": "wrong",
+      "prompt": "That skips the force.",
+      "explanation": "Capstone: feed is about this force: Pick fanout-on-write or fanout-on-read from the follower count.",
+      "rewind_to": "q1",
+      "choices": []
+    },
+    "q2": {
+      "type": "continue",
+      "prompt": "SAMPLE: When should you refuse Capstone: feed?",
+      "choices": [
+        {
+          "label": "When a simpler tool covers the force or a prerequisite is missing",
+          "to": "success"
+        },
+        {
+          "label": "Never refuse \u2014 always apply the named idea",
+          "to": "wrong2"
+        }
+      ]
+    },
+    "wrong2": {
+      "type": "wrong",
+      "prompt": "Blind application is not mastery.",
+      "explanation": "Refuse Capstone: feed when the force is absent or a prerequisite slug is still missing.",
+      "rewind_to": "q2",
+      "choices": []
+    },
+    "success": {
+      "type": "success",
+      "prompt": "You named Capstone: feed and knew when to refuse it.",
+      "choices": []
+    }
+  }
+}

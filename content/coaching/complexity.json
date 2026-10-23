@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "slug": "complexity",
+    "title": "Complexity",
+    "sample": true
+  },
+  "start": "q1",
+  "nodes": {
+    "q1": {
+      "type": "continue",
+      "prompt": "SAMPLE: Which statement best captures Complexity?",
+      "choices": [
+        {
+          "label": "Right: Bound time and space, and say when the question wants amortized cost.",
+          "to": "q2"
+        },
+        {
+          "label": "Wrong: treat complexity as unrelated trivia with no cost story",
+          "to": "wrong1"
+        }
+      ]
+    },
+    "wrong1": {
+      "type": "wrong",
+      "prompt": "That skips the force.",
+      "explanation": "Complexity is about this force: Bound time and space, and say when the question wants amortized cost.",
+      "rewind_to": "q1",
+      "choices": []
+    },
+    "q2": {
+      "type": "continue",
+      "prompt": "SAMPLE: When should you refuse Complexity?",
+      "choices": [
+        {
+          "label": "When a simpler tool covers the force or a prerequisite is missing",
+          "to": "success"
+        },
+        {
+          "label": "Never refuse \u2014 always apply the named idea",
+          "to": "wrong2"
+        }
+      ]
+    },
+    "wrong2": {
+      "type": "wrong",
+      "prompt": "Blind application is not mastery.",
+      "explanation": "Refuse Complexity when the force is absent or a prerequisite slug is still missing.",
+      "rewind_to": "q2",
+      "choices": []
+    },
+    "success": {
+      "type": "success",
+      "prompt": "You named Complexity and knew when to refuse it.",
+      "choices": []
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "slug": "binary-search-trees",
+    "title": "Binary search trees",
+    "sample": true
+  },
+  "start": "q1",
+  "nodes": {
+    "q1": {
+      "type": "continue",
+      "prompt": "SAMPLE: Which statement best captures Binary search trees?",
+      "choices": [
+        {
+          "label": "Right: Search, insert, and delete in O(h); without balance, h can be n.",
+          "to": "q2"
+        },
+        {
+          "label": "Wrong: treat binary-search-trees as unrelated trivia with no cost story",
+          "to": "wrong1"
+        }
+      ]
+    },
+    "wrong1": {
+      "type": "wrong",
+      "prompt": "That skips the force.",
+      "explanation": "Binary search trees is about this force: Search, insert, and delete in O(h); without balance, h can be n.",
+      "rewind_to": "q1",
+      "choices": []
+    },
+    "q2": {
+      "type": "continue",
+      "prompt": "SAMPLE: When should you refuse Binary search trees?",
+      "choices": [
+        {
+          "label": "When a simpler tool covers the force or a prerequisite is missing",
+          "to": "success"
+        },
+        {
+          "label": "Never refuse \u2014 always apply the named idea",
+          "to": "wrong2"
+        }
+      ]
+    },
+    "wrong2": {
+      "type": "wrong",
+      "prompt": "Blind application is not mastery.",
+      "explanation": "Refuse Binary search trees when the force is absent or a prerequisite slug is still missing.",
+      "rewind_to": "q2",
+      "choices": []
+    },
+    "success": {
+      "type": "success",
+      "prompt": "You named Binary search trees and knew when to refuse it.",
+      "choices": []
+    }
+  }
+}

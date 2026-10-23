@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "slug": "composition",
+    "title": "Composition",
+    "sample": true
+  },
+  "start": "q1",
+  "nodes": {
+    "q1": {
+      "type": "continue",
+      "prompt": "SAMPLE: Which statement best captures Composition?",
+      "choices": [
+        {
+          "label": "Right: Assemble behavior by holding objects; inherit only for a true subtype.",
+          "to": "q2"
+        },
+        {
+          "label": "Wrong: treat composition as unrelated trivia with no cost story",
+          "to": "wrong1"
+        }
+      ]
+    },
+    "wrong1": {
+      "type": "wrong",
+      "prompt": "That skips the force.",
+      "explanation": "Composition is about this force: Assemble behavior by holding objects; inherit only for a true subtype.",
+      "rewind_to": "q1",
+      "choices": []
+    },
+    "q2": {
+      "type": "continue",
+      "prompt": "SAMPLE: When should you refuse Composition?",
+      "choices": [
+        {
+          "label": "When a simpler tool covers the force or a prerequisite is missing",
+          "to": "success"
+        },
+        {
+          "label": "Never refuse \u2014 always apply the named idea",
+          "to": "wrong2"
+        }
+      ]
+    },
+    "wrong2": {
+      "type": "wrong",
+      "prompt": "Blind application is not mastery.",
+      "explanation": "Refuse Composition when the force is absent or a prerequisite slug is still missing.",
+      "rewind_to": "q2",
+      "choices": []
+    },
+    "success": {
+      "type": "success",
+      "prompt": "You named Composition and knew when to refuse it.",
+      "choices": []
+    }
+  }
+}

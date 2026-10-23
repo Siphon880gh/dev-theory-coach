@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "slug": "bfs-dfs",
+    "title": "BFS and DFS",
+    "sample": true
+  },
+  "start": "q1",
+  "nodes": {
+    "q1": {
+      "type": "continue",
+      "prompt": "SAMPLE: Which statement best captures BFS and DFS?",
+      "choices": [
+        {
+          "label": "Right: Walk each reachable node once; BFS when hop count is the distance.",
+          "to": "q2"
+        },
+        {
+          "label": "Wrong: treat bfs-dfs as unrelated trivia with no cost story",
+          "to": "wrong1"
+        }
+      ]
+    },
+    "wrong1": {
+      "type": "wrong",
+      "prompt": "That skips the force.",
+      "explanation": "BFS and DFS is about this force: Walk each reachable node once; BFS when hop count is the distance.",
+      "rewind_to": "q1",
+      "choices": []
+    },
+    "q2": {
+      "type": "continue",
+      "prompt": "SAMPLE: When should you refuse BFS and DFS?",
+      "choices": [
+        {
+          "label": "When a simpler tool covers the force or a prerequisite is missing",
+          "to": "success"
+        },
+        {
+          "label": "Never refuse \u2014 always apply the named idea",
+          "to": "wrong2"
+        }
+      ]
+    },
+    "wrong2": {
+      "type": "wrong",
+      "prompt": "Blind application is not mastery.",
+      "explanation": "Refuse BFS and DFS when the force is absent or a prerequisite slug is still missing.",
+      "rewind_to": "q2",
+      "choices": []
+    },
+    "success": {
+      "type": "success",
+      "prompt": "You named BFS and DFS and knew when to refuse it.",
+      "choices": []
+    }
+  }
+}

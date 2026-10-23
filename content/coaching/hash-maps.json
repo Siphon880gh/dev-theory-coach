@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "slug": "hash-maps",
+    "title": "Hash maps",
+    "sample": true
+  },
+  "start": "q1",
+  "nodes": {
+    "q1": {
+      "type": "continue",
+      "prompt": "SAMPLE: Which statement best captures Hash maps?",
+      "choices": [
+        {
+          "label": "Right: Key lookup is O(1) on average and O(n) when every key collides.",
+          "to": "q2"
+        },
+        {
+          "label": "Wrong: treat hash-maps as unrelated trivia with no cost story",
+          "to": "wrong1"
+        }
+      ]
+    },
+    "wrong1": {
+      "type": "wrong",
+      "prompt": "That skips the force.",
+      "explanation": "Hash maps is about this force: Key lookup is O(1) on average and O(n) when every key collides.",
+      "rewind_to": "q1",
+      "choices": []
+    },
+    "q2": {
+      "type": "continue",
+      "prompt": "SAMPLE: When should you refuse Hash maps?",
+      "choices": [
+        {
+          "label": "When a simpler tool covers the force or a prerequisite is missing",
+          "to": "success"
+        },
+        {
+          "label": "Never refuse \u2014 always apply the named idea",
+          "to": "wrong2"
+        }
+      ]
+    },
+    "wrong2": {
+      "type": "wrong",
+      "prompt": "Blind application is not mastery.",
+      "explanation": "Refuse Hash maps when the force is absent or a prerequisite slug is still missing.",
+      "rewind_to": "q2",
+      "choices": []
+    },
+    "success": {
+      "type": "success",
+      "prompt": "You named Hash maps and knew when to refuse it.",
+      "choices": []
+    }
+  }
+}

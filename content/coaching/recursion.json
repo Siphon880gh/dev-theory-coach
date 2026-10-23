@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "slug": "recursion",
+    "title": "Recursion",
+    "sample": true
+  },
+  "start": "q1",
+  "nodes": {
+    "q1": {
+      "type": "continue",
+      "prompt": "SAMPLE: Which statement best captures Recursion?",
+      "choices": [
+        {
+          "label": "Right: A base case, a smaller subproblem, and an honest stack story.",
+          "to": "q2"
+        },
+        {
+          "label": "Wrong: treat recursion as unrelated trivia with no cost story",
+          "to": "wrong1"
+        }
+      ]
+    },
+    "wrong1": {
+      "type": "wrong",
+      "prompt": "That skips the force.",
+      "explanation": "Recursion is about this force: A base case, a smaller subproblem, and an honest stack story.",
+      "rewind_to": "q1",
+      "choices": []
+    },
+    "q2": {
+      "type": "continue",
+      "prompt": "SAMPLE: When should you refuse Recursion?",
+      "choices": [
+        {
+          "label": "When a simpler tool covers the force or a prerequisite is missing",
+          "to": "success"
+        },
+        {
+          "label": "Never refuse \u2014 always apply the named idea",
+          "to": "wrong2"
+        }
+      ]
+    },
+    "wrong2": {
+      "type": "wrong",
+      "prompt": "Blind application is not mastery.",
+      "explanation": "Refuse Recursion when the force is absent or a prerequisite slug is still missing.",
+      "rewind_to": "q2",
+      "choices": []
+    },
+    "success": {
+      "type": "success",
+      "prompt": "You named Recursion and knew when to refuse it.",
+      "choices": []
+    }
+  }
+}

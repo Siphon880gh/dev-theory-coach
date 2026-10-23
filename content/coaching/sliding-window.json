@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "slug": "sliding-window",
+    "title": "Sliding window",
+    "sample": true
+  },
+  "start": "q1",
+  "nodes": {
+    "q1": {
+      "type": "continue",
+      "prompt": "SAMPLE: Which statement best captures Sliding window?",
+      "choices": [
+        {
+          "label": "Right: Keep a contiguous summary current so the whole scan is O(n).",
+          "to": "q2"
+        },
+        {
+          "label": "Wrong: treat sliding-window as unrelated trivia with no cost story",
+          "to": "wrong1"
+        }
+      ]
+    },
+    "wrong1": {
+      "type": "wrong",
+      "prompt": "That skips the force.",
+      "explanation": "Sliding window is about this force: Keep a contiguous summary current so the whole scan is O(n).",
+      "rewind_to": "q1",
+      "choices": []
+    },
+    "q2": {
+      "type": "continue",
+      "prompt": "SAMPLE: When should you refuse Sliding window?",
+      "choices": [
+        {
+          "label": "When a simpler tool covers the force or a prerequisite is missing",
+          "to": "success"
+        },
+        {
+          "label": "Never refuse \u2014 always apply the named idea",
+          "to": "wrong2"
+        }
+      ]
+    },
+    "wrong2": {
+      "type": "wrong",
+      "prompt": "Blind application is not mastery.",
+      "explanation": "Refuse Sliding window when the force is absent or a prerequisite slug is still missing.",
+      "rewind_to": "q2",
+      "choices": []
+    },
+    "success": {
+      "type": "success",
+      "prompt": "You named Sliding window and knew when to refuse it.",
+      "choices": []
+    }
+  }
+}

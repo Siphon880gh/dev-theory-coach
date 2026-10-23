@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "slug": "adapter",
+    "title": "Adapter",
+    "sample": true
+  },
+  "start": "q1",
+  "nodes": {
+    "q1": {
+      "type": "continue",
+      "prompt": "SAMPLE: Which statement best captures Adapter?",
+      "choices": [
+        {
+          "label": "Right: Wrap a type you do not own so the caller keeps the interface it already has.",
+          "to": "q2"
+        },
+        {
+          "label": "Wrong: treat adapter as unrelated trivia with no cost story",
+          "to": "wrong1"
+        }
+      ]
+    },
+    "wrong1": {
+      "type": "wrong",
+      "prompt": "That skips the force.",
+      "explanation": "Adapter is about this force: Wrap a type you do not own so the caller keeps the interface it already has.",
+      "rewind_to": "q1",
+      "choices": []
+    },
+    "q2": {
+      "type": "continue",
+      "prompt": "SAMPLE: When should you refuse Adapter?",
+      "choices": [
+        {
+          "label": "When a simpler tool covers the force or a prerequisite is missing",
+          "to": "success"
+        },
+        {
+          "label": "Never refuse \u2014 always apply the named idea",
+          "to": "wrong2"
+        }
+      ]
+    },
+    "wrong2": {
+      "type": "wrong",
+      "prompt": "Blind application is not mastery.",
+      "explanation": "Refuse Adapter when the force is absent or a prerequisite slug is still missing.",
+      "rewind_to": "q2",
+      "choices": []
+    },
+    "success": {
+      "type": "success",
+      "prompt": "You named Adapter and knew when to refuse it.",
+      "choices": []
+    }
+  }
+}

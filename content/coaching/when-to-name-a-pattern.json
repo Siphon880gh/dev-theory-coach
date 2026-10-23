@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "slug": "when-to-name-a-pattern",
+    "title": "When to name a pattern",
+    "sample": true
+  },
+  "start": "q1",
+  "nodes": {
+    "q1": {
+      "type": "continue",
+      "prompt": "SAMPLE: Which statement best captures When to name a pattern?",
+      "choices": [
+        {
+          "label": "Right: Say the force first, then the name, and decline the structure when a branch is enough.",
+          "to": "q2"
+        },
+        {
+          "label": "Wrong: treat when-to-name-a-pattern as unrelated trivia with no cost story",
+          "to": "wrong1"
+        }
+      ]
+    },
+    "wrong1": {
+      "type": "wrong",
+      "prompt": "That skips the force.",
+      "explanation": "When to name a pattern is about this force: Say the force first, then the name, and decline the structure when a branch is enough.",
+      "rewind_to": "q1",
+      "choices": []
+    },
+    "q2": {
+      "type": "continue",
+      "prompt": "SAMPLE: When should you refuse When to name a pattern?",
+      "choices": [
+        {
+          "label": "When a simpler tool covers the force or a prerequisite is missing",
+          "to": "success"
+        },
+        {
+          "label": "Never refuse \u2014 always apply the named idea",
+          "to": "wrong2"
+        }
+      ]
+    },
+    "wrong2": {
+      "type": "wrong",
+      "prompt": "Blind application is not mastery.",
+      "explanation": "Refuse When to name a pattern when the force is absent or a prerequisite slug is still missing.",
+      "rewind_to": "q2",
+      "choices": []
+    },
+    "success": {
+      "type": "success",
+      "prompt": "You named When to name a pattern and knew when to refuse it.",
+      "choices": []
+    }
+  }
+}
