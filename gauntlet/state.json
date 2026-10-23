@@ -9,7 +9,8 @@
     "E6.M1": 1,
     "E2.M1": 1,
     "E3.M2": 1,
-    "E7.M1": 1
+    "E7.M1": 1,
+    "E8.M1": 1
   },
   "verdicts": [
     {
@@ -141,6 +142,18 @@
       "commands": [
         "./vendor/bin/phpunit",
         "php integration walk"
+      ]
+    },
+    {
+      "milestone_id": "E8.M1",
+      "verdict": "WIN",
+      "at": "2026-10-23T04:16:45-07:00",
+      "gates": {
+        "tests": "phpunit",
+        "acceptance": "E8.M1.S1\u2013S4"
+      },
+      "commands": [
+        "./vendor/bin/phpunit"
       ]
     }
   ],

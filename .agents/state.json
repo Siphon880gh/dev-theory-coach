@@ -1,8 +1,8 @@
 {
-  "current_epic_id": "E8",
-  "current_milestone_id": "E8.M1",
+  "current_epic_id": "E9",
+  "current_milestone_id": "E9.M1",
   "status": "in_progress",
-  "last_updated_iso": "2026-10-23T04:15:45-07:00",
+  "last_updated_iso": "2026-10-23T04:16:45-07:00",
   "milestone_story_status": {
     "E1.M1.S1": "done",
     "E1.M1.S2": "done",
@@ -27,7 +27,11 @@
     "E3.M2.S2": "done",
     "E3.M2.S3": "done",
     "E7.M1.S1": "done",
-    "E7.M1.S2": "done"
+    "E7.M1.S2": "done",
+    "E8.M1.S1": "done",
+    "E8.M1.S2": "done",
+    "E8.M1.S3": "done",
+    "E8.M1.S4": "done"
   },
   "app": {
     "name": "Dev Theory Coach (THEORY_CORE)",
@@ -1405,6 +1409,11 @@
         "status": "done",
         "gauntlet": "WIN",
         "at": "2026-10-23T04:15:45-07:00"
+      },
+      "E8.M1": {
+        "status": "done",
+        "gauntlet": "WIN",
+        "at": "2026-10-23T04:16:45-07:00"
       }
     }
   },
@@ -1498,7 +1507,7 @@
     "context_catalog": "context/README.md",
     "gauntlet_contract": "gauntlet/contract.md"
   },
-  "next_action": "Start E8.M1.S1 (post_mvp): timed drill renderer; complexity pack; arrays not-a-drill slot.",
+  "next_action": "Start E9.M1.S1: decide-and-reveal case renderer with gate-closed/open behavior.",
   "milestones_done": [
     "E1.M1",
     "E3.M1",
@@ -1508,7 +1517,8 @@
     "E6.M1",
     "E2.M1",
     "E3.M2",
-    "E7.M1"
+    "E7.M1",
+    "E8.M1"
   ],
   "mvp_freeze": {
     "status": "green",

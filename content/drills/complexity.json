@@ -1,0 +1,87 @@
+{
+  "slug": "complexity",
+  "title": "Complexity",
+  "sample": true,
+  "items": [
+    {
+      "prompt": "SAMPLE: Nested loop i in n, j in n, constant body. Time?",
+      "accept": "O(n^2)",
+      "thoughtChain": [
+        "Count iterations of i",
+        "Multiply by j loop",
+        "Name O(n^2)"
+      ],
+      "seconds": 45
+    },
+    {
+      "prompt": "SAMPLE: Single pass over n with hash map of size k. Extra space?",
+      "accept": "O(k)",
+      "thoughtChain": [
+        "One pass",
+        "Map stores distinct keys",
+        "Space follows k"
+      ],
+      "seconds": 45
+    },
+    {
+      "prompt": "SAMPLE: Binary search on sorted n. Time?",
+      "accept": "O(log n)",
+      "thoughtChain": [
+        "Halve each step",
+        "log2 levels",
+        "O(log n)"
+      ],
+      "seconds": 45
+    },
+    {
+      "prompt": "SAMPLE: Append to dynamic array amortized?",
+      "accept": "O(1)",
+      "thoughtChain": [
+        "Most appends write one",
+        "Copies paid across many",
+        "Amortized O(1)"
+      ],
+      "seconds": 45
+    },
+    {
+      "prompt": "SAMPLE: Walk all edges of adjacency list V,E. Time?",
+      "accept": "O(V+E)",
+      "thoughtChain": [
+        "Visit each vertex",
+        "Scan each edge once",
+        "O(V+E)"
+      ],
+      "seconds": 45
+    },
+    {
+      "prompt": "SAMPLE: Merge two sorted length-n arrays. Time?",
+      "accept": "O(n)",
+      "thoughtChain": [
+        "Two pointers",
+        "Each element once",
+        "Linear merge"
+      ],
+      "seconds": 45
+    },
+    {
+      "prompt": "SAMPLE: Build heap from n via heapify. Time?",
+      "accept": "O(n)",
+      "thoughtChain": [
+        "Bottom-up heapify",
+        "Not n log n inserts",
+        "O(n)"
+      ],
+      "seconds": 45
+    },
+    {
+      "prompt": "SAMPLE: DFS recursion depth on skewed tree n. Stack space?",
+      "accept": "O(n)",
+      "thoughtChain": [
+        "One frame per node",
+        "Chain of n",
+        "Linear stack"
+      ],
+      "seconds": 45
+    }
+  ]
+}

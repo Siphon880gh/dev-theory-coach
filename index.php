@@ -9,6 +9,7 @@ if (is_file($autoload)) {
 
 use TheoryCore\Coach;
 use TheoryCore\Dashboard;
+use TheoryCore\Drill;
 use TheoryCore\Guides;
 use TheoryCore\Quiz;
 
@@ -47,6 +48,17 @@ if (preg_match('#^/coach/([a-z0-9-]+)$#', $path, $m) === 1) {
 
 if (preg_match('#^/quiz/([a-z0-9-]+)$#', $path, $m) === 1) {
     $response = Quiz::pageResponse($m[1]);
+    if (($response['status'] ?? 200) === 302) {
+        header('Location: ' . ($response['location'] ?? '/'), true, 302);
+        exit;
+    }
+    http_response_code((int) ($response['status'] ?? 200));
+    echo $response['body'] ?? '';
+    exit;
+}
+
+if (preg_match('#^/drill/([a-z0-9-]+)$#', $path, $m) === 1) {
+    $response = Drill::pageResponse($m[1]);
     if (($response['status'] ?? 200) === 302) {
         header('Location: ' . ($response['location'] ?? '/'), true, 302);
         exit;
