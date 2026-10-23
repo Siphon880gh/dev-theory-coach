@@ -470,8 +470,13 @@ code {
   margin-top: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: 2rem;
 }
+
+.guide-footer__block + .guide-footer__block {
+  margin-top: 0.35rem;
+}
+
 
 .guide-footer__block {
   padding: var(--space-3) var(--space-3) var(--space-4);
@@ -481,11 +486,29 @@ code {
 }
 
 .guide-footer__heading {
-  margin: 0 0 var(--space-1);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 var(--space-2);
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--text);
+}
+
+.guide-footer__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--accent);
+  line-height: 0;
+}
+
+.guide-footer__icon svg {
+  display: block;
+}
+
+.guide-footer__youtube .guide-footer__icon {
+  color: #ff4d4d;
 }
 
 .guide-footer__blurb {

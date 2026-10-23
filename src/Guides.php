@@ -261,21 +261,34 @@ final class Guides
         $parts = [];
         $parts[] = '<footer class="guide-footer">';
 
-        $parts[] = '<section class="guide-footer__block guide-footer__youtube" aria-labelledby="guide-youtube-heading">';
-        $parts[] = '<h2 id="guide-youtube-heading" class="guide-footer__heading">YouTube</h2>';
-        $parts[] = '<p class="guide-footer__blurb">Short videos on this topic (opens YouTube search).</p>';
-        $parts[] = '<p class="guide-footer__action"><a class="guide-footer__link guide-footer__link--youtube" href="'
-            . e($youtubeUrl) . '" target="_blank" rel="noopener noreferrer">'
-            . 'Watch on YouTube — ' . self::h($topic) . '</a></p>';
-        $parts[] = '</section>';
-
         $parts[] = '<section class="guide-footer__block guide-footer__questions" aria-labelledby="guide-questions-heading">';
-        $parts[] = '<h2 id="guide-questions-heading" class="guide-footer__heading">Questions</h2>';
+        $parts[] = '<h2 id="guide-questions-heading" class="guide-footer__heading">'
+            . '<span class="guide-footer__icon" aria-hidden="true">'
+            . '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" '
+            . 'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+            . '<circle cx="12" cy="12" r="10"/>'
+            . '<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>'
+            . '<line x1="12" y1="17" x2="12.01" y2="17"/>'
+            . '</svg></span>'
+            . 'Questions</h2>';
         $parts[] = '<p class="guide-footer__blurb">Check yourself with a short quiz on this lesson.</p>';
         $parts[] = '<p class="guide-footer__action"><a class="guide-footer__link guide-footer__link--quiz" href="'
             . e(url('/quiz/' . rawurlencode($slug))) . '">Take the quiz</a></p>';
         $parts[] = '<p class="guide-footer__secondary"><a class="guide-footer__link guide-footer__link--coach" href="'
             . e(url('/coach/' . rawurlencode($coachSlug))) . '">Optional: step-by-step practice</a></p>';
+        $parts[] = '</section>';
+
+        $parts[] = '<section class="guide-footer__block guide-footer__youtube" aria-labelledby="guide-youtube-heading">';
+        $parts[] = '<h2 id="guide-youtube-heading" class="guide-footer__heading">'
+            . '<span class="guide-footer__icon" aria-hidden="true">'
+            . '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">'
+            . '<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/>'
+            . '</svg></span>'
+            . 'YouTube</h2>';
+        $parts[] = '<p class="guide-footer__blurb">Short videos on this topic (opens YouTube search).</p>';
+        $parts[] = '<p class="guide-footer__action"><a class="guide-footer__link guide-footer__link--youtube" href="'
+            . e($youtubeUrl) . '" target="_blank" rel="noopener noreferrer">'
+            . 'Watch on YouTube — ' . self::h($topic) . '</a></p>';
         $parts[] = '</section>';
 
         $parts[] = self::lessonNavHtml($slug);

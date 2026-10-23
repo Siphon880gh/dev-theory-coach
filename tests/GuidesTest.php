@@ -57,6 +57,12 @@ final class GuidesTest extends TestCase
         $this->assertStringContainsString('Questions', $body);
         $this->assertStringContainsString('YouTube', $body);
         $this->assertStringContainsString('Watch on YouTube', $body);
+        $quizPos = strpos($body, 'Take the quiz');
+        $ytPos = strpos($body, 'Watch on YouTube');
+        $this->assertNotFalse($quizPos);
+        $this->assertNotFalse($ytPos);
+        $this->assertLessThan($ytPos, $quizPos, 'Questions (quiz) must appear before YouTube');
+        $this->assertStringContainsString('guide-footer__icon', $body);
         $this->assertStringContainsString('class="guide-footer"', $body);
         $guide = Guides::load('arrays');
         $this->assertNotNull($guide);
