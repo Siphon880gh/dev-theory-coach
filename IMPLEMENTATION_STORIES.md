@@ -20,7 +20,8 @@ Parent map: [`EPIC_MAP.md`](./EPIC_MAP.md) · Runtime state: [`.agents/state.jso
 - Auto-verify: `./vendor/bin/phpunit`
 - A milestone flips to `done` only after phpunit passes **and** the gauntlet critic for that milestone returns WIN
 - File layout (do not invent a second one):
-  - `router.php` — front controller for `/`, `/guides`, `/guides/{slug}`, `/coach/{slug}`, `/quiz/{slug}`, and later `/drill/{slug}`, `/case/{slug}`, `/cheatsheet/{slug}`
+  - `index.php` — front controller for `/`, `/guides`, `/guides/{slug}`, `/coach/{slug}`, `/quiz/{slug}`, and later `/drill/{slug}`, `/case/{slug}`, `/cheatsheet/{slug}`
+  - `router.php` — `php -S` only (requires `index.php`)
   - `src/Catalog.php`, `src/ProgressSchema.php`, `src/CoachValidator.php`, `src/Quiz.php`, later `src/Drill.php`, `src/Case.php`, `src/Cheatsheet.php`
   - `assets/js/progress.js` — the only writer of `theory_core_progress_v1`
   - `content/families.json`

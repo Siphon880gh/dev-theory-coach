@@ -77,7 +77,7 @@ Work queues (strict order), from `.agents/state.json` → `milestones`:
 - Execution rules: one milestone `in_progress` at a time; follow the active queue in order; do not invent milestones outside the queues
 - Auto-verify: `./vendor/bin/phpunit`
 - Local skills: `.agents/skills/*` (create or adapt when a task repeats)
-- Layout: `router.php`, `src/`, `assets/js/progress.js`, `content/`, `tests/` as named in `IMPLEMENTATION_STORIES.md` global conventions. Mirror patterns from `../mental-math` and `../leetcode-coach`. Do not import their source
+- Layout: `index.php` (front controller), `router.php` (`php -S` only), `src/`, `assets/js/progress.js`, `content/`, `tests/` as named in `IMPLEMENTATION_STORIES.md` global conventions. Mirror patterns from `../mental-math` and `../leetcode-coach`. Do not import their source
 
 # STEP-BY-STEP CADENCE
 1. **Orient**

@@ -21,11 +21,14 @@ This is not a problem bank and it does not run code. Problem practice lives in t
 
 ## Run
 
+`index.php` is the app entry (Apache `DirectoryIndex`). `router.php` is only for PHP's built-in server.
+
 ```bash
-php -S localhost:8080 router.php   # or composer serve once it exists
+composer serve
+# same as: php -S localhost:8080 router.php
 ```
 
-The runtime is not in this repo yet. The next session builds it from the milestone loop below.
+Open http://localhost:8080/ — SAMPLE stub home. Later routes (`/guides`, `/coach/{slug}`, …) land in the same `index.php` front controller.
 
 ## How it is built
 
