@@ -7,7 +7,7 @@
     "nodes": {
         "q1": {
             "type": "continue",
-            "prompt": "You already hold a pointer to a node and must splice it out. Which shape keeps that edit local?",
+            "prompt": "You already hold a pointer to a node and must splice it out. Which shape keeps the local edit (a change that only rewires this node and its neighbors, not every later item)?",
             "choices": [
                 {
                     "label": "Linked list — relink neighbors in O(1)",
@@ -22,7 +22,7 @@
         },
         "wrong_array": {
             "type": "wrong",
-            "prompt": "An array turns the local edit into a tail shift.",
+            "prompt": "An array turns the local edit (a change that only rewires this node and its neighbors, not every later item) into a tail shift.",
             "explanation": "Removing index i from an array moves the n-i-1 later values. With the relevant list nodes already in hand, the edit changes neighboring links instead.",
             "rewind_to": "q1",
             "choices": []

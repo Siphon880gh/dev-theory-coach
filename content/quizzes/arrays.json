@@ -73,7 +73,7 @@
       ]
     },
     {
-      "prompt": "You already hold a node pointer and must remove that node from a chain. Which structure keeps the edit local?",
+      "prompt": "You already hold a node pointer and must remove that node from a chain. Which structure keeps the local edit (a change that only rewires this node and its neighbors, not every later item)?",
       "choices": [
         "Linked list",
         "Array that shifts the suffix",

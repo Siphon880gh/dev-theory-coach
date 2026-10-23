@@ -29,7 +29,7 @@
     },
     "q2": {
       "type": "continue",
-      "prompt": "You already hold a pointer to a node and must splice it out of a chain. Which shape keeps that edit local?",
+      "prompt": "You already hold a pointer to a node and must splice it out of a chain. Which shape keeps the local edit (a change that only rewires this node and its neighbors, not every later item)?",
       "choices": [
         {
           "label": "Linked list — relink neighbors in O(1)",
