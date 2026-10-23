@@ -1,0 +1,17 @@
+{
+  "slug": "rate-limiting",
+  "title": "Rate limiting",
+  "summary": "Protect a boundary, and pick the limiter from the burst you allow.",
+  "relatedCoachSlug": "rate-limiting",
+  "parts": {
+    "rule": "Hold this rule for Rate limiting: Protect a boundary, and pick the limiter from the burst you allow. Say it before you pick a tool from System design.",
+    "why": "Interviewers on the System design track listen for whether you can name the idea rate limiting and refuse the common wrong pick. The summary is the force: Protect a boundary, and pick the limiter from the burst you allow. If you cannot restate it, you will drift into product names or trivia.",
+    "example": "SAMPLE: a prompt lands that fits Rate limiting. You restate the force in one sentence \u2014 Protect a boundary, and pick the limiter from the burst you allow. \u2014 then show a tiny walkthrough that would fail if you ignored that force. You label the SAMPLE answer with the cost or the tradeoff, not with a brand name.",
+    "use": "Use Rate limiting when the prompt's access pattern or force matches the summary above, when a prior slug in its after-list is already in hand, and when saying the rule changes which next step you take.",
+    "refuse": "Refuse Rate limiting when a simpler tool already covers the force, when a prerequisite in after is still missing, or when applying it would invent a mechanism the track never taught. Prefer naming the missing slug over bluffing."
+  },
+  "body": "Rule. Hold this rule for Rate limiting: Protect a boundary, and pick the limiter from the burst you allow. Say it before you pick a tool from System design.\n\nWhy it matters. Interviewers on the System design track listen for whether you can name the idea rate limiting and refuse the common wrong pick. The summary is the force: Protect a boundary, and pick the limiter from the burst you allow. If you cannot restate it, you will drift into product names or trivia.\n\nSAMPLE example. SAMPLE: a prompt lands that fits Rate limiting. You restate the force in one sentence \u2014 Protect a boundary, and pick the limiter from the burst you allow. \u2014 then show a tiny walkthrough that would fail if you ignored that force. You label the SAMPLE answer with the cost or the tradeoff, not with a brand name.\n\nWhen to use. Use Rate limiting when the prompt's access pattern or force matches the summary above, when a prior slug in its after-list is already in hand, and when saying the rule changes which next step you take.\n\nWhen to refuse. Refuse Rate limiting when a simpler tool already covers the force, when a prerequisite in after is still missing, or when applying it would invent a mechanism the track never taught. Prefer naming the missing slug over bluffing.\n\nRecall checkpoint 1: restate the Rate limiting rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on rate-limiting.\n\nRecall checkpoint 2: restate the Rate limiting rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on rate-limiting.\n\nRecall checkpoint 3: restate the Rate limiting rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on rate-limiting.",
+  "sample": true,
+  "track": "C",
+  "track_label": "System design"
+}

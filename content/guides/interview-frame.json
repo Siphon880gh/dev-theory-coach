@@ -1,0 +1,17 @@
+{
+  "slug": "interview-frame",
+  "title": "Interview frame",
+  "summary": "Budget the design hour in a fixed sequence and protect time to name the bottleneck.",
+  "relatedCoachSlug": "interview-frame",
+  "parts": {
+    "rule": "Run a design interview in a fixed sequence: clarify, size, sketch, deepen the riskiest cut, then reserve minutes to name the first thing that breaks.",
+    "why": "Without a frame, candidates invent features and never size traffic. Interviewers grade whether you can spend the hour on purpose.",
+    "example": "SAMPLE: you get a URL product. You spend the first chunk locking reads versus writes, sketch one happy path, then leave a closing block to say which hop fails first under load.",
+    "use": "Use the frame whenever the prompt is open-ended system design and the clock is real.",
+    "refuse": "Refuse diving into vendor logos or dark-mode extras before bounds exist. Refuse skipping the closing bottleneck sentence."
+  },
+  "body": "Rule. Run a design interview in a fixed sequence: clarify, size, sketch, deepen the riskiest cut, then reserve minutes to name the first thing that breaks.\n\nWhy it matters. Without a frame, candidates invent features and never size traffic. Interviewers grade whether you can spend the hour on purpose.\n\nSAMPLE example. SAMPLE: you get a URL product. You spend the first chunk locking reads versus writes, sketch one happy path, then leave a closing block to say which hop fails first under load.\n\nWhen to use. Use the frame whenever the prompt is open-ended system design and the clock is real.\n\nWhen to refuse. Refuse diving into vendor logos or dark-mode extras before bounds exist. Refuse skipping the closing bottleneck sentence.\n\nRecall checkpoint 1: restate the Interview frame idea for slug interview-frame, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 2: restate the Interview frame idea for slug interview-frame, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 3: restate the Interview frame idea for slug interview-frame, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 4: restate the Interview frame idea for slug interview-frame, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 5: restate the Interview frame idea for slug interview-frame, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 6: restate the Interview frame idea for slug interview-frame, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 7: restate the Interview frame idea for slug interview-frame, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.",
+  "sample": true,
+  "track": "C",
+  "track_label": "System design"
+}

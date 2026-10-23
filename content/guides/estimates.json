@@ -1,0 +1,17 @@
+{
+  "slug": "estimates",
+  "title": "Estimates",
+  "summary": "Turn users and actions into QPS and bytes, within an order of magnitude.",
+  "relatedCoachSlug": "estimates",
+  "parts": {
+    "rule": "Hold this rule for Estimates: Turn users and actions into QPS and bytes, within an order of magnitude. Say it before you pick a tool from System design.",
+    "why": "Interviewers on the System design track listen for whether you can name the idea estimates and refuse the common wrong pick. The summary is the force: Turn users and actions into QPS and bytes, within an order of magnitude. If you cannot restate it, you will drift into product names or trivia.",
+    "example": "SAMPLE: a prompt lands that fits Estimates. You restate the force in one sentence \u2014 Turn users and actions into QPS and bytes, within an order of magnitude. \u2014 then show a tiny walkthrough that would fail if you ignored that force. You label the SAMPLE answer with the cost or the tradeoff, not with a brand name.",
+    "use": "Use Estimates when the prompt's access pattern or force matches the summary above, when a prior slug in its after-list is already in hand, and when saying the rule changes which next step you take.",
+    "refuse": "Refuse Estimates when a simpler tool already covers the force, when a prerequisite in after is still missing, or when applying it would invent a mechanism the track never taught. Prefer naming the missing slug over bluffing."
+  },
+  "body": "Rule. Hold this rule for Estimates: Turn users and actions into QPS and bytes, within an order of magnitude. Say it before you pick a tool from System design.\n\nWhy it matters. Interviewers on the System design track listen for whether you can name the idea estimates and refuse the common wrong pick. The summary is the force: Turn users and actions into QPS and bytes, within an order of magnitude. If you cannot restate it, you will drift into product names or trivia.\n\nSAMPLE example. SAMPLE: a prompt lands that fits Estimates. You restate the force in one sentence \u2014 Turn users and actions into QPS and bytes, within an order of magnitude. \u2014 then show a tiny walkthrough that would fail if you ignored that force. You label the SAMPLE answer with the cost or the tradeoff, not with a brand name.\n\nWhen to use. Use Estimates when the prompt's access pattern or force matches the summary above, when a prior slug in its after-list is already in hand, and when saying the rule changes which next step you take.\n\nWhen to refuse. Refuse Estimates when a simpler tool already covers the force, when a prerequisite in after is still missing, or when applying it would invent a mechanism the track never taught. Prefer naming the missing slug over bluffing.\n\nRecall checkpoint 1: restate the Estimates rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on estimates.\n\nRecall checkpoint 2: restate the Estimates rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on estimates.\n\nRecall checkpoint 3: restate the Estimates rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on estimates.",
+  "sample": true,
+  "track": "C",
+  "track_label": "System design"
+}

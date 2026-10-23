@@ -1,0 +1,17 @@
+{
+  "slug": "composite",
+  "title": "Composite",
+  "summary": "Treat one item and a group through one interface.",
+  "relatedCoachSlug": "composite",
+  "parts": {
+    "rule": "Hold this rule for Composite: Treat one item and a group through one interface. Say it before you pick a tool from Design patterns.",
+    "why": "Interviewers on the Design patterns track listen for whether you can name the idea composite and refuse the common wrong pick. The summary is the force: Treat one item and a group through one interface. If you cannot restate it, you will drift into product names or trivia.",
+    "example": "SAMPLE: a prompt lands that fits Composite. You restate the force in one sentence \u2014 Treat one item and a group through one interface. \u2014 then show a tiny walkthrough that would fail if you ignored that force. You label the SAMPLE answer with the cost or the tradeoff, not with a brand name.",
+    "use": "Use Composite when the prompt's access pattern or force matches the summary above, when a prior slug in its after-list is already in hand, and when saying the rule changes which next step you take.",
+    "refuse": "Refuse Composite when a simpler tool already covers the force, when a prerequisite in after is still missing, or when applying it would invent a mechanism the track never taught. Prefer naming the missing slug over bluffing."
+  },
+  "body": "Rule. Hold this rule for Composite: Treat one item and a group through one interface. Say it before you pick a tool from Design patterns.\n\nWhy it matters. Interviewers on the Design patterns track listen for whether you can name the idea composite and refuse the common wrong pick. The summary is the force: Treat one item and a group through one interface. If you cannot restate it, you will drift into product names or trivia.\n\nSAMPLE example. SAMPLE: a prompt lands that fits Composite. You restate the force in one sentence \u2014 Treat one item and a group through one interface. \u2014 then show a tiny walkthrough that would fail if you ignored that force. You label the SAMPLE answer with the cost or the tradeoff, not with a brand name.\n\nWhen to use. Use Composite when the prompt's access pattern or force matches the summary above, when a prior slug in its after-list is already in hand, and when saying the rule changes which next step you take.\n\nWhen to refuse. Refuse Composite when a simpler tool already covers the force, when a prerequisite in after is still missing, or when applying it would invent a mechanism the track never taught. Prefer naming the missing slug over bluffing.\n\nRecall checkpoint 1: restate the Composite rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on composite.\n\nRecall checkpoint 2: restate the Composite rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on composite.\n\nRecall checkpoint 3: restate the Composite rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on composite.\n\nRecall checkpoint 4: restate the Composite rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on composite.",
+  "sample": true,
+  "track": "D",
+  "track_label": "Design patterns"
+}

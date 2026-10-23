@@ -1,0 +1,17 @@
+{
+  "slug": "work-queues",
+  "title": "Work queues",
+  "summary": "Move work off the request path when the user can wait for the result.",
+  "relatedCoachSlug": "work-queues",
+  "parts": {
+    "rule": "If the caller does not need the result in the same request, push that work onto a queue and return quickly.",
+    "why": "Long work on the request thread burns timeouts and hides retries. Queues make deferral explicit.",
+    "example": "SAMPLE: generating a preview image after upload enqueues a job; the upload response only stores the original and a pending flag.",
+    "use": "Use when latency budgets forbid inline heavy work and eventual completion is acceptable.",
+    "refuse": "Refuse a queue when the user must see the result before the response. Refuse confusing this with the data-structures queues slug."
+  },
+  "body": "Rule. If the caller does not need the result in the same request, push that work onto a queue and return quickly.\n\nWhy it matters. Long work on the request thread burns timeouts and hides retries. Queues make deferral explicit.\n\nSAMPLE example. SAMPLE: generating a preview image after upload enqueues a job; the upload response only stores the original and a pending flag.\n\nWhen to use. Use when latency budgets forbid inline heavy work and eventual completion is acceptable.\n\nWhen to refuse. Refuse a queue when the user must see the result before the response. Refuse confusing this with the data-structures queues slug.\n\nRecall checkpoint 1: restate the Work queues idea for slug work-queues, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 2: restate the Work queues idea for slug work-queues, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 3: restate the Work queues idea for slug work-queues, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 4: restate the Work queues idea for slug work-queues, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 5: restate the Work queues idea for slug work-queues, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 6: restate the Work queues idea for slug work-queues, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 7: restate the Work queues idea for slug work-queues, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.",
+  "sample": true,
+  "track": "C",
+  "track_label": "System design"
+}

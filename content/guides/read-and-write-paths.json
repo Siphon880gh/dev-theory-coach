@@ -1,0 +1,17 @@
+{
+  "slug": "read-and-write-paths",
+  "title": "Read and write paths",
+  "summary": "Narrate one happy read and one happy write, including the row each touches.",
+  "relatedCoachSlug": "read-and-write-paths",
+  "parts": {
+    "rule": "Tell one successful read and one successful write end to end, naming the row or object each path touches.",
+    "why": "Diagrams without a path story hide whether the data model actually serves the query.",
+    "example": "SAMPLE: read a short link by code from a primary key row; write creates that row then returns the code. You point at the same table both times.",
+    "use": "Use path narration after entities exist and before caching or queues.",
+    "refuse": "Refuse naming a cache or queue before you can say which row the request would hit cold."
+  },
+  "body": "Rule. Tell one successful read and one successful write end to end, naming the row or object each path touches.\n\nWhy it matters. Diagrams without a path story hide whether the data model actually serves the query.\n\nSAMPLE example. SAMPLE: read a short link by code from a primary key row; write creates that row then returns the code. You point at the same table both times.\n\nWhen to use. Use path narration after entities exist and before caching or queues.\n\nWhen to refuse. Refuse naming a cache or queue before you can say which row the request would hit cold.\n\nRecall checkpoint 1: restate the Read and write paths idea for slug read-and-write-paths, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 2: restate the Read and write paths idea for slug read-and-write-paths, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 3: restate the Read and write paths idea for slug read-and-write-paths, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 4: restate the Read and write paths idea for slug read-and-write-paths, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 5: restate the Read and write paths idea for slug read-and-write-paths, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 6: restate the Read and write paths idea for slug read-and-write-paths, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 7: restate the Read and write paths idea for slug read-and-write-paths, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.",
+  "sample": true,
+  "track": "C",
+  "track_label": "System design"
+}

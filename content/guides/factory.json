@@ -1,0 +1,17 @@
+{
+  "slug": "factory",
+  "title": "Factory",
+  "summary": "Hide which concrete type is built, in one place the caller can find.",
+  "relatedCoachSlug": "factory",
+  "parts": {
+    "rule": "Put construction of variant types behind one factory the caller already knows how to find.",
+    "why": "Scattered new Foo() locks callers to concrete classes and duplicates branching.",
+    "example": "SAMPLE: a notifier factory returns email or push implementations from a config flag; callers only depend on the notifier interface.",
+    "use": "Use when several concrete types share a create site and the choice should not leak.",
+    "refuse": "Refuse a factory that only wraps a single concrete with no variation. Refuse global service locators pretending to be factories."
+  },
+  "body": "Rule. Put construction of variant types behind one factory the caller already knows how to find.\n\nWhy it matters. Scattered new Foo() locks callers to concrete classes and duplicates branching.\n\nSAMPLE example. SAMPLE: a notifier factory returns email or push implementations from a config flag; callers only depend on the notifier interface.\n\nWhen to use. Use when several concrete types share a create site and the choice should not leak.\n\nWhen to refuse. Refuse a factory that only wraps a single concrete with no variation. Refuse global service locators pretending to be factories.\n\nRecall checkpoint 1: restate the Factory idea for slug factory, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 2: restate the Factory idea for slug factory, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 3: restate the Factory idea for slug factory, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 4: restate the Factory idea for slug factory, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 5: restate the Factory idea for slug factory, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 6: restate the Factory idea for slug factory, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 7: restate the Factory idea for slug factory, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 8: restate the Factory idea for slug factory, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.",
+  "sample": true,
+  "track": "D",
+  "track_label": "Design patterns"
+}

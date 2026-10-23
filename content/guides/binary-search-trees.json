@@ -1,0 +1,17 @@
+{
+  "slug": "binary-search-trees",
+  "title": "Binary search trees",
+  "summary": "Search, insert, and delete in O(h); without balance, h can be n.",
+  "relatedCoachSlug": "binary-search-trees",
+  "parts": {
+    "rule": "Hold this rule for Binary search trees: Search, insert, and delete in O(h); without balance, h can be n. Say it before you pick a tool from Data structures.",
+    "why": "Interviewers on the Data structures track listen for whether you can name the idea binary search trees and refuse the common wrong pick. The summary is the force: Search, insert, and delete in O(h); without balance, h can be n. If you cannot restate it, you will drift into product names or trivia.",
+    "example": "SAMPLE: a prompt lands that fits Binary search trees. You restate the force in one sentence \u2014 Search, insert, and delete in O(h); without balance, h can be n. \u2014 then show a tiny walkthrough that would fail if you ignored that force. You label the SAMPLE answer with the cost or the tradeoff, not with a brand name.",
+    "use": "Use Binary search trees when the prompt's access pattern or force matches the summary above, when a prior slug in its after-list is already in hand, and when saying the rule changes which next step you take.",
+    "refuse": "Refuse Binary search trees when a simpler tool already covers the force, when a prerequisite in after is still missing, or when applying it would invent a mechanism the track never taught. Prefer naming the missing slug over bluffing."
+  },
+  "body": "Rule. Hold this rule for Binary search trees: Search, insert, and delete in O(h); without balance, h can be n. Say it before you pick a tool from Data structures.\n\nWhy it matters. Interviewers on the Data structures track listen for whether you can name the idea binary search trees and refuse the common wrong pick. The summary is the force: Search, insert, and delete in O(h); without balance, h can be n. If you cannot restate it, you will drift into product names or trivia.\n\nSAMPLE example. SAMPLE: a prompt lands that fits Binary search trees. You restate the force in one sentence \u2014 Search, insert, and delete in O(h); without balance, h can be n. \u2014 then show a tiny walkthrough that would fail if you ignored that force. You label the SAMPLE answer with the cost or the tradeoff, not with a brand name.\n\nWhen to use. Use Binary search trees when the prompt's access pattern or force matches the summary above, when a prior slug in its after-list is already in hand, and when saying the rule changes which next step you take.\n\nWhen to refuse. Refuse Binary search trees when a simpler tool already covers the force, when a prerequisite in after is still missing, or when applying it would invent a mechanism the track never taught. Prefer naming the missing slug over bluffing.\n\nRecall checkpoint 1: restate the Binary search trees rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on binary-search-trees.\n\nRecall checkpoint 2: restate the Binary search trees rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on binary-search-trees.\n\nRecall checkpoint 3: restate the Binary search trees rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on binary-search-trees.",
+  "sample": true,
+  "track": "A",
+  "track_label": "Data structures"
+}

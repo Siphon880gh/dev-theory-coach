@@ -1,0 +1,17 @@
+{
+  "slug": "command",
+  "title": "Command",
+  "summary": "Represent a request as an object so you can queue, log, or undo it.",
+  "relatedCoachSlug": "command",
+  "parts": {
+    "rule": "Wrap a request as a command object with an execute (and maybe undo) so it can be stored, queued, or logged.",
+    "why": "Bare function calls cannot sit on a queue or participate in undo without ad-hoc wrappers.",
+    "example": "SAMPLE: an editor records InsertTextCommand objects; undo pops and reverses the last command rather than rebuilding the whole document.",
+    "use": "Use when you need queueing, macros, audit logs, or undo of discrete actions.",
+    "refuse": "Refuse command objects for every trivial setter with no queue or undo story."
+  },
+  "body": "Rule. Wrap a request as a command object with an execute (and maybe undo) so it can be stored, queued, or logged.\n\nWhy it matters. Bare function calls cannot sit on a queue or participate in undo without ad-hoc wrappers.\n\nSAMPLE example. SAMPLE: an editor records InsertTextCommand objects; undo pops and reverses the last command rather than rebuilding the whole document.\n\nWhen to use. Use when you need queueing, macros, audit logs, or undo of discrete actions.\n\nWhen to refuse. Refuse command objects for every trivial setter with no queue or undo story.\n\nRecall checkpoint 1: restate the Command idea for slug command, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 2: restate the Command idea for slug command, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 3: restate the Command idea for slug command, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 4: restate the Command idea for slug command, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 5: restate the Command idea for slug command, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 6: restate the Command idea for slug command, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 7: restate the Command idea for slug command, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 8: restate the Command idea for slug command, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.",
+  "sample": true,
+  "track": "D",
+  "track_label": "Design patterns"
+}

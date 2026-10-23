@@ -1,0 +1,17 @@
+{
+  "slug": "union-find",
+  "title": "Union-find",
+  "summary": "Merge two sets and test membership in nearly constant time.",
+  "relatedCoachSlug": "union-find",
+  "parts": {
+    "rule": "Hold this rule for Union-find: Merge two sets and test membership in nearly constant time. Say it before you pick a tool from Data structures.",
+    "why": "Interviewers on the Data structures track listen for whether you can name the idea union find and refuse the common wrong pick. The summary is the force: Merge two sets and test membership in nearly constant time. If you cannot restate it, you will drift into product names or trivia.",
+    "example": "SAMPLE: a prompt lands that fits Union-find. You restate the force in one sentence \u2014 Merge two sets and test membership in nearly constant time. \u2014 then show a tiny walkthrough that would fail if you ignored that force. You label the SAMPLE answer with the cost or the tradeoff, not with a brand name.",
+    "use": "Use Union-find when the prompt's access pattern or force matches the summary above, when a prior slug in its after-list is already in hand, and when saying the rule changes which next step you take.",
+    "refuse": "Refuse Union-find when a simpler tool already covers the force, when a prerequisite in after is still missing, or when applying it would invent a mechanism the track never taught. Prefer naming the missing slug over bluffing."
+  },
+  "body": "Rule. Hold this rule for Union-find: Merge two sets and test membership in nearly constant time. Say it before you pick a tool from Data structures.\n\nWhy it matters. Interviewers on the Data structures track listen for whether you can name the idea union find and refuse the common wrong pick. The summary is the force: Merge two sets and test membership in nearly constant time. If you cannot restate it, you will drift into product names or trivia.\n\nSAMPLE example. SAMPLE: a prompt lands that fits Union-find. You restate the force in one sentence \u2014 Merge two sets and test membership in nearly constant time. \u2014 then show a tiny walkthrough that would fail if you ignored that force. You label the SAMPLE answer with the cost or the tradeoff, not with a brand name.\n\nWhen to use. Use Union-find when the prompt's access pattern or force matches the summary above, when a prior slug in its after-list is already in hand, and when saying the rule changes which next step you take.\n\nWhen to refuse. Refuse Union-find when a simpler tool already covers the force, when a prerequisite in after is still missing, or when applying it would invent a mechanism the track never taught. Prefer naming the missing slug over bluffing.\n\nRecall checkpoint 1: restate the Union-find rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on union-find.\n\nRecall checkpoint 2: restate the Union-find rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on union-find.\n\nRecall checkpoint 3: restate the Union-find rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on union-find.",
+  "sample": true,
+  "track": "A",
+  "track_label": "Data structures"
+}

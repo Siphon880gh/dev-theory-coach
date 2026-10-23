@@ -1,0 +1,17 @@
+{
+  "slug": "builder",
+  "title": "Builder",
+  "summary": "Assemble one object with many optional parts, and refuse a half-built object.",
+  "relatedCoachSlug": "builder",
+  "parts": {
+    "rule": "Use a builder when many optional fields must combine into one valid object, and block build until required parts exist.",
+    "why": "Telescoping constructors hide which combinations are legal. A builder can enforce completeness.",
+    "example": "SAMPLE: an HTTP request builder requires a method and URL before build(); optional headers may be absent, but build throws if URL is missing.",
+    "use": "Use for objects with several optional pieces and a clear validity rule.",
+    "refuse": "Refuse a builder for a type with two fields and no invariants. Refuse returning partially initialized instances."
+  },
+  "body": "Rule. Use a builder when many optional fields must combine into one valid object, and block build until required parts exist.\n\nWhy it matters. Telescoping constructors hide which combinations are legal. A builder can enforce completeness.\n\nSAMPLE example. SAMPLE: an HTTP request builder requires a method and URL before build(); optional headers may be absent, but build throws if URL is missing.\n\nWhen to use. Use for objects with several optional pieces and a clear validity rule.\n\nWhen to refuse. Refuse a builder for a type with two fields and no invariants. Refuse returning partially initialized instances.\n\nRecall checkpoint 1: restate the Builder idea for slug builder, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 2: restate the Builder idea for slug builder, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 3: restate the Builder idea for slug builder, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 4: restate the Builder idea for slug builder, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 5: restate the Builder idea for slug builder, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 6: restate the Builder idea for slug builder, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 7: restate the Builder idea for slug builder, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 8: restate the Builder idea for slug builder, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.",
+  "sample": true,
+  "track": "D",
+  "track_label": "Design patterns"
+}

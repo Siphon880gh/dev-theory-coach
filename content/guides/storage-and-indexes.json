@@ -1,0 +1,17 @@
+{
+  "slug": "storage-and-indexes",
+  "title": "Storage and indexes",
+  "summary": "Match storage to the access path, and price what an index costs on writes.",
+  "relatedCoachSlug": "storage-and-indexes",
+  "parts": {
+    "rule": "Choose storage from the access path, then say what each index adds to write cost and space.",
+    "why": "Picking a trendy database without the path is cargo cult. Indexes are not free.",
+    "example": "SAMPLE: lookups by short code want a primary key or unique index on that code; secondary indexes on rarely filtered columns only slow writes.",
+    "use": "Use this when the path is known and you must justify a store or an index.",
+    "refuse": "Refuse a second index that does not change a named query. Refuse ignoring write amplification."
+  },
+  "body": "Rule. Choose storage from the access path, then say what each index adds to write cost and space.\n\nWhy it matters. Picking a trendy database without the path is cargo cult. Indexes are not free.\n\nSAMPLE example. SAMPLE: lookups by short code want a primary key or unique index on that code; secondary indexes on rarely filtered columns only slow writes.\n\nWhen to use. Use this when the path is known and you must justify a store or an index.\n\nWhen to refuse. Refuse a second index that does not change a named query. Refuse ignoring write amplification.\n\nRecall checkpoint 1: restate the Storage and indexes idea for slug storage-and-indexes, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 2: restate the Storage and indexes idea for slug storage-and-indexes, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 3: restate the Storage and indexes idea for slug storage-and-indexes, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 4: restate the Storage and indexes idea for slug storage-and-indexes, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 5: restate the Storage and indexes idea for slug storage-and-indexes, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 6: restate the Storage and indexes idea for slug storage-and-indexes, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.\n\nRecall checkpoint 7: restate the Storage and indexes idea for slug storage-and-indexes, name a competing approach, and refuse the mistaken choice in fresh words on this SAMPLE page.",
+  "sample": true,
+  "track": "C",
+  "track_label": "System design"
+}

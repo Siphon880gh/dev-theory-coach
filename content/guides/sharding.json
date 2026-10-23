@@ -1,0 +1,17 @@
+{
+  "slug": "sharding",
+  "title": "Sharding",
+  "summary": "Split data off one machine, and name the hot spot the split just created.",
+  "relatedCoachSlug": "sharding",
+  "parts": {
+    "rule": "Hold this rule for Sharding: Split data off one machine, and name the hot spot the split just created. Say it before you pick a tool from System design.",
+    "why": "Interviewers on the System design track listen for whether you can name the idea sharding and refuse the common wrong pick. The summary is the force: Split data off one machine, and name the hot spot the split just created. If you cannot restate it, you will drift into product names or trivia.",
+    "example": "SAMPLE: a prompt lands that fits Sharding. You restate the force in one sentence \u2014 Split data off one machine, and name the hot spot the split just created. \u2014 then show a tiny walkthrough that would fail if you ignored that force. You label the SAMPLE answer with the cost or the tradeoff, not with a brand name.",
+    "use": "Use Sharding when the prompt's access pattern or force matches the summary above, when a prior slug in its after-list is already in hand, and when saying the rule changes which next step you take.",
+    "refuse": "Refuse Sharding when a simpler tool already covers the force, when a prerequisite in after is still missing, or when applying it would invent a mechanism the track never taught. Prefer naming the missing slug over bluffing."
+  },
+  "body": "Rule. Hold this rule for Sharding: Split data off one machine, and name the hot spot the split just created. Say it before you pick a tool from System design.\n\nWhy it matters. Interviewers on the System design track listen for whether you can name the idea sharding and refuse the common wrong pick. The summary is the force: Split data off one machine, and name the hot spot the split just created. If you cannot restate it, you will drift into product names or trivia.\n\nSAMPLE example. SAMPLE: a prompt lands that fits Sharding. You restate the force in one sentence \u2014 Split data off one machine, and name the hot spot the split just created. \u2014 then show a tiny walkthrough that would fail if you ignored that force. You label the SAMPLE answer with the cost or the tradeoff, not with a brand name.\n\nWhen to use. Use Sharding when the prompt's access pattern or force matches the summary above, when a prior slug in its after-list is already in hand, and when saying the rule changes which next step you take.\n\nWhen to refuse. Refuse Sharding when a simpler tool already covers the force, when a prerequisite in after is still missing, or when applying it would invent a mechanism the track never taught. Prefer naming the missing slug over bluffing.\n\nRecall checkpoint 1: restate the Sharding rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on sharding.\n\nRecall checkpoint 2: restate the Sharding rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on sharding.\n\nRecall checkpoint 3: restate the Sharding rule, name one competing idea, and refuse the wrong pick in your own words before leaving this SAMPLE lesson on sharding.",
+  "sample": true,
+  "track": "C",
+  "track_label": "System design"
+}

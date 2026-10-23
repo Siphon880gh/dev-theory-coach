@@ -109,6 +109,30 @@ final class GuidesTest extends TestCase
         }
     }
 
+
+    public function testAllFamilyGuidesMeetFloor(): void
+    {
+        $ngrams = $this->twelveWordNgramsFromCurricula();
+        foreach (Catalog::all() as $family) {
+            $slug = $family['slug'];
+            $guide = Guides::load($slug);
+            $this->assertNotNull($guide, "missing guide {$slug}");
+            $this->assertSame($slug, $guide['relatedCoachSlug']);
+            $body = (string) $guide['body'];
+            $words = preg_match_all("/\\b[\\w']+\\b/u", $body);
+            $this->assertGreaterThanOrEqual(300, $words, "{$slug} short");
+            $this->assertLessThanOrEqual(800, $words, "{$slug} long");
+            foreach (['rule', 'why', 'example', 'use', 'refuse'] as $part) {
+                $this->assertArrayHasKey($part, $guide['parts'] ?? [], "{$slug} {$part}");
+            }
+            $tokens = $this->tokenize($body);
+            for ($i = 0; $i <= count($tokens) - 12; $i++) {
+                $span = implode(' ', array_slice($tokens, $i, 12));
+                $this->assertArrayNotHasKey($span, $ngrams, "{$slug} paste: {$span}");
+            }
+        }
+    }
+
     /** @return array<string, true> */
     private function twelveWordNgramsFromCurricula(): array
     {
