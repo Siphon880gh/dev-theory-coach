@@ -1,0 +1,28 @@
+{
+    "slug": "work-queues",
+    "title": "Work queues",
+    "prompt": "Image thumbnailing runs in the upload HTTP handler; p99 spikes and timeouts rise. Choose the move.",
+    "best": "enqueue",
+    "choices": [
+        {
+            "id": "enqueue",
+            "label": "Enqueue thumbnail jobs; return quickly; workers process async",
+            "consequence": "User can wait for thumbs; request path should not."
+        },
+        {
+            "id": "bigger-vm",
+            "label": "Only buy bigger web VMs",
+            "consequence": "You still block request threads on CPU work."
+        },
+        {
+            "id": "inline-more",
+            "label": "Also do video transcode inline",
+            "consequence": "Makes the outage worse."
+        },
+        {
+            "id": "drop-upload",
+            "label": "Disable uploads",
+            "consequence": "Product regress without fixing the path."
+        }
+    ]
+}

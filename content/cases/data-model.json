@@ -1,0 +1,28 @@
+{
+    "slug": "data-model",
+    "title": "Data model",
+    "prompt": "Team wants “Mongo because JSON” for a workload that is mostly relational joins on stable schemas with multi-row transactions. Pick the response.",
+    "best": "query-first",
+    "choices": [
+        {
+            "id": "query-first",
+            "label": "Model entities from queries; keep relational + transactions unless a force says otherwise",
+            "consequence": "Access path and consistency beat format fashion."
+        },
+        {
+            "id": "mongo-anyway",
+            "label": "Adopt Mongo for the vibe",
+            "consequence": "You inherit join/transaction pain without a force."
+        },
+        {
+            "id": "both-write",
+            "label": "Dual-write every row to both stores from day one",
+            "consequence": "Dual-write without a need doubles failure modes."
+        },
+        {
+            "id": "csv",
+            "label": "Store everything in CSV on disk",
+            "consequence": "Not an OLTP design."
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "slug": "adapter",
+    "title": "Adapter",
+    "prompt": "You must call a vendor SDK with a weird API; your domain already depends on a MetricsPort interface you own. Move?",
+    "best": "adapt",
+    "choices": [
+        {
+            "id": "adapt",
+            "label": "Write an Adapter implementing MetricsPort around the SDK",
+            "consequence": "Keep your interface; wrap what you do not own."
+        },
+        {
+            "id": "leak",
+            "label": "Change all callers to vendor types",
+            "consequence": "Corruption spreads."
+        },
+        {
+            "id": "rewrite-vendor",
+            "label": "Fork and rewrite the vendor SDK tonight",
+            "consequence": "Ownership fantasy."
+        },
+        {
+            "id": "singleton",
+            "label": "Put the SDK in a global static and hope",
+            "consequence": "Hidden coupling."
+        }
+    ]
+}

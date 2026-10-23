@@ -1,0 +1,28 @@
+{
+    "slug": "composition",
+    "title": "Composition",
+    "prompt": "Bird extends Animal; Penguin extends Bird but cannot fly — fly() throws. Redesign using earlier lessons?",
+    "best": "compose-fly",
+    "choices": [
+        {
+            "id": "compose-fly",
+            "label": "Compose a FlyingBehavior strategy; decline fake is-a (composition over inheritance)",
+            "consequence": "Uses composition + strategy: assemble behavior by holding objects; inherit only for true subtypes."
+        },
+        {
+            "id": "deeper",
+            "label": "Add more inheritance layers until it compiles",
+            "consequence": "Deepens the lie."
+        },
+        {
+            "id": "empty-fly",
+            "label": "Leave fly() empty in Penguin",
+            "consequence": "Violates expectations of Bird."
+        },
+        {
+            "id": "singleton-fly",
+            "label": "Global FlyingSingleton",
+            "consequence": "Unrelated and still models poorly."
+        }
+    ]
+}

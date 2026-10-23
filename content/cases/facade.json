@@ -1,0 +1,28 @@
+{
+    "slug": "facade",
+    "title": "Facade",
+    "prompt": "Onboarding must create user, wallet, and welcome email by calling three services in order. Callers duplicate the sequence. Fix?",
+    "best": "facade",
+    "choices": [
+        {
+            "id": "facade",
+            "label": "Add a facade operation that orchestrates the sequence once",
+            "consequence": "Callers should not wire the subsystem ballet."
+        },
+        {
+            "id": "copy",
+            "label": "Leave the duplication",
+            "consequence": "Drift and partial failure stories multiply."
+        },
+        {
+            "id": "adapter",
+            "label": "Adapter each service to a random new interface without one entrypoint",
+            "consequence": "Translation without orchestration."
+        },
+        {
+            "id": "ui-only",
+            "label": "Only document the steps in a wiki",
+            "consequence": "Docs do not enforce the path."
+        }
+    ]
+}

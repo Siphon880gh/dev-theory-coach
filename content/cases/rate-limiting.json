@@ -1,0 +1,28 @@
+{
+    "slug": "rate-limiting",
+    "title": "Rate limiting",
+    "prompt": "Public API is melting. Candidate puts a token bucket only inside each shard randomly keyed. Edge still dies. What first?",
+    "best": "edge-key",
+    "choices": [
+        {
+            "id": "edge-key",
+            "label": "Enforce at edge/gateway by API key/IP; define burst; then defense in depth",
+            "consequence": "Cheap early reject protects origin."
+        },
+        {
+            "id": "shard-only",
+            "label": "Keep shard-only limits as sufficient",
+            "consequence": "Unauthenticated flood never reaches a fair key."
+        },
+        {
+            "id": "no-429",
+            "label": "Return 500 without Retry-After",
+            "consequence": "Clients stampede harder."
+        },
+        {
+            "id": "infinite",
+            "label": "Set burst to infinity for partner vibe",
+            "consequence": "No protection."
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "slug": "api-and-boundaries",
+    "title": "API and boundaries",
+    "prompt": "Checkout service calls Inventory, Payments, and Email inline in one request with no idempotency keys. Client retries on timeout. What do you change first?",
+    "best": "idempotent-pay",
+    "choices": [
+        {
+            "id": "idempotent-pay",
+            "label": "Add idempotency keys on Payment create; consider async Email",
+            "consequence": "Retries will otherwise double-charge; email can leave the request path."
+        },
+        {
+            "id": "more-threads",
+            "label": "Increase web thread pool only",
+            "consequence": "Duplicates still charge twice."
+        },
+        {
+            "id": "drop-inventory",
+            "label": "Remove inventory checks to go faster",
+            "consequence": "Correctness regresses."
+        },
+        {
+            "id": "ban-retries",
+            "label": "Tell clients never to retry",
+            "consequence": "Networks fail; clients will retry anyway."
+        }
+    ]
+}

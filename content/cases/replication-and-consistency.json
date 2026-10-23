@@ -1,0 +1,28 @@
+{
+    "slug": "replication-and-consistency",
+    "title": "Replication and consistency",
+    "prompt": "Async primary-replica. Product requires read-your-writes after profile edit. Candidate says “replicas are fine for everything.” Fix?",
+    "best": "sticky-or-token",
+    "choices": [
+        {
+            "id": "sticky-or-token",
+            "label": "Sticky read-after-write to primary or version token until caught up",
+            "consequence": "Async lag otherwise shows stale self-views."
+        },
+        {
+            "id": "async-ok",
+            "label": "Keep all reads on replicas always",
+            "consequence": "Users see their own old profile."
+        },
+        {
+            "id": "sync-all",
+            "label": "Synchronously replicate to 20 regions on every keystroke",
+            "consequence": "Latency blows up without nuance."
+        },
+        {
+            "id": "no-replica",
+            "label": "Delete replicas entirely",
+            "consequence": "You lose read scale/failover options."
+        }
+    ]
+}

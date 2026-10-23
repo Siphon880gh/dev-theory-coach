@@ -1,0 +1,28 @@
+{
+    "slug": "sharding",
+    "title": "Sharding",
+    "prompt": "User_id hash sharding. A celebrity account creates a hot partition on writes. Candidate says sharding removed all hotspots. Response?",
+    "best": "name-hotspot",
+    "choices": [
+        {
+            "id": "name-hotspot",
+            "label": "Name the celebrity hotspot; consider per-entity splintering or queueing writes",
+            "consequence": "Sharding moves hotspots; popular keys still concentrate."
+        },
+        {
+            "id": "celebrate",
+            "label": "Agree — hash sharding eliminates hot keys",
+            "consequence": "Zipf traffic still burns one shard."
+        },
+        {
+            "id": "more-shards",
+            "label": "Add 1000 empty shards and hope",
+            "consequence": "The hot key still lands somewhere."
+        },
+        {
+            "id": "range",
+            "label": "Switch to pure time-range sharding for user writes",
+            "consequence": "Monotonic ranges often worsen hotspots."
+        }
+    ]
+}

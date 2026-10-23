@@ -1,0 +1,28 @@
+{
+    "slug": "command",
+    "title": "Command",
+    "prompt": "Editor needs undo across typing, crop, and filters. Implementation direction?",
+    "best": "command-stack",
+    "choices": [
+        {
+            "id": "command-stack",
+            "label": "Reify each edit as a Command with undo; store on a stack",
+            "consequence": "LIFO undo matches Command."
+        },
+        {
+            "id": "diff-only",
+            "label": "Store only full document snapshots every keystroke with no bound",
+            "consequence": "Memory explodes without structure."
+        },
+        {
+            "id": "observer",
+            "label": "Observer notifying without undo data",
+            "consequence": "Notification ≠ undo."
+        },
+        {
+            "id": "strategy",
+            "label": "Strategy swapping renderers only",
+            "consequence": "Wrong force."
+        }
+    ]
+}

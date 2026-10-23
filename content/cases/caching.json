@@ -1,0 +1,28 @@
+{
+    "slug": "caching",
+    "title": "Caching",
+    "prompt": "Candidate adds Redis “for speed” but cannot say TTL or invalidation on profile updates. Accept or redirect?",
+    "best": "force-invalidation",
+    "choices": [
+        {
+            "id": "force-invalidation",
+            "label": "Block on naming invalidation/TTL before celebrating hit rate",
+            "consequence": "Stale policy is the hard part of caching."
+        },
+        {
+            "id": "accept",
+            "label": "Accept — hit rate slides will come later",
+            "consequence": "You ship silent staleness."
+        },
+        {
+            "id": "bigger",
+            "label": "Make the cache infinite RAM instead",
+            "consequence": "Wrong axis; coherence still missing."
+        },
+        {
+            "id": "remove-db",
+            "label": "Delete the database and serve cache only",
+            "consequence": "Durability disappears."
+        }
+    ]
+}

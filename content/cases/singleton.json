@@ -1,0 +1,28 @@
+{
+    "slug": "singleton",
+    "title": "Singleton",
+    "prompt": "Team wants Database.getInstance() called from 80 classes. Preferred redesign?",
+    "best": "inject",
+    "choices": [
+        {
+            "id": "inject",
+            "label": "Compose one shared connection pool at the edge and inject it",
+            "consequence": "Explicit dependencies beat hidden globals."
+        },
+        {
+            "id": "keep",
+            "label": "Keep getInstance everywhere",
+            "consequence": "Testing and lifecycle pain remain."
+        },
+        {
+            "id": "new-each",
+            "label": "new Database() in every call",
+            "consequence": "Exhausts connections."
+        },
+        {
+            "id": "thread-local",
+            "label": "Hide it in random thread-locals",
+            "consequence": "Still opaque and surprising."
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "slug": "observer",
+    "title": "Observer",
+    "prompt": "Long-lived Subject holds anonymous listeners; memory grows after navigating away. What must the design include?",
+    "best": "unsubscribe",
+    "choices": [
+        {
+            "id": "unsubscribe",
+            "label": "Explicit unsubscribe/weak refs on teardown; document notify order",
+            "consequence": "Leaks and order surprises are the Observer tax."
+        },
+        {
+            "id": "more-listen",
+            "label": "Add more global static listeners",
+            "consequence": "Worsens leaks."
+        },
+        {
+            "id": "ban",
+            "label": "Ban all events",
+            "consequence": "Avoids the force instead of managing lifecycle."
+        },
+        {
+            "id": "factory",
+            "label": "Wrap listener creation in an AbstractFactory",
+            "consequence": "Does not fix lifecycle."
+        }
+    ]
+}

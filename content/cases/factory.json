@@ -1,0 +1,28 @@
+{
+    "slug": "factory",
+    "title": "Factory",
+    "prompt": "Call sites new PostgresRepo() / new MysqlRepo() litter the app based on env. Choose the seam.",
+    "best": "factory",
+    "choices": [
+        {
+            "id": "factory",
+            "label": "Localize construction in a factory/composition root",
+            "consequence": "One place tracks the concrete choice."
+        },
+        {
+            "id": "scatter",
+            "label": "Keep newing concretes everywhere",
+            "consequence": "Env changes become a hunt."
+        },
+        {
+            "id": "singleton-repo",
+            "label": "Make both repos Singletons and pick randomly",
+            "consequence": "Randomness and globals hurt tests."
+        },
+        {
+            "id": "adapter-only",
+            "label": "Only Adapter with no creation story",
+            "consequence": "Adapter translates APIs; you still need a creation seam."
+        }
+    ]
+}

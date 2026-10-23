@@ -1,0 +1,28 @@
+{
+    "slug": "capstone-url-shortener",
+    "title": "Capstone: URL shortener",
+    "prompt": "Capstone: design a URL shortener. Candidate invents a new consensus protocol before a short_code→url table and cache. Redirect?",
+    "best": "simple-path",
+    "choices": [
+        {
+            "id": "simple-path",
+            "label": "Require read/write paths using data-model + caching lessons; no new mechanism",
+            "consequence": "Capstone reuses earlier slugs: data-model for the mapping, caching for hot redirects — not a novel consensus toy."
+        },
+        {
+            "id": "novel",
+            "label": "Encourage the new protocol as creativity",
+            "consequence": "Hour vanishes without a working redirect path."
+        },
+        {
+            "id": "blockchain",
+            "label": "Store links on a public chain",
+            "consequence": "Latency and cost fight a read-heavy redirector."
+        },
+        {
+            "id": "dns-only",
+            "label": "Use only DNS CNAMEs, no app storage",
+            "consequence": "Cannot map arbitrary codes to long URLs cleanly."
+        }
+    ]
+}

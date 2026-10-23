@@ -1,0 +1,28 @@
+{
+    "slug": "strategy",
+    "title": "Strategy",
+    "prompt": "Pricing rules will grow monthly; a 40-arm switch lives in checkout. Choose the refactor.",
+    "best": "strategy-iface",
+    "choices": [
+        {
+            "id": "strategy-iface",
+            "label": "Introduce a PricingStrategy interface and inject the policy",
+            "consequence": "New variants extend without editing the switch."
+        },
+        {
+            "id": "bigger-switch",
+            "label": "Add more cases to the switch",
+            "consequence": "Edit churn continues."
+        },
+        {
+            "id": "singleton",
+            "label": "Wrap the switch in a Singleton.getInstance",
+            "consequence": "Hides dependency; does not open for extension."
+        },
+        {
+            "id": "copy",
+            "label": "Copy checkout per country",
+            "consequence": "Divergent forks."
+        }
+    ]
+}

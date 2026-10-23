@@ -1,0 +1,28 @@
+{
+    "slug": "when-to-name-a-pattern",
+    "title": "When to name a pattern",
+    "prompt": "Junior renames a two-branch if/else into Strategy+Factory+Observer “for clean architecture.” Response?",
+    "best": "decline",
+    "choices": [
+        {
+            "id": "decline",
+            "label": "Decline the structure; keep the branch until a force appears",
+            "consequence": "Patterns without forces raise reading cost."
+        },
+        {
+            "id": "applaud",
+            "label": "Merge the pattern soup",
+            "consequence": "Indirection without payoff."
+        },
+        {
+            "id": "more",
+            "label": "Ask for a DI container and six more interfaces",
+            "consequence": "Worsens the noise."
+        },
+        {
+            "id": "ban-if",
+            "label": "Ban all branching in the codebase",
+            "consequence": "Absurd extreme."
+        }
+    ]
+}

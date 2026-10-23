@@ -1,0 +1,28 @@
+{
+    "slug": "estimates",
+    "title": "Estimates",
+    "prompt": "Prompt: 50M MAU, each user does ~20 reads/day and 2 writes/day. Candidate says “so about 50M QPS.” What is the right move?",
+    "best": "correct-order",
+    "choices": [
+        {
+            "id": "correct-order",
+            "label": "Rewrite as ~1e9 reads/day ÷ 86400 ≈ 1e4 QPS order",
+            "consequence": "MAU≠QPS; daily actions over seconds gives the order."
+        },
+        {
+            "id": "accept",
+            "label": "Accept 50M QPS and shard immediately",
+            "consequence": "You over-design by three orders of magnitude."
+        },
+        {
+            "id": "ignore",
+            "label": "Skip numbers and draw caches anyway",
+            "consequence": "Without magnitude you cannot justify the cache."
+        },
+        {
+            "id": "exact",
+            "label": "Demand the exact QPS to six decimals",
+            "consequence": "Interviews want order-of-magnitude, not fake precision."
+        }
+    ]
+}

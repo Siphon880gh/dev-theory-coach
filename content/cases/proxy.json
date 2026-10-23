@@ -1,0 +1,28 @@
+{
+    "slug": "proxy",
+    "title": "Proxy",
+    "prompt": "Image gallery should not decode multi-MB files until visible; authorization required too. Pattern fit?",
+    "best": "virtual-protection",
+    "choices": [
+        {
+            "id": "virtual-protection",
+            "label": "Virtual + protection proxy in front of the real image object",
+            "consequence": "Controls when the real object is reached and who may."
+        },
+        {
+            "id": "decorator-only",
+            "label": "Decorator that only adds ASCII borders",
+            "consequence": "Wrong force for access/lifecycle."
+        },
+        {
+            "id": "eager",
+            "label": "Decode all images at process start",
+            "consequence": "Wastes memory/CPU."
+        },
+        {
+            "id": "composite",
+            "label": "Composite without access control",
+            "consequence": "Part-whole ≠ gatekeeping."
+        }
+    ]
+}

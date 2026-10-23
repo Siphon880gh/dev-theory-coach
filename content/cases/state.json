@@ -1,0 +1,28 @@
+{
+    "slug": "state",
+    "title": "State",
+    "prompt": "Order object has flags isPaid/isShipped/isCancelled with illegal combos reachable. Pick the fix direction.",
+    "best": "state-machine",
+    "choices": [
+        {
+            "id": "state-machine",
+            "label": "Explicit states + centralized transitions (State pattern or table)",
+            "consequence": "Illegal combos become impossible transitions."
+        },
+        {
+            "id": "more-flags",
+            "label": "Add three more booleans",
+            "consequence": "Combinatorial mess grows."
+        },
+        {
+            "id": "ignore",
+            "label": "Validate only in the UI",
+            "consequence": "API still accepts junk."
+        },
+        {
+            "id": "strategy",
+            "label": "Use Strategy to swap tax algorithms only",
+            "consequence": "Wrong force — this is mode/transition, not pricing policy."
+        }
+    ]
+}

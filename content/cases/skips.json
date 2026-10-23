@@ -1,0 +1,28 @@
+{
+    "skips": [
+        "arrays",
+        "strings",
+        "hash-maps",
+        "linked-lists",
+        "stacks",
+        "queues",
+        "trees",
+        "binary-search-trees",
+        "heaps",
+        "graphs",
+        "tries",
+        "union-find",
+        "complexity",
+        "recursion",
+        "binary-search",
+        "two-pointers",
+        "sliding-window",
+        "sorting",
+        "bfs-dfs",
+        "backtracking",
+        "greedy",
+        "dynamic-programming",
+        "graph-algorithms",
+        "intervals"
+    ]
+}

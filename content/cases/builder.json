@@ -1,0 +1,28 @@
+{
+    "slug": "builder",
+    "title": "Builder",
+    "prompt": "HTTP client constructor has 8 overloads for optional timeouts/headers/proxies; callers pass nulls. Direction?",
+    "best": "builder",
+    "choices": [
+        {
+            "id": "builder",
+            "label": "Fluent builder; build() refuses missing required base URL",
+            "consequence": "Named steps beat telescoping nulls."
+        },
+        {
+            "id": "more-overloads",
+            "label": "Add four more overloads",
+            "consequence": "Explosion continues."
+        },
+        {
+            "id": "all-public",
+            "label": "Make every field public and mutable forever",
+            "consequence": "Invariant enforcement dies."
+        },
+        {
+            "id": "observer",
+            "label": "Use Observer for header sets",
+            "consequence": "Wrong pattern."
+        }
+    ]
+}

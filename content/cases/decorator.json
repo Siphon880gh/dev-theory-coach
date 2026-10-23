@@ -1,0 +1,28 @@
+{
+    "slug": "decorator",
+    "title": "Decorator",
+    "prompt": "Need metrics + retries around a PaymentClient without editing its class (vendor). Wrap order debate: Retry(Metrics(client)) vs Metrics(Retry(client)). What do you require?",
+    "best": "order-semantics",
+    "choices": [
+        {
+            "id": "order-semantics",
+            "label": "Pick intentionally: decide if metrics should count retries separately",
+            "consequence": "Wrap order changes semantics; say it aloud."
+        },
+        {
+            "id": "either",
+            "label": "Say order never matters",
+            "consequence": "It does — retries inflate counts differently."
+        },
+        {
+            "id": "edit-vendor",
+            "label": "Edit the vendor class",
+            "consequence": "You may not own it."
+        },
+        {
+            "id": "inherit",
+            "label": "Force deep inheritance instead of wraps",
+            "consequence": "Fragile when you do not own the type."
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "slug": "read-and-write-paths",
+    "title": "Read and write paths",
+    "prompt": "Design review has a pretty box diagram but nobody can narrate one successful read or write. What do you require before continuing?",
+    "best": "narrate-paths",
+    "choices": [
+        {
+            "id": "narrate-paths",
+            "label": "One happy read and one happy write naming the row each touches",
+            "consequence": "Paths make ownership and consistency real."
+        },
+        {
+            "id": "more-boxes",
+            "label": "Add three more caches first",
+            "consequence": "Caches without paths hide who fills them."
+        },
+        {
+            "id": "only-fail",
+            "label": "Jump straight to chaos scenarios",
+            "consequence": "Failure talk without a happy path is ungrounded."
+        },
+        {
+            "id": "uml",
+            "label": "Demand full class UML first",
+            "consequence": "UML without paths still misses runtime truth."
+        }
+    ]
+}

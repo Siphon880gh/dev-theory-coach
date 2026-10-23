@@ -1,0 +1,28 @@
+{
+    "slug": "storage-and-indexes",
+    "title": "Storage and indexes",
+    "prompt": "Read path filters by (tenant_id, created_at range). Writes are moderate. Candidate indexes only created_at globally. What do you push?",
+    "best": "composite",
+    "choices": [
+        {
+            "id": "composite",
+            "label": "Composite / clustered access by tenant then time; price write cost",
+            "consequence": "Query shape wants tenant locality, not a global time index alone."
+        },
+        {
+            "id": "no-index",
+            "label": "Refuse all indexes to keep writes fast",
+            "consequence": "Reads will scan."
+        },
+        {
+            "id": "index-all",
+            "label": "Index every column immediately",
+            "consequence": "Write amplification explodes without need."
+        },
+        {
+            "id": "brand",
+            "label": "Switch databases because of a blog post",
+            "consequence": "Brand without path is cargo cult."
+        }
+    ]
+}

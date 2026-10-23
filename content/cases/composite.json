@@ -1,0 +1,28 @@
+{
+    "slug": "composite",
+    "title": "Composite",
+    "prompt": "Pricing a cart that contains items and nested bundles that are also “priceable.” Model?",
+    "best": "composite",
+    "choices": [
+        {
+            "id": "composite",
+            "label": "Composite: shared component interface for leaf and bundle",
+            "consequence": "One item and a group share the interface."
+        },
+        {
+            "id": "type-switch",
+            "label": "Giant switch on runtime type everywhere",
+            "consequence": "New bundle types edit all call sites."
+        },
+        {
+            "id": "singleton-bundle",
+            "label": "One global bundle Singleton",
+            "consequence": "Cannot model many carts."
+        },
+        {
+            "id": "proxy",
+            "label": "Protection proxy only",
+            "consequence": "Access control ≠ part-whole."
+        }
+    ]
+}

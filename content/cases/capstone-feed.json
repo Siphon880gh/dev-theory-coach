@@ -1,0 +1,28 @@
+{
+    "slug": "capstone-feed",
+    "title": "Capstone: feed",
+    "prompt": "Home feed for mixed normal users and celebrities. Candidate fans out every post sync to all followers on the request.",
+    "best": "hybrid",
+    "choices": [
+        {
+            "id": "hybrid",
+            "label": "Hybrid fanout: on-write for normal; on-read for huge celebrity graphs (work-queues help)",
+            "consequence": "Uses work-queues for async fanout and sharding awareness for celebrity hot keys — avoids write amplification."
+        },
+        {
+            "id": "sync-all",
+            "label": "Keep sync fanout to 50M followers inline",
+            "consequence": "Write path dies."
+        },
+        {
+            "id": "read-only-always",
+            "label": "Always fanout-on-read for everyone with no caching story",
+            "consequence": "Read QPS may melt without a plan."
+        },
+        {
+            "id": "no-feed",
+            "label": "Replace feed with email digests only",
+            "consequence": "Avoids the problem instead of designing it."
+        }
+    ]
+}

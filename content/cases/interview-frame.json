@@ -1,0 +1,28 @@
+{
+    "slug": "interview-frame",
+    "title": "Interview frame",
+    "prompt": "You have 45 minutes. A candidate starts drawing 12 microservices before asking QPS or durability. What do you coach them to do?",
+    "best": "reset-frame",
+    "choices": [
+        {
+            "id": "reset-frame",
+            "label": "Stop the sketch; run clarify → size → one path → deepen risk",
+            "consequence": "The frame grades judgment; boxes without bounds are theater."
+        },
+        {
+            "id": "cheer",
+            "label": "Praise the breadth and ask for five more services",
+            "consequence": "More boxes without a path waste the bottleneck minutes."
+        },
+        {
+            "id": "db-first",
+            "label": "Make them pick Postgres vs Cassandra next",
+            "consequence": "Vendor choice before requirements locks the wrong axis."
+        },
+        {
+            "id": "skip-numbers",
+            "label": "Tell them estimates are optional fluff",
+            "consequence": "Orders of magnitude steer which risks matter."
+        }
+    ]
+}

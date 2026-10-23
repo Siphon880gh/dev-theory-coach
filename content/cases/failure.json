@@ -1,0 +1,28 @@
+{
+    "slug": "failure",
+    "title": "Failure",
+    "prompt": "Payments hop has no timeout; retries are immediate and identical. Outage amplifies. Pick the repair set.",
+    "best": "timeout-jitter-idem",
+    "choices": [
+        {
+            "id": "timeout-jitter-idem",
+            "label": "Add deadlines, exponential backoff with jitter, and idempotency keys",
+            "consequence": "Stops herds and double applies."
+        },
+        {
+            "id": "retry-harder",
+            "label": "Retry every 1ms forever",
+            "consequence": "Melts the dependency."
+        },
+        {
+            "id": "no-timeout",
+            "label": "Keep infinite waits for “reliability”",
+            "consequence": "Threads wedge."
+        },
+        {
+            "id": "ignore",
+            "label": "Only add prettier error HTML",
+            "consequence": "Does not fix the hop."
+        }
+    ]
+}
