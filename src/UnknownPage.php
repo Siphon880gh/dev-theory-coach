@@ -22,7 +22,7 @@ final class UnknownPage
         return Layout::document(
             'Unknown ' . $kind,
             $inner,
-            ['mainClass' => 'unknown-page']
+            ['mainClass' => 'unknown-page', 'navActive' => 'home']
         );
     }
 
@@ -34,7 +34,7 @@ final class UnknownPage
         return Layout::document(
             'Unknown page',
             $inner,
-            ['mainClass' => 'unknown-page']
+            ['mainClass' => 'unknown-page', 'navActive' => 'home']
         );
     }
 }

@@ -52,7 +52,7 @@ final class Cheatsheet
                 'body' => Layout::document(
                     'Cheatsheet slot',
                     '<p class="slot">not authored yet</p>',
-                    ['mainClass' => 'cheatsheet-slot']
+                    ['mainClass' => 'cheatsheet-slot', 'navActive' => 'home']
                 ),
             ];
         }
@@ -81,6 +81,7 @@ final class Cheatsheet
             [
                 'mainClass' => 'cheatsheet',
                 'mainAttrs' => ['data-slug' => $slug],
+                'navActive' => 'home',
             ]
         );
     }

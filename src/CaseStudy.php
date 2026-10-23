@@ -71,7 +71,7 @@ final class CaseStudy
                 'body' => Layout::document(
                     'Case slot',
                     '<p class="slot">not authored yet</p>',
-                    ['mainClass' => 'case-slot']
+                    ['mainClass' => 'case-slot', 'navActive' => 'home']
                 ),
             ];
         }
@@ -90,6 +90,7 @@ final class CaseStudy
             [
                 'mainClass' => 'case-gated',
                 'mainAttrs' => ['data-slug' => $slug],
+                'navActive' => 'home',
             ]
         );
     }
@@ -104,8 +105,9 @@ final class CaseStudy
         $parts[] = '<p class="prompt">' . self::h((string) $case['prompt']) . '</p>';
         $parts[] = '<ul class="choices">';
         foreach ($case['choices'] as $c) {
-            $parts[] = '<li data-choice-id="' . self::h((string) $c['id']) . '">'
-                . self::h((string) $c['label']) . '</li>';
+            $parts[] = '<li><button type="button" class="choice" data-choice-id="'
+                . self::h((string) $c['id']) . '">'
+                . self::h((string) $c['label']) . '</button></li>';
             // consequences intentionally omitted pre-commit
         }
         $parts[] = '</ul>';
@@ -115,6 +117,7 @@ final class CaseStudy
             [
                 'mainClass' => 'case-page',
                 'mainAttrs' => ['data-slug' => $slug, 'data-committed' => '0'],
+                'navActive' => 'home',
             ]
         );
         foreach ($case['choices'] as $c) {

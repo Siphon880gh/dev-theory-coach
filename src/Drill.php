@@ -91,7 +91,7 @@ final class Drill
                 'body' => Layout::document(
                     'Drill slot',
                     '<p class="slot">not authored yet</p>',
-                    ['mainClass' => 'drill-slot']
+                    ['mainClass' => 'drill-slot', 'navActive' => 'home']
                 ),
             ];
         }
@@ -107,6 +107,7 @@ final class Drill
             [
                 'mainClass' => 'drill-slot',
                 'mainAttrs' => ['data-slug' => $slug],
+                'navActive' => 'home',
             ]
         );
     }
@@ -133,6 +134,7 @@ final class Drill
                 'mainClass' => 'drill-page',
                 'mainAttrs' => ['data-slug' => $slug, 'data-timed' => '1'],
                 'sampleNote' => 'Timed drill.',
+                'navActive' => 'home',
             ]
         );
     }

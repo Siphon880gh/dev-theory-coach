@@ -19,6 +19,12 @@ final class DashboardTest extends TestCase
         $this->assertStringContainsString('arrays', $html);
         $this->assertStringNotContainsString('%', $html);
         $this->assertStringContainsString('Case gate locked', $html);
+        $this->assertStringContainsString('Dev Theory Coach', $html);
+        $this->assertStringNotContainsString('THEORY_CORE', $html);
+        $this->assertStringContainsString('site-header', $html);
+        $this->assertStringContainsString('site-nav', $html);
+        $this->assertStringContainsString('nav-link is-active', $html);
+        $this->assertStringContainsString('Next: study arrays', $html);
     }
 
     public function testAfterArraysGuideReadCtaMovesForward(): void

@@ -61,22 +61,25 @@ final class Dashboard
         $gateOpen = ProgressSchema::caseGateOpenFor($state);
 
         $parts = [];
-        $parts[] = '<h1>Dev Theory Coach (THEORY_CORE)</h1>';
+        $parts[] = '<p class="eyebrow">Interview concepts · 15–25 min gaps</p>';
+        $parts[] = '<h1>Dev Theory Coach</h1>';
+        $parts[] = '<p class="lede">Name the concept, the cost, or the force — then reject the usual wrong pick.</p>';
         if ($complete) {
             $parts[] = '<p class="path-complete" data-credential="beginner-path">Beginner path complete. Credential: beginner path finished.</p>';
         } else {
             $parts[] = '<p class="next-action"><a class="next-cta" href="' . e(url('/guides/' . rawurlencode($next))) . '">'
                 . 'Next: study ' . e($next) . '</a></p>';
+            $parts[] = '<p class="home-context">Beginner path — open the guide, then coach and quiz on that family.</p>';
         }
         $parts[] = '<p class="case-gate-chip" data-open="' . ($gateOpen ? '1' : '0') . '">'
             . ($gateOpen ? 'Case gate open' : 'Case gate locked') . '</p>';
-        $parts[] = '<p><a href="' . e(url('/guides')) . '">Guides hub</a></p>';
 
         return Layout::document(
-            'Dev Theory Coach (THEORY_CORE)',
+            'Dev Theory Coach',
             implode("\n", $parts),
             [
                 'mainClass' => 'dashboard',
+                'navActive' => 'home',
                 'scripts' => [asset_url('js/progress.js')],
             ]
         );

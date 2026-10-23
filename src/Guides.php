@@ -75,6 +75,7 @@ final class Guides
                 [
                     'mainClass' => 'guide-page',
                     'mainAttrs' => ['data-slug' => $slug],
+                    'navActive' => 'guides',
                 ]
             ),
         ];
@@ -134,6 +135,7 @@ final class Guides
             [
                 'mainClass' => 'guides-hub',
                 'wide' => true,
+                'navActive' => 'guides',
             ]
         );
     }

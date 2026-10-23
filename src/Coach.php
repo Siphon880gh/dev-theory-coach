@@ -132,9 +132,9 @@ final class Coach
         } else {
             $parts[] = '<ol class="choices">';
             foreach ($node['choices'] as $i => $choice) {
-                $parts[] = '<li data-choice-index="' . (int) $i . '">'
+                $parts[] = '<li><button type="button" class="choice" data-choice-index="' . (int) $i . '">'
                     . self::h((string) ($choice['label'] ?? 'Choice ' . $i))
-                    . '</li>';
+                    . '</button></li>';
             }
             $parts[] = '</ol>';
         }
@@ -146,6 +146,7 @@ final class Coach
             [
                 'mainClass' => 'coach-page',
                 'mainAttrs' => ['data-slug' => $slug],
+                'navActive' => 'guides',
             ]
         );
     }
@@ -162,6 +163,7 @@ final class Coach
             [
                 'mainClass' => 'coach-slot',
                 'mainAttrs' => ['data-slug' => $slug],
+                'navActive' => 'guides',
             ]
         );
     }

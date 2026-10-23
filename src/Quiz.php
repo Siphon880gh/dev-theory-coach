@@ -108,7 +108,8 @@ final class Quiz
             $parts[] = '<p class="prompt">' . self::h((string) $item['prompt']) . '</p>';
             $parts[] = '<ol class="choices">';
             foreach ($item['choices'] as $ci => $choice) {
-                $parts[] = '<li data-choice="' . (int) $ci . '">' . self::h((string) $choice) . '</li>';
+                $parts[] = '<li><button type="button" class="choice" data-choice="' . (int) $ci . '">'
+                    . self::h((string) $choice) . '</button></li>';
             }
             $parts[] = '</ol></section>';
         }
@@ -121,6 +122,7 @@ final class Quiz
                 'mainClass' => 'quiz-page',
                 'mainAttrs' => ['data-slug' => $slug, 'data-untimed' => '1'],
                 'sampleNote' => 'Untimed. No code runner.',
+                'navActive' => 'guides',
             ]
         );
     }
