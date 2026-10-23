@@ -36,30 +36,7 @@ final class Guides
 
     public static function hubHtml(): string
     {
-        $parts = [];
-        $parts[] = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">';
-        $parts[] = '<meta name="viewport" content="width=device-width, initial-scale=1">';
-        $parts[] = '<title>Guides — Dev Theory Coach</title></head><body>';
-        $parts[] = '<main class="guides-hub">';
-        $parts[] = '<p><strong>SAMPLE</strong> data only.</p>';
-        $parts[] = '<h1>Guides</h1>';
-        $parts[] = '<p>Interview concepts by track. Open a guide, then its coach on the same slug.</p>';
-        foreach (Catalog::groupedByTrackLabel() as $label => $families) {
-            $parts[] = '<section class="track" data-track-label="' . self::h($label) . '">';
-            $parts[] = '<h2>' . self::h($label) . '</h2><ul>';
-            foreach ($families as $family) {
-                $slug = (string) $family['slug'];
-                $title = (string) ($family['title'] ?? $slug);
-                $parts[] = '<li data-slug="' . self::h($slug) . '">'
-                    . '<a href="/guides/' . rawurlencode($slug) . '">' . self::h($title) . '</a>'
-                    . ' <code>' . self::h($slug) . '</code>'
-                    . '</li>';
-            }
-            $parts[] = '</ul></section>';
-        }
-        $parts[] = '</main></body></html>';
-
-        return implode("\n", $parts);
+        return self::hubHtmlWithLocks(null);
     }
 
     /**
@@ -97,6 +74,62 @@ final class Guides
         $html[] = '</main></body></html>';
 
         return ['status' => 200, 'body' => implode("\n", $html)];
+    }
+
+
+    /**
+     * Hub row locked-reason helper for E11.
+     *
+     * @param array<string, mixed> $state
+     */
+    public static function lockedReasonFor(string $slug, array $state): string
+    {
+        $family = Catalog::bySlug($slug);
+        if ($family === null) {
+            return '';
+        }
+        /** @var list<string> $after */
+        $after = $family['after'] ?? [];
+        if ($after === []) {
+            return '';
+        }
+        if (ProgressSchema::isFamilyUnlockedByPrereqs($state, $after)) {
+            return '';
+        }
+        $missing = ProgressSchema::missingPrereqSlugs($state, $after);
+
+        return 'Locked — missing: ' . implode(', ', $missing);
+    }
+
+    /**
+     * @param array<string, mixed>|null $state
+     */
+    public static function hubHtmlWithLocks(?array $state = null): string
+    {
+        $state = ProgressSchema::normalize($state ?? ProgressSchema::fresh());
+        $parts = [];
+        $parts[] = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">';
+        $parts[] = '<title>Guides — Dev Theory Coach</title></head><body>';
+        $parts[] = '<main class="guides-hub">';
+        $parts[] = '<p><strong>SAMPLE</strong> data only.</p>';
+        $parts[] = '<h1>Guides</h1>';
+        foreach (Catalog::groupedByTrackLabel() as $label => $families) {
+            $parts[] = '<section class="track" data-track-label="' . self::h($label) . '">';
+            $parts[] = '<h2>' . self::h($label) . '</h2><ul>';
+            foreach ($families as $family) {
+                $slug = (string) $family['slug'];
+                $title = (string) ($family['title'] ?? $slug);
+                $reason = self::lockedReasonFor($slug, $state);
+                $parts[] = '<li data-slug="' . self::h($slug) . '">'
+                    . '<a href="/guides/' . rawurlencode($slug) . '">' . self::h($title) . '</a>'
+                    . ($reason !== '' ? ' <span class="locked-reason">' . self::h($reason) . '</span>' : '')
+                    . '</li>';
+            }
+            $parts[] = '</ul></section>';
+        }
+        $parts[] = '</main></body></html>';
+
+        return implode("\n", $parts);
     }
 
     private static function formatBody(string $body): string

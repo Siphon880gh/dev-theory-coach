@@ -70,4 +70,46 @@ final class Path
 
         return ['kind' => 'missing'];
     }
+
+    /**
+     * @param array<string, mixed> $state
+     */
+    public static function lockedReasonForSlug(string $slug, array $state): string
+    {
+        $family = Catalog::bySlug($slug);
+        if ($family === null) {
+            return '';
+        }
+        /** @var list<string> $after */
+        $after = $family['after'] ?? [];
+        if ($after === [] || ProgressSchema::isFamilyUnlockedByPrereqs($state, $after)) {
+            return '';
+        }
+        $missing = ProgressSchema::missingPrereqSlugs($state, $after);
+
+        return 'Locked — missing: ' . implode(', ', $missing);
+    }
+
+    /**
+     * Render a path row list with locked reasons (E11).
+     *
+     * @param array<string, mixed> $path
+     * @param array<string, mixed>|null $state
+     */
+    public static function rowsHtml(array $path, ?array $state = null): string
+    {
+        $state = ProgressSchema::normalize($state ?? ProgressSchema::fresh());
+        $parts = ['<ul class="path-rows">'];
+        foreach ($path['milestones'] as $m) {
+            $slug = (string) $m['slug'];
+            $reason = self::lockedReasonForSlug($slug, $state);
+            $parts[] = '<li data-slug="' . htmlspecialchars($slug, ENT_QUOTES) . '">'
+                . htmlspecialchars($slug, ENT_QUOTES)
+                . ($reason !== '' ? ' <span class="locked-reason">' . htmlspecialchars($reason, ENT_QUOTES) . '</span>' : '')
+                . '</li>';
+        }
+        $parts[] = '</ul>';
+
+        return implode("\n", $parts);
+    }
 }

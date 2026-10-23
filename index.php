@@ -8,6 +8,7 @@ if (is_file($autoload)) {
 }
 
 use TheoryCore\CaseStudy;
+use TheoryCore\Cheatsheet;
 use TheoryCore\Coach;
 use TheoryCore\Dashboard;
 use TheoryCore\Drill;
@@ -71,6 +72,17 @@ if (preg_match('#^/drill/([a-z0-9-]+)$#', $path, $m) === 1) {
 
 if (preg_match('#^/case/([a-z0-9-]+)$#', $path, $m) === 1) {
     $response = CaseStudy::pageResponse($m[1]);
+    if (($response['status'] ?? 200) === 302) {
+        header('Location: ' . ($response['location'] ?? '/'), true, 302);
+        exit;
+    }
+    http_response_code((int) ($response['status'] ?? 200));
+    echo $response['body'] ?? '';
+    exit;
+}
+
+if (preg_match('#^/cheatsheet/([a-z0-9-]+)$#', $path, $m) === 1) {
+    $response = Cheatsheet::pageResponse($m[1]);
     if (($response['status'] ?? 200) === 302) {
         header('Location: ' . ($response['location'] ?? '/'), true, 302);
         exit;

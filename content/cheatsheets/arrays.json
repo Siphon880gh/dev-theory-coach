@@ -1,0 +1,20 @@
+{
+  "slug": "arrays",
+  "sample": true,
+  "lines": [
+    "Index read/write: O(1)",
+    "Middle insert/delete: O(n) shift",
+    "Append amortized O(1) with doubling",
+    "Scan is O(n)",
+    "Unsorted search O(n); sorted enables binary search",
+    "Contiguous layout helps cache locality",
+    "Fixed vs dynamic capacity",
+    "Prefer when jumps to i dominate",
+    "Refuse when hot path is middle splice",
+    "SAMPLE: name the shift before coding an insert",
+    "Pair with two pointers on sorted buffers",
+    "Do not claim every insert is O(1)"
+  ],
+  "pickWhen": "You need constant-time jumps to an index and rare middle edits.",
+  "skipWhen": "You already hold a node and must splice without shifting a tail."
+}
