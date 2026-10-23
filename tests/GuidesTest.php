@@ -109,6 +109,27 @@ final class GuidesTest extends TestCase
         $this->assertStringNotContainsString('foreignobject', strtolower($safe));
     }
 
+
+    public function testStrategyGuideRendersMermaidAndBootScript(): void
+    {
+        $response = Guides::pageResponse('strategy');
+        $body = $response['body'] ?? '';
+        $this->assertStringContainsString('class="mermaid"', $body);
+        $this->assertStringContainsString('flowchart', $body);
+        $this->assertStringContainsString('mermaid.min.js', $body);
+        $this->assertStringContainsString('mermaid-boot.js', $body);
+        $this->assertStringContainsString('data-diagram-type="mermaid"', $body);
+    }
+
+    public function testComplexityGuideRendersImageDiagram(): void
+    {
+        $response = Guides::pageResponse('complexity');
+        $body = $response['body'] ?? '';
+        $this->assertStringContainsString('diagrams/complexity/growth.png', $body);
+        $this->assertStringContainsString('data-diagram-type="image"', $body);
+        $this->assertStringContainsString('<img', $body);
+    }
+
     public function testUnknownGuideSlugRendersUnknownPageNot404OrRedirect(): void
     {
         $response = Guides::pageResponse('not-a-slug');
@@ -171,11 +192,21 @@ final class GuidesTest extends TestCase
             $this->assertIsArray($diagram, "{$slug} diagram {$di}");
             $this->assertNotSame('', trim((string) ($diagram['id'] ?? '')));
             $this->assertNotSame('', trim((string) ($diagram['title'] ?? '')));
+            $type = strtolower((string) ($diagram['type'] ?? 'svg'));
             $svg = (string) ($diagram['svg'] ?? '');
-            $this->assertStringContainsString('<svg', $svg, "{$slug} diagram missing svg");
+            $mermaid = (string) ($diagram['mermaid'] ?? '');
+            $src = (string) ($diagram['src'] ?? '');
+            if ($type === 'mermaid' || ($mermaid !== '' && $svg === '')) {
+                $this->assertNotSame('', trim($mermaid), "{$slug} mermaid diagram empty");
+            } elseif ($type === 'image' || ($src !== '' && $svg === '')) {
+                $this->assertNotSame('', trim($src), "{$slug} image diagram missing src");
+                $this->assertFileExists(dirname(__DIR__) . '/assets/' . $src, "{$slug} image missing file");
+            } else {
+                $this->assertStringContainsString('<svg', $svg, "{$slug} diagram missing svg");
+            }
             $this->assertMatchesRegularExpression(
-                '/\\d/',
-                $svg . (string) ($diagram['title'] ?? ''),
+                '/\d/',
+                $svg . $mermaid . $src . (string) ($diagram['title'] ?? ''),
                 "{$slug} diagram should carry a digit/label",
             );
             $seenIds[] = (string) $diagram['id'];

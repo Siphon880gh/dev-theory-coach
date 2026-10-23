@@ -28,7 +28,7 @@ Match an existing file such as `content/guides/arrays.json` or `content/guides/b
 - Original wording. No 12-word span from `context/`
 - No `SAMPLE` / `SAMPLE example` / `SAMPLE lesson` / `Recall checkpoint` in body or parts
 - No identical paragraph repeated ≥3 times; no `sample: true` / `meta.sample` stamp
-- `diagrams`: ≥1 `{id,title,svg}` (dark-canvas SVG); body has `[[diagram:id]]` after the worked example
+- `diagrams`: ≥1 entry — prefer `{id,title,svg}`; optional `type: mermaid` + `mermaid`, or `type: image` + `src` under `assets/diagrams/<slug>/`; body has `[[diagram:id]]` after the worked example
 - Plain language — no "the prompt" jargon; refuse rules about operations and costs
 
 ## Verify

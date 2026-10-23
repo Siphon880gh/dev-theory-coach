@@ -32,7 +32,7 @@ The learner sees the track's full label, the title, and a body they can finish i
 
 Never put SAMPLE / "SAMPLE example" / "SAMPLE lesson" / "Recall checkpoint" in the body or parts. Never pad with identical repeated paragraphs or slogan loops to hit 300 words. If short, expand the **worked example** with real steps and concrete values. Prefer ~400–600 teaching words inside the 300–800 band. No `sample: true` stamps.
 
-Each guide needs `diagrams`: 1–3 `{id,title,svg}` (dark-canvas inline SVG). Body references them with `[[diagram:id]]` after the worked example. Teach operations and costs in plain language — never interview jargon like "the prompt". Prefer SVG; Mermaid/image types are allowed later when SVG is awkward.
+Each guide needs `diagrams`: 1–3 `{id,title,svg}` (dark-canvas inline SVG). Body references them with `[[diagram:id]]` after the worked example. Teach operations and costs in plain language — never interview jargon like "the prompt". Prefer SVG. Also supported: `type: mermaid` with a `mermaid` source (client-side Mermaid CDN + dark theme), and `type: image` with `src` under `assets/diagrams/<slug>/…` served via `/assets/`. Use Mermaid/image only when SVG is awkward.
 
 ---
 

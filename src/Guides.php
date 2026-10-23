@@ -166,16 +166,21 @@ final class Guides
         $parts[] = '<p class="youtube-cta"><a href="' . e($youtubeUrl) . '" target="_blank" rel="noopener noreferrer">'
             . self::h($youtubeLabel) . '</a></p>';
 
+        $layoutOpts = [
+            'mainClass' => 'guide-page',
+            'mainAttrs' => ['data-slug' => $slug],
+            'navActive' => 'guides',
+        ];
+        if (Diagrams::needsMermaid($diagrams)) {
+            $layoutOpts['scripts'] = Diagrams::mermaidScripts();
+        }
+
         return [
             'status' => 200,
             'body' => Layout::document(
                 $title . ' — Guide',
                 implode("\n", $parts),
-                [
-                    'mainClass' => 'guide-page',
-                    'mainAttrs' => ['data-slug' => $slug],
-                    'navActive' => 'guides',
-                ]
+                $layoutOpts
             ),
         ];
     }
@@ -243,17 +248,7 @@ final class Guides
      */
     public static function formatBody(string $body, array $diagrams = []): string
     {
-        $byId = [];
-        foreach ($diagrams as $d) {
-            if (!is_array($d)) {
-                continue;
-            }
-            $id = isset($d['id']) && is_string($d['id']) ? $d['id'] : '';
-            if ($id === '') {
-                continue;
-            }
-            $byId[$id] = $d;
-        }
+        $byId = Diagrams::indexById($diagrams);
 
         $paras = preg_split("/\n\s*\n/", trim($body)) ?: [];
         $out = [];
@@ -288,101 +283,13 @@ final class Guides
         if (!isset($byId[$id])) {
             return '<!-- missing diagram: ' . self::h($id) . ' -->';
         }
-        $d = $byId[$id];
-        $title = isset($d['title']) && is_string($d['title']) ? $d['title'] : $id;
-        $svg = isset($d['svg']) && is_string($d['svg']) ? $d['svg'] : '';
-        $safe = self::sanitizeSvg($svg);
-        if ($safe === '') {
-            return '<!-- empty diagram: ' . self::h($id) . ' -->';
-        }
 
-        return '<figure class="guide-diagram" data-diagram-id="' . self::h($id) . '">'
-            . $safe
-            . '<figcaption>' . self::h($title) . '</figcaption>'
-            . '</figure>';
+        return Diagrams::renderFigure($byId[$id]);
     }
 
     public static function sanitizeSvg(string $svg): string
     {
-        $svg = trim($svg);
-        if ($svg === '' || stripos($svg, '<svg') === false) {
-            return '';
-        }
-
-        $prev = libxml_use_internal_errors(true);
-        $dom = new DOMDocument();
-        $wrapped = '<?xml encoding="UTF-8">' . $svg;
-        $ok = $dom->loadHTML($wrapped, LIBXML_NONET | LIBXML_NOERROR | LIBXML_NOWARNING);
-        libxml_clear_errors();
-        libxml_use_internal_errors($prev);
-        if ($ok === false) {
-            return '';
-        }
-
-        $svgs = $dom->getElementsByTagName('svg');
-        if ($svgs->length === 0) {
-            return '';
-        }
-        /** @var DOMElement $root */
-        $root = $svgs->item(0);
-        $clean = new DOMDocument('1.0', 'UTF-8');
-        $imported = self::cloneAllowed($root, $clean);
-        if ($imported === null) {
-            return '';
-        }
-        $clean->appendChild($imported);
-
-        $out = $clean->saveHTML($imported);
-        if (!is_string($out) || $out === '') {
-            return '';
-        }
-
-        return $out;
-    }
-
-    private static function cloneAllowed(DOMNode $node, DOMDocument $target): ?DOMNode
-    {
-        if ($node->nodeType === XML_TEXT_NODE) {
-            return $target->createTextNode($node->textContent ?? '');
-        }
-        if ($node->nodeType !== XML_ELEMENT_NODE || !$node instanceof DOMElement) {
-            return null;
-        }
-        $tag = strtolower($node->tagName);
-        if (!isset(self::SVG_TAGS[$tag])) {
-            return null;
-        }
-        $el = $target->createElement($tag);
-        if ($node->hasAttributes()) {
-            foreach ($node->attributes ?? [] as $attr) {
-                $name = strtolower($attr->name);
-                if (str_starts_with($name, 'on')) {
-                    continue;
-                }
-                if ($name === 'href' || $name === 'xlink:href') {
-                    continue;
-                }
-                if (!isset(self::SVG_ATTRS[$name])) {
-                    continue;
-                }
-                $val = $attr->value;
-                if ($name === 'xmlns' && $val !== 'http://www.w3.org/2000/svg') {
-                    continue;
-                }
-                if (preg_match('/javascript:/i', $val) === 1) {
-                    continue;
-                }
-                $el->setAttribute($attr->name, $val);
-            }
-        }
-        foreach ($node->childNodes as $child) {
-            $c = self::cloneAllowed($child, $target);
-            if ($c !== null) {
-                $el->appendChild($c);
-            }
-        }
-
-        return $el;
+        return Diagrams::sanitizeSvg($svg);
     }
 
     private static function h(string $s): string
