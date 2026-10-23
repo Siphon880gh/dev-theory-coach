@@ -43,15 +43,17 @@ final class Cheatsheet
     public static function pageResponse(string $slug): array
     {
         if (Catalog::bySlug($slug) === null) {
-            return ['status' => 302, 'location' => '/'];
+            return UnknownPage::slugResponse('cheatsheet', $slug);
         }
         $sheet = self::load($slug);
         if ($sheet === null) {
             return [
                 'status' => 200,
-                'body' => '<!DOCTYPE html><html lang="en"><body><main>'
-                    . '<p><strong>SAMPLE</strong> data only.</p>'
-                    . '<p class="slot">not authored yet</p></main></body></html>',
+                'body' => Layout::document(
+                    'Cheatsheet slot',
+                    '<p class="slot">not authored yet</p>',
+                    ['mainClass' => 'cheatsheet-slot']
+                ),
             ];
         }
 
@@ -63,21 +65,24 @@ final class Cheatsheet
     {
         self::assertValid($sheet);
         $slug = (string) $sheet['slug'];
-        $parts = ['<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">',
-            '<title>Cheatsheet — ' . self::h($slug) . '</title></head><body>',
-            '<main class="cheatsheet" data-slug="' . self::h($slug) . '">',
-            '<p><strong>SAMPLE</strong> data only.</p>',
-            '<h1>Cheatsheet: ' . self::h($slug) . '</h1>',
-            '<ul class="lines">'];
+        $parts = [];
+        $parts[] = '<h1>Cheatsheet: ' . self::h($slug) . '</h1>';
+        $parts[] = '<ul class="lines">';
         foreach ($sheet['lines'] as $line) {
             $parts[] = '<li>' . self::h((string) $line) . '</li>';
         }
         $parts[] = '</ul>';
         $parts[] = '<p class="pick-when">Pick when: ' . self::h((string) $sheet['pickWhen']) . '</p>';
         $parts[] = '<p class="skip-when">Skip when: ' . self::h((string) $sheet['skipWhen']) . '</p>';
-        $parts[] = '</main></body></html>';
 
-        return implode("\n", $parts);
+        return Layout::document(
+            'Cheatsheet — ' . $slug,
+            implode("\n", $parts),
+            [
+                'mainClass' => 'cheatsheet',
+                'mainAttrs' => ['data-slug' => $slug],
+            ]
+        );
     }
 
     private static function h(string $s): string

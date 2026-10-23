@@ -101,7 +101,7 @@ final class Coach
     public static function pageResponse(string $slug): array
     {
         if (Catalog::bySlug($slug) === null) {
-            return ['status' => 302, 'location' => '/'];
+            return UnknownPage::slugResponse('coach', $slug);
         }
 
         $session = self::load($slug);
@@ -122,11 +122,7 @@ final class Coach
         $state = self::start($session);
         $node = $session['nodes'][$state['current']];
         $parts = [];
-        $parts[] = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">';
-        $parts[] = '<title>' . self::h($title) . ' — Coach</title></head><body>';
-        $parts[] = '<main class="coach-page" data-slug="' . self::h($slug) . '">';
-        $parts[] = '<p><strong>SAMPLE</strong> data only.</p>';
-        $parts[] = '<p><a href="/guides/' . rawurlencode($slug) . '">Back to guide</a></p>';
+        $parts[] = '<p><a href="' . e(url('/guides/' . rawurlencode($slug))) . '">Back to guide</a></p>';
         $parts[] = '<h1>Coach: ' . self::h($title) . '</h1>';
         $parts[] = '<div class="node" data-node-id="' . self::h($state['current']) . '" data-type="'
             . self::h((string) $node['type']) . '">';
@@ -142,21 +138,32 @@ final class Coach
             }
             $parts[] = '</ol>';
         }
-        $parts[] = '</div></main></body></html>';
+        $parts[] = '</div>';
 
-        return implode("\n", $parts);
+        return Layout::document(
+            $title . ' — Coach',
+            implode("\n", $parts),
+            [
+                'mainClass' => 'coach-page',
+                'mainAttrs' => ['data-slug' => $slug],
+            ]
+        );
     }
 
     public static function slotHtml(string $slug): string
     {
-        return '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">'
-            . '<title>Coach slot — ' . self::h($slug) . '</title></head><body>'
-            . '<main class="coach-slot" data-slug="' . self::h($slug) . '">'
-            . '<p><strong>SAMPLE</strong> data only.</p>'
-            . '<h1>Coach: ' . self::h($slug) . '</h1>'
-            . '<p class="slot">not authored yet</p>'
-            . '<p><a href="/guides/' . rawurlencode($slug) . '">Back to guide</a></p>'
-            . '</main></body></html>';
+        $inner = '<h1>Coach: ' . self::h($slug) . '</h1>'
+            . "\n" . '<p class="slot">not authored yet</p>'
+            . "\n" . '<p><a href="' . e(url('/guides/' . rawurlencode($slug))) . '">Back to guide</a></p>';
+
+        return Layout::document(
+            'Coach slot — ' . $slug,
+            $inner,
+            [
+                'mainClass' => 'coach-slot',
+                'mainAttrs' => ['data-slug' => $slug],
+            ]
+        );
     }
 
     private static function h(string $s): string

@@ -14,6 +14,8 @@ final class DashboardTest extends TestCase
     {
         $html = Dashboard::homeHtml(ProgressSchema::fresh());
         $this->assertStringContainsString('SAMPLE', $html);
+        $this->assertStringContainsString('css/app.css', $html);
+        $this->assertStringContainsString('rel="stylesheet"', $html);
         $this->assertStringContainsString('/guides/arrays', $html);
         $this->assertStringContainsString('arrays', $html);
         $this->assertStringNotContainsString('%', $html);

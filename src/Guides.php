@@ -46,7 +46,7 @@ final class Guides
     {
         $family = Catalog::bySlug($slug);
         if ($family === null) {
-            return ['status' => 302, 'location' => '/'];
+            return UnknownPage::slugResponse('guide', $slug);
         }
 
         $guide = self::load($slug);
@@ -55,25 +55,29 @@ final class Guides
         $body = (string) ($guide['body'] ?? '');
         $coachSlug = (string) ($guide['relatedCoachSlug'] ?? $slug);
 
-        $html = [];
-        $html[] = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">';
-        $html[] = '<meta name="viewport" content="width=device-width, initial-scale=1">';
-        $html[] = '<title>' . self::h($title) . ' — Guide</title></head><body>';
-        $html[] = '<main class="guide-page" data-slug="' . self::h($slug) . '">';
-        $html[] = '<p><strong>SAMPLE</strong> data only.</p>';
-        $html[] = '<p><a href="/guides">All guides</a></p>';
-        $html[] = '<h1>' . self::h($title) . '</h1>';
-        $html[] = '<p class="summary">' . self::h($summary) . '</p>';
+        $parts = [];
+        $parts[] = '<p><a href="' . e(url('/guides')) . '">All guides</a></p>';
+        $parts[] = '<h1>' . self::h($title) . '</h1>';
+        $parts[] = '<p class="summary">' . self::h($summary) . '</p>';
         if ($body === '') {
-            $html[] = '<p class="slot">Guide body not authored yet.</p>';
+            $parts[] = '<p class="slot">Guide body not authored yet.</p>';
         } else {
-            $html[] = '<article class="guide-body">' . self::formatBody($body) . '</article>';
+            $parts[] = '<article class="guide-body">' . self::formatBody($body) . '</article>';
         }
-        $html[] = '<p class="coach-cta"><a href="/coach/' . rawurlencode($coachSlug) . '">Open coach: '
+        $parts[] = '<p class="coach-cta"><a href="' . e(url('/coach/' . rawurlencode($coachSlug))) . '">Open coach: '
             . self::h($coachSlug) . '</a></p>';
-        $html[] = '</main></body></html>';
 
-        return ['status' => 200, 'body' => implode("\n", $html)];
+        return [
+            'status' => 200,
+            'body' => Layout::document(
+                $title . ' — Guide',
+                implode("\n", $parts),
+                [
+                    'mainClass' => 'guide-page',
+                    'mainAttrs' => ['data-slug' => $slug],
+                ]
+            ),
+        ];
     }
 
 
@@ -108,10 +112,6 @@ final class Guides
     {
         $state = ProgressSchema::normalize($state ?? ProgressSchema::fresh());
         $parts = [];
-        $parts[] = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">';
-        $parts[] = '<title>Guides — Dev Theory Coach</title></head><body>';
-        $parts[] = '<main class="guides-hub">';
-        $parts[] = '<p><strong>SAMPLE</strong> data only.</p>';
         $parts[] = '<h1>Guides</h1>';
         foreach (Catalog::groupedByTrackLabel() as $label => $families) {
             $parts[] = '<section class="track" data-track-label="' . self::h($label) . '">';
@@ -121,15 +121,21 @@ final class Guides
                 $title = (string) ($family['title'] ?? $slug);
                 $reason = self::lockedReasonFor($slug, $state);
                 $parts[] = '<li data-slug="' . self::h($slug) . '">'
-                    . '<a href="/guides/' . rawurlencode($slug) . '">' . self::h($title) . '</a>'
+                    . '<a href="' . e(url('/guides/' . rawurlencode($slug))) . '">' . self::h($title) . '</a>'
                     . ($reason !== '' ? ' <span class="locked-reason">' . self::h($reason) . '</span>' : '')
                     . '</li>';
             }
             $parts[] = '</ul></section>';
         }
-        $parts[] = '</main></body></html>';
 
-        return implode("\n", $parts);
+        return Layout::document(
+            'Guides — Dev Theory Coach',
+            implode("\n", $parts),
+            [
+                'mainClass' => 'guides-hub',
+                'wide' => true,
+            ]
+        );
     }
 
     private static function formatBody(string $body): string

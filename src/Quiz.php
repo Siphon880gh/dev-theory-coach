@@ -78,15 +78,17 @@ final class Quiz
     public static function pageResponse(string $slug): array
     {
         if (Catalog::bySlug($slug) === null) {
-            return ['status' => 302, 'location' => '/'];
+            return UnknownPage::slugResponse('quiz', $slug);
         }
         $quiz = self::load($slug);
         if ($quiz === null) {
             return [
                 'status' => 200,
-                'body' => '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Quiz slot</title></head><body>'
-                    . '<main><p><strong>SAMPLE</strong> data only.</p>'
-                    . '<p class="slot">not authored yet</p></main></body></html>',
+                'body' => Layout::document(
+                    'Quiz slot',
+                    '<p class="slot">not authored yet</p>',
+                    ['mainClass' => 'quiz-slot']
+                ),
             ];
         }
 
@@ -100,10 +102,6 @@ final class Quiz
         $slug = (string) $quiz['slug'];
         $title = (string) ($quiz['title'] ?? $slug);
         $parts = [];
-        $parts[] = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">';
-        $parts[] = '<title>Quiz — ' . self::h($title) . '</title></head><body>';
-        $parts[] = '<main class="quiz-page" data-slug="' . self::h($slug) . '" data-untimed="1">';
-        $parts[] = '<p><strong>SAMPLE</strong> data only. Untimed. No code runner.</p>';
         $parts[] = '<h1>Quiz: ' . self::h($title) . '</h1>';
         foreach ($quiz['items'] as $i => $item) {
             $parts[] = '<section class="quiz-item" data-index="' . (int) $i . '">';
@@ -115,9 +113,16 @@ final class Quiz
             $parts[] = '</ol></section>';
         }
         $parts[] = '<p class="quiz-meta">Items: ' . count($quiz['items']) . '</p>';
-        $parts[] = '</main></body></html>';
 
-        return implode("\n", $parts);
+        return Layout::document(
+            'Quiz — ' . $title,
+            implode("\n", $parts),
+            [
+                'mainClass' => 'quiz-page',
+                'mainAttrs' => ['data-slug' => $slug, 'data-untimed' => '1'],
+                'sampleNote' => 'Untimed. No code runner.',
+            ]
+        );
     }
 
     /**

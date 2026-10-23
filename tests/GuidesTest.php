@@ -61,12 +61,14 @@ final class GuidesTest extends TestCase
         $this->assertStringContainsString(substr($guide['body'], 0, 40), $body);
     }
 
-    public function testUnknownGuideSlugRedirectsHomeNot404(): void
+    public function testUnknownGuideSlugRendersUnknownPageNot404OrRedirect(): void
     {
         $response = Guides::pageResponse('not-a-slug');
-        $this->assertSame(302, $response['status']);
-        $this->assertSame('/', $response['location']);
-        $this->assertArrayNotHasKey('body', $response);
+        $this->assertSame(200, $response['status']);
+        $this->assertArrayNotHasKey('location', $response);
+        $this->assertStringContainsString('SAMPLE', $response['body']);
+        $this->assertStringContainsString('not-a-slug', $response['body']);
+        $this->assertStringContainsString('href="/"', $response['body']);
     }
 
     public function testBeginnerGuidesMeetWordCountPasteAndCoachSlugRules(): void

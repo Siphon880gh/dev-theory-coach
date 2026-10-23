@@ -79,7 +79,7 @@ final class Drill
     public static function pageResponse(string $slug): array
     {
         if (Catalog::bySlug($slug) === null) {
-            return ['status' => 302, 'location' => '/'];
+            return UnknownPage::slugResponse('drill', $slug);
         }
         if (!self::isDrillFamily($slug)) {
             return ['status' => 200, 'body' => self::notADrillHtml($slug)];
@@ -88,9 +88,11 @@ final class Drill
         if ($drill === null) {
             return [
                 'status' => 200,
-                'body' => '<!DOCTYPE html><html lang="en"><body><main>'
-                    . '<p><strong>SAMPLE</strong> data only.</p>'
-                    . '<p class="slot">not authored yet</p></main></body></html>',
+                'body' => Layout::document(
+                    'Drill slot',
+                    '<p class="slot">not authored yet</p>',
+                    ['mainClass' => 'drill-slot']
+                ),
             ];
         }
 
@@ -99,11 +101,14 @@ final class Drill
 
     public static function notADrillHtml(string $slug): string
     {
-        return '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Not a drill</title></head><body>'
-            . '<main class="drill-slot" data-slug="' . self::h($slug) . '">'
-            . '<p><strong>SAMPLE</strong> data only.</p>'
-            . '<p class="slot">This family is not a drill.</p>'
-            . '</main></body></html>';
+        return Layout::document(
+            'Not a drill',
+            '<p class="slot">This family is not a drill.</p>',
+            [
+                'mainClass' => 'drill-slot',
+                'mainAttrs' => ['data-slug' => $slug],
+            ]
+        );
     }
 
     /** @param array<string, mixed> $drill */
@@ -111,11 +116,8 @@ final class Drill
     {
         self::assertValid($drill);
         $slug = (string) $drill['slug'];
-        $parts = ['<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">',
-            '<title>Drill — ' . self::h($slug) . '</title></head><body>',
-            '<main class="drill-page" data-slug="' . self::h($slug) . '" data-timed="1">',
-            '<p><strong>SAMPLE</strong> data only. Timed drill.</p>',
-            '<h1>Drill: ' . self::h($slug) . '</h1>'];
+        $parts = [];
+        $parts[] = '<h1>Drill: ' . self::h($slug) . '</h1>';
         foreach ($drill['items'] as $i => $item) {
             $parts[] = '<section class="drill-item" data-index="' . (int) $i . '" data-seconds="'
                 . (int) $item['seconds'] . '">';
@@ -123,9 +125,16 @@ final class Drill
             $parts[] = '<p class="thought-chain" hidden>' . self::h(implode(' | ', $item['thoughtChain'])) . '</p>';
             $parts[] = '</section>';
         }
-        $parts[] = '</main></body></html>';
 
-        return implode("\n", $parts);
+        return Layout::document(
+            'Drill — ' . $slug,
+            implode("\n", $parts),
+            [
+                'mainClass' => 'drill-page',
+                'mainAttrs' => ['data-slug' => $slug, 'data-timed' => '1'],
+                'sampleNote' => 'Timed drill.',
+            ]
+        );
     }
 
     /**

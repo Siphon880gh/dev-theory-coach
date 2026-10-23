@@ -61,29 +61,24 @@ final class Dashboard
         $gateOpen = ProgressSchema::caseGateOpenFor($state);
 
         $parts = [];
-        $parts[] = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">';
-        $parts[] = '<meta name="viewport" content="width=device-width, initial-scale=1">';
-        $parts[] = '<title>Dev Theory Coach (THEORY_CORE)</title></head><body>';
-        $parts[] = '<main class="dashboard">';
-        $parts[] = '<p><strong>SAMPLE</strong> data only.</p>';
         $parts[] = '<h1>Dev Theory Coach (THEORY_CORE)</h1>';
         if ($complete) {
             $parts[] = '<p class="path-complete" data-credential="beginner-path">Beginner path complete. Credential: beginner path finished.</p>';
         } else {
-            $parts[] = '<p class="next-action"><a class="next-cta" href="/guides/' . rawurlencode($next) . '">'
-                . 'Next: study ' . self::h($next) . '</a></p>';
+            $parts[] = '<p class="next-action"><a class="next-cta" href="' . e(url('/guides/' . rawurlencode($next))) . '">'
+                . 'Next: study ' . e($next) . '</a></p>';
         }
         $parts[] = '<p class="case-gate-chip" data-open="' . ($gateOpen ? '1' : '0') . '">'
             . ($gateOpen ? 'Case gate open' : 'Case gate locked') . '</p>';
-        $parts[] = '<p><a href="/guides">Guides hub</a></p>';
-        $parts[] = '<script src="/assets/js/progress.js"></script>';
-        $parts[] = '</main></body></html>';
+        $parts[] = '<p><a href="' . e(url('/guides')) . '">Guides hub</a></p>';
 
-        return implode("\n", $parts);
-    }
-
-    private static function h(string $s): string
-    {
-        return htmlspecialchars($s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+        return Layout::document(
+            'Dev Theory Coach (THEORY_CORE)',
+            implode("\n", $parts),
+            [
+                'mainClass' => 'dashboard',
+                'scripts' => [asset_url('js/progress.js')],
+            ]
+        );
     }
 }

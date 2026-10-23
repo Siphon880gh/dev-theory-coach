@@ -60,7 +60,7 @@ final class CaseStudy
     public static function pageResponse(string $slug, ?array $progress = null): array
     {
         if (Catalog::bySlug($slug) === null) {
-            return ['status' => 302, 'location' => '/'];
+            return UnknownPage::slugResponse('case', $slug);
         }
         $progress = ProgressSchema::normalize($progress ?? ProgressSchema::fresh());
         $gateOpen = ProgressSchema::caseGateOpenFor($progress);
@@ -68,8 +68,11 @@ final class CaseStudy
         if ($case === null) {
             return [
                 'status' => 200,
-                'body' => '<!DOCTYPE html><html lang="en"><body><main><p><strong>SAMPLE</strong> data only.</p>'
-                    . '<p class="slot">not authored yet</p></main></body></html>',
+                'body' => Layout::document(
+                    'Case slot',
+                    '<p class="slot">not authored yet</p>',
+                    ['mainClass' => 'case-slot']
+                ),
             ];
         }
         if (!$gateOpen) {
@@ -81,11 +84,14 @@ final class CaseStudy
 
     public static function gateClosedHtml(string $slug): string
     {
-        return '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Case gated</title></head><body>'
-            . '<main class="case-gated" data-slug="' . self::h($slug) . '">'
-            . '<p><strong>SAMPLE</strong> data only.</p>'
-            . '<p class="gate">Case gate locked. Reach quiz accuracy ≥ 0.8 on arrays, hash-maps, and queues before graded cases reveal the best choice.</p>'
-            . '</main></body></html>';
+        return Layout::document(
+            'Case gated',
+            '<p class="gate">Case gate locked. Reach quiz accuracy ≥ 0.8 on arrays, hash-maps, and queues before graded cases reveal the best choice.</p>',
+            [
+                'mainClass' => 'case-gated',
+                'mainAttrs' => ['data-slug' => $slug],
+            ]
+        );
     }
 
     /** @param array<string, mixed> $case */
@@ -93,20 +99,24 @@ final class CaseStudy
     {
         self::assertValid($case);
         $slug = (string) $case['slug'];
-        $parts = ['<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">',
-            '<title>Case — ' . self::h($slug) . '</title></head><body>',
-            '<main class="case-page" data-slug="' . self::h($slug) . '" data-committed="0">',
-            '<p><strong>SAMPLE</strong> data only.</p>',
-            '<h1>Case: ' . self::h((string) ($case['title'] ?? $slug)) . '</h1>',
-            '<p class="prompt">' . self::h((string) $case['prompt']) . '</p>',
-            '<ul class="choices">'];
+        $parts = [];
+        $parts[] = '<h1>Case: ' . self::h((string) ($case['title'] ?? $slug)) . '</h1>';
+        $parts[] = '<p class="prompt">' . self::h((string) $case['prompt']) . '</p>';
+        $parts[] = '<ul class="choices">';
         foreach ($case['choices'] as $c) {
             $parts[] = '<li data-choice-id="' . self::h((string) $c['id']) . '">'
                 . self::h((string) $c['label']) . '</li>';
             // consequences intentionally omitted pre-commit
         }
-        $parts[] = '</ul></main></body></html>';
-        $html = implode("\n", $parts);
+        $parts[] = '</ul>';
+        $html = Layout::document(
+            'Case — ' . $slug,
+            implode("\n", $parts),
+            [
+                'mainClass' => 'case-page',
+                'mainAttrs' => ['data-slug' => $slug, 'data-committed' => '0'],
+            ]
+        );
         foreach ($case['choices'] as $c) {
             if (str_contains($html, (string) $c['consequence'])) {
                 throw new RuntimeException('consequence leaked into pre-commit HTML');

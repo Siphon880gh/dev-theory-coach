@@ -23,11 +23,11 @@ This is not a problem bank and it does not run code. Problem practice lives in t
 
 Requires **PHP 7.4+** (MAMP 7.4.33 works). PHPUnit 11 needs PHP 8.2+ for tests only.
 
-`index.php` is the app entry (Apache `DirectoryIndex`). `router.php` is only for PHP's built-in server.
+`index.php` is the only entry point: Apache/MAMP via `DirectoryIndex index.php` + `.htaccess`, and the built-in server via `php -S localhost:8080 index.php` (it passes `assets/` files through).
 
 ```bash
 composer serve
-# same as: php -S localhost:8080 router.php
+# same as: php -S localhost:8080 index.php
 ```
 
 Open http://localhost:8080/ — SAMPLE stub home. Later routes (`/guides`, `/coach/{slug}`, …) land in the same `index.php` front controller.

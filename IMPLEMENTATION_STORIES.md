@@ -21,14 +21,13 @@ Parent map: [`EPIC_MAP.md`](./EPIC_MAP.md) · Runtime state: [`.agents/state.jso
 - A milestone flips to `done` only after phpunit passes **and** the gauntlet critic for that milestone returns WIN
 - File layout (do not invent a second one):
   - `index.php` — front controller for `/`, `/guides`, `/guides/{slug}`, `/coach/{slug}`, `/quiz/{slug}`, and later `/drill/{slug}`, `/case/{slug}`, `/cheatsheet/{slug}`
-  - `router.php` — `php -S` only (requires `index.php`)
   - `src/Catalog.php`, `src/ProgressSchema.php`, `src/CoachValidator.php`, `src/Quiz.php`, later `src/Drill.php`, `src/Case.php`, `src/Cheatsheet.php`
   - `assets/js/progress.js` — the only writer of `theory_core_progress_v1`
   - `content/families.json`
   - `content/guides/<slug>.json`, `content/coaching/<slug>.json`, `content/quizzes/<slug>.json`, `content/drills/<slug>.json`, `content/cases/<slug>.json`, `content/cheatsheets/<slug>.json`
   - `content/paths/beginner.json` and, after E2.M2, `structures.json`, `algorithms.json`, `systems.json`, `patterns.json`
   - `tests/` — PHPUnit
-- Unknown slug redirects home. A missing coach, quiz, drill, case, or cheatsheet renders a "not authored yet" slot. Never 404
+- Unknown slug renders a 200 unknown page (never 404; never redirect home). A missing coach, quiz, drill, case, or cheatsheet renders a "not authored yet" slot. Never 404
 - Track labels on screen are the full strings: Data structures, Algorithms, System design, Design patterns
 
 ---
@@ -117,7 +116,7 @@ Parent map: [`EPIC_MAP.md`](./EPIC_MAP.md) · Runtime state: [`.agents/state.jso
 | ID | Story | Acceptance |
 |----|-------|------------|
 | E4.M1.S1 | `GET /guides` lists all 53 families grouped by track, full labels | PHPUnit renders the route (or a view function) and asserts every slug appears once under its track |
-| E4.M1.S2 | `GET /guides/{slug}` renders title, summary, body, and a coach CTA to `/coach/{slug}`. Unknown slug redirects home | Test for `arrays` sees the CTA. Test for `not-a-slug` is a redirect, not a 404 status |
+| E4.M1.S2 | `GET /guides/{slug}` renders title, summary, body, and a coach CTA to `/coach/{slug}`. Unknown slug renders a 200 unknown page | Test for `arrays` sees the CTA. Test for `not-a-slug` is a 200 unknown page, not a 404 or redirect |
 | E4.M1.S3 | Author `content/guides/<slug>.json` for all 12 beginner slugs. Body 300–800 words, original, with rule, why, one SAMPLE worked example, when to use, when to refuse | Word-count test on all 12. Paste test: no guide body contains any contiguous 12-word span from `context/curriculums/`. `relatedCoachSlug` equals the slug |
 
 ---

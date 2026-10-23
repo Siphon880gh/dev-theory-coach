@@ -23,6 +23,6 @@
   },
   "scripts": {
     "test": "phpunit",
-    "serve": "php -S localhost:8080 router.php"
+    "serve": "php -S localhost:8080 index.php"
   }
 }

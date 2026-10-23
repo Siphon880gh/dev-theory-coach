@@ -24,12 +24,14 @@ final class IndexEntryTest extends TestCase
         $this->assertStringContainsString('SAMPLE', Dashboard::homeHtml(ProgressSchema::fresh()));
     }
 
-    public function testRouterPhpRequiresIndex(): void
+    public function testNoRouterPhpAndServeUsesIndex(): void
     {
-        $path = dirname(__DIR__) . '/router.php';
-        $this->assertFileExists($path);
-        $raw = file_get_contents($path);
-        $this->assertNotFalse($raw);
-        $this->assertStringContainsString("require __DIR__ . '/index.php'", $raw);
+        $root = dirname(__DIR__);
+        $this->assertFileDoesNotExist($root . '/router.php');
+        $composer = json_decode((string) file_get_contents($root . '/composer.json'), true);
+        $this->assertSame('php -S localhost:8080 index.php', $composer['scripts']['serve'] ?? null);
+        $raw = (string) file_get_contents($root . '/index.php');
+        $this->assertStringContainsString("PHP_SAPI === 'cli-server'", $raw);
+        $this->assertStringContainsString('request_path()', $raw);
     }
 }

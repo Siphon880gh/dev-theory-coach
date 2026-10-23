@@ -1,0 +1,316 @@
+/* Dev Theory Coach — clean modern (system font, soft cards, one accent) */
+
+:root {
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --text: #0f172a;
+  --muted: #64748b;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-soft: #eef2ff;
+  --shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.04);
+  --radius: 12px;
+  --content: 720px;
+  --content-wide: 840px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible,
+.next-cta:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.shell {
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+.shell--wide {
+  max-width: var(--content-wide);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem 1.5rem 1.75rem;
+}
+
+.sample-badge {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: #eef1f4;
+  border-radius: 999px;
+  line-height: 1.4;
+}
+
+.sample-badge strong {
+  font-weight: 700;
+}
+
+.meta-note {
+  margin: -0.5rem 0 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+main {
+  display: block;
+}
+
+h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+p {
+  margin: 0 0 0.85rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.summary,
+.prompt {
+  color: var(--text);
+}
+
+ul,
+ol {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+
+li {
+  margin: 0.35rem 0;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9em;
+  padding: 0.1em 0.35em;
+  background: #f1f5f9;
+  border-radius: 4px;
+  color: var(--text);
+}
+
+/* Primary CTA */
+.next-cta {
+  display: inline-block;
+  margin-top: 0.25rem;
+  padding: 0.65rem 1.15rem;
+  font-weight: 600;
+  color: #fff !important;
+  background: var(--accent);
+  border-radius: 10px;
+  text-decoration: none !important;
+  box-shadow: 0 1px 2px rgba(79, 70, 229, 0.25);
+}
+
+.next-cta:hover {
+  background: var(--accent-hover);
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.next-action {
+  margin: 1rem 0;
+}
+
+/* Case gate chip */
+.case-gate-chip {
+  display: inline-block;
+  margin: 0.75rem 0 1rem;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 550;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  color: var(--muted);
+}
+
+.case-gate-chip[data-open="1"] {
+  background: var(--accent-soft);
+  border-color: #c7d2fe;
+  color: var(--accent);
+}
+
+.path-complete {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  background: var(--accent-soft);
+  border-radius: 10px;
+  border: 1px solid #c7d2fe;
+  color: var(--text);
+}
+
+/* Guides hub */
+.guides-hub .track {
+  margin: 1.25rem 0 0;
+  padding: 1rem 1.1rem 1.05rem;
+  background: #fafbfc;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.guides-hub .track:first-of-type {
+  margin-top: 1rem;
+}
+
+.guides-hub .track ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.guides-hub .track li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+  margin: 0;
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.guides-hub .track li:first-child {
+  border-top: none;
+  padding-top: 0.15rem;
+}
+
+.guides-hub .locked-reason {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Guide / coach / quiz / drill / case / cheatsheet */
+.guide-body p {
+  margin-bottom: 0.9rem;
+}
+
+.coach-cta,
+.quiz-meta {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.choices {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+}
+
+.choices li {
+  margin: 0.4rem 0;
+  padding: 0.65rem 0.85rem;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.quiz-item,
+.drill-item {
+  margin: 1.15rem 0 0;
+  padding: 1rem 0 0;
+  border-top: 1px solid var(--border);
+}
+
+.quiz-item:first-of-type,
+.drill-item:first-of-type {
+  margin-top: 0.75rem;
+}
+
+.node .success {
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  background: var(--accent-soft);
+  border-radius: 8px;
+  color: var(--accent);
+  font-weight: 550;
+}
+
+.pick-when,
+.skip-when {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.lines {
+  margin: 0.75rem 0 1rem;
+}
+
+/* Slots / unknown */
+.slot {
+  margin: 0.75rem 0;
+  padding: 0.75rem 0.9rem;
+  color: var(--muted);
+  background: #f8fafc;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+}
+
+.slot.unknown {
+  color: var(--text);
+}
+
+.gate {
+  margin: 0.75rem 0;
+  padding: 0.85rem 1rem;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+}
