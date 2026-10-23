@@ -1,0 +1,86 @@
+{
+    "slug": "estimates",
+    "title": "Estimates",
+    "items": [
+        {
+            "prompt": "100M DAU × 10 opens/day × 1 req. Approx QPS?",
+            "accept": "1e4",
+            "thoughtChain": [
+                "1e9 req/day",
+                "÷86400≈1e4",
+                "Order 10k QPS"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "1KB payload × 10k QPS. Approx bandwidth?",
+            "accept": "10MB/s",
+            "thoughtChain": [
+                "1e4×1e3 bytes",
+                "1e7 B/s",
+                "~10 MB/s"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "1B rows × 100B each. Raw storage?",
+            "accept": "100GB",
+            "thoughtChain": [
+                "1e9 rows",
+                "×100B=1e11 B",
+                "1e11 B = 100GB"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Retain 30 days of 10M events/day × 200B. Storage order?",
+            "accept": "60GB",
+            "thoughtChain": [
+                "3e8 events",
+                "×200=6e10",
+                "~60GB"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "5ms in-region RTT budget. How many serial hops @1ms each fit?",
+            "accept": "5",
+            "thoughtChain": [
+                "5ms total",
+                "1ms each",
+                "5 hops"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Cache hit 90%, miss 50ms, hit 1ms. Avg latency?",
+            "accept": "5.9ms",
+            "thoughtChain": [
+                "0.9×1 + 0.1×50",
+                "0.9+5",
+                "5.9ms"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Write QPS 1k, each updates 3 indexes. Index update ops/s?",
+            "accept": "3000",
+            "thoughtChain": [
+                "1k writes",
+                "×3 indexes",
+                "3k ops/s"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Shard count if 2TB data, 200GB/shard target?",
+            "accept": "10",
+            "thoughtChain": [
+                "2TB/0.2TB",
+                "10 shards",
+                "Order 10"
+            ],
+            "seconds": 45
+        }
+    ]
+}

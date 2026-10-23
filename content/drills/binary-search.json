@@ -1,0 +1,86 @@
+{
+    "slug": "binary-search",
+    "title": "Binary search",
+    "items": [
+        {
+            "prompt": "Sorted array length n. Classic binary search time?",
+            "accept": "O(log n)",
+            "thoughtChain": [
+                "Mid probe",
+                "Halve range",
+                "O(log n) probes"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Unsorted array, must binary search. First cost?",
+            "accept": "O(n log n)",
+            "thoughtChain": [
+                "Must sort first",
+                "Sort is n log n",
+                "Then log n search"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Binary search on answer: lo=1, hi=1e9, predicate monotonic. ~steps?",
+            "accept": "O(30)",
+            "thoughtChain": [
+                "Halve each step",
+                "2^30 > 1e9",
+                "~30 probes"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Singly linked list length n. Cost to find mid each probe?",
+            "accept": "O(n)",
+            "thoughtChain": [
+                "No random access",
+                "Walk from head",
+                "Mid costs linear"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Lower_bound style: first index with A[i] >= x on sorted A. Comparisons?",
+            "accept": "O(log n)",
+            "thoughtChain": [
+                "Maintain invariant",
+                "Halve remaining",
+                "Log comparisons"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Rotated sorted array (distinct). Find min with modified binary search. Time?",
+            "accept": "O(log n)",
+            "thoughtChain": [
+                "Compare mid to ends",
+                "Discard sorted half",
+                "Log steps"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Space for iterative binary search on array (aux)?",
+            "accept": "O(1)",
+            "thoughtChain": [
+                "Few index vars",
+                "No recursion stack",
+                "Constant aux"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Recursive binary search depth on n?",
+            "accept": "O(log n)",
+            "thoughtChain": [
+                "One call per half",
+                "log n frames",
+                "Depth log n"
+            ],
+            "seconds": 45
+        }
+    ]
+}

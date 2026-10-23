@@ -1,0 +1,86 @@
+{
+    "slug": "two-pointers",
+    "title": "Two pointers",
+    "items": [
+        {
+            "prompt": "Sorted array, pair sum to target, two ends. Time after sorted?",
+            "accept": "O(n)",
+            "thoughtChain": [
+                "Left and right",
+                "Move inward",
+                "Each index once"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Remove dups in-place sorted array. Write pointer advances at most?",
+            "accept": "O(n)",
+            "thoughtChain": [
+                "Fast scans",
+                "Slow writes uniques",
+                "One pass"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Opposite ends for container-with-most-water. Moves count?",
+            "accept": "O(n)",
+            "thoughtChain": [
+                "Move shorter side",
+                "Ends meet",
+                "Linear moves"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Linked list cycle detect slow/fast. Extra space?",
+            "accept": "O(1)",
+            "thoughtChain": [
+                "Two pointers",
+                "No hash set",
+                "Constant space"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Partition array around pivot in-place (Lomuto-style). Time?",
+            "accept": "O(n)",
+            "thoughtChain": [
+                "One scan",
+                "Swap across wall",
+                "Linear"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Two pointers on unsorted pair-sum without hash. Need first?",
+            "accept": "sort",
+            "thoughtChain": [
+                "Order required",
+                "Sort then ends",
+                "Name sort"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Trapping rain water two pointers. Time?",
+            "accept": "O(n)",
+            "thoughtChain": [
+                "Left/right max",
+                "Move smaller max side",
+                "One pass"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Merge two sorted arrays into one buffer. Pointer advances total?",
+            "accept": "O(n+m)",
+            "thoughtChain": [
+                "Take smaller head",
+                "Exhaust both",
+                "n+m writes"
+            ],
+            "seconds": 45
+        }
+    ]
+}

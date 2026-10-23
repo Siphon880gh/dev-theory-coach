@@ -1,0 +1,86 @@
+{
+    "slug": "rate-limiting",
+    "title": "Rate limiting",
+    "items": [
+        {
+            "prompt": "Token bucket capacity 100, refill 10/s. Max sustained QPS?",
+            "accept": "10",
+            "thoughtChain": [
+                "Refill rate caps",
+                "Sustain = 10/s",
+                "10 QPS"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Same bucket. Max burst size?",
+            "accept": "100",
+            "thoughtChain": [
+                "Capacity tokens",
+                "Burst = capacity",
+                "100"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Fixed window 100/min. Worst spike at boundary (2 windows)?",
+            "accept": "200",
+            "thoughtChain": [
+                "End of window",
+                "Start next",
+                "2×100"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Distributed limiters need shared state. Name one store type?",
+            "accept": "Redis",
+            "thoughtChain": [
+                "Shared counter",
+                "Redis common",
+                "Name Redis"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "429 with Retry-After: 30. Client should wait at least?",
+            "accept": "30s",
+            "thoughtChain": [
+                "Header seconds",
+                "Backoff ≥30",
+                "30s"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Per-user 5 rps, 10k active users, independent. Peak admitted QPS order?",
+            "accept": "5e4",
+            "thoughtChain": [
+                "5×10k",
+                "5e4",
+                "50k QPS"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Leaky bucket drain 20/s, depth 20. Max burst then sustained?",
+            "accept": "20 then 20/s",
+            "thoughtChain": [
+                "Depth=burst",
+                "Drain=sustain",
+                "20 then 20/s"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Edge limit vs origin limit: which rejects cheaper?",
+            "accept": "edge",
+            "thoughtChain": [
+                "Reject early",
+                "Save origin",
+                "Edge"
+            ],
+            "seconds": 45
+        }
+    ]
+}

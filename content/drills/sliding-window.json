@@ -1,0 +1,86 @@
+{
+    "slug": "sliding-window",
+    "title": "Sliding window",
+    "items": [
+        {
+            "prompt": "Fixed window size k sum over n. Time with running sum?",
+            "accept": "O(n)",
+            "thoughtChain": [
+                "Add enter",
+                "Sub leave",
+                "n updates"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Longest substring ≤ k distinct. Time with map?",
+            "accept": "O(n)",
+            "thoughtChain": [
+                "Expand right",
+                "Shrink left",
+                "Each index once"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Minimum window covering charset. Classic time?",
+            "accept": "O(n)",
+            "thoughtChain": [
+                "Need counts",
+                "Shrink when valid",
+                "Linear scan"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Window max with deque. Time?",
+            "accept": "O(n)",
+            "thoughtChain": [
+                "Push candidates",
+                "Pop dominated",
+                "Each index ≤1 enter/leave"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Extra space for window frequency of alphabet size Σ?",
+            "accept": "O(Σ)",
+            "thoughtChain": [
+                "Count map",
+                "Σ keys",
+                "Space Σ"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Restarting a full O(k) rescan each i for fixed k. Time?",
+            "accept": "O(nk)",
+            "thoughtChain": [
+                "k work per i",
+                "n starts",
+                "nk"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Variable window: left only moves forward. Max left moves?",
+            "accept": "O(n)",
+            "thoughtChain": [
+                "Monotone left",
+                "Never back",
+                "≤n"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Anagrams of p in s via window. Time?",
+            "accept": "O(|s|)",
+            "thoughtChain": [
+                "Window |p|",
+                "Count match",
+                "Slide once"
+            ],
+            "seconds": 45
+        }
+    ]
+}

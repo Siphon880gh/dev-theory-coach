@@ -1,0 +1,86 @@
+{
+    "slug": "sorting",
+    "title": "Sorting",
+    "items": [
+        {
+            "prompt": "Mergesort time?",
+            "accept": "O(n log n)",
+            "thoughtChain": [
+                "Split log levels",
+                "Merge linear",
+                "n log n"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Heapsort time?",
+            "accept": "O(n log n)",
+            "thoughtChain": [
+                "Heapify n",
+                "n extract-min",
+                "n log n"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Quicksort average time?",
+            "accept": "O(n log n)",
+            "thoughtChain": [
+                "Balanced pivots",
+                "log levels",
+                "Average n log n"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Quicksort worst (bad pivots)?",
+            "accept": "O(n^2)",
+            "thoughtChain": [
+                "Stick partitions",
+                "n levels",
+                "Quadratic"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Counting sort time for n keys in range U?",
+            "accept": "O(n+U)",
+            "thoughtChain": [
+                "Count bucket",
+                "Write out",
+                "n+U"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Comparison sort lower bound?",
+            "accept": "O(n log n)",
+            "thoughtChain": [
+                "n! perms",
+                "log(n!) ~ n log n",
+                "Ω(n log n)"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Mergesort extra array space (classic)?",
+            "accept": "O(n)",
+            "thoughtChain": [
+                "Merge buffer",
+                "Linear temp",
+                "Θ(n)"
+            ],
+            "seconds": 45
+        },
+        {
+            "prompt": "Stable sort among {quick, merge, heap} typically?",
+            "accept": "mergesort",
+            "thoughtChain": [
+                "Merge preserves ties",
+                "Quick/heap not",
+                "Name merge"
+            ],
+            "seconds": 45
+        }
+    ]
+}
