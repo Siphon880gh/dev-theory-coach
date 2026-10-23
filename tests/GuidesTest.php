@@ -65,6 +65,20 @@ final class GuidesTest extends TestCase
         $this->assertStringContainsString('vague', $body);
         $this->assertStringContainsString('list', $body);
         $this->assertStringContainsString('linked list when you still need index access', $body);
+        $this->assertStringContainsString('youtube.com/results', $body);
+        $this->assertStringContainsString('search_query=Data+structures+Arrays', $body);
+        $this->assertStringContainsString('target="_blank"', $body);
+        $this->assertStringContainsString('rel="noopener noreferrer"', $body);
+        $this->assertStringContainsString('Search YouTube: Data structures Arrays', $body);
+    }
+
+    public function testYoutubeSearchUrlEncodesTrackAndTitle(): void
+    {
+        $url = Guides::youtubeSearchUrl('Algorithms', 'Greedy');
+        $this->assertStringContainsString('https://www.youtube.com/results?', $url);
+        $this->assertStringContainsString('search_query=Algorithms+Greedy', $url);
+        $over = Guides::youtubeSearchUrl('Algorithms', 'Greedy', 'custom query');
+        $this->assertStringContainsString('search_query=custom+query', $over);
     }
 
     public function testFormatBodyRendersDiagramFigureForArrays(): void

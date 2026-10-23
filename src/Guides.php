@@ -111,6 +111,19 @@ final class Guides
     }
 
     /**
+     * YouTube results URL for track label + guide title (override via youtubeQuery).
+     */
+    public static function youtubeSearchUrl(string $trackLabel, string $title, ?string $overrideQuery = null): string
+    {
+        $q = $overrideQuery !== null && trim($overrideQuery) !== ''
+            ? trim($overrideQuery)
+            : trim($trackLabel . ' ' . $title);
+
+        return 'https://www.youtube.com/results?' . http_build_query(['search_query' => $q]);
+    }
+
+
+    /**
      * @return array{status: int, location?: string, body?: string}
      */
     public static function pageResponse(string $slug): array
@@ -140,8 +153,18 @@ final class Guides
         } else {
             $parts[] = '<article class="guide-body">' . self::formatBody($body, $diagrams) . '</article>';
         }
+        $trackLabel = (string) ($family['track_label'] ?? '');
+        $ytOverride = null;
+        if (is_array($guide) && isset($guide['youtubeQuery']) && is_string($guide['youtubeQuery'])) {
+            $ytOverride = $guide['youtubeQuery'];
+        }
+        $youtubeUrl = self::youtubeSearchUrl($trackLabel, $title, $ytOverride);
+        $youtubeLabel = 'Search YouTube: ' . $trackLabel . ' ' . $title;
+
         $parts[] = '<p class="coach-cta"><a href="' . e(url('/coach/' . rawurlencode($coachSlug))) . '">Open coach: '
             . self::h($coachSlug) . '</a></p>';
+        $parts[] = '<p class="youtube-cta"><a href="' . e($youtubeUrl) . '" target="_blank" rel="noopener noreferrer">'
+            . self::h($youtubeLabel) . '</a></p>';
 
         return [
             'status' => 200,
