@@ -81,6 +81,38 @@ final class GuidesTest extends TestCase
         $this->assertStringContainsString('search_query=custom+query', $over);
     }
 
+
+    public function testGuideLessonNavShowsNextTitleOnArrays(): void
+    {
+        $body = Guides::pageResponse('arrays')['body'] ?? '';
+        $this->assertStringContainsString('guide-lesson-nav', $body);
+        $this->assertStringContainsString('aria-label="Lesson"', $body);
+        $this->assertStringContainsString('Strings', $body);
+        $this->assertStringContainsString('/guides/strings', $body);
+        $this->assertStringContainsString('is-disabled', $body); // no previous
+    }
+
+    public function testGuideLessonNavShowsPrevAndNextOnHashMaps(): void
+    {
+        $body = Guides::pageResponse('hash-maps')['body'] ?? '';
+        $this->assertStringContainsString('Strings', $body);
+        $this->assertStringContainsString('/guides/strings', $body);
+        $this->assertStringContainsString('Linked lists', $body);
+        $this->assertStringContainsString('/guides/linked-lists', $body);
+    }
+
+    public function testGuideLessonNavLastHasNoNext(): void
+    {
+        $body = Guides::pageResponse('composition')['body'] ?? '';
+        $this->assertStringContainsString('Proxy', $body);
+        $this->assertStringContainsString('/guides/proxy', $body);
+        // next disabled
+        $this->assertMatchesRegularExpression(
+            '/guide-lesson-nav__link--next is-disabled/',
+            $body,
+        );
+    }
+
     public function testFormatBodyRendersDiagramFigureForArrays(): void
     {
         $guide = Guides::load('arrays');

@@ -154,4 +154,43 @@ final class Catalog
 
         return self::$data;
     }
+
+    /**
+     * Previous/next family in catalog order (hub order).
+     *
+     * @return array{prev: ?array{slug: string, title: string}, next: ?array{slug: string, title: string}}
+     */
+    public static function neighbors(string $slug): array
+    {
+        $all = self::all();
+        $index = null;
+        foreach ($all as $i => $family) {
+            if (($family['slug'] ?? null) === $slug) {
+                $index = $i;
+                break;
+            }
+        }
+        if ($index === null) {
+            return ['prev' => null, 'next' => null];
+        }
+        $prev = null;
+        $next = null;
+        if ($index > 0) {
+            $f = $all[$index - 1];
+            $prev = [
+                'slug' => (string) $f['slug'],
+                'title' => (string) ($f['title'] ?? $f['slug']),
+            ];
+        }
+        if ($index < count($all) - 1) {
+            $f = $all[$index + 1];
+            $next = [
+                'slug' => (string) $f['slug'],
+                'title' => (string) ($f['title'] ?? $f['slug']),
+            ];
+        }
+
+        return ['prev' => $prev, 'next' => $next];
+    }
+
 }

@@ -165,6 +165,7 @@ final class Guides
             . self::h($coachSlug) . '</a></p>';
         $parts[] = '<p class="youtube-cta"><a href="' . e($youtubeUrl) . '" target="_blank" rel="noopener noreferrer">'
             . self::h($youtubeLabel) . '</a></p>';
+        $parts[] = self::lessonNavHtml($slug);
 
         $layoutOpts = [
             'mainClass' => 'guide-page',
@@ -246,6 +247,43 @@ final class Guides
     /**
      * @param list<array{id?: mixed, title?: mixed, svg?: mixed}> $diagrams
      */
+
+    private static function lessonNavHtml(string $slug): string
+    {
+        $nav = Catalog::neighbors($slug);
+        $parts = [];
+        $parts[] = '<nav class="guide-lesson-nav" aria-label="Lesson">';
+        $parts[] = '<div class="guide-lesson-nav__row">';
+        if ($nav['prev'] !== null) {
+            $parts[] = '<a class="guide-lesson-nav__link guide-lesson-nav__link--prev" href="'
+                . e(url('/guides/' . rawurlencode($nav['prev']['slug']))) . '">'
+                . '<span class="guide-lesson-nav__dir">Previous</span>'
+                . '<span class="guide-lesson-nav__title">' . self::h($nav['prev']['title']) . '</span>'
+                . '</a>';
+        } else {
+            $parts[] = '<span class="guide-lesson-nav__link guide-lesson-nav__link--prev is-disabled" aria-disabled="true">'
+                . '<span class="guide-lesson-nav__dir">Previous</span>'
+                . '<span class="guide-lesson-nav__title">—</span>'
+                . '</span>';
+        }
+        if ($nav['next'] !== null) {
+            $parts[] = '<a class="guide-lesson-nav__link guide-lesson-nav__link--next" href="'
+                . e(url('/guides/' . rawurlencode($nav['next']['slug']))) . '">'
+                . '<span class="guide-lesson-nav__dir">Next</span>'
+                . '<span class="guide-lesson-nav__title">' . self::h($nav['next']['title']) . '</span>'
+                . '</a>';
+        } else {
+            $parts[] = '<span class="guide-lesson-nav__link guide-lesson-nav__link--next is-disabled" aria-disabled="true">'
+                . '<span class="guide-lesson-nav__dir">Next</span>'
+                . '<span class="guide-lesson-nav__title">—</span>'
+                . '</span>';
+        }
+        $parts[] = '</div>';
+        $parts[] = '</nav>';
+
+        return implode("\n", $parts);
+    }
+
     public static function formatBody(string $body, array $diagrams = []): string
     {
         $byId = Diagrams::indexById($diagrams);

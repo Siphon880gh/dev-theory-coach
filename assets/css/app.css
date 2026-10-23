@@ -657,3 +657,54 @@ button.choice:hover {
   margin-top: var(--space-2);
   margin-bottom: var(--space-3);
 }
+
+.guide-lesson-nav {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--panel-edge);
+}
+
+.guide-lesson-nav__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: space-between;
+}
+
+.guide-lesson-nav__link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  max-width: 48%;
+  min-width: 10rem;
+  text-decoration: none;
+  color: var(--text);
+  padding: var(--space-2) 0;
+}
+
+.guide-lesson-nav__link:hover {
+  color: var(--accent-hover);
+}
+
+.guide-lesson-nav__link--next {
+  margin-left: auto;
+  text-align: right;
+}
+
+.guide-lesson-nav__dir {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.guide-lesson-nav__title {
+  font-size: 0.95rem;
+  color: inherit;
+}
+
+.guide-lesson-nav__link.is-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+  cursor: default;
+}
