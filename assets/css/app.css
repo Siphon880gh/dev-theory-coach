@@ -33,6 +33,29 @@
   --space-4: 1.25rem;
 }
 
+/* Day (light paper). Night tokens live on :root (brand default). */
+[data-theme="day"] {
+  color-scheme: light;
+
+  --bg: #f3efe6;
+  --panel: #fffcf7;
+  --panel-alt: #f0ebe2;
+  --panel-edge: #d8d0c4;
+
+  --text: #2c323a;
+  --heading: #14181e;
+  --muted: #6a7380;
+
+  --accent: #2f6f9f;
+  --accent-hover: #1e5a84;
+  --accent-soft: rgba(47, 111, 159, 0.12);
+  --accent-ink: #fffcf7;
+
+  --danger: #b54a42;
+  --ok: #3d7a5c;
+}
+
+
 *,
 *::before,
 *::after {
@@ -73,7 +96,8 @@ a:focus-visible,
 button:focus-visible,
 .next-cta:focus-visible,
 .nav-link:focus-visible,
-.brand:focus-visible {
+.brand:focus-visible,
+.theme-switch:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
@@ -114,6 +138,83 @@ button:focus-visible,
   padding: var(--space-3) 0;
   margin-bottom: var(--space-3);
   border-bottom: 1px solid var(--panel-edge);
+}
+
+.header-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+
+/* Quiet Day/Night control (modeled on weng/me). */
+.theme-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 1.85rem;
+  padding: 0 0.6rem 0 0.45rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--panel-edge));
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.theme-switch:hover {
+  color: var(--heading);
+  border-color: color-mix(in srgb, var(--accent) 60%, var(--panel-edge));
+}
+
+.theme-switch:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.theme-switch-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent);
+  flex: 0 0 auto;
+}
+
+[data-theme="night"] .theme-switch-icon {
+  background: transparent;
+  box-shadow: inset -0.28rem -0.05rem 0 0 var(--accent);
+}
+
+.theme-switch-label::before {
+  content: "Day";
+}
+
+[data-theme="night"] .theme-switch-label::before {
+  content: "Night";
+}
+
+@media (max-width: 520px) {
+  .theme-switch {
+    width: 1.85rem;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .theme-switch-label {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 }
 
 .brand {

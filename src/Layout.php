@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace TheoryCore;
 
 /**
- * Shared HTML5 document: charset, viewport, fonts, stylesheet, site header + panel.
+ * Shared HTML5 document: charset, viewport, theme boot, stylesheet, site header + panel.
  */
 final class Layout
 {
@@ -49,11 +49,27 @@ final class Layout
         $homeClass = $navActive === 'home' ? ' is-active' : '';
         $guidesClass = $navActive === 'guides' ? ' is-active' : '';
 
+        $themeBoot = <<<'JS'
+(function () {
+  try {
+    var stored = localStorage.getItem("weng-theme");
+    var theme = stored === "day" || stored === "night"
+      ? stored
+      : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day");
+    document.documentElement.setAttribute("data-theme", theme);
+    if (stored !== "day" && stored !== "night") {
+      document.documentElement.setAttribute("data-theme-source", "system");
+    }
+  } catch (e) {}
+})();
+JS;
+
         $parts = [];
         $parts[] = '<!DOCTYPE html>';
-        $parts[] = '<html lang="en">';
+        $parts[] = '<html lang="en" data-theme="night">';
         $parts[] = '<head>';
         $parts[] = '<meta charset="UTF-8">';
+        $parts[] = '<script>' . "\n" . $themeBoot . "\n" . '</script>';
         $parts[] = '<meta name="viewport" content="width=device-width, initial-scale=1">';
         $parts[] = '<title>' . e($title) . '</title>';
         $parts[] = '<link rel="preconnect" href="https://fonts.googleapis.com">';
@@ -66,10 +82,16 @@ final class Layout
         $parts[] = '<div class="' . e($shellClass) . '">';
         $parts[] = '<header class="site-header">';
         $parts[] = '<a class="brand" href="' . e(url('/')) . '">Dev Theory Coach</a>';
+        $parts[] = '<div class="header-tools">';
         $parts[] = '<nav class="site-nav" aria-label="Primary">';
         $parts[] = '<a class="nav-link' . $homeClass . '" href="' . e(url('/')) . '">Home</a>';
         $parts[] = '<a class="nav-link' . $guidesClass . '" href="' . e(url('/guides')) . '">Guides</a>';
         $parts[] = '</nav>';
+        $parts[] = '<button type="button" class="theme-switch" aria-pressed="true" aria-label="Night theme. Switch to day.">';
+        $parts[] = '<span class="theme-switch-icon" aria-hidden="true"></span>';
+        $parts[] = '<span class="theme-switch-label"></span>';
+        $parts[] = '</button>';
+        $parts[] = '</div>';
         $parts[] = '</header>';
         $parts[] = '<div class="panel">';
         if ($sampleNote !== '') {
@@ -80,6 +102,7 @@ final class Layout
         $parts[] = '</main>';
         $parts[] = '</div>';
         $parts[] = '</div>';
+        $parts[] = '<script src="' . e(asset_url('js/theme.js')) . '"></script>';
         foreach ($scripts as $src) {
             $parts[] = '<script src="' . e((string) $src) . '"></script>';
         }

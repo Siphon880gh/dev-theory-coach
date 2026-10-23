@@ -25,6 +25,10 @@ final class DashboardTest extends TestCase
         $this->assertStringContainsString('site-nav', $html);
         $this->assertStringContainsString('nav-link is-active', $html);
         $this->assertStringContainsString('Next: study arrays', $html);
+        $this->assertStringContainsString('theme-switch', $html);
+        $this->assertStringContainsString('weng-theme', $html);
+        $this->assertStringContainsString('data-theme', $html);
+        $this->assertStringContainsString('js/theme.js', $html);
     }
 
     public function testAfterArraysGuideReadCtaMovesForward(): void
