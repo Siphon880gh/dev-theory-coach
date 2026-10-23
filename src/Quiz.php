@@ -101,8 +101,13 @@ final class Quiz
         self::assertValid($quiz);
         $slug = (string) $quiz['slug'];
         $title = (string) ($quiz['title'] ?? $slug);
+        $json = json_encode(
+            $quiz,
+            JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_UNESCAPED_UNICODE
+        );
         $parts = [];
         $parts[] = '<h1>Quiz: ' . self::h($title) . '</h1>';
+        $parts[] = '<div class="quiz-live" data-slug="' . self::h($slug) . '">';
         foreach ($quiz['items'] as $i => $item) {
             $parts[] = '<section class="quiz-item" data-index="' . (int) $i . '">';
             $parts[] = '<p class="prompt">' . self::h((string) $item['prompt']) . '</p>';
@@ -111,9 +116,14 @@ final class Quiz
                 $parts[] = '<li><button type="button" class="choice" data-choice="' . (int) $ci . '">'
                     . self::h((string) $choice) . '</button></li>';
             }
-            $parts[] = '</ol></section>';
+            $parts[] = '</ol>';
+            $parts[] = '<p class="quiz-feedback" hidden></p>';
+            $parts[] = '</section>';
         }
         $parts[] = '<p class="quiz-meta">Items: ' . count($quiz['items']) . '</p>';
+        $parts[] = '<p class="quiz-score" hidden></p>';
+        $parts[] = '</div>';
+        $parts[] = '<script type="application/json" id="quiz-data">' . $json . '</script>';
 
         return Layout::document(
             'Quiz — ' . $title,
@@ -123,6 +133,10 @@ final class Quiz
                 'mainAttrs' => ['data-slug' => $slug, 'data-untimed' => '1'],
                 'sampleNote' => 'Untimed. No code runner.',
                 'navActive' => 'guides',
+                'scripts' => [
+                    asset_url('js/progress.js'),
+                    asset_url('js/quiz.js'),
+                ],
             ]
         );
     }

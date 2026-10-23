@@ -96,4 +96,21 @@ final class QuizTest extends TestCase
 
         return $out;
     }
+
+    public function testQuizPageEmbedsDataAndScripts(): void
+    {
+        $quiz = Quiz::load('arrays');
+        $this->assertNotNull($quiz);
+        $html = Quiz::renderHtml($quiz);
+        $this->assertStringContainsString('id="quiz-data"', $html);
+        $this->assertStringContainsString('js/quiz.js', $html);
+        $this->assertStringContainsString('js/progress.js', $html);
+        $this->assertStringContainsString('data-choice=', $html);
+        $this->assertStringContainsString('quiz-live', $html);
+        $this->assertStringContainsString('quiz-feedback', $html);
+
+        $js = file_get_contents(dirname(__DIR__) . '/assets/js/progress.js');
+        $this->assertNotFalse($js);
+        $this->assertStringContainsString('recordCoachComplete', $js);
+    }
 }

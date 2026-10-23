@@ -170,10 +170,46 @@
   }
 
 
+
+  function recordCoachComplete(slug) {
+    var state = load();
+    var id = state.pathId + ':' + slug;
+    if (!state.milestones[id]) {
+      state.milestones[id] = {
+        status: 'unlocked',
+        guideRead: false,
+        coachComplete: false,
+        quizSubmitted: false,
+        quizScore: null,
+        quizAccuracy: null,
+        drillAccuracy: null,
+        drillMedianLatencyMs: null,
+        caseChoiceId: null,
+        caseCorrect: null
+      };
+    }
+    state.milestones[id].coachComplete = true;
+    state.recovery = false;
+    return save(state);
+  }
+
   function recordQuizResult(slug, correct, total) {
     var state = load();
     var id = state.pathId + ':' + slug;
-    if (!state.milestones[id]) return state;
+    if (!state.milestones[id]) {
+      state.milestones[id] = {
+        status: 'unlocked',
+        guideRead: false,
+        coachComplete: false,
+        quizSubmitted: false,
+        quizScore: null,
+        quizAccuracy: null,
+        drillAccuracy: null,
+        drillMedianLatencyMs: null,
+        caseChoiceId: null,
+        caseCorrect: null
+      };
+    }
     var accuracy = total > 0 ? correct / total : 0;
     state.milestones[id].quizSubmitted = true;
     state.milestones[id].quizScore = correct;
@@ -199,6 +235,7 @@
     setScore: setScore,
     setLatency: setLatency,
     reset: reset,
-    recordQuizResult: recordQuizResult
+    recordQuizResult: recordQuizResult,
+    recordCoachComplete: recordCoachComplete
   };
 })(typeof window !== 'undefined' ? window : globalThis);

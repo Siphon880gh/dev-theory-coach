@@ -121,9 +121,15 @@ final class Coach
         $title = (string) ($session['meta']['title'] ?? $slug);
         $state = self::start($session);
         $node = $session['nodes'][$state['current']];
+        $json = json_encode(
+            $session,
+            JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_UNESCAPED_UNICODE
+        );
         $parts = [];
         $parts[] = '<p><a href="' . e(url('/guides/' . rawurlencode($slug))) . '">Back to guide</a></p>';
         $parts[] = '<h1>Coach: ' . self::h($title) . '</h1>';
+        $parts[] = '<div class="coach-live" data-slug="' . self::h($slug) . '">';
+        $parts[] = '<div class="coach-feedback" hidden></div>';
         $parts[] = '<div class="node" data-node-id="' . self::h($state['current']) . '" data-type="'
             . self::h((string) $node['type']) . '">';
         $parts[] = '<p class="prompt">' . self::h((string) ($node['prompt'] ?? '')) . '</p>';
@@ -139,6 +145,8 @@ final class Coach
             $parts[] = '</ol>';
         }
         $parts[] = '</div>';
+        $parts[] = '</div>';
+        $parts[] = '<script type="application/json" id="coach-session-data">' . $json . '</script>';
 
         return Layout::document(
             $title . ' — Coach',
@@ -147,6 +155,10 @@ final class Coach
                 'mainClass' => 'coach-page',
                 'mainAttrs' => ['data-slug' => $slug],
                 'navActive' => 'guides',
+                'scripts' => [
+                    asset_url('js/progress.js'),
+                    asset_url('js/coach.js'),
+                ],
             ]
         );
     }

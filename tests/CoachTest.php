@@ -140,4 +140,17 @@ final class CoachTest extends TestCase
         $this->assertFileExists(dirname(__DIR__) . '/content/coaching/arrays.json');
         $this->assertFileExists(dirname(__DIR__) . '/src/CoachValidator.php');
     }
+
+    public function testCoachPageEmbedsSessionJsonAndScripts(): void
+    {
+        $page = Coach::pageResponse('arrays');
+        $this->assertSame(200, $page['status']);
+        $body = $page['body'] ?? '';
+        $this->assertStringContainsString('id="coach-session-data"', $body);
+        $this->assertStringContainsString('type="application/json"', $body);
+        $this->assertStringContainsString('js/coach.js', $body);
+        $this->assertStringContainsString('js/progress.js', $body);
+        $this->assertStringContainsString('data-choice-index=', $body);
+        $this->assertStringContainsString('coach-live', $body);
+    }
 }
