@@ -17,7 +17,8 @@
           "label": "Wrong: treat sliding-window as unrelated trivia with no cost story",
           "to": "wrong1"
         }
-      ]
+      ],
+      "diagramId": "window"
     },
     "wrong1": {
       "type": "wrong",

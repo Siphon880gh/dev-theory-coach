@@ -101,6 +101,8 @@ final class Quiz
         self::assertValid($quiz);
         $slug = (string) $quiz['slug'];
         $title = (string) ($quiz['title'] ?? $slug);
+        $byId = Diagrams::forSlug($slug);
+        $allDiagrams = [];
         $json = json_encode(
             $quiz,
             JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_UNESCAPED_UNICODE
@@ -111,6 +113,15 @@ final class Quiz
         foreach ($quiz['items'] as $i => $item) {
             $parts[] = '<section class="quiz-item" data-index="' . (int) $i . '">';
             $parts[] = '<p class="prompt">' . self::h((string) $item['prompt']) . '</p>';
+            if (is_array($item)) {
+                $fig = Diagrams::figuresForNode($item, $byId);
+                if ($fig !== '') {
+                    $parts[] = $fig;
+                }
+                foreach (Diagrams::diagramsReferencedByNode($item, $byId) as $d) {
+                    $allDiagrams[] = $d;
+                }
+            }
             $parts[] = '<ol class="choices">';
             foreach ($item['choices'] as $ci => $choice) {
                 $parts[] = '<li><button type="button" class="choice" data-choice="' . (int) $ci . '">'
@@ -125,6 +136,14 @@ final class Quiz
         $parts[] = '</div>';
         $parts[] = '<script type="application/json" id="quiz-data">' . $json . '</script>';
 
+        $scripts = [
+            asset_url('js/progress.js'),
+            asset_url('js/quiz.js'),
+        ];
+        if (Diagrams::needsMermaid($allDiagrams)) {
+            $scripts = array_merge(Diagrams::mermaidScripts(), $scripts);
+        }
+
         return Layout::document(
             'Quiz — ' . $title,
             implode("\n", $parts),
@@ -133,10 +152,7 @@ final class Quiz
                 'mainAttrs' => ['data-slug' => $slug, 'data-untimed' => '1'],
                 'sampleNote' => 'Untimed. No code runner.',
                 'navActive' => 'guides',
-                'scripts' => [
-                    asset_url('js/progress.js'),
-                    asset_url('js/quiz.js'),
-                ],
+                'scripts' => $scripts,
             ]
         );
     }

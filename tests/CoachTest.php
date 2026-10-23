@@ -153,4 +153,15 @@ final class CoachTest extends TestCase
         $this->assertStringContainsString('data-choice-index=', $body);
         $this->assertStringContainsString('coach-live', $body);
     }
+
+    public function testArraysCoachIncludesDiagram(): void
+    {
+        $response = Coach::pageResponse('arrays');
+        $this->assertSame(200, $response['status']);
+        $body = $response['body'] ?? '';
+        $this->assertStringContainsString('guide-diagram', $body);
+        $this->assertStringContainsString('data-diagram-id="contiguous"', $body);
+        $this->assertStringContainsString('<svg', $body);
+        $this->assertStringContainsString('diagramHtml', $body);
+    }
 }

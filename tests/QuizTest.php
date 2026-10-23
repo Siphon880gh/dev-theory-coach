@@ -113,4 +113,15 @@ final class QuizTest extends TestCase
         $this->assertNotFalse($js);
         $this->assertStringContainsString('recordCoachComplete', $js);
     }
+
+    public function testArraysQuizIncludesDiagram(): void
+    {
+        $response = Quiz::pageResponse('arrays');
+        $this->assertSame(200, $response['status']);
+        $body = $response['body'] ?? '';
+        $this->assertStringContainsString('guide-diagram', $body);
+        $this->assertStringContainsString('data-diagram-id="contiguous"', $body);
+        $this->assertStringContainsString('data-diagram-id="insert-shift"', $body);
+        $this->assertGreaterThanOrEqual(2, substr_count($body, 'guide-diagram'));
+    }
 }

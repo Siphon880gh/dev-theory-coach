@@ -17,7 +17,8 @@
           "label": "Wrong: treat greedy as unrelated trivia with no cost story",
           "to": "wrong1"
         }
-      ]
+      ],
+      "diagramId": "local-pick"
     },
     "wrong1": {
       "type": "wrong",

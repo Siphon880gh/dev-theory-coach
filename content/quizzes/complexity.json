@@ -1,108 +1,109 @@
 {
-    "slug": "complexity",
-    "title": "Complexity",
-    "items": [
-        {
-            "prompt": "Big-O names what about a function of n?",
-            "choices": [
-                "The dominant growth term as n grows large",
-                "The exact millisecond runtime on your laptop",
-                "Only the best case",
-                "The constant factors exclusively"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Asymptotic upper bound on growth, ignoring lower-order terms and constants.",
-            "whyWrong": [
-                "",
-                "Wall-clock times include machine noise and constants.",
-                "Best case is a different bound (Ω often).",
-                "Constants matter in practice but are not what big-O highlights."
-            ]
-        },
-        {
-            "prompt": "Amortized O(1) append on a dynamic array means?",
-            "choices": [
-                "Average cost per append across a sequence, including rare resizes",
-                "Every single append is strictly O(1) worst case",
-                "Resizes are free",
-                "n appends cost O(1) total"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Expensive copies are charged across many cheap appends.",
-            "whyWrong": [
-                "",
-                "A single resize is O(n); amortization spreads it.",
-                "Resizes cost linear work.",
-                "n appends cost linear total, not constant."
-            ]
-        },
-        {
-            "prompt": "O(n log n) vs O(n²) for n = 10⁶ — which statement is safest?",
-            "choices": [
-                "n log n stays practical far longer than n²",
-                "They are always equal",
-                "n² is always faster",
-                "log n dominates n"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Quadratic blows up; n log n is the usual sort/scan sweet spot.",
-            "whyWrong": [
-                "",
-                "They differ by a huge factor.",
-                "Quadratic is slower for large n.",
-                "n dominates log n."
-            ]
-        },
-        {
-            "prompt": "Space complexity counts?",
-            "choices": [
-                "Extra memory beyond the input representation (unless asked otherwise)",
-                "Only stack frames, never heap",
-                "Disk only",
-                "Number of CPU cores"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Clarify with the interviewer; default is auxiliary space.",
-            "whyWrong": [
-                "",
-                "Heap allocations count.",
-                "RAM is the usual model.",
-                "Cores are parallelism, not space."
-            ]
-        },
-        {
-            "prompt": "Saying “this is O(n²) therefore unusable” without n is weak because?",
-            "choices": [
-                "Constants and real n decide practicality",
-                "Big-O forbids constants",
-                "O(n²) means infinite time",
-                "Interviews ban quadratic answers"
-            ],
-            "answerIndex": 0,
-            "whyRight": "For tiny n, quadratic can be fine; name n.",
-            "whyWrong": [
-                "",
-                "Big-O hides constants; it does not forbid discussing them.",
-                "It grows with n², not infinity at finite n.",
-                "Quadratic algorithms appear when appropriate."
-            ]
-        },
-        {
-            "prompt": "Recurrence T(n)=2T(n/2)+O(n) solves to?",
-            "choices": [
-                "O(n log n)",
-                "O(n)",
-                "O(n²)",
-                "O(2ⁿ)"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Master theorem / recursion tree: log n levels each O(n).",
-            "whyWrong": [
-                "",
-                "Linear would need less work per level or fewer levels.",
-                "Quadratic is a heavier recurrence.",
-                "Exponential is branching without the /2 shrink balanced by linear merge."
-            ]
-        }
-    ]
+  "slug": "complexity",
+  "title": "Complexity",
+  "items": [
+    {
+      "prompt": "Big-O names what about a function of n?",
+      "choices": [
+        "The dominant growth term as n grows large",
+        "The exact millisecond runtime on your laptop",
+        "Only the best case",
+        "The constant factors exclusively"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Asymptotic upper bound on growth, ignoring lower-order terms and constants.",
+      "whyWrong": [
+        "",
+        "Wall-clock times include machine noise and constants.",
+        "Best case is a different bound (Ω often).",
+        "Constants matter in practice but are not what big-O highlights."
+      ],
+      "diagramId": "growth"
+    },
+    {
+      "prompt": "Amortized O(1) append on a dynamic array means?",
+      "choices": [
+        "Average cost per append across a sequence, including rare resizes",
+        "Every single append is strictly O(1) worst case",
+        "Resizes are free",
+        "n appends cost O(1) total"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Expensive copies are charged across many cheap appends.",
+      "whyWrong": [
+        "",
+        "A single resize is O(n); amortization spreads it.",
+        "Resizes cost linear work.",
+        "n appends cost linear total, not constant."
+      ]
+    },
+    {
+      "prompt": "O(n log n) vs O(n²) for n = 10⁶ — which statement is safest?",
+      "choices": [
+        "n log n stays practical far longer than n²",
+        "They are always equal",
+        "n² is always faster",
+        "log n dominates n"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Quadratic blows up; n log n is the usual sort/scan sweet spot.",
+      "whyWrong": [
+        "",
+        "They differ by a huge factor.",
+        "Quadratic is slower for large n.",
+        "n dominates log n."
+      ]
+    },
+    {
+      "prompt": "Space complexity counts?",
+      "choices": [
+        "Extra memory beyond the input representation (unless asked otherwise)",
+        "Only stack frames, never heap",
+        "Disk only",
+        "Number of CPU cores"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Clarify with the interviewer; default is auxiliary space.",
+      "whyWrong": [
+        "",
+        "Heap allocations count.",
+        "RAM is the usual model.",
+        "Cores are parallelism, not space."
+      ]
+    },
+    {
+      "prompt": "Saying “this is O(n²) therefore unusable” without n is weak because?",
+      "choices": [
+        "Constants and real n decide practicality",
+        "Big-O forbids constants",
+        "O(n²) means infinite time",
+        "Interviews ban quadratic answers"
+      ],
+      "answerIndex": 0,
+      "whyRight": "For tiny n, quadratic can be fine; name n.",
+      "whyWrong": [
+        "",
+        "Big-O hides constants; it does not forbid discussing them.",
+        "It grows with n², not infinity at finite n.",
+        "Quadratic algorithms appear when appropriate."
+      ]
+    },
+    {
+      "prompt": "Recurrence T(n)=2T(n/2)+O(n) solves to?",
+      "choices": [
+        "O(n log n)",
+        "O(n)",
+        "O(n²)",
+        "O(2ⁿ)"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Master theorem / recursion tree: log n levels each O(n).",
+      "whyWrong": [
+        "",
+        "Linear would need less work per level or fewer levels.",
+        "Quadratic is a heavier recurrence.",
+        "Exponential is branching without the /2 shrink balanced by linear merge."
+      ]
+    }
+  ]
 }

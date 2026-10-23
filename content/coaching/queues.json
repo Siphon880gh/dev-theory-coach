@@ -17,7 +17,8 @@
           "label": "Wrong: treat queues as unrelated trivia with no cost story",
           "to": "wrong1"
         }
-      ]
+      ],
+      "diagramId": "fifo"
     },
     "wrong1": {
       "type": "wrong",

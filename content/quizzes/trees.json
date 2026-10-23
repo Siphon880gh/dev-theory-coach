@@ -1,108 +1,109 @@
 {
-    "slug": "trees",
-    "title": "Trees",
-    "items": [
-        {
-            "prompt": "A tree (rooted hierarchy) is?",
-            "choices": [
-                "Connected and acyclic",
-                "Possibly cyclic if undirected",
-                "Always a complete binary heap shape",
-                "A list with two heads"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Connected + no cycles is the graph definition of a tree.",
-            "whyWrong": [
-                "",
-                "A cycle would make it not a tree.",
-                "Heap shape is a special constraint, not all trees.",
-                "Two-head lists are not trees."
-            ]
-        },
-        {
-            "prompt": "Inorder traversal of a binary search tree yields keys in?",
-            "choices": [
-                "Sorted order",
-                "Level order",
-                "Random order",
-                "Decreasing insertion order only"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Left → node → right respects BST order.",
-            "whyWrong": [
-                "",
-                "Level order is BFS layers.",
-                "Inorder is deterministic, not random.",
-                "Insertion order is not what inorder guarantees."
-            ]
-        },
-        {
-            "prompt": "Preorder is often chosen when you need to?",
-            "choices": [
-                "Copy or serialize a tree shape root-first",
-                "Print BST keys sorted",
-                "Always process leaves before parents",
-                "Compute shortest unweighted paths"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Root before children reconstructs structure easily.",
-            "whyWrong": [
-                "",
-                "Sorted BST keys are inorder.",
-                "Leaves-before-parents is postorder.",
-                "Shortest unweighted paths are BFS on graphs."
-            ]
-        },
-        {
-            "prompt": "Height of a skewed chain of n nodes is?",
-            "choices": [
-                "Θ(n)",
-                "Θ(log n)",
-                "Θ(1)",
-                "Θ(√n)"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Each level has one node; height tracks n.",
-            "whyWrong": [
-                "",
-                "Log height needs balance.",
-                "Constant height cannot hold n nodes in a binary tree.",
-                "Square root is not the skew bound."
-            ]
-        },
-        {
-            "prompt": "Level-order traversal uses which fringe?",
-            "choices": [
-                "Queue",
-                "Stack only",
-                "Union-find",
-                "Min-heap of values"
-            ],
-            "answerIndex": 0,
-            "whyRight": "FIFO processes nodes by depth.",
-            "whyWrong": [
-                "",
-                "A stack alone yields DFS order.",
-                "Union-find merges sets, not tree levels.",
-                "Heaps order by priority, not discovery layer."
-            ]
-        },
-        {
-            "prompt": "Postorder is the natural fit when each node’s value depends on?",
-            "choices": [
-                "Both children’s finished results",
-                "Only the parent’s value",
-                "The BFS distance from root",
-                "A global hash of all keys"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Children first, then combine at the node.",
-            "whyWrong": [
-                "",
-                "Parent-only dependency would not need child results.",
-                "BFS distance is level-order information.",
-                "A global hash is unrelated to traversal choice."
-            ]
-        }
-    ]
+  "slug": "trees",
+  "title": "Trees",
+  "items": [
+    {
+      "prompt": "A tree (rooted hierarchy) is?",
+      "choices": [
+        "Connected and acyclic",
+        "Possibly cyclic if undirected",
+        "Always a complete binary heap shape",
+        "A list with two heads"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Connected + no cycles is the graph definition of a tree.",
+      "whyWrong": [
+        "",
+        "A cycle would make it not a tree.",
+        "Heap shape is a special constraint, not all trees.",
+        "Two-head lists are not trees."
+      ],
+      "diagramId": "orders"
+    },
+    {
+      "prompt": "Inorder traversal of a binary search tree yields keys in?",
+      "choices": [
+        "Sorted order",
+        "Level order",
+        "Random order",
+        "Decreasing insertion order only"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Left → node → right respects BST order.",
+      "whyWrong": [
+        "",
+        "Level order is BFS layers.",
+        "Inorder is deterministic, not random.",
+        "Insertion order is not what inorder guarantees."
+      ]
+    },
+    {
+      "prompt": "Preorder is often chosen when you need to?",
+      "choices": [
+        "Copy or serialize a tree shape root-first",
+        "Print BST keys sorted",
+        "Always process leaves before parents",
+        "Compute shortest unweighted paths"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Root before children reconstructs structure easily.",
+      "whyWrong": [
+        "",
+        "Sorted BST keys are inorder.",
+        "Leaves-before-parents is postorder.",
+        "Shortest unweighted paths are BFS on graphs."
+      ]
+    },
+    {
+      "prompt": "Height of a skewed chain of n nodes is?",
+      "choices": [
+        "Θ(n)",
+        "Θ(log n)",
+        "Θ(1)",
+        "Θ(√n)"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Each level has one node; height tracks n.",
+      "whyWrong": [
+        "",
+        "Log height needs balance.",
+        "Constant height cannot hold n nodes in a binary tree.",
+        "Square root is not the skew bound."
+      ]
+    },
+    {
+      "prompt": "Level-order traversal uses which fringe?",
+      "choices": [
+        "Queue",
+        "Stack only",
+        "Union-find",
+        "Min-heap of values"
+      ],
+      "answerIndex": 0,
+      "whyRight": "FIFO processes nodes by depth.",
+      "whyWrong": [
+        "",
+        "A stack alone yields DFS order.",
+        "Union-find merges sets, not tree levels.",
+        "Heaps order by priority, not discovery layer."
+      ]
+    },
+    {
+      "prompt": "Postorder is the natural fit when each node’s value depends on?",
+      "choices": [
+        "Both children’s finished results",
+        "Only the parent’s value",
+        "The BFS distance from root",
+        "A global hash of all keys"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Children first, then combine at the node.",
+      "whyWrong": [
+        "",
+        "Parent-only dependency would not need child results.",
+        "BFS distance is level-order information.",
+        "A global hash is unrelated to traversal choice."
+      ]
+    }
+  ]
 }

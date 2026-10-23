@@ -17,7 +17,8 @@
           "label": "Wrong: treat binary-search as unrelated trivia with no cost story",
           "to": "wrong1"
         }
-      ]
+      ],
+      "diagramId": "halve"
     },
     "wrong1": {
       "type": "wrong",

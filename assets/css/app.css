@@ -651,3 +651,9 @@ button.choice:hover {
   overflow-x: auto;
   text-align: center;
 }
+
+.coach-live .guide-diagram,
+.quiz-item .guide-diagram {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-3);
+}

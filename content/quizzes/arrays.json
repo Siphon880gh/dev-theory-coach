@@ -17,7 +17,8 @@
         "Logarithmic search assumes a sorted probe loop, not a direct index read.",
         "Linear cost would mean walking from the start; indexing skips that walk.",
         "n log n belongs to comparison sorts, not a single indexed read."
-      ]
+      ],
+      "diagramId": "contiguous"
     },
     {
       "prompt": "You insert one value in the middle of an array of n elements. What dominates the cost?",
@@ -34,7 +35,8 @@
         "Hashing appears in maps, not in a plain contiguous insert.",
         "Tree rebalancing is a different structure's story.",
         "A pointer rewrite describes a linked-list splice, not an array middle insert."
-      ]
+      ],
+      "diagramId": "insert-shift"
     },
     {
       "prompt": "Repeated appends into a dynamic array that doubles when full are best described as what amortized cost per append?",

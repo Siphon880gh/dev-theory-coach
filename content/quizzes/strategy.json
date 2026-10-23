@@ -1,108 +1,109 @@
 {
-    "slug": "strategy",
-    "title": "Strategy",
-    "items": [
-        {
-            "prompt": "Strategy lets you?",
-            "choices": [
-                "Swap a whole algorithm behind one interface without editing callers",
-                "Add fields to a class via inheritance only",
-                "Guarantee a single instance",
-                "Notify many listeners"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Interchangeable behaviors share a contract.",
-            "whyWrong": [
-                "",
-                "That is closer to other concerns.",
-                "Singleton is different.",
-                "Observer is different."
-            ]
-        },
-        {
-            "prompt": "Prefer Strategy over a growing switch when?",
-            "choices": [
-                "New variants arrive often and each is a cohesive policy",
-                "There will never be a third branch",
-                "You need GUI widgets",
-                "You need process-wide one instance"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Open for extension without editing the switch.",
-            "whyWrong": [
-                "",
-                "Two branches can stay as ifs.",
-                "GUI is unrelated.",
-                "Singleton unrelated."
-            ]
-        },
-        {
-            "prompt": "Caller depends on?",
-            "choices": [
-                "The strategy interface, not concrete classes",
-                "Every concrete class name",
-                "Global statics only",
-                "File paths"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Dependency inversion on the policy.",
-            "whyWrong": [
-                "",
-                "Concrete names couple callers.",
-                "Globals fight testability.",
-                "Paths are not the pattern."
-            ]
-        },
-        {
-            "prompt": "Strategy vs Template Method?",
-            "choices": [
-                "Strategy uses composition/delegation; Template Method uses inheritance hooks",
-                "They are identical",
-                "Strategy requires inheritance always",
-                "Template Method forbids hooks"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Same family of varying algorithms; different reuse style.",
-            "whyWrong": [
-                "",
-                "They differ in structure.",
-                "Strategy is typically composition.",
-                "Template Method is hooks in a base class."
-            ]
-        },
-        {
-            "prompt": "Injecting Strategy in tests helps because?",
-            "choices": [
-                "You can substitute a fake policy",
-                "Tests cannot use interfaces",
-                "Strategies forbid fakes",
-                "You must hit production payment APIs"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Seams enable doubles.",
-            "whyWrong": [
-                "",
-                "Interfaces are test-friendly.",
-                "Fakes are common.",
-                "Avoid mandatory prod side effects."
-            ]
-        },
-        {
-            "prompt": "Anti-pattern: Strategy explosion means?",
-            "choices": [
-                "Dozens of one-line strategies that should be data/config",
-                "Healthy modularity always",
-                "Mandatory for two branches",
-                "Required by HTTP"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Tiny strategies may be worse than a table or lambdas.",
-            "whyWrong": [
-                "",
-                "Explosion is a smell.",
-                "Two branches can be ifs.",
-                "HTTP unrelated."
-            ]
-        }
-    ]
+  "slug": "strategy",
+  "title": "Strategy",
+  "items": [
+    {
+      "prompt": "Strategy lets you?",
+      "choices": [
+        "Swap a whole algorithm behind one interface without editing callers",
+        "Add fields to a class via inheritance only",
+        "Guarantee a single instance",
+        "Notify many listeners"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Interchangeable behaviors share a contract.",
+      "whyWrong": [
+        "",
+        "That is closer to other concerns.",
+        "Singleton is different.",
+        "Observer is different."
+      ],
+      "diagramId": "swap"
+    },
+    {
+      "prompt": "Prefer Strategy over a growing switch when?",
+      "choices": [
+        "New variants arrive often and each is a cohesive policy",
+        "There will never be a third branch",
+        "You need GUI widgets",
+        "You need process-wide one instance"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Open for extension without editing the switch.",
+      "whyWrong": [
+        "",
+        "Two branches can stay as ifs.",
+        "GUI is unrelated.",
+        "Singleton unrelated."
+      ]
+    },
+    {
+      "prompt": "Caller depends on?",
+      "choices": [
+        "The strategy interface, not concrete classes",
+        "Every concrete class name",
+        "Global statics only",
+        "File paths"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Dependency inversion on the policy.",
+      "whyWrong": [
+        "",
+        "Concrete names couple callers.",
+        "Globals fight testability.",
+        "Paths are not the pattern."
+      ]
+    },
+    {
+      "prompt": "Strategy vs Template Method?",
+      "choices": [
+        "Strategy uses composition/delegation; Template Method uses inheritance hooks",
+        "They are identical",
+        "Strategy requires inheritance always",
+        "Template Method forbids hooks"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Same family of varying algorithms; different reuse style.",
+      "whyWrong": [
+        "",
+        "They differ in structure.",
+        "Strategy is typically composition.",
+        "Template Method is hooks in a base class."
+      ]
+    },
+    {
+      "prompt": "Injecting Strategy in tests helps because?",
+      "choices": [
+        "You can substitute a fake policy",
+        "Tests cannot use interfaces",
+        "Strategies forbid fakes",
+        "You must hit production payment APIs"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Seams enable doubles.",
+      "whyWrong": [
+        "",
+        "Interfaces are test-friendly.",
+        "Fakes are common.",
+        "Avoid mandatory prod side effects."
+      ]
+    },
+    {
+      "prompt": "Anti-pattern: Strategy explosion means?",
+      "choices": [
+        "Dozens of one-line strategies that should be data/config",
+        "Healthy modularity always",
+        "Mandatory for two branches",
+        "Required by HTTP"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Tiny strategies may be worse than a table or lambdas.",
+      "whyWrong": [
+        "",
+        "Explosion is a smell.",
+        "Two branches can be ifs.",
+        "HTTP unrelated."
+      ]
+    }
+  ]
 }

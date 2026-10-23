@@ -17,7 +17,8 @@
           "label": "Wrong: treat hash-maps as unrelated trivia with no cost story",
           "to": "wrong1"
         }
-      ]
+      ],
+      "diagramId": "buckets"
     },
     "wrong1": {
       "type": "wrong",

@@ -121,8 +121,26 @@ final class Coach
         $title = (string) ($session['meta']['title'] ?? $slug);
         $state = self::start($session);
         $node = $session['nodes'][$state['current']];
+        $byId = Diagrams::forSlug($slug);
+        $client = $session;
+        $allDiagrams = [];
+        foreach ($client['nodes'] as $nodeId => $n) {
+            if (!is_array($n)) {
+                continue;
+            }
+            $html = Diagrams::figuresForNode($n, $byId);
+            if ($html !== '') {
+                $client['nodes'][$nodeId]['diagramHtml'] = $html;
+            }
+            foreach (Diagrams::diagramsReferencedByNode($n, $byId) as $d) {
+                $allDiagrams[] = $d;
+            }
+            if (isset($n['diagram']) && is_array($n['diagram'])) {
+                $allDiagrams[] = $n['diagram'];
+            }
+        }
         $json = json_encode(
-            $session,
+            $client,
             JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_UNESCAPED_UNICODE
         );
         $parts = [];
@@ -133,6 +151,10 @@ final class Coach
         $parts[] = '<div class="node" data-node-id="' . self::h($state['current']) . '" data-type="'
             . self::h((string) $node['type']) . '">';
         $parts[] = '<p class="prompt">' . self::h((string) ($node['prompt'] ?? '')) . '</p>';
+        $startFig = Diagrams::figuresForNode(is_array($node) ? $node : [], $byId);
+        if ($startFig !== '') {
+            $parts[] = $startFig;
+        }
         if (($node['type'] ?? '') === 'success') {
             $parts[] = '<p class="success">Success. You named the right idea.</p>';
         } else {
@@ -148,6 +170,14 @@ final class Coach
         $parts[] = '</div>';
         $parts[] = '<script type="application/json" id="coach-session-data">' . $json . '</script>';
 
+        $scripts = [
+            asset_url('js/progress.js'),
+            asset_url('js/coach.js'),
+        ];
+        if (Diagrams::needsMermaid($allDiagrams)) {
+            $scripts = array_merge(Diagrams::mermaidScripts(), $scripts);
+        }
+
         return Layout::document(
             $title . ' — Coach',
             implode("\n", $parts),
@@ -155,10 +185,7 @@ final class Coach
                 'mainClass' => 'coach-page',
                 'mainAttrs' => ['data-slug' => $slug],
                 'navActive' => 'guides',
-                'scripts' => [
-                    asset_url('js/progress.js'),
-                    asset_url('js/coach.js'),
-                ],
+                'scripts' => $scripts,
             ]
         );
     }

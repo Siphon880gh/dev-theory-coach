@@ -17,7 +17,8 @@
           "label": "Wrong: treat recursion as unrelated trivia with no cost story",
           "to": "wrong1"
         }
-      ]
+      ],
+      "diagramId": "call-stack"
     },
     "wrong1": {
       "type": "wrong",

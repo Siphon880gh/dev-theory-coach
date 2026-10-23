@@ -17,7 +17,8 @@
           "label": "Wrong: treat strings as unrelated trivia with no cost story",
           "to": "wrong1"
         }
-      ]
+      ],
+      "diagramId": "char-array"
     },
     "wrong1": {
       "type": "wrong",

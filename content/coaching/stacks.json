@@ -17,7 +17,8 @@
           "label": "Wrong: treat stacks as unrelated trivia with no cost story",
           "to": "wrong1"
         }
-      ]
+      ],
+      "diagramId": "lifo"
     },
     "wrong1": {
       "type": "wrong",

@@ -1,108 +1,109 @@
 {
-    "slug": "two-pointers",
-    "title": "Two pointers",
-    "items": [
-        {
-            "prompt": "Two pointers shine when each move?",
-            "choices": [
-                "Permanently discards a region so total advances are O(n)",
-                "Randomly teleports both indices",
-                "Requires sorting after every step",
-                "Needs a segment tree"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Left and right only move forward (or inward) a linear number of times.",
-            "whyWrong": [
-                "",
-                "Random jumps lose the linear bound.",
-                "Resorting each step is heavier.",
-                "Segment trees solve different queries."
-            ]
-        },
-        {
-            "prompt": "Pair-sum in a sorted array with two ends moving is?",
-            "choices": [
-                "O(n) after the sort",
-                "O(n²) inevitably",
-                "O(1)",
-                "O(n!)"
-            ],
-            "answerIndex": 0,
-            "whyRight": "One pass of inward pointers once sorted.",
-            "whyWrong": [
-                "",
-                "Nested loops are the naive version.",
-                "Constant time cannot read n inputs.",
-                "Factorial is backtracking blow-ups."
-            ]
-        },
-        {
-            "prompt": "Removing duplicates in-place from a sorted array uses slow/fast pointers to?",
-            "choices": [
-                "Write the next unique value at the slow index",
-                "Delete via a new linked list only",
-                "Hash every index",
-                "Sort descending repeatedly"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Fast scans; slow marks the write frontier for uniques.",
-            "whyWrong": [
-                "",
-                "Extra lists use more space than needed.",
-                "Hashing works but is not the classic in-place sorted approach.",
-                "Resorting is unnecessary."
-            ]
-        },
-        {
-            "prompt": "Opposite of a valid two-pointer move?",
-            "choices": [
-                "Moving an index backward over a region you already discarded without a new invariant",
-                "Advancing the right end of a window",
-                "Moving left past a processed unique run",
-                "Closing ends when sum is too large"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Reopening discarded territory without a plan breaks O(n).",
-            "whyWrong": [
-                "",
-                "Advancing right is normal.",
-                "Slow pointer advances are intended.",
-                "Classic pair-sum logic."
-            ]
-        },
-        {
-            "prompt": "Container-with-most-water style problems move the pointer at the?",
-            "choices": [
-                "Shorter line, hoping width loss is repaid by height",
-                "Taller line always",
-                "Middle always",
-                "Random end"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Height is limited by the shorter side; replace that side.",
-            "whyWrong": [
-                "",
-                "Moving the taller cannot increase the min height.",
-                "Middle probes are binary-search flavored, not this pattern.",
-                "Random moves lose correctness arguments."
-            ]
-        },
-        {
-            "prompt": "When should you prefer hashing over two pointers for pair sums?",
-            "choices": [
-                "Unsorted input where you want expected O(n) without sorting",
-                "Already sorted and O(1) extra space is required",
-                "You need the lexicographically smallest pair only via sort",
-                "Input is a linked list without values"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Hashing avoids the sort when order is absent and space is OK.",
-            "whyWrong": [
-                "",
-                "Sorted + tight space is two pointers’ home.",
-                "Lexicographic constraints may still sort.",
-                "Lists need a different plan entirely."
-            ]
-        }
-    ]
+  "slug": "two-pointers",
+  "title": "Two pointers",
+  "items": [
+    {
+      "prompt": "Two pointers shine when each move?",
+      "choices": [
+        "Permanently discards a region so total advances are O(n)",
+        "Randomly teleports both indices",
+        "Requires sorting after every step",
+        "Needs a segment tree"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Left and right only move forward (or inward) a linear number of times.",
+      "whyWrong": [
+        "",
+        "Random jumps lose the linear bound.",
+        "Resorting each step is heavier.",
+        "Segment trees solve different queries."
+      ],
+      "diagramId": "ends"
+    },
+    {
+      "prompt": "Pair-sum in a sorted array with two ends moving is?",
+      "choices": [
+        "O(n) after the sort",
+        "O(n²) inevitably",
+        "O(1)",
+        "O(n!)"
+      ],
+      "answerIndex": 0,
+      "whyRight": "One pass of inward pointers once sorted.",
+      "whyWrong": [
+        "",
+        "Nested loops are the naive version.",
+        "Constant time cannot read n inputs.",
+        "Factorial is backtracking blow-ups."
+      ]
+    },
+    {
+      "prompt": "Removing duplicates in-place from a sorted array uses slow/fast pointers to?",
+      "choices": [
+        "Write the next unique value at the slow index",
+        "Delete via a new linked list only",
+        "Hash every index",
+        "Sort descending repeatedly"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Fast scans; slow marks the write frontier for uniques.",
+      "whyWrong": [
+        "",
+        "Extra lists use more space than needed.",
+        "Hashing works but is not the classic in-place sorted approach.",
+        "Resorting is unnecessary."
+      ]
+    },
+    {
+      "prompt": "Opposite of a valid two-pointer move?",
+      "choices": [
+        "Moving an index backward over a region you already discarded without a new invariant",
+        "Advancing the right end of a window",
+        "Moving left past a processed unique run",
+        "Closing ends when sum is too large"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Reopening discarded territory without a plan breaks O(n).",
+      "whyWrong": [
+        "",
+        "Advancing right is normal.",
+        "Slow pointer advances are intended.",
+        "Classic pair-sum logic."
+      ]
+    },
+    {
+      "prompt": "Container-with-most-water style problems move the pointer at the?",
+      "choices": [
+        "Shorter line, hoping width loss is repaid by height",
+        "Taller line always",
+        "Middle always",
+        "Random end"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Height is limited by the shorter side; replace that side.",
+      "whyWrong": [
+        "",
+        "Moving the taller cannot increase the min height.",
+        "Middle probes are binary-search flavored, not this pattern.",
+        "Random moves lose correctness arguments."
+      ]
+    },
+    {
+      "prompt": "When should you prefer hashing over two pointers for pair sums?",
+      "choices": [
+        "Unsorted input where you want expected O(n) without sorting",
+        "Already sorted and O(1) extra space is required",
+        "You need the lexicographically smallest pair only via sort",
+        "Input is a linked list without values"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Hashing avoids the sort when order is absent and space is OK.",
+      "whyWrong": [
+        "",
+        "Sorted + tight space is two pointers’ home.",
+        "Lexicographic constraints may still sort.",
+        "Lists need a different plan entirely."
+      ]
+    }
+  ]
 }

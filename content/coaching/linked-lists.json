@@ -17,7 +17,8 @@
           "label": "Wrong: treat linked-lists as unrelated trivia with no cost story",
           "to": "wrong1"
         }
-      ]
+      ],
+      "diagramId": "nodes"
     },
     "wrong1": {
       "type": "wrong",
@@ -38,7 +39,8 @@
           "label": "Never refuse — always apply the named idea",
           "to": "wrong2"
         }
-      ]
+      ],
+      "diagramId": "splice"
     },
     "wrong2": {
       "type": "wrong",

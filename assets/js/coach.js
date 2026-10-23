@@ -55,6 +55,9 @@
     nodeEl.setAttribute('data-type', String(node.type || ''));
 
     var html = '<p class="prompt">' + escapeHtml(node.prompt || '') + '</p>';
+    if (node.diagramHtml) {
+      html += node.diagramHtml;
+    }
     if (node.type === 'success') {
       html += '<p class="success">Success. You named the right idea.</p>';
     } else {

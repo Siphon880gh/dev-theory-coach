@@ -17,7 +17,8 @@
           "label": "Wrong: treat two-pointers as unrelated trivia with no cost story",
           "to": "wrong1"
         }
-      ]
+      ],
+      "diagramId": "ends"
     },
     "wrong1": {
       "type": "wrong",

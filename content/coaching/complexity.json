@@ -17,7 +17,8 @@
           "label": "Wrong: treat complexity as unrelated trivia with no cost story",
           "to": "wrong1"
         }
-      ]
+      ],
+      "diagramId": "growth"
     },
     "wrong1": {
       "type": "wrong",

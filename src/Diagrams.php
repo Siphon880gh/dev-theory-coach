@@ -219,4 +219,83 @@ final class Diagrams
     {
         return htmlspecialchars($s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     }
+
+    /**
+     * Diagrams declared on the guide for a slug, indexed by id.
+     *
+     * @return array<string, array{id?: mixed, title?: mixed, svg?: mixed, type?: mixed, mermaid?: mixed, src?: mixed}>
+     */
+    public static function forSlug(string $slug): array
+    {
+        $guide = Guides::load($slug);
+        if ($guide === null || !isset($guide['diagrams']) || !is_array($guide['diagrams'])) {
+            return [];
+        }
+
+        return self::indexById($guide['diagrams']);
+    }
+
+    /**
+     * Resolve diagramId / diagramIds / inline diagram on a content node or quiz item.
+     *
+     * @param array<string, mixed> $node
+     * @param array<string, array{id?: mixed, title?: mixed, svg?: mixed, type?: mixed, mermaid?: mixed, src?: mixed}> $byId
+     */
+    public static function figuresForNode(array $node, array $byId): string
+    {
+        $out = [];
+        if (isset($node['diagram']) && is_array($node['diagram'])) {
+            $out[] = self::renderFigure($node['diagram']);
+        }
+        $ids = [];
+        if (isset($node['diagramId']) && is_string($node['diagramId']) && $node['diagramId'] !== '') {
+            $ids[] = $node['diagramId'];
+        }
+        if (isset($node['diagramIds']) && is_array($node['diagramIds'])) {
+            foreach ($node['diagramIds'] as $id) {
+                if (is_string($id) && $id !== '') {
+                    $ids[] = $id;
+                }
+            }
+        }
+        foreach (array_unique($ids) as $id) {
+            if (!isset($byId[$id])) {
+                continue;
+            }
+            $out[] = self::renderFigure($byId[$id]);
+        }
+
+        return implode("\n", $out);
+    }
+
+    /**
+     * @param array<string, mixed> $node
+     * @param array<string, array{id?: mixed, title?: mixed, svg?: mixed, type?: mixed, mermaid?: mixed, src?: mixed}> $byId
+     * @return list<array{id?: mixed, title?: mixed, svg?: mixed, type?: mixed, mermaid?: mixed, src?: mixed}>
+     */
+    public static function diagramsReferencedByNode(array $node, array $byId): array
+    {
+        $list = [];
+        if (isset($node['diagram']) && is_array($node['diagram'])) {
+            $list[] = $node['diagram'];
+        }
+        $ids = [];
+        if (isset($node['diagramId']) && is_string($node['diagramId']) && $node['diagramId'] !== '') {
+            $ids[] = $node['diagramId'];
+        }
+        if (isset($node['diagramIds']) && is_array($node['diagramIds'])) {
+            foreach ($node['diagramIds'] as $id) {
+                if (is_string($id) && $id !== '') {
+                    $ids[] = $id;
+                }
+            }
+        }
+        foreach (array_unique($ids) as $id) {
+            if (isset($byId[$id])) {
+                $list[] = $byId[$id];
+            }
+        }
+
+        return $list;
+    }
 }

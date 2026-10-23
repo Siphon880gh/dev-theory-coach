@@ -1,108 +1,109 @@
 {
-    "slug": "hash-maps",
-    "title": "Hash maps",
-    "items": [
-        {
-            "prompt": "Average-case lookup by key in a well-spread hash map is?",
-            "choices": [
-                "O(1)",
-                "O(log n)",
-                "O(n)",
-                "O(n log n)"
-            ],
-            "answerIndex": 0,
-            "whyRight": "A good hash plus load factor keeps buckets short, so expected work is constant.",
-            "whyWrong": [
-                "",
-                "Logarithmic cost is trees or sorted structures, not the average hash story.",
-                "Linear is the collapse when everything collides into one bucket.",
-                "n log n is sorting territory."
-            ]
-        },
-        {
-            "prompt": "Worst-case lookup when every key hashes to the same bucket (naive chaining) is?",
-            "choices": [
-                "O(n)",
-                "O(1)",
-                "O(log n) always",
-                "O(√n)"
-            ],
-            "answerIndex": 0,
-            "whyRight": "You walk a chain of length n.",
-            "whyWrong": [
-                "",
-                "Constant time assumes the hash spreads; it does not hold under total collision.",
-                "Treeified buckets can restore log n, but the classic chaining answer is linear.",
-                "Square root is not the collision bound."
-            ]
-        },
-        {
-            "prompt": "You need existence checks for n integers with expected O(1). First structure to name?",
-            "choices": [
-                "Hash set / hash map",
-                "Sorted array only",
-                "Singly linked list",
-                "Unbalanced BST without rebalancing"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Hashing gives expected constant membership.",
-            "whyWrong": [
-                "",
-                "Sorted array membership is log n via binary search.",
-                "A list membership scan is linear.",
-                "Unbalanced trees can degrade to linear."
-            ]
-        },
-        {
-            "prompt": "Why can a mutable object used as a map key be dangerous?",
-            "choices": [
-                "Changing fields that affect equals/hashCode loses the entry in the wrong bucket",
-                "Maps forbid all object keys",
-                "Hashing requires keys to be integers",
-                "Mutation always doubles load factor"
-            ],
-            "answerIndex": 0,
-            "whyRight": "The map placed the entry under the old hash; mutating the key breaks findability.",
-            "whyWrong": [
-                "",
-                "Object keys are normal when hash/equals are stable.",
-                "Non-integer keys are routine.",
-                "Load factor is about size vs capacity, not key mutation."
-            ]
-        },
-        {
-            "prompt": "Two-sum in O(n) typically stores what in the hash map?",
-            "choices": [
-                "Value → index of numbers seen so far",
-                "Every pair of indices",
-                "A sorted copy of the array",
-                "The full Cartesian product"
-            ],
-            "answerIndex": 0,
-            "whyRight": "As you scan, look up target − x; store x after the check.",
-            "whyWrong": [
-                "",
-                "Materializing every pair is quadratic space/time.",
-                "Sorting first changes the algorithm (two pointers) and is not the hash path.",
-                "Cartesian products explode."
-            ]
-        },
-        {
-            "prompt": "Load factor grows past the threshold. What does a typical map do?",
-            "choices": [
-                "Allocate a larger table and rehash entries",
-                "Delete random keys",
-                "Switch permanently to linear search of a list",
-                "Freeze and reject inserts"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Resizing restores expected bucket length.",
-            "whyWrong": [
-                "",
-                "Random deletes are not the resize policy.",
-                "Falling back to one giant list would destroy the average bound.",
-                "Rejecting inserts is not standard map behavior."
-            ]
-        }
-    ]
+  "slug": "hash-maps",
+  "title": "Hash maps",
+  "items": [
+    {
+      "prompt": "Average-case lookup by key in a well-spread hash map is?",
+      "choices": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n log n)"
+      ],
+      "answerIndex": 0,
+      "whyRight": "A good hash plus load factor keeps buckets short, so expected work is constant.",
+      "whyWrong": [
+        "",
+        "Logarithmic cost is trees or sorted structures, not the average hash story.",
+        "Linear is the collapse when everything collides into one bucket.",
+        "n log n is sorting territory."
+      ],
+      "diagramId": "buckets"
+    },
+    {
+      "prompt": "Worst-case lookup when every key hashes to the same bucket (naive chaining) is?",
+      "choices": [
+        "O(n)",
+        "O(1)",
+        "O(log n) always",
+        "O(√n)"
+      ],
+      "answerIndex": 0,
+      "whyRight": "You walk a chain of length n.",
+      "whyWrong": [
+        "",
+        "Constant time assumes the hash spreads; it does not hold under total collision.",
+        "Treeified buckets can restore log n, but the classic chaining answer is linear.",
+        "Square root is not the collision bound."
+      ]
+    },
+    {
+      "prompt": "You need existence checks for n integers with expected O(1). First structure to name?",
+      "choices": [
+        "Hash set / hash map",
+        "Sorted array only",
+        "Singly linked list",
+        "Unbalanced BST without rebalancing"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Hashing gives expected constant membership.",
+      "whyWrong": [
+        "",
+        "Sorted array membership is log n via binary search.",
+        "A list membership scan is linear.",
+        "Unbalanced trees can degrade to linear."
+      ]
+    },
+    {
+      "prompt": "Why can a mutable object used as a map key be dangerous?",
+      "choices": [
+        "Changing fields that affect equals/hashCode loses the entry in the wrong bucket",
+        "Maps forbid all object keys",
+        "Hashing requires keys to be integers",
+        "Mutation always doubles load factor"
+      ],
+      "answerIndex": 0,
+      "whyRight": "The map placed the entry under the old hash; mutating the key breaks findability.",
+      "whyWrong": [
+        "",
+        "Object keys are normal when hash/equals are stable.",
+        "Non-integer keys are routine.",
+        "Load factor is about size vs capacity, not key mutation."
+      ]
+    },
+    {
+      "prompt": "Two-sum in O(n) typically stores what in the hash map?",
+      "choices": [
+        "Value → index of numbers seen so far",
+        "Every pair of indices",
+        "A sorted copy of the array",
+        "The full Cartesian product"
+      ],
+      "answerIndex": 0,
+      "whyRight": "As you scan, look up target − x; store x after the check.",
+      "whyWrong": [
+        "",
+        "Materializing every pair is quadratic space/time.",
+        "Sorting first changes the algorithm (two pointers) and is not the hash path.",
+        "Cartesian products explode."
+      ]
+    },
+    {
+      "prompt": "Load factor grows past the threshold. What does a typical map do?",
+      "choices": [
+        "Allocate a larger table and rehash entries",
+        "Delete random keys",
+        "Switch permanently to linear search of a list",
+        "Freeze and reject inserts"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Resizing restores expected bucket length.",
+      "whyWrong": [
+        "",
+        "Random deletes are not the resize policy.",
+        "Falling back to one giant list would destroy the average bound.",
+        "Rejecting inserts is not standard map behavior."
+      ]
+    }
+  ]
 }

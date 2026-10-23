@@ -17,7 +17,8 @@
           "label": "Linked list — walk from the head each time",
           "to": "wrong_list_for_index"
         }
-      ]
+      ],
+      "diagramId": "contiguous"
     },
     "wrong_list_for_index": {
       "type": "wrong",
@@ -38,14 +39,16 @@
           "label": "Array — shift the tail after the hole",
           "to": "wrong_array_for_splice"
         }
-      ]
+      ],
+      "diagramId": "vs-list"
     },
     "wrong_array_for_splice": {
       "type": "wrong",
       "prompt": "An array still shifts the tail.",
       "explanation": "Splicing in the middle of an array moves every later element. A linked list rewires pointers when you already hold the node.",
       "rewind_to": "q2",
-      "choices": []
+      "choices": [],
+      "diagramId": "insert-shift"
     },
     "success": {
       "type": "success",

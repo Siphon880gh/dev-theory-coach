@@ -1,108 +1,109 @@
 {
-    "slug": "strings",
-    "title": "Strings",
-    "items": [
-        {
-            "prompt": "In most interview languages, concatenating two strings of length n and m typically costs what?",
-            "choices": [
-                "O(n + m) because a new buffer is allocated and filled",
-                "O(1) because strings are mutable in place",
-                "O(log(n + m)) from a balanced tree",
-                "O(n · m) from nested character compares"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Immutable or copy-on-write strings build a new sequence, so work tracks the output length.",
-            "whyWrong": [
-                "",
-                "In-place mutation is not the default for interview string APIs; edits usually allocate.",
-                "Logarithmic cost is not how flat string concatenation is priced.",
-                "Nested compares describe matching algorithms, not building a concatenation."
-            ]
-        },
-        {
-            "prompt": "You need the character at index i of a string stored as a contiguous buffer. Typical cost?",
-            "choices": [
-                "O(1)",
-                "O(i)",
-                "O(n)",
-                "O(log n)"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Like an array, index i is base address plus offset.",
-            "whyWrong": [
-                "",
-                "Walking i characters is a linked representation, not a contiguous buffer.",
-                "Full length only matters if you scan; a direct index does not.",
-                "Binary search is unrelated to a plain index read."
-            ]
-        },
-        {
-            "prompt": "Why is building a long string by repeatedly doing s = s + ch in a loop often quadratic?",
-            "choices": [
-                "Each append may copy the growing prefix again",
-                "Character comparison is always quadratic",
-                "The hash of the string doubles each time",
-                "The runtime inserts a sort after every append"
-            ],
-            "answerIndex": 0,
-            "whyRight": "If each concatenation copies the whole current string, total work is 1+2+…+n.",
-            "whyWrong": [
-                "",
-                "Comparing characters is not required just to append.",
-                "Hashing is not the driver of naive concatenation cost.",
-                "Sorts are not inserted by the language on append."
-            ]
-        },
-        {
-            "prompt": "A problem asks whether two strings are anagrams. Which structure usually makes the check linear?",
-            "choices": [
-                "A count map (or fixed alphabet array) of character frequencies",
-                "A balanced BST of every substring",
-                "Sorting both strings is impossible to beat",
-                "A graph of character edges"
-            ],
-            "answerIndex": 0,
-            "whyRight": "One pass builds counts; another compares them — O(n) for fixed alphabets.",
-            "whyWrong": [
-                "",
-                "Substring trees are heavier than needed for anagram equality.",
-                "Sorting works in n log n but is not the only or best typical answer.",
-                "Graphs do not model anagram counts."
-            ]
-        },
-        {
-            "prompt": "You must reverse a string in place in an interview language that exposes a mutable buffer. Best approach?",
-            "choices": [
-                "Two pointers from both ends swapping toward the middle",
-                "Recursively allocate a new string each call",
-                "Insert each character at the front of a linked list of chars",
-                "Sort the characters descending"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Swaps from the ends reverse with O(1) extra space and one pass.",
-            "whyWrong": [
-                "",
-                "Fresh allocation per call wastes space and is not in-place.",
-                "A list of characters adds pointer overhead without helping reverse.",
-                "Sorting changes order by value, not by reverse position."
-            ]
-        },
-        {
-            "prompt": "Unicode-aware length vs code-unit length trips candidates. What should you say first?",
-            "choices": [
-                "Ask whether the interviewer means code points, graphemes, or UTF-16/UTF-8 units",
-                "Always report strlen of raw bytes as character count",
-                "Assume ASCII forever",
-                "Claim strings have no length"
-            ],
-            "answerIndex": 0,
-            "whyRight": "Interview prompts often hide encoding; clarifying the unit prevents wrong off-by-ones.",
-            "whyWrong": [
-                "",
-                "Raw byte length is not always what “character” means.",
-                "ASCII-only is an unsafe silent assumption.",
-                "Strings have measurable length; the dispute is the unit."
-            ]
-        }
-    ]
+  "slug": "strings",
+  "title": "Strings",
+  "items": [
+    {
+      "prompt": "In most interview languages, concatenating two strings of length n and m typically costs what?",
+      "choices": [
+        "O(n + m) because a new buffer is allocated and filled",
+        "O(1) because strings are mutable in place",
+        "O(log(n + m)) from a balanced tree",
+        "O(n · m) from nested character compares"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Immutable or copy-on-write strings build a new sequence, so work tracks the output length.",
+      "whyWrong": [
+        "",
+        "In-place mutation is not the default for interview string APIs; edits usually allocate.",
+        "Logarithmic cost is not how flat string concatenation is priced.",
+        "Nested compares describe matching algorithms, not building a concatenation."
+      ],
+      "diagramId": "char-array"
+    },
+    {
+      "prompt": "You need the character at index i of a string stored as a contiguous buffer. Typical cost?",
+      "choices": [
+        "O(1)",
+        "O(i)",
+        "O(n)",
+        "O(log n)"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Like an array, index i is base address plus offset.",
+      "whyWrong": [
+        "",
+        "Walking i characters is a linked representation, not a contiguous buffer.",
+        "Full length only matters if you scan; a direct index does not.",
+        "Binary search is unrelated to a plain index read."
+      ]
+    },
+    {
+      "prompt": "Why is building a long string by repeatedly doing s = s + ch in a loop often quadratic?",
+      "choices": [
+        "Each append may copy the growing prefix again",
+        "Character comparison is always quadratic",
+        "The hash of the string doubles each time",
+        "The runtime inserts a sort after every append"
+      ],
+      "answerIndex": 0,
+      "whyRight": "If each concatenation copies the whole current string, total work is 1+2+…+n.",
+      "whyWrong": [
+        "",
+        "Comparing characters is not required just to append.",
+        "Hashing is not the driver of naive concatenation cost.",
+        "Sorts are not inserted by the language on append."
+      ]
+    },
+    {
+      "prompt": "A problem asks whether two strings are anagrams. Which structure usually makes the check linear?",
+      "choices": [
+        "A count map (or fixed alphabet array) of character frequencies",
+        "A balanced BST of every substring",
+        "Sorting both strings is impossible to beat",
+        "A graph of character edges"
+      ],
+      "answerIndex": 0,
+      "whyRight": "One pass builds counts; another compares them — O(n) for fixed alphabets.",
+      "whyWrong": [
+        "",
+        "Substring trees are heavier than needed for anagram equality.",
+        "Sorting works in n log n but is not the only or best typical answer.",
+        "Graphs do not model anagram counts."
+      ]
+    },
+    {
+      "prompt": "You must reverse a string in place in an interview language that exposes a mutable buffer. Best approach?",
+      "choices": [
+        "Two pointers from both ends swapping toward the middle",
+        "Recursively allocate a new string each call",
+        "Insert each character at the front of a linked list of chars",
+        "Sort the characters descending"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Swaps from the ends reverse with O(1) extra space and one pass.",
+      "whyWrong": [
+        "",
+        "Fresh allocation per call wastes space and is not in-place.",
+        "A list of characters adds pointer overhead without helping reverse.",
+        "Sorting changes order by value, not by reverse position."
+      ]
+    },
+    {
+      "prompt": "Unicode-aware length vs code-unit length trips candidates. What should you say first?",
+      "choices": [
+        "Ask whether the interviewer means code points, graphemes, or UTF-16/UTF-8 units",
+        "Always report strlen of raw bytes as character count",
+        "Assume ASCII forever",
+        "Claim strings have no length"
+      ],
+      "answerIndex": 0,
+      "whyRight": "Interview prompts often hide encoding; clarifying the unit prevents wrong off-by-ones.",
+      "whyWrong": [
+        "",
+        "Raw byte length is not always what “character” means.",
+        "ASCII-only is an unsafe silent assumption.",
+        "Strings have measurable length; the dispute is the unit."
+      ]
+    }
+  ]
 }

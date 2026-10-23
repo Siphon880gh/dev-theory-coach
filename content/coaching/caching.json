@@ -17,7 +17,8 @@
           "label": "Wrong: treat caching as unrelated trivia with no cost story",
           "to": "wrong1"
         }
-      ]
+      ],
+      "diagramId": "cache-aside"
     },
     "wrong1": {
       "type": "wrong",
