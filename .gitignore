@@ -1,0 +1,15 @@
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# php stack
+vendor/
+.phpunit.cache/
+
+# vite stack
+node_modules/
+coverage/
+
+# Reference clones from context/clone.sh — keep clone.sh, README.md, toc/, notes/
+/context/repos/

@@ -1,0 +1,93 @@
+{
+  "current_epic_id": "E1",
+  "current_milestone_id": "E1.M1",
+  "status": "todo",
+  "last_updated_iso": "2026-10-23T10:49:14Z",
+  "milestone_story_status": {},
+  "app": {
+    "name": "Dev Theory Coach (THEORY_CORE)",
+    "one_liner": "AGENT: fill from EPIC_MAP",
+    "platform": "web",
+    "topic": "developer interview concepts: data structures, algorithms, system design, and design patterns"
+  },
+  "decisions": {
+    "platform": "Web (PHP 8.2 server-rendered + vanilla JS, localStorage; PHPUnit)",
+    "approach": "A",
+    "approach_name": "thin playable Beginner path + MVP freeze; content drain via LOOPS/",
+    "progress_key": "theory_core_progress_v1",
+    "join_key": "slug",
+    "tracks": {
+      "A": "AGENT: full label",
+      "B": "AGENT: full label"
+    },
+    "guides_hub": true,
+    "coach_slug": "same as guide / slug",
+    "no_runtime_llm": true,
+    "learner_persona_primary": "AGENT",
+    "curriculum_principle": "AGENT",
+    "resource_types": ["guide", "coach"],
+    "mvp_freeze_after": [
+      "E1.M1", "E3.M1", "E4.M1", "E5.M1", "E5.M2", "E6.M1", "E2.M1", "E3.M2", "E7.M1"
+    ],
+    "content_floors": {
+      "guides_per_family": 1,
+      "coach_per_guide": 1
+    },
+    "gate": {
+      "milestone": "AGENT: e.g. E6.M0",
+      "metric": "AGENT: accuracy / latency / cases passed",
+      "threshold": "AGENT"
+    },
+    "execution_rules": [
+      "One milestone in_progress at a time",
+      "slug is the teachable unit; resource type is separate",
+      "One Guides hub; tracks labeled in full; coach slug matches guide",
+      "Rewrite context/; do not paste verbatim",
+      "SAMPLE data only",
+      "Deny post-P0 until MVP freeze checklist green",
+      "After Done(global) milestones, drain content with LOOPS/LOOP-Graph.md"
+    ]
+  },
+  "curriculum": {
+    "beginner_learning_order": [],
+    "families": []
+  },
+  "milestones": {
+    "implementation_order": [
+      "E1.M1", "E3.M1", "E4.M1", "E5.M1", "E5.M2", "E6.M1", "E2.M1", "E3.M2", "E7.M1"
+    ],
+    "post_mvp_order": [],
+    "later_order": [],
+    "advanced_order": [],
+    "rationale": "AGENT",
+    "by_epic": {
+      "E1": ["E1.M1"],
+      "E2": ["E2.M1"],
+      "E3": ["E3.M1", "E3.M2"],
+      "E4": ["E4.M1"],
+      "E5": ["E5.M1", "E5.M2"],
+      "E6": ["E6.M1"],
+      "E7": ["E7.M1"]
+    }
+  },
+  "identified_epics": [
+    { "id": "E0", "name": "Planning & Decisions", "priority": "Mandatory", "status": "complete" },
+    { "id": "E1", "name": "Family catalog", "priority": "MVP", "status": "todo" },
+    { "id": "E2", "name": "Learning path planner", "priority": "MVP", "status": "todo" },
+    { "id": "E3", "name": "Progress & unlocks", "priority": "MVP", "status": "todo" },
+    { "id": "E4", "name": "Guides", "priority": "MVP", "status": "todo" },
+    { "id": "E5", "name": "Step-by-step coaching", "priority": "MVP thin + later library", "status": "todo" },
+    { "id": "E6", "name": "AGENT: first practice type", "priority": "MVP", "status": "todo" },
+    { "id": "E7", "name": "Dashboard", "priority": "MVP", "status": "todo" }
+  ],
+  "completed": ["E0.discovery", "E0.epic_map", "E0.loops", "E0.graph", "E0.context"],
+  "docs": {
+    "epic_map": "EPIC_MAP.md",
+    "implementation_stories": "IMPLEMENTATION_STORIES.md",
+    "resources": "RESOURCES.md",
+    "milestone_loop": "AGENTS_LOOP-Continue-Milestone.md",
+    "content_graph": "LOOPS/LOOP-Graph.md",
+    "context_catalog": "context/README.md"
+  },
+  "next_action": "Start E1.M1.S1: define the family catalog and seed Beginner families from RESOURCES.md"
+}
